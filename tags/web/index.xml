@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web on Xuanwo&#39;s Blog</title>
+    <link>https://xuanwo.org/tags/web/</link>
+    <description>Recent content in Web on Xuanwo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 15 Jun 2017 15:44:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xuanwo.org/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>从浏览器端向 QingStor 对象存储上传文件</title>
+      <link>https://xuanwo.org/2017/06/15/upload-to-qingstor-from-browser/</link>
+      <pubDate>Thu, 15 Jun 2017 15:44:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2017/06/15/upload-to-qingstor-from-browser/</guid>
+      <description>&lt;p&gt;从浏览器端向 QingStor 对象存储上传是很多开发者的需求，虽然 QingStor 提供了相关的接口和 SDK，但是仍有很多开发者表示不知道怎么样去调用。本文的目的是系统的展示一下如何从浏览器端上传一个文件到对象存储，从而解决大多数开发者们的需求。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>有趣的网页乱码问题</title>
+      <link>https://xuanwo.org/2016/11/22/garbled-page/</link>
+      <pubDate>Tue, 22 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2016/11/22/garbled-page/</guid>
+      <description>&lt;p&gt;这是来自segmentfault的一个问题：&lt;a href=&#34;https://segmentfault.com/q/1010000007540588&#34;&gt;node.js中抓取utf-8编码的网页为什么也是乱码&lt;/a&gt;，解答完这个问题之后，决定探讨一下网页乱码这个问题。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>httpbin 介绍</title>
+      <link>https://xuanwo.org/2016/11/12/httpbin-intro/</link>
+      <pubDate>Sat, 12 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2016/11/12/httpbin-intro/</guid>
+      <description>&lt;p&gt;在所有需要做HTTP请求的开发过程中，总有一个这样的痛点：我发出去的请求到底是什么样子的？特别是在一些需要签名和认证的场合，服务器只会冷冰冰的返回一个&lt;code&gt;40x&lt;/code&gt;错误，你无从得知错误的具体详情。本文旨在介绍&lt;code&gt;httpbin&lt;/code&gt;，看看它是如何解决这个痛点的。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>大学生网站集合</title>
+      <link>https://xuanwo.org/2014/10/25/websitesforstudents/</link>
+      <pubDate>Sat, 25 Oct 2014 13:46:37 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2014/10/25/websitesforstudents/</guid>
+      <description>&lt;p&gt;即使是在搜索引擎如此发达的今天，依然有很多偏僻但是特别有用的网站被无数SEO们死死地压在身下。比如，直到现场赛的前几天，才从学长们的口中知道了在线数列大全（OEIS）这样神一般的网站。我就不禁想，像这样的网站是不是并不在少数？我们是不是可以把自己积累的一些好网站共享出来，让大家都能在搜寻某方面的信息可以对症下药，而不是用几个关键词翻来覆去地在Google上面盲目的搜寻？于是，这个&lt;a href=&#34;https://github.com/Xuanwo/WebsitesForStudents&#34;&gt;大学生网站集合项目&lt;/a&gt;就诞生了。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>深澜HTML登陆——防掉线，开共享</title>
+      <link>https://xuanwo.org/2014/10/03/srun/</link>
+      <pubDate>Fri, 03 Oct 2014 20:38:27 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2014/10/03/srun/</guid>
+      <description>&lt;p&gt;一直以来使用的是老版的SRUN3000.exe客户端，同时也忍受着老版客户端频繁掉线以及莫名卡死等诡异问题。来到实验室之后，老版客户端出现了秒退的现象，刚登陆就提示“检测到代理服务，已自动下线”；使用新版的客户端，则提示“与绑定的IP不一致或开启了共享，balabala”。看来深澜的限制已经影响到我的正常使用了，不如自己捣鼓一下吧。下面直接放出解决方案（地大专用），如果对原理感兴趣的可以继续往下看。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>跨城公交网站的想法</title>
+      <link>https://xuanwo.org/2014/09/10/transport-website/</link>
+      <pubDate>Wed, 10 Sep 2014 09:49:15 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2014/09/10/transport-website/</guid>
+      <description> 功能痛点 跨城市的公共交通导航
+实现途径 调用各大地图服务提供商的API（比如百度）
+实现方法 将一条需求的导航路线分成三段：
+出发城市-&amp;gt;城市之间的长途交通（长途汽车，火车，飞机，轮船）-&amp;gt;到达城市  根据所选择的交通方式的不同，分别在各自城市内设定起点至对应站点。
+可能的具体功能点  最优费用计算 最短到达时间 行程规划 用于旅游导航服务（携程快来收购我，233333）  盈利方式  关联广告（流量变现） 票券代购（收取服务费，感觉不靠谱）  相关风险  没有什么技术难度，很容易被百度地图之类的作为一个小功能加入，难以竞争。 地图依赖于服务提供商的更新，上游受到控制，相关API可能被限制调用。  更新日志  2014年09月10日 简单的完成列举了自己的想法。  </description>
+    </item>
+    
+    <item>
+      <title>TiddlyWiki中文教程</title>
+      <link>https://xuanwo.org/2014/08/29/tiddlywiki-doc-cn/</link>
+      <pubDate>Fri, 29 Aug 2014 09:18:06 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2014/08/29/tiddlywiki-doc-cn/</guid>
+      <description> TiddlyWiki是我见过的配置最为简单的Wiki系统，纯HTML实现，不需要服务器，没有复杂的依赖，使用体验非常赞。但是国内使用的人实在太少，而且TiddlyWiki更新迭代很快，原有的一些文档已经不再适用于最新版本的TiddlyWiki了。
+基础教学 下载如下页面:http://tiddlywiki.com/empty.html，保存至自己想要保存的地方。 做任何修改之后，点击保存，浏览器会自动弹出另存为窗口，覆盖自己原先保存的html文件即可。 没错，就是这么简单！
+更新日志  2014年08月29日 我们的征途，当是星辰大海。 2014年09月03日 完成基础教学，接下来会依次补充基于浏览器的高阶用法，以及如何在node.js服务器上使用它，不过快开学了，最近有点忙= =。  </description>
+    </item>
+    
+    <item>
+      <title>Gitbook——你自己的开源电子书</title>
+      <link>https://xuanwo.org/2014/08/21/opensource-book/</link>
+      <pubDate>Thu, 21 Aug 2014 08:41:49 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2014/08/21/opensource-book/</guid>
+      <description>&lt;p&gt;想自己写一本开源电子书，却被各种复杂的配置，环境所困扰？Readthedocs支持的语言用得不如Markdown爽？不想没更新一次都自己构建一遍？或者，你想成就一本辉煌的开源巨著躺着挣钱？Gitbook是你最好的选择——需要配置的项目少，使用Markdown标记语言，每次提交都自动进行构建，可以对自己的书进行定价（还能接受捐赠- -，国内就算了。。）。下面我就来稍微介绍一下Gitbook以及如何进行基本的配置。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>强大且配置项丰富的在线IDE应用——Cloud9</title>
+      <link>https://xuanwo.org/2014/08/07/cloud9/</link>
+      <pubDate>Thu, 07 Aug 2014 13:31:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2014/08/07/cloud9/</guid>
+      <description>&lt;p&gt;废话先不说，首先来一张大图秀一下编辑状态下的页面：
+&lt;img src=&#34;https://xuanwo.org/imgs/opinion/C9-main.png&#34; alt=&#34;C9的主界面&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

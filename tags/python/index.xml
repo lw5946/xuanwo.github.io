@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Xuanwo&#39;s Blog</title>
+    <link>https://xuanwo.org/tags/python/</link>
+    <description>Recent content in Python on Xuanwo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 15 Apr 2018 15:07:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xuanwo.org/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Python 中的引用与拷贝</title>
+      <link>https://xuanwo.org/2018/04/15/reference-and-copy-in-python/</link>
+      <pubDate>Sun, 15 Apr 2018 15:07:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2018/04/15/reference-and-copy-in-python/</guid>
+      <description>&lt;p&gt;用户反馈使用 &lt;a href=&#34;https://github.com/yunify/qsctl&#34;&gt;qsctl&lt;/a&gt; 同步时文件内容不正确，调查后发现是对 Python 字典的错误使用导致了这个问题。这篇文章就来详细的介绍一下 Python 中的引用与拷贝。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python os walk 的坑</title>
+      <link>https://xuanwo.org/2018/04/01/python-os-walk/</link>
+      <pubDate>Sun, 01 Apr 2018 10:07:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2018/04/01/python-os-walk/</guid>
+      <description>&lt;p&gt;用户反馈使用在 windows 下使用 &lt;a href=&#34;https://github.com/yunify/qsctl&#34;&gt;qsctl&lt;/a&gt; 上传文件的时候会中断并抛出 &lt;code&gt;UnicodeDecodeError&lt;/code&gt; 异常，经过一番调查之后发现居然是 &lt;code&gt;os.walk&lt;/code&gt; 的坑。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>聊一聊 Python 的字符串</title>
+      <link>https://xuanwo.org/2017/01/22/encoding-in-python/</link>
+      <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2017/01/22/encoding-in-python/</guid>
+      <description>&lt;p&gt;这篇文章目标是解决一个非常简单的问题：如何编写一个跨平台，跨版本且字符串行为一致的 Python 命令行应用。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>马可波罗珠宝进销存系统开发手记</title>
+      <link>https://xuanwo.org/2016/06/16/jade_ims/</link>
+      <pubDate>Thu, 16 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2016/06/16/jade_ims/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://xuanwo.org/imgs/develop/jade-ims-index.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这个项目从我们这个学期开了&lt;strong&gt;系统分析与设计&lt;/strong&gt;这门课之后就开始了，首次创建这个项目是在3月26号，实际上真正的开发时间集中在6月上旬。差不多用两个星期的闲暇时间时间完成了这个简单的进销存系统。这个系统基于Flask框架，使用SQLite3数据库，前端则是使用Bootstrap框架，实现了包括客户，库存，销售，进货等管理子系统。说是管理，其实也就是简单的增加和删除而已。
+前人经常说，不要重复造轮子。既然有类似于Odoo这样强大的ERP系统珠玉在前，我为什么要再自己造一个功能简单，甚至根本不会有人用的轮子呢？从前我确实是这么想的，但是稍微有一点工作经验之后发现再造轮子的原因有两条：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;作为一个处在知识积累阶段的学生而言，再造轮子很有必要。不造一次轮子，你就永远不会明白轮子内部的真实构造。很多技术虽然看起来简单，但是想要有一个完善且健壮的实现却有很多坑需要踩。踩这些坑的过程，也正是一个技术人员成长最快的过程。&lt;/li&gt;
+&lt;li&gt;别人的轮子终究是别人的。你不知道这个轮子最大能承受多少压力，你也不知道这个轮子在什么样的情况下会爆胎。当一个轮子装上企业呼呼向前的列车，再要想把它替换下来是一件很难且成本很高的事情。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;接下来，讲讲造这个轮子的一些经历吧~&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>我从Qingchat中学到的教训</title>
+      <link>https://xuanwo.org/2016/05/29/learn-from-qingchat/</link>
+      <pubDate>Sun, 29 May 2016 20:57:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2016/05/29/learn-from-qingchat/</guid>
+      <description>&lt;p&gt;之前的一段时间一直在从事&lt;a href=&#34;https://github.com/Xuanwo/qingchat&#34;&gt;Qingchat&lt;/a&gt;的相关开发工作，这个项目是一个基于Mojo-Weixin提供的Rest API开发的一个微信机器人，承担了十余个群，上千人的微信直播活动。秉承着ACM训练出来的“暴力加乱搞”风格，我花了大概一个星期的课余时间，搞出了一个可用的版本。期间也迭代了很多次，既欣慰于Coding的力量，也苦恼于当初设计的不完善带来的种种问题。在这个项目即将大规模重构的前夕，我总结一下开发Qingchat的过程中的经验教训，希望自己能成为一个更好更聪明的Coder。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>docopt——好用的Python命令行参数解释器</title>
+      <link>https://xuanwo.org/2016/04/04/docopt-intro/</link>
+      <pubDate>Mon, 04 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2016/04/04/docopt-intro/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/Xuanwo/qingchat&#34;&gt;&lt;code&gt;Qingchat&lt;/code&gt;&lt;/a&gt; 使用的命令行参数解释器是 &lt;a href=&#34;http://docopt.org/&#34;&gt;&lt;code&gt;docopt&lt;/code&gt;&lt;/a&gt;，用下来感觉非常棒，所以决定介绍一下这个库。（*奉劝各位看官，珍爱生命，远离argparse。*）&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python包分发详解</title>
+      <link>https://xuanwo.org/2015/11/03/python-packages/</link>
+      <pubDate>Tue, 03 Nov 2015 15:24:06 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2015/11/03/python-packages/</guid>
+      <description>&lt;p&gt;用Python写过不少的脚本，现在要把脚本打包成模块并进行发布，然后才明白脚本Boy到正规的码农差距有多大= =。
+踩了很多天的坑之后，自己学习到了Python的包分发机制，以及如何利用Pypi向全世界分发自己的模块。现在简单地做一些整理。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>在Python中使用JSON</title>
+      <link>https://xuanwo.org/2015/10/30/python-json/</link>
+      <pubDate>Fri, 30 Oct 2015 23:47:23 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2015/10/30/python-json/</guid>
+      <description>&lt;h1 id=&#34;json介绍&#34;&gt;JSON介绍&lt;/h1&gt;
+
+&lt;p&gt;JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。 易于人阅读和编写。同时也易于机器解析和生成。 它基于JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C, C++, C#, Java, JavaScript, Perl, Python等）。 这些特性使JSON成为理想的数据交换语言。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;引用自&lt;a href=&#34;http://www.json.org/json-zh.html&#34;&gt;json.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用pyQuery解析HTML</title>
+      <link>https://xuanwo.org/2015/10/23/pyquery-intro/</link>
+      <pubDate>Fri, 23 Oct 2015 01:03:09 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2015/10/23/pyquery-intro/</guid>
+      <description>&lt;h1 id=&#34;pyquery介绍&#34;&gt;pyQuery介绍&lt;/h1&gt;
+
+&lt;p&gt;pyquery 可以让你用jquery语法来对xml进行查询。这个API和jquery十分类似。如果利用lxml，pyquery对xml和html的操作将更加快速。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

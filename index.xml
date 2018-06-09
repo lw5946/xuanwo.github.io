@@ -1,0 +1,1321 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Xuanwo&#39;s Blog</title>
+    <link>https://xuanwo.org/</link>
+    <description>Recent content on Xuanwo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 22 May 2018 04:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://xuanwo.org/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tiresias —— 服务器信息管理工具</title>
+      <link>https://xuanwo.org/2018/05/22/tiresias-intro/</link>
+      <pubDate>Tue, 22 May 2018 04:00:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2018/05/22/tiresias-intro/</guid>
+      <description>&lt;p&gt;大概从大二的时候开始就有这种困惑：不同的服务器所在的云服务商，数据中心，网段，用户名和私钥各不相同，他们的信息要如何管理？最开始是把所有的服务器信息都存放在了密码管理工具当中，后来知道了使用 &lt;a href=&#34;https://github.com/moul/advanced-ssh-config&#34;&gt;assh&lt;/a&gt; 来生成 &lt;code&gt;ssh_config&lt;/code&gt;，最后是 &lt;a href=&#34;https://pjw.io/&#34;&gt;@Aspire&lt;/a&gt; 提供的一个思路：使用脚本生成 &lt;code&gt;hosts&lt;/code&gt; 文件。于是我顺着 Aspire 的思路开发了一个工具：&lt;a href=&#34;https://github.com/Xuanwo/tiresias&#34;&gt;Tiresias&lt;/a&gt;，它可以读取事先写好的 YAML 配置文件并生成 &lt;code&gt;ssh_config&lt;/code&gt; 和 &lt;code&gt;hosts&lt;/code&gt; 文件。今天这篇文章就主要介绍一下我造的又一个轮子。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;介绍&#34;&gt;介绍&lt;/h2&gt;
+
+&lt;p&gt;Tiresias，一般翻译为&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E7%89%B9%E4%BC%8A%E8%A5%BF%E4%BA%9A%E6%96%AF&#34;&gt;特伊西亚斯&lt;/a&gt;，古希腊神话人物，是一位盲人先知，凭借多种获得信息的能力并对世界进行解释而闻名于世。这个工具取这个名字主要就是采用了盲人先知的意象，希望它可以更好帮助管理众多服务器的信息。&lt;/p&gt;
+
+&lt;h2 id=&#34;使用&#34;&gt;使用&lt;/h2&gt;
+
+&lt;p&gt;Tiresias 不需要特别的安装过程，只需要从 &lt;a href=&#34;https://github.com/Xuanwo/tiresias/releases&#34;&gt;release&lt;/a&gt; 处下载编译好的二进制即可使用。&lt;/p&gt;
+
+&lt;p&gt;Tiresias 运行时需要指定一个配置文件，比如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;src:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;type:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;fs&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;path:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;/path/to/source/file&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;dst:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;type:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;ssh_config&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;path:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;/home/xuanwo/.ssh/config&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;type:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;hosts&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;path:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;/etc/hosts&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;src&lt;/code&gt; 目前支持 &lt;code&gt;fs&lt;/code&gt; 类型，可以指向一个 yaml 配置文件：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# production server&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;name:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;production-server&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;address:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1.1&lt;/span&gt;.&lt;span style=&#34;color:#40a070&#34;&gt;1.1&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;user:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;root&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;identity_file:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;~/.ssh/private_key&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# staging server&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;name:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;staging-server&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;address:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;2.2&lt;/span&gt;.&lt;span style=&#34;color:#40a070&#34;&gt;2.2&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;user:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;root&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;identity_file:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;~/.ssh/private_key&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;dst&lt;/code&gt; 目前支持 &lt;code&gt;ssh_config&lt;/code&gt; 和 &lt;code&gt;hosts&lt;/code&gt; 类型，可以通过 path 指定生成文件的地址。以刚才的输入为例，将会分别生成如下两个文件：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-ssh_config&#34; data-lang=&#34;ssh_config&#34;&gt;# -- Generated by tiresias at 2018-05-22 13:35:35.669119377 +0800 CST m=+0.002915397 --
+Host production-server
+    HostName 1.1.1.1
+    User root
+    IdentityFile ~/.ssh/private_key
+
+Host staging-server
+    HostName 2.2.2.2
+    User root
+    IdentityFile ~/.ssh/private_key&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-hosts&#34; data-lang=&#34;hosts&#34;&gt;# -- Generated by tiresias at 2018-05-22 13:35:35.669429758 +0800 CST m=+0.003225739 --
+1.1.1.1 production-server
+2.2.2.2 staging-server&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;配合上 shell 提供的自动补全功能，我们就可以这样使用了：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ ping production-server
+$ ssh staging-server
+$ redis-cli -h production-server
+$ mysql -h staging-server -u root -p&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;实现&#34;&gt;实现&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;Tiresias&lt;/code&gt; 实现上并不复杂，分别定义了 &lt;code&gt;Source&lt;/code&gt; 和 &lt;code&gt;Destnation&lt;/code&gt; 两个 interface，然后从 Source 读取数据并写入到 Destnation。&lt;/p&gt;
+
+&lt;h2 id=&#34;展望&#34;&gt;展望&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;配合 systemd.path 或者 inotify 可以实现文件变更之后的自动更新&lt;/li&gt;
+&lt;li&gt;支持从更多的 Source 中读取数据，比如一个 url，etcd 或者是 Keyring&lt;/li&gt;
+&lt;li&gt;支持向更多的 Destnation 中写入数据，比如写入到 Keyring 或者密码管理器&lt;/li&gt;
+&lt;li&gt;支持 Server name 的通配符以支持配置批量服务器&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;Tiresias&lt;/code&gt; 以一种非侵入式的方式实现了服务器信息的管理和应用，使得用户只需要维护一个固定的源就能方便快捷的维护自己的所有服务器，不会产生任何非预期的行为。&lt;/p&gt;
+
+&lt;h2 id=&#34;动态&#34;&gt;动态&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;上个周末一直在看 MSI，时隔三年，LPL 终于再一次拿到了 MSI 的冠军。小狗牛逼，RNG 牛逼，LPL 牛逼！&lt;/li&gt;
+&lt;li&gt;MSI 决赛的第三局 Letme 的一手剑来，让我又想再把 《雪中悍刀行》再看一遍了&lt;/li&gt;
+&lt;li&gt;据说隔壁 Dota 2 项目也得了冠军，西恩军团牛逼！&lt;/li&gt;
+&lt;li&gt;为了庆祝 RNG MSI 夺冠，昨天请好朋友一起吃了日本料理，Excited ！&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>ThinkPad X1 Carbon 2018 开箱手记</title>
+      <link>https://xuanwo.org/2018/05/16/thinkpad-x1-carbon-6th/</link>
+      <pubDate>Wed, 16 May 2018 11:30:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2018/05/16/thinkpad-x1-carbon-6th/</guid>
+      <description>&lt;p&gt;经过了漫长的等待之后，我的新玩具终于到手了。这篇文章主要晒一些照片，并分享一下我这第一次海淘的经历。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;多图预警&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;配置介绍&#34;&gt;配置介绍&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CPU： Intel i7-8650U vPro&lt;/li&gt;
+&lt;li&gt;内存：16 GB&lt;/li&gt;
+&lt;li&gt;屏幕：14.0 WQHD IPS&lt;/li&gt;
+&lt;li&gt;硬盘：256G SSD&lt;/li&gt;
+&lt;li&gt;电池：3 cell 57Wh&lt;/li&gt;
+&lt;li&gt;预装：Windows 10 Home Plus&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;开箱照&#34;&gt;开箱照&lt;/h2&gt;
+
+&lt;h3 id=&#34;外包装箱&#34;&gt;外包装箱&lt;/h3&gt;
+
+&lt;p&gt;外包装箱挺结实的，晒一下配置的截图。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;outer-box.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;内包装箱&#34;&gt;内包装箱&lt;/h3&gt;
+
+&lt;p&gt;里面的包装箱非常有质感，不过着急着看电脑，没有多拍。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;inter-box.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;顶盖&#34;&gt;顶盖&lt;/h3&gt;
+
+&lt;p&gt;电脑本体是用一个黑色的袋子套起来放在盒子里面的，就是图片上压在电脑下面的那个袋子。正面非常简单，左上角是 ThinkPad 的标志，右下角的 X1 标志着这台电脑的纯正血统。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;top-cover.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;第一眼&#34;&gt;第一眼&lt;/h3&gt;
+
+&lt;p&gt;14 寸的屏幕，边框比较窄，看起来会比同尺寸的 Macbook Pro 还要大一些。上方的摄像头有一个机械式的开关，可以防止摄像头被意外的开启。标志性的触控板和小红点还在，指纹识别器改成了按压式的（不过 Arch Linux 还不支持 - -）。键盘的手感一如既往的赞，并不会有不适应的感觉。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;first-look.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;接口&#34;&gt;接口&lt;/h3&gt;
+
+&lt;p&gt;左侧是两个 USB Type C 接口，一个 HDMI 接口和一个 USB Type A 接口，右侧是一个 USB Type A 接口和耳机口。接口的数量不算特别丰富，但是已经可以满足我的需求了。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;left-side.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;right-side.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;与-macbook-pro-的对比&#34;&gt;与 Macbook Pro 的对比&lt;/h3&gt;
+
+&lt;p&gt;整体的厚度其实跟 Macbook Pro 相差无几，但是因为 X1C 曲线的关系，看起来要比 MBP 更薄一些。实际重量也要比 MBP 轻。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;compare-with-macbook-pro.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;与-thinkpad-t460-的对比&#34;&gt;与 ThinkPad T460 的对比&lt;/h3&gt;
+
+&lt;p&gt;我上一台电脑是公司发的 T460，可以看到 X1C 要薄上不少。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;compare-with-t460.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;hello-arch&#34;&gt;Hello，Arch！&lt;/h3&gt;
+
+&lt;p&gt;在下单的时候就跟朋友们都说好了，等买了新电脑就要换 Arch。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;hello-arch.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;海淘之旅&#34;&gt;海淘之旅&lt;/h2&gt;
+
+&lt;p&gt;这是我的 X1C 的环球之旅：&lt;/p&gt;
+
+&lt;iframe src=&#34;https://www.google.com/maps/d/embed?mid=1Vb4i9bNCBdAD_bk5IkwQ-zyDJwn92k_w&#34; width=&#34;640&#34; height=&#34;480&#34;&gt;&lt;/iframe&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;中国合肥生产，寄到美国，然后再寄回来。相同的配置大概便宜了 6000 多块，真不愧是美帝良心想。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;下面分享一些海淘过程中的一些经验吧：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;海淘的周期真的非常长，前前后后大概等了一个月才拿到手，期间还因为贸易战以为自己的电脑被扣了= =。如果着急要用的话，还是不要海淘了。&lt;/li&gt;
+&lt;li&gt;海淘的时候一定要认真的挑选卖家，每个卖家都要跟他聊一聊，看看是否靠谱。上万块的电脑都买了，不要在乎那么几百块钱的差价，找最靠谱的。绝对不要加卖家的微信或者 QQ 聊，直接用网页版的阿里旺旺，这样你们的交流都是有记录的，以后如果有了纠纷可以靠这个去申诉。&lt;/li&gt;
+&lt;li&gt;整体的流程是这样的：
+
+&lt;ul&gt;
+&lt;li&gt;把自己想要的配置告诉店家，具体的配置可以在 &lt;a href=&#34;https://www3.lenovo.com/us/en/laptops/thinkpad/thinkpad-x/ThinkPad-X1-Carbon-6th-Gen/p/22TP2TXX16G&#34;&gt;美国联想官网定制&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;之后店家会告诉你完整的价格和完整的配置清单，如果确定没有问题的话先付定金，一般是 2000 块。&lt;/li&gt;
+&lt;li&gt;店家收到定金之后就会去官网上下单，然后把订单号告诉你，这样就可以直接在官网查进度。&lt;em&gt;如果店家没有订单号或者不肯告诉你，我觉得可能有问题。&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;等到电脑寄到了店家在美国的仓库，他会要求你支付尾款。收到尾款之后，他就会把电脑直接快递给你。&lt;/li&gt;
+&lt;li&gt;电脑到了海关，邮政局会给你发短信。你可以选择直接微信公众号支付，这样就会通过 EMS 寄给你；也可以选择自己直接去领，这样就可以当场拿走。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;我的电脑这次交了 300 的关税。据朋友说，所有电脑都是按照 2000 元然后征收 15% 的关税来计算的，这个没有证实。如果关税超过 300 块的话，可以让店家帮忙协调一下。&lt;/li&gt;
+&lt;li&gt;海淘的电脑也可以注册联想的全球联保服务，不需要担心电脑坏了没有地方修，不过联想比较傻逼的政策是只有电脑坏了才能注册。。。&lt;/li&gt;
+&lt;li&gt;很多店家不支持信用卡或者花呗，如果要用的话就要自己补手续费，因此尽可能的提前准备好足够的资金。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;使用体验&#34;&gt;使用体验&lt;/h2&gt;
+
+&lt;p&gt;电脑已经差不多一周，跟我之前的 T460 大概有以下差异：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;续航特别强劲，开着 Goland，PyCharm 和十多个标签的 Chrome 的情况下，可以连续使用八个小时。彻底戒掉了我晚上带电源回家的习惯，可以安心的带着电脑去参加讨论或者会议而不用担心电不够。&lt;/li&gt;
+&lt;li&gt;软件启动特别快。在 SSD 的加持下，我从打开 Goland 到可以开始实际的开发所需要的时间从 2 分钟降低到了 10 秒。&lt;/li&gt;
+&lt;li&gt;高分屏很舒服。习惯了高分屏之后，再回去看原来的屏幕已经完全接受不了了。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;坑&#34;&gt;坑 &amp;gt;.&amp;lt;&lt;/h2&gt;
+
+&lt;p&gt;X1C 使用 Arch Linux 整体上没啥问题，但是在很多细节的地方有比较坑的地方：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Xorg + KDE 对不同 DPI 的屏幕支持不太好，导致外接屏幕的时候用起来比较难受。&lt;/li&gt;
+&lt;li&gt;指纹识别器驱动正在&lt;a href=&#34;https://github.com/nmikhailov/Validity90&#34;&gt;开发当中&lt;/a&gt;，暂时还用不了。&lt;/li&gt;
+&lt;li&gt;在 KDE + SDDM 的组合下，进入休眠状态后再恢复，会有一定概率出现屏幕一直闪动的情况。重启 SDDM 之后会恢复正常，从 Xorg 的报错日志能看到类似这样的错误：&lt;code&gt;Failed to set drm version: Permission denied&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;X1C 支持 S0i3 待机，但是不支持 S3 待机。两者的区别是在 S0i3 下 CPU 的功耗被降到最低，但仍保持着上电状态，而 S3 则不会。
+
+&lt;ul&gt;
+&lt;li&gt;X1C 支持 S3 需要 BIOS 的支持，社区中有人通过为 ACPI DSDT Table 打 Patch 来支持，但是这个 Hack 在最新版的 BIOS 中已经失效了，而且这个操作比较危险。因此我选择等待联想官方修复。就像论坛中有人说的那样：“Come on Lonove, show more love for linux users.”&lt;/li&gt;
+&lt;li&gt;而 S0i3 待机需要修改内核参数来提供支持，并且增加该参数后会导致无法打开屏盖来唤醒机器。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;默认配置下 &lt;code&gt;Thunderbolt BIOS Assist Mode&lt;/code&gt; 是 Disable 的，这会导致 Linux 在 s2idle 下的能耗特别高，需要进 BIOS 将其设置为 Enable。&lt;/li&gt;
+&lt;li&gt;默认配置下，Linux 的 CPU 温度上限是 80 度，而 Windows 下是 97 度。这会导致 Linux 的 CPU 性能比 Windows 下要低，目前有一些 dirty hack，官方还没有修复。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;引用链接&#34;&gt;引用链接&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X1_Carbon_(Gen_6)&#34;&gt;Lenovo ThinkPad X1 Carbon (Gen 6) - Arch Wiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.reddit.com/r/thinkpad/comments/870u0a/t480s_linux_throttling_bug/&#34;&gt;T480s Linux throttling bug&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://forums.lenovo.com/t5/Linux-Discussion/X1C6-T480s-low-cTDP-and-trip-temperature-in-Linux/td-p/4028489&#34;&gt;low cTDP and trip temperature in Linux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bbs.archlinux.org/viewtopic.php?id=234913&#34;&gt;Lenovo X1C6 / X1Y3 (2018): No deep sleep (S3)?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://forums.lenovo.com/t5/Linux-Discussion/X1-Carbon-Gen-6-cannot-enter-deep-sleep-S3-state-aka-Suspend-to/td-p/3998182/highlight/true&#34;&gt;X1 Carbon Gen 6 cannot enter deep sleep (S3 state aka Suspend-to-RAM) on Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;动态&#34;&gt;动态&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;《间客》又看完了，现在在看《北平无战事》，当年追过一阵儿电视剧，但是没有看完，这次看看后续的剧情到底是怎么发展的。&lt;/li&gt;
+&lt;li&gt;上个周末去北大的黑客马拉松当评委，我最看好一个做猫脸识别的团队居然前十都没有进，很是生气。&lt;/li&gt;
+&lt;li&gt;照片都是在公司拍的，背景是我们公司的茶水间和我的工位，对我们公司感兴趣的话欢迎直接甩简历~&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Xuanzang —— 一款开箱即用的全文搜索引擎</title>
+      <link>https://xuanwo.org/2018/05/01/xuanzang-intro/</link>
+      <pubDate>Tue, 01 May 2018 13:30:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2018/05/01/xuanzang-intro/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/Xuanwo/xuanzang&#34;&gt;Xuanzang&lt;/a&gt;, 中文名：玄奘，是一个支持中文分词的开源全文搜索引擎。其目标是做一个开箱即用，不需要复杂的部署和配置，可以方便的嵌入静态网站的全文搜索引擎。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;使用&#34;&gt;使用&lt;/h2&gt;
+
+&lt;p&gt;Xuanzang 的使用非常简单，只需要在 &lt;a href=&#34;https://github.com/Xuanwo/xuanzang/releases&#34;&gt;releases&lt;/a&gt; 处下载实现编译好的二进制文件。按照要求填写一些配置文件，比如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;host:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;localhost&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;port:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;8080&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;db_path:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;/project/xuanzang/database&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;index_path:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;/project/xuanzang/index&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;source:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;type:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;sitemap&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;url:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;https://xuanwo.org/sitemap.xml&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;duration:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;3600&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;dictionary:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;/project/xuanzang/dictionary.txt&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;stop_tokens:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;/project/xuanzang/stop_tokens.txt&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;logger:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;level:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;debug&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;output:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;/project/xuanzang/log&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;上述的配置文件将会监听本地的 &lt;code&gt;8080&lt;/code&gt; 端口，并使用 &lt;code&gt;/project/xuanzang/database&lt;/code&gt; 存放数据库，使用 &lt;code&gt;/project/xuanzang/index&lt;/code&gt; 目录存放索引。接下来的 &lt;code&gt;source&lt;/code&gt; 指定了源站的类型和两次抓取的间隔时间。对于个人博客而言，一个小时的抓取间隔已经足够了。下面的 &lt;code&gt;dictionary&lt;/code&gt; 和 &lt;code&gt;stop_tokens&lt;/code&gt; 是 Xuanzang 使用的字典和停止词，如果没有特殊的需求，可以使用项目自带的，在&lt;a href=&#34;https://github.com/Xuanwo/xuanzang/tree/master/data&#34;&gt;此处&lt;/a&gt;下载。&lt;code&gt;logger&lt;/code&gt; 则指定了 log 文件的位置和级别。&lt;/p&gt;
+
+&lt;p&gt;接下来就只需要启动 Xuanzang：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;:&lt;span style=&#34;color:#666&#34;&gt;)&lt;/span&gt; xuanzang -c /path/to/config.yaml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;以搜索我的朋友 &lt;a href=&#34;https://pjw.io/&#34;&gt;Aspire&lt;/a&gt; 为例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;:&lt;span style=&#34;color:#666&#34;&gt;)&lt;/span&gt; curl &lt;span style=&#34;color:#40a070&#34;&gt;127&lt;/span&gt;.0.0.1:8080?text&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;aspire
+&lt;span style=&#34;color:#666&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;tokens&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;aspire&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;]&lt;/span&gt;,&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;docs&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#666&#34;&gt;[{&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;title&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;友情链接 // Xuanwo&amp;#39;s Blog&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;url&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;https://xuanwo.org/blogroll/&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;content_text&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;}]&lt;/span&gt;,&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;total&amp;#34;&lt;/span&gt;:1&lt;span style=&#34;color:#666&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;接入博客十分容易，只需要通过 Ajax 向 Xuanzang 发出请求，并解析返回的 JSON 插入正确的 DOM，比如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;function&lt;/span&gt; search() {
+  &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;var&lt;/span&gt; text &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#007020&#34;&gt;decodeURI&lt;/span&gt;(&lt;span style=&#34;color:#007020&#34;&gt;window&lt;/span&gt;.location.search.substring(&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;).split(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;&amp;amp;&amp;#34;&lt;/span&gt;)[&lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;].split(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;=&amp;#34;&lt;/span&gt;)[&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;]);
+  $(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;.archive-category&amp;#34;&lt;/span&gt;).text(&lt;span style=&#34;color:#4070a0&#34;&gt;`&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;${&lt;/span&gt;text&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34; 的搜索结果`&lt;/span&gt;);
+  $.getJSON(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;/search?text=&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; text, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;function&lt;/span&gt;(result) {
+    $.each(result.docs, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;function&lt;/span&gt;(i, field) {
+      $(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;.archives&amp;#34;&lt;/span&gt;).append(&lt;span style=&#34;color:#4070a0&#34;&gt;`&amp;lt;a href=&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;${&lt;/span&gt;field.url&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;${&lt;/span&gt;field.title&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;lt;/a&amp;gt;`&lt;/span&gt;);
+    });
+  });
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在 Search 页面的 Body 中设置 &lt;code&gt;onload=&amp;quot;search()&amp;quot;&lt;/code&gt; 并在 form 表单中设置 &lt;code&gt;action=&amp;quot;/search_result&amp;quot; method=&amp;quot;get&amp;quot;&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;具体的实现可以参考&lt;a href=&#34;https://github.com/Xuanwo/xuanwo.github.io/commit/3a7049df0a8fb9d685704283cfc0f6fdc264035d&#34;&gt;这个 Commit&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;目前本博客的全文搜索就是通过 Xuanzang 实现的，感兴趣的朋友可以试用一下~&lt;/p&gt;
+
+&lt;h2 id=&#34;实现&#34;&gt;实现&lt;/h2&gt;
+
+&lt;p&gt;Xuanzang 解决中文全文搜索的思路非常简单：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;通过事先指定的 sitemap 文件来遍历 &amp;amp; 抓取网页&lt;/li&gt;
+&lt;li&gt;使用一个支持中文分词的全文搜索引擎来做索引&lt;/li&gt;
+&lt;li&gt;对外暴露一个简化的 API 接口&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;接下来我们分别介绍一下这三个部分。&lt;/p&gt;
+
+&lt;h3 id=&#34;抓取网页&#34;&gt;抓取网页&lt;/h3&gt;
+
+&lt;p&gt;现在静态网站的生成工具多如牛毛，每个工具采用的模板都不大一样，因此不可能走为每种静态网站生成工具适配模板的道路。那有没有一种方法可以实时的获取到网站内容的变更呢？那就是 &lt;a href=&#34;https://www.sitemaps.org/protocol.html&#34;&gt;Sitemap&lt;/a&gt;，又叫做站点地图。几乎所有的静态网站生成工具都支持生成 Sitemap，这解决了获取网站内容的问题。同时 Sitemap 除了网址以外，还有 &lt;code&gt;lastmod&lt;/code&gt; 属性，可以获取到对应页面的最后修改时间。因此只需要抓取 Sitemap 文件，我们就可以知道整个网站都有哪些页面以及他们上次更新是什么时候了，这样就解决了获取网站内容变更的问题。同时我们可以在本地记录一下索引更新的时间，如果索引更新的时间比网页更新的时间要晚，那就可以直接跳过这个页面，从而避免每次都需要抓取。&lt;/p&gt;
+
+&lt;h3 id=&#34;中文分词&#34;&gt;中文分词&lt;/h3&gt;
+
+&lt;p&gt;Xuanzang 底层使用了 &lt;a href=&#34;https://github.com/huichen&#34;&gt;@huichen&lt;/a&gt; 开发的 &lt;a href=&#34;https://github.com/huichen/wukong&#34;&gt;wukong&lt;/a&gt;。中文分词这一块没有做什么大的改进，基本上就是直接拿过来用了。虽说搜索的精度还不是很高，但是马马虎虎还能用，对于个人博客而言已经足够了。&lt;/p&gt;
+
+&lt;h3 id=&#34;api-接口&#34;&gt;API 接口&lt;/h3&gt;
+
+&lt;p&gt;目前对外只提供了一个 &lt;code&gt;GET&lt;/code&gt; 接口，返回的数据结构如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Response is the response for search.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;type&lt;/span&gt; Response &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;struct&lt;/span&gt; {
+	Tokens []&lt;span style=&#34;color:#902000&#34;&gt;string&lt;/span&gt;   &lt;span style=&#34;color:#4070a0&#34;&gt;`json:&amp;#34;tokens&amp;#34;`&lt;/span&gt;
+	Docs   []Document &lt;span style=&#34;color:#4070a0&#34;&gt;`json:&amp;#34;docs&amp;#34;`&lt;/span&gt;
+
+	Total &lt;span style=&#34;color:#902000&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;`json:&amp;#34;total&amp;#34;`&lt;/span&gt;
+}
+
+&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Document is the document that scored.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;type&lt;/span&gt; Document &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;struct&lt;/span&gt; {
+	Title       &lt;span style=&#34;color:#902000&#34;&gt;string&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;`json:&amp;#34;title&amp;#34;`&lt;/span&gt;
+	URL         &lt;span style=&#34;color:#902000&#34;&gt;string&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;`json:&amp;#34;url&amp;#34;`&lt;/span&gt;
+	ContentText &lt;span style=&#34;color:#902000&#34;&gt;string&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;`json:&amp;#34;content_text&amp;#34;`&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;预留了 &lt;code&gt;ContentText&lt;/code&gt; 属性，以后会用做提供搜索到的关键字附近的内容。&lt;/p&gt;
+
+&lt;h2 id=&#34;对比&#34;&gt;对比&lt;/h2&gt;
+
+&lt;p&gt;接下来简单的讲一讲 Xuanzang 和市面上其它全文搜索工具的区别。&lt;/p&gt;
+
+&lt;h3 id=&#34;lunr-js&#34;&gt;Lunr.js&lt;/h3&gt;
+
+&lt;p&gt;Lunr.js 是一个非常 Cool 的项目，但是 Lunr.js 不支持中文分词。不少人通过引入一个分词库并修改 Lunr.js 的 tokenizer 方法解决这个问题，其代价就是不能在浏览器端直接使用，还是需要在服务器端去提供一个服务。从我的角度来看是是已经偏离了它的目标：&lt;code&gt;A bit like Solr, but much smaller and not as bright.&lt;/code&gt; ，因此我的博客没有采用这个方案。其他的基于 js 的方案也都或多或少有这样的问题，比如在本地生成一个索引，然后搜索的时候使用 js 去 load 等等，在使用体验上都不是很好，在网站不是部署在国内时，这个问题尤为严重。&lt;/p&gt;
+
+&lt;h3 id=&#34;elasticsearch&#34;&gt;Elasticsearch&lt;/h3&gt;
+
+&lt;p&gt;（首先， Elasticsearch 是 Java 的，我这个 512M 内存的机器咋跑。。。）&lt;/p&gt;
+
+&lt;p&gt;Elasticsearch 很棒，但是用来做博客的全文搜索，总有一种拿着大炮打蚊子的感觉。我个人只是使用过 API ，没有实际的进行过 ES 的部署和维护，这里就不多说了。&lt;/p&gt;
+
+&lt;h3 id=&#34;google-site-search&#34;&gt;Google Site Search&lt;/h3&gt;
+
+&lt;p&gt;这大概是接入最方便的方案了，只需要直接跳转到 google 的 &lt;code&gt;site:xuanwo.org %s&lt;/code&gt; 即可。缺点是无法控制 Google 的索引行为，也没有办法做到实时的抓取和更新。&lt;/p&gt;
+
+&lt;h3 id=&#34;algolia-etc&#34;&gt;Algolia etc.&lt;/h3&gt;
+
+&lt;p&gt;还有很多商业化的全文搜索服务，其中最出名的莫过于 &lt;code&gt;Algolia&lt;/code&gt; 和 &lt;code&gt;Swiftype&lt;/code&gt;。之前试用过他们的服务，搜索效果很赞，但是免费用户限制颇多： algolia 的免费服务最多只能有一万条记录，swiftype 则是只提供了一段时间的免费试用，同时还限制了抓取的频率。&lt;/p&gt;
+
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+
+&lt;p&gt;Xuanzang 在前人已有工作的基础上提供了一套简单易用的中文网站全文搜索解决方案，不需要复杂的参数调节和运维工作，按照文档部署即可使用，兼容市面上绝大多数静态网站生成工具，各位朋友了解一下？&lt;/p&gt;
+
+&lt;h2 id=&#34;动态&#34;&gt;动态&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;本周给大家推荐的小说： &lt;a href=&#34;http://book.zongheng.com/showchapter/189169.html&#34;&gt;《雪中悍刀行》&lt;/a&gt;，烽火戏诸侯的作品，布局精细，结构宏大，人物刻画生动，文字功底深厚，适合所有喜欢武侠小说的同学~&lt;/li&gt;
+&lt;li&gt;背后故事：4 月 29 号睡前有了为自己博客增加全文搜索支持的 Idea，30 号写了一天，并于当天的晚上九点发出了第一个 Release。&lt;/li&gt;
+&lt;li&gt;今天去簋街胡大饭馆吃了麻辣小龙虾，麻辣扇贝，馋嘴蛙仔，现在肚子在疯狂的翻腾。。。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>为 RSSHub 增加煎蛋无聊图支持</title>
+      <link>https://xuanwo.org/2018/04/21/add-jandan-pic-support-for-rsshub/</link>
+      <pubDate>Sat, 21 Apr 2018 07:30:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2018/04/21/add-jandan-pic-support-for-rsshub/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/DIYgod/RSSHub&#34;&gt;RSSHub&lt;/a&gt; 是 &lt;a href=&#34;https://diygod.me/&#34;&gt;@DIYgod&lt;/a&gt; 开发的一个项目，其目标是：“使用 RSS 连接全世界”，实现的方式是抓取某个网页或者 API 后解析数据并生成符合标准的 RSS Feed。这个项目十分有意思，可以通过 RSS 去订阅 B 站的番剧或者网易云音乐的歌单，比如我最近正在追的一部动漫：&lt;a href=&#34;https://rss.now.sh/bilibili/bangumi/21680&#34;&gt;DARLING in the FRANXX&lt;/a&gt;。我最近为这个项目增加了煎蛋无聊图的支持，这篇文章主要就是讲一讲如何抓取并解析煎蛋无聊图。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;准备工作&#34;&gt;准备工作&lt;/h2&gt;
+
+&lt;p&gt;先了解一下 RSSHub 这个项目的大概构成。RSSHub 基于 &lt;a href=&#34;http://koajs.com/&#34;&gt;Koa&lt;/a&gt; 开发，请求进来之后就会被直接路由到对应的模块，然后每个模块中实现自己的逻辑。如果想增加新的支持，只需要修改 &lt;code&gt;router.js&lt;/code&gt; 并在 &lt;code&gt;routes&lt;/code&gt; 目录中增加对应的模块就可以了。项目中主要使用 &lt;a href=&#34;https://github.com/axios/axios&#34;&gt;axios&lt;/a&gt; 来做异步请求，使用 &lt;a href=&#34;https://aui.github.io/art-template/&#34;&gt;art-template&lt;/a&gt; 来渲染 RSS Feed 的模板，使用 &lt;a href=&#34;https://cheerio.js.org/&#34;&gt;cheerio&lt;/a&gt; 来解析 HTML。其中 axios 和 art-template 使用起来都比较简单，只要模仿其它模块的写法就行了，只有 cheerio 对不怎么熟悉 jQuery 语法的同学来说会比较麻烦一些（对，就是我），需要花一些时间了解一下如何获取自己需要的内容。&lt;/p&gt;
+
+&lt;h2 id=&#34;抓取无聊图&#34;&gt;抓取无聊图&lt;/h2&gt;
+
+&lt;p&gt;煎蛋网作为常年被爬的目标，早就已经练就了一身反爬虫的骚操作。在我写这篇文章的时候，煎蛋的反爬策略是这样的：在每个 comment 当中返回一个 &lt;code&gt;img-hash&lt;/code&gt;，同时会生成一个不定期会变的 magic string，在脚本中使用这两个值算出真正的图片链接，再操作 DOM 把 img 标签塞进去。&lt;/p&gt;
+
+&lt;p&gt;举个例子吧，会有这样的一个 comment（已经去掉了无关的一些元素）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;li&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;comment-3784888&amp;#34;&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;div&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;row&amp;#34;&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;span&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;righttext&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;//jandan.net/pic/page-226#comment-3784888&amp;#34;&lt;/span&gt;&amp;gt;3784888&amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;a&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;span&lt;/span&gt;&amp;gt;
+        &amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;p&lt;/span&gt;&amp;gt;辣个屁&amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;br&lt;/span&gt; /&amp;gt;
+          &amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;img&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;//img.jandan.net/img/blank.gif&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;onload&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;jandan_load_img(this)&amp;#34;&lt;/span&gt; /&amp;gt;&amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;span&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;img-hash&amp;#34;&lt;/span&gt;&amp;gt;80e6w5mrZ3HEpVzkZXyOhd9DYgF9F2cXvgMQ6PPgofGuHui2Dqrhh9fDcWrRGQEtB7l+GKuPqhQCGsHil1luTUVYNEpXiKUzh3ck/P91sr6ht9gsISFBXQ&amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;span&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;p&lt;/span&gt;&amp;gt;
+      &amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;div&lt;/span&gt;&amp;gt;
+    &amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;div&lt;/span&gt;&amp;gt;
+  &amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;div&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;li&lt;/span&gt;&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;可以看到 img 标签中载入的是 &lt;code&gt;img.jandan.net/img/blank.gif&lt;/code&gt;，然后在加载的时候会去执行 &lt;code&gt;jandan_load_img&lt;/code&gt;。让我们来看一下 &lt;code&gt;jandan_load_img&lt;/code&gt; 这个函数都做了什么：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;function&lt;/span&gt; jandan_load_img(b) {
+	&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;var&lt;/span&gt; d &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; $(b);
+	&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;var&lt;/span&gt; f &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; d.next(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;span.img-hash&amp;#34;&lt;/span&gt;);
+	&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;var&lt;/span&gt; e &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; f.text();
+	f.remove();
+	&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;var&lt;/span&gt; c &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; jdTzcXZnL0V2WZZ8eq9786xeOdkyoBXlDR(e, &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;tRoGWVi9aW3cMYuqXmV9S1SweVfNzJf3&amp;#34;&lt;/span&gt;);
+	&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;var&lt;/span&gt; a &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; $(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&amp;lt;a href=&amp;#34;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; c.replace(&lt;span style=&#34;color:#235388&#34;&gt;/(\/\/\w+\.sinaimg\.cn\/)(\w+)(\/.+\.(gif|jpg|jpeg))/&lt;/span&gt;, &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;$1large$3&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&amp;#34; target=&amp;#34;_blank&amp;#34; class=&amp;#34;view_img_link&amp;#34;&amp;gt;[查看原图]&amp;lt;/a&amp;gt;&amp;#39;&lt;/span&gt;);
+	d.before(a);
+	d.before(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;&amp;lt;br&amp;gt;&amp;#34;&lt;/span&gt;);
+	d.removeAttr(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;onload&amp;#34;&lt;/span&gt;);
+	d.attr(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;src&amp;#34;&lt;/span&gt;, location.protocol &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; c.replace(&lt;span style=&#34;color:#235388&#34;&gt;/(\/\/\w+\.sinaimg\.cn\/)(\w+)(\/.+\.gif)/&lt;/span&gt;, &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;$1thumb180$3&amp;#34;&lt;/span&gt;));
+	&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#235388&#34;&gt;/\.gif$/&lt;/span&gt;.test(c)) {
+		d.attr(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;org_src&amp;#34;&lt;/span&gt;, location.protocol &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; c);
+		b.onload &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;function&lt;/span&gt;() {
+			add_img_loading_mask(&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;this&lt;/span&gt;, load_sina_gif)
+		}
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;抛开跟我们抓取无关的 DOM 操作，很容易发现这个函数实际上就是做了一次 &lt;code&gt;jandan_decode(img_hash, magic_string);&lt;/code&gt;。接下来我们只要搞清楚这里的 &lt;code&gt;jdTzcXZnL0V2WZZ8eq9786xeOdkyoBXlDR&lt;/code&gt; 函数是什么可以了，用 ES6 的语法简单的翻译一下就是下面这样：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;const&lt;/span&gt; jandan_decode &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; (m, r) =&amp;gt; {
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;let&lt;/span&gt; q &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;4&lt;/span&gt;;
+    r &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; md5(r);
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;let&lt;/span&gt; o &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; md5(r.substr(&lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#40a070&#34;&gt;16&lt;/span&gt;));
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;let&lt;/span&gt; n &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; md5(r.substr(&lt;span style=&#34;color:#40a070&#34;&gt;16&lt;/span&gt;, &lt;span style=&#34;color:#40a070&#34;&gt;16&lt;/span&gt;));
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;let&lt;/span&gt; l &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; m.substr(&lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;, q);
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;let&lt;/span&gt; c &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; o &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; md5(o &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; l);
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;let&lt;/span&gt; k;
+    m &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; m.substr(q);
+    k &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; base64_decode(m);
+
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;const&lt;/span&gt; h &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#007020&#34;&gt;Array&lt;/span&gt;(&lt;span style=&#34;color:#40a070&#34;&gt;256&lt;/span&gt;);
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;let&lt;/span&gt; g &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;; g &lt;span style=&#34;color:#666&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;256&lt;/span&gt;; g&lt;span style=&#34;color:#666&#34;&gt;++&lt;/span&gt;) {
+        h[g] &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; g;
+    }
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;const&lt;/span&gt; b &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#007020&#34;&gt;Array&lt;/span&gt;(&lt;span style=&#34;color:#40a070&#34;&gt;256&lt;/span&gt;);
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;let&lt;/span&gt; g &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;; g &lt;span style=&#34;color:#666&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;256&lt;/span&gt;; g&lt;span style=&#34;color:#666&#34;&gt;++&lt;/span&gt;) {
+        b[g] &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; c.charCodeAt(g &lt;span style=&#34;color:#666&#34;&gt;%&lt;/span&gt; c.length);
+    }
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;let&lt;/span&gt; f &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;, g &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;; g &lt;span style=&#34;color:#666&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;256&lt;/span&gt;; g&lt;span style=&#34;color:#666&#34;&gt;++&lt;/span&gt;) {
+        f &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; (f &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; h[g] &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; b[g]) &lt;span style=&#34;color:#666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;256&lt;/span&gt;;
+        [h[g], h[f]] &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; [h[f], h[g]];
+    }
+
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;let&lt;/span&gt; t &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;;
+    k &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; k.split(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;let&lt;/span&gt; p &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;, f &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;, g &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;; g &lt;span style=&#34;color:#666&#34;&gt;&amp;lt;&lt;/span&gt; k.length; g&lt;span style=&#34;color:#666&#34;&gt;++&lt;/span&gt;) {
+        p &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; (p &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color:#666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;256&lt;/span&gt;;
+        f &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; (f &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; h[p]) &lt;span style=&#34;color:#666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;256&lt;/span&gt;;
+        [h[p], h[f]] &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; [h[f], h[p]];
+        t &lt;span style=&#34;color:#666&#34;&gt;+=&lt;/span&gt; chr(ord(k[g]) &lt;span style=&#34;color:#666&#34;&gt;^&lt;/span&gt; h[(h[p] &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; h[f]) &lt;span style=&#34;color:#666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;256&lt;/span&gt;]);
+    }
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; ((t.substr(&lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#40a070&#34;&gt;10&lt;/span&gt;) &lt;span style=&#34;color:#666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;||&lt;/span&gt; t.substr(&lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#40a070&#34;&gt;10&lt;/span&gt;) &lt;span style=&#34;color:#666&#34;&gt;-&lt;/span&gt; time() &lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;) &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; t.substr(&lt;span style=&#34;color:#40a070&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color:#40a070&#34;&gt;16&lt;/span&gt;) &lt;span style=&#34;color:#666&#34;&gt;==&lt;/span&gt; md5(t.substr(&lt;span style=&#34;color:#40a070&#34;&gt;26&lt;/span&gt;) &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; n).substr(&lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#40a070&#34;&gt;16&lt;/span&gt;)) {
+        t &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; t.substr(&lt;span style=&#34;color:#40a070&#34;&gt;26&lt;/span&gt;);
+    }
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; t;
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;我们并不需要理解这个函数都做了什么，只需要保证我们自己实现的 &lt;code&gt;jandan_decode&lt;/code&gt; 能够跟 &lt;code&gt;jdTzcXZnL0V2WZZ8eq9786xeOdkyoBXlDR&lt;/code&gt; 函数等价。&lt;/p&gt;
+
+&lt;p&gt;到这里，我们已经可以拿到原图了，接下来只需要按照 RSSHub 的要求填充模板即可。&lt;/p&gt;
+
+&lt;h2 id=&#34;踩过的坑&#34;&gt;踩过的坑&lt;/h2&gt;
+
+&lt;h3 id=&#34;会变的-magic-string&#34;&gt;会变的 magic string&lt;/h3&gt;
+
+&lt;p&gt;一开始以为 magic string 是一个常量，结果睡了一觉之后起床发现昨晚写好的代码不 work 了。查看了一下代码之后发现是煎蛋会不定期的就改这个 magic string 的值，所以我们需要下载最新的 js 文件，并获取写死在里面的那个 magic string。&lt;/p&gt;
+
+&lt;p&gt;实现的原理也非常简单，首先加载页面，找到最新的 js 文件：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;let&lt;/span&gt; script_url &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;;
+$(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;script&amp;#39;&lt;/span&gt;).each((index, item) =&amp;gt; {
+		&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;let&lt;/span&gt; s &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; $(item).attr(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;src&amp;#39;&lt;/span&gt;);
+		&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; (s &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; s.startsWith(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;//cdn.jandan.net/static/min/&amp;#39;&lt;/span&gt;)) {
+				script_url &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; s;
+		}
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;然后下载这个 js 文件并使用正则找出里面的 magic string：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;const&lt;/span&gt; jandan_magic &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;async&lt;/span&gt; (url) =&amp;gt; {
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;const&lt;/span&gt; script &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;await&lt;/span&gt; axios({
+        method&lt;span style=&#34;color:#666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;get&amp;#39;&lt;/span&gt;,
+        url&lt;span style=&#34;color:#666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;http:&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; url,
+        headers&lt;span style=&#34;color:#666&#34;&gt;:&lt;/span&gt; {
+            &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;User-Agent&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;:&lt;/span&gt; config.ua,
+            &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;Referer&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;http://jandan.net&amp;#39;&lt;/span&gt;
+        }
+    });
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;const&lt;/span&gt; regex &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#235388&#34;&gt;/e,&amp;#34;([a-zA-Z0-9]{32})&amp;#34;/&lt;/span&gt;;
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; script.data.match(regex)[&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;];
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;windows-atob-的实现&#34;&gt;windows.atob 的实现&lt;/h3&gt;
+
+&lt;p&gt;这个坑踩了很久。&lt;/p&gt;
+
+&lt;p&gt;最开始写好了 &lt;code&gt;jandan_decode&lt;/code&gt; 之后发现结果始终是乱码，但是在浏览器端运行的时候却是正常的。这说明逻辑没有问题，但是引用的一些方法可能因为环境差异出了。经过反复的调试之后定位到问题出现在 &lt;code&gt;base64_decode&lt;/code&gt; 这个函数：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;const&lt;/span&gt; base64_decode &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; (i) =&amp;gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;new&lt;/span&gt; Buffer(i, &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;base64&amp;#39;&lt;/span&gt;).toString();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;煎蛋的浏览器端实现是这样的：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;function&lt;/span&gt; base64_decode(a) {
+  &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#007020&#34;&gt;window&lt;/span&gt;.atob(a)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;一开始不明白问题出在哪里，直到看到了一个 &lt;a href=&#34;https://gist.github.com/jmshal/b14199f7402c8f3a4568733d8bed0f25&#34;&gt;Node.js 的 windows.atob polyfill&lt;/a&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;module.exports &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;function&lt;/span&gt; atob(a) {
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;new&lt;/span&gt; Buffer(a, &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;base64&amp;#39;&lt;/span&gt;).toString(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;binary&amp;#39;&lt;/span&gt;);
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;原来 Buffer 的 toString 函数默认采用的编码是 &lt;code&gt;utf-8&lt;/code&gt; 但是浏览器端的 &lt;code&gt;atob&lt;/code&gt; 使用的编码却是 &lt;code&gt;binary&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;多年过去了，我的 Node.js 还是一如既往的半吊子，只能借着别人写的项目蹭蹭贡献才能混下去这样子的。&lt;/li&gt;
+&lt;li&gt;目前&lt;a href=&#34;https://github.com/DIYgod/RSSHub/commit/2b91689bd57f83987f10058f7fd6e0e17d328f2d&#34;&gt;这个实现&lt;/a&gt;已经被合并到了 Master 分支，大家可以订阅煎蛋无聊图的 Feed 啦~&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;动态&#34;&gt;动态&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;最近重新开始看猫腻的《间客》，写得真好，看的时候感觉自己也跟许乐一样，永远牛逼，永远正义，永远是那个来自东林的三有青年。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python 中的引用与拷贝</title>
+      <link>https://xuanwo.org/2018/04/15/reference-and-copy-in-python/</link>
+      <pubDate>Sun, 15 Apr 2018 15:07:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2018/04/15/reference-and-copy-in-python/</guid>
+      <description>&lt;p&gt;用户反馈使用 &lt;a href=&#34;https://github.com/yunify/qsctl&#34;&gt;qsctl&lt;/a&gt; 同步时文件内容不正确，调查后发现是对 Python 字典的错误使用导致了这个问题。这篇文章就来详细的介绍一下 Python 中的引用与拷贝。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;定位&#34;&gt;定位&lt;/h2&gt;
+
+&lt;p&gt;按照用户给出的信息成功的复现出了用户描述的问题，进一步的，还发现当线程数量限制为只有一个时候，这个问题就消失了，因此可以判断是 Python 多线程间共享变量的时候出现了问题。qsctl 本身只是将文件 list 出来并调用 SDK 进行上传，没有做额外的处理，因此可以排除 qsctl 的嫌疑。也就是说，问题出在 Python SDK 上。阅读一下 Python SDK 中 &lt;a href=&#34;https://github.com/yunify/qingstor-sdk-python/blob/master/qingstor/sdk/service/bucket.py#L1148&#34;&gt;PutObject&lt;/a&gt; 相关方法的源代码：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;put_object_request&lt;/span&gt;(self, object_key, body&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;None):
+    operation &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; {
+        &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;API&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;PutObject&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;Method&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;PUT&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;URI&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;/&amp;lt;bucket-name&amp;gt;/&amp;lt;object-key&amp;gt;&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;Headers&amp;#34;&lt;/span&gt;: {
+            &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;Host&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;join([self&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;properties[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;zone&amp;#34;&lt;/span&gt;], &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;.&amp;#34;&lt;/span&gt;, self&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;config&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;host]),
+        },
+        &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;Properties&amp;#34;&lt;/span&gt;: self&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;properties,
+        &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;Body&amp;#34;&lt;/span&gt;: body
+    }
+    operation[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;Properties&amp;#34;&lt;/span&gt;][&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;object-key&amp;#34;&lt;/span&gt;] &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; object_key
+    self&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;put_object_validate(operation)
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; Request(self&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;config, operation)
+
+&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;put_object&lt;/span&gt;(self, object_key, body&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;None):
+    req &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;put_object_request(object_key, body&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;body)
+    resp &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;client&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;send(req&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;sign())
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; Unpacker(resp)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;忽略掉一些无关的代码之后，我们可以得到上面的简化代码。其中 &lt;code&gt;self&lt;/code&gt; 也就是这个 &lt;code&gt;Bucket&lt;/code&gt; 类会在一开始就初始化，之后的所有线程都会共享这一变量。顺着这个思路下去，很快发现一处可能导致出现问题的代码：&lt;code&gt;&amp;quot;Properties&amp;quot;: self.properties&lt;/code&gt;。显然的，在 Python SDK 开发者（其实是我- -）认为，此处将会对 &lt;code&gt;self.properties&lt;/code&gt; 进行一次复制，下面的 &lt;code&gt;operation[&amp;quot;Properties&amp;quot;][&amp;quot;object-key&amp;quot;] = object_key&lt;/code&gt; 操作不会影响其它的线程。那这个想法是否正确？我们需要做个实验。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; a &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; {}
+&lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; b &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; a
+&lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; b[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;x&amp;#34;&lt;/span&gt;] &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;y&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; a
+{&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;x&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;y&amp;#39;&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;显然，Python SDK 开发者的想法是错误的。此处对 &lt;code&gt;operation[&amp;quot;Properties&amp;quot;]&lt;/code&gt; 将会修改 &lt;code&gt;self.properties&lt;/code&gt;，从而导致多个线程可能会覆盖掉同一个 Object，进而导致上传了错误的内容。&lt;/p&gt;
+
+&lt;h2 id=&#34;修复&#34;&gt;修复&lt;/h2&gt;
+
+&lt;p&gt;想要修改这个问题只需要每次创建 operation 字典时传递一个 &lt;code&gt;self.properties&lt;/code&gt; 的副本，保证接下来的修改不会影响到 &lt;code&gt;self.properties&lt;/code&gt; 本身即可。此处使用了 Python 字典提供的 &lt;a href=&#34;file:///home/xuanwo/.local/share/Zeal/Zeal/docsets/Python_3.docset/Contents/Resources/Documents/doc/library/stdtypes.html#dict&#34;&gt;copy 方法&lt;/a&gt;：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/yunify/qingstor-sdk-python/pull/43/commits/208172502fb72b9be85e7f1a494673810ee2e974&#34;&gt;Fix concurrency issue in object related methods&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;思考&#34;&gt;思考&lt;/h2&gt;
+
+&lt;p&gt;问题已经解决了，但是思考还在继续。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Python 中的引用和复制是什么关系？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;为了解决这个问题，首先需要知道以下两个关键的事实：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;变量只是用来指代对象的名称 (&lt;em&gt;Variables are simply names that refer to objects.&lt;/em&gt;)&lt;/li&gt;
+&lt;li&gt;List，Dict 是可变对象 (&lt;em&gt;Lists are mutable, which means that you can change their content.&lt;/em&gt;)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;事实-1&#34;&gt;事实 1&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;变量只是用来指代对象的名称 (&lt;em&gt;Variables are simply names that refer to objects.&lt;/em&gt;)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;先来看一段简短的代码：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; a&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;2&lt;/span&gt;
+&lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; b&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;a
+&lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#007020&#34;&gt;id&lt;/span&gt;(a)
+&lt;span style=&#34;color:#40a070&#34;&gt;9128416&lt;/span&gt;
+&lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#007020&#34;&gt;id&lt;/span&gt;(b)
+&lt;span style=&#34;color:#40a070&#34;&gt;9128416&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.python.org/3/library/functions.html#id&#34;&gt;&lt;code&gt;id&lt;/code&gt;&lt;/a&gt; 函数会返回每一个 Object 的唯一 ID，并且保证在这个对象的整个生命周期中保持不变。对于 CPython 的实现而言，这个函数会返回这个对象在内存中的地址。也就是说，如果两个对象的 ID 相同，表示他们是同一个对象。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;在类 C 的语言当中，每个变量都代表着一块内存区域；但是在 Python 当中，一切都是对象，变量只是对象的一个名称（a.k.a. 标签，引用），变量本身没有类型信息，类型信息存储在对象当中。上述的代码中 &lt;code&gt;a=2&lt;/code&gt;，实际上是先创建了 Int 对象 &lt;code&gt;2&lt;/code&gt; ，然后将变量 &lt;code&gt;a&lt;/code&gt; 绑定到了 &lt;code&gt;2&lt;/code&gt; 上。接下来的 &lt;code&gt;b=a&lt;/code&gt; 则是在对象 &lt;code&gt;2&lt;/code&gt; 上绑定了一个新的变量 &lt;code&gt;b&lt;/code&gt;。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; a &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; {}
+&lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; b &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; a
+&lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#007020&#34;&gt;id&lt;/span&gt;(a)
+&lt;span style=&#34;color:#40a070&#34;&gt;140092073651336&lt;/span&gt;
+&lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#007020&#34;&gt;id&lt;/span&gt;(b)
+&lt;span style=&#34;color:#40a070&#34;&gt;140092073651336&lt;/span&gt;
+&lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; b[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;x&amp;#34;&lt;/span&gt;] &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;y&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; a
+{&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;x&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;y&amp;#39;&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在了解上述事实之后，我们就能理解这段代码了：这里的 &lt;code&gt;a&lt;/code&gt; 与 &lt;code&gt;b&lt;/code&gt; 指向了同一个对象，因此通过 &lt;code&gt;b&lt;/code&gt; 进行的修改相当于通过 &lt;code&gt;a&lt;/code&gt; 进行同样的修改。&lt;/p&gt;
+
+&lt;h3 id=&#34;事实-2&#34;&gt;事实 2&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;List，Dict 是可变对象 (&lt;em&gt;Lists are mutable, which means that you can change their content.&lt;/em&gt;)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;通过事实 1 我们已经明白了 &lt;strong&gt;变量&lt;/strong&gt; 与 &lt;strong&gt;对象&lt;/strong&gt; 的关系，但是还是不够，因为我们无法解释下面这段代码：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; a&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;2&lt;/span&gt;
+&lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; b&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;a
+&lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; a&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;a&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;
+&lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#007020&#34;&gt;id&lt;/span&gt;(a)
+&lt;span style=&#34;color:#40a070&#34;&gt;9128448&lt;/span&gt;
+&lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#007020&#34;&gt;id&lt;/span&gt;(b)
+&lt;span style=&#34;color:#40a070&#34;&gt;9128416&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;按照刚才得出的结论，&lt;code&gt;a&lt;/code&gt; 和 &lt;code&gt;b&lt;/code&gt; 应该指向同一个对象，为什么对 &lt;code&gt;a&lt;/code&gt; 进行的操作没有反应在 &lt;code&gt;b&lt;/code&gt; 上呢？因为 Int 类型是一个不可变对象(immutable)。&lt;/p&gt;
+
+&lt;p&gt;在 Python 中有两类对象类型：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;可变对象(mutable): list, dict 等&lt;/li&gt;
+&lt;li&gt;不可变对象(immutable): int, string, float, tuple 等&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;不可变对象是不变的。在 &lt;code&gt;a=a+1&lt;/code&gt; 这一操作中没有修改 &lt;code&gt;a&lt;/code&gt; 之前对应的对象 &lt;code&gt;2&lt;/code&gt; 的值，而是创建了一个新的对象 &lt;code&gt;3&lt;/code&gt; 并且将 &lt;code&gt;a&lt;/code&gt; 绑定了上去。&lt;/p&gt;
+
+&lt;p&gt;而可变对象则可以通过某些函数来修改这个对象。需要注意的是，并不是所有的可变对象的操作都是修改可变对象本身。Python 标准库会通过函数是否返回 &lt;code&gt;None&lt;/code&gt; 来区分这个函数是修改了这个对象，还是创建了一个新的对象。比如 List 的 &lt;code&gt;append&lt;/code&gt; 和 &lt;code&gt;sort&lt;/code&gt; 函数返回 &lt;code&gt;None&lt;/code&gt;，这表示它们修改了这个 List 本身；而 &lt;code&gt;sorted()&lt;/code&gt; 函数则是会返回一个排序后的对象，这说明它创建了一个新的对象。&lt;/p&gt;
+
+&lt;h3 id=&#34;总结&#34;&gt;总结&lt;/h3&gt;
+
+&lt;p&gt;根据对上述两个事实的分析，可以得出以下结论：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;对可变对象而言，我们可以修改它并且所有指向它的变量都会观察到这一变更&lt;/li&gt;
+&lt;li&gt;对不可变对象而言，所有指向它的变量都会始终看到同一个值，对它的修改操作总是会创建一个新的对象&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;现在我们就能够解决我们最开始提出的那些问题了：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Python 中的引用和拷贝是什么关系？&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;其实没啥关系。对于赋值操作而言，&lt;code&gt;b=a&lt;/code&gt; 实际上是将 &lt;code&gt;b&lt;/code&gt; 绑定到了 &lt;code&gt;a&lt;/code&gt; 所对应的那个对象。而 &lt;code&gt;b=a.copy()&lt;/code&gt; 这是将 &lt;code&gt;b&lt;/code&gt; 绑定到了新创建的与 &lt;code&gt;a&lt;/code&gt; 所对应的那个对象的副本上。特别的，Python 中还有 &lt;code&gt;浅拷贝&lt;/code&gt; 和 &lt;code&gt;深拷贝&lt;/code&gt; 的概念，&lt;code&gt;浅拷贝&lt;/code&gt; 只会复制对象最外层的元素，而 &lt;code&gt;深拷贝&lt;/code&gt; 则会递归的复制整个对象。当对象内的元素全都是不可变对象时，它们两者并没有差异；而当对象内的元素中有可变对象时，&lt;code&gt;浅拷贝&lt;/code&gt; 会创建一个到该可变对象的新绑定，&lt;code&gt;深拷贝&lt;/code&gt; 则会创建一个与该可变对象相同的新对象并对这个可变对象继续做 &lt;code&gt;深拷贝&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h3 id=&#34;测试&#34;&gt;测试&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;先思考得出答案，然后再实际运行，并做出解释。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;case-1&#34;&gt;Case 1&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;test&lt;/span&gt;(arg):
+    arg &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;2&lt;/span&gt;
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;print&lt;/span&gt;(arg)
+
+a &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;
+test(a)
+&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;print&lt;/span&gt;(a)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;case-2&#34;&gt;Case 2&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;test&lt;/span&gt;(arg):
+    arg&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;append(&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;)
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;print&lt;/span&gt;(arg)
+
+a &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; []
+test(a)
+&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;print&lt;/span&gt;(a)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;case-3&#34;&gt;Case 3&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;test&lt;/span&gt;(arg):
+    arg &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; arg &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; [&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;]
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;print&lt;/span&gt;(arg)
+
+a &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; []
+test(a)
+&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;print&lt;/span&gt;(a)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;case-4&#34;&gt;Case 4&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;test&lt;/span&gt;(arg):
+    arg &lt;span style=&#34;color:#666&#34;&gt;+=&lt;/span&gt; [&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;]
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;print&lt;/span&gt;(arg)
+
+a &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; []
+test(a)
+&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;print&lt;/span&gt;(a)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;case-5&#34;&gt;Case 5&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;test&lt;/span&gt;(arg&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;[]):
+    arg&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;append(&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;)
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;print&lt;/span&gt;(arg)
+
+test()
+test()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.python.org/3/faq/programming.html#why-did-changing-list-y-also-change-list-x&#34;&gt;Why did changing list ‘y’ also change list ‘x’?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://winterttr.me/2015/10/24/python-passing-arguments-as-value-or-reference/&#34;&gt;Python的函数参数传递：传值？引用？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://foofish.net/python-function-args.html&#34;&gt;Python 函数中，参数是传值，还是传引用？&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;动态&#34;&gt;动态&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;通关了《尼尔：机械纪元》，最后十分感动地共享出了自己所有的存档，不说了，六周目见。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hugo RSS 配置输出全文</title>
+      <link>https://xuanwo.org/2018/04/08/hugo-rss-output-all-content/</link>
+      <pubDate>Sun, 08 Apr 2018 16:07:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2018/04/08/hugo-rss-output-all-content/</guid>
+      <description>&lt;p&gt;在折腾 Feedly 的时候偶然发现自己的博客输出的 RSS 里面只有摘要，想要看完整的内容需要跳转。这可不符合我的初衷，于是花了一些时间配置了一下相关的内容。接下来简要的介绍一下如何配置 Hugo 的模板以生成输出全文的 RSS Feed。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;r-t-f-m&#34;&gt;R.T.F.M.&lt;/h2&gt;
+
+&lt;p&gt;在折腾之前，首先阅读一下 Hugo 的文档： &lt;a href=&#34;https://gohugo.io/templates/rss/&#34;&gt;https://gohugo.io/templates/rss/&lt;/a&gt; 。从文档中知道了以下两件事：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;RSS 模板的查找顺序&lt;/li&gt;
+&lt;li&gt;Hugo 自带的 RSS 模板的内容&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;那么想要自定义 RSS 模板的话，只需要在合适的地方放上模板即可。&lt;/p&gt;
+
+&lt;h2 id=&#34;rss-模板的位置&#34;&gt;RSS 模板的位置&lt;/h2&gt;
+
+&lt;p&gt;Hugo 内置模板查找的优先级别是最低的，所以只要选择任意一个符合要求的位置都能覆盖它。我选择放在主题的 &lt;code&gt;layouts&lt;/code&gt; 目录下，也就是 &lt;code&gt;layouts/index.rss.xml&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;rss-模板的内容&#34;&gt;RSS 模板的内容&lt;/h2&gt;
+
+&lt;p&gt;忽略掉一些无关的细节，导致 RSS 输出的文章内容中只有摘要的是如下模板：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go-html-template&#34; data-lang=&#34;go-html-template&#34;&gt;&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;range&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;.Data.Pages&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;
+&amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;item&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;.Title&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;title&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;link&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;.Permalink&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;link&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;pubDate&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;.Date.Format&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;Mon, 02 Jan 2006 15:04:05 -0700&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;safeHTML&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;pubDate&lt;/span&gt;&amp;gt;
+  &lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;with&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;.Site.Author.email&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;&amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;author&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}{{&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;with&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;$.Site.Author.name&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt; (&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;)&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;end&lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;author&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;end&lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;
+  &amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;guid&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;.Permalink&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;guid&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;description&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;.Summary&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;html&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;description&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;item&lt;/span&gt;&amp;gt;
+&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;end&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;.Summary&lt;/code&gt; 引用的是文章的摘要部分，只要将其替换为 &lt;code&gt;.Content&lt;/code&gt; 就能输出文章的完整内容。但是默认情况下，Hugo 会在 RSS Feed 中输出所有文章，如果输出完整内容的话，这个 Feed 会特别大，因此需要想办法限制一下展示的文章数量。继续 RTFM，&lt;a href=&#34;https://gohugo.io/functions/first/&#34;&gt;此处&lt;/a&gt; 描述了一个叫 &lt;code&gt;first&lt;/code&gt; 的方法，跟 &lt;code&gt;range&lt;/code&gt; 搭配起来之后可以起到切片的作用。这样就能够得到如下的模板：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go-html-template&#34; data-lang=&#34;go-html-template&#34;&gt;&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;range&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;first&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;10&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;.Data.Pages&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;
+&amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;item&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;.Title&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;title&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;link&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;.Permalink&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;link&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;pubDate&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;.Date.Format&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;Mon, 02 Jan 2006 15:04:05 -0700&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;safeHTML&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;pubDate&lt;/span&gt;&amp;gt;
+  &lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;with&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;.Site.Author.email&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;&amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;author&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}{{&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;with&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;$.Site.Author.name&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt; (&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;)&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;end&lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;author&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;end&lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;
+  &amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;guid&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;.Permalink&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;guid&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;description&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;.Content&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;html&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;description&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#062873;font-weight:bold&#34;&gt;item&lt;/span&gt;&amp;gt;
+&lt;span style=&#34;color:#007020&#34;&gt;{{&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;end&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;}}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;完整的模板可以参见 commit: &lt;a href=&#34;https://github.com/Xuanwo/xuanwo.github.io/commit/80347d6e7868f4443170fe926a762d496b736944&#34;&gt;https://github.com/Xuanwo/xuanwo.github.io/commit/80347d6e7868f4443170fe926a762d496b736944&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;动态&#34;&gt;动态&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Feedly 上除了我自己居然要还有 5 个订阅用户，有些感动，如果有在北京的童鞋可以邮件我一起约个饭~&lt;/li&gt;
+&lt;li&gt;清明节去了趟苏州，看到了大裤衩，还看了金鸡湖的音乐喷泉，然后拙政园基本啥都没看着，全是人头= =，出来之后就不想再去任何园林了&lt;/li&gt;
+&lt;li&gt;终于下定决心买了 ThinkPad X1 Carbon 2018 (故意写全就是为了装)，等四月底到手了发一波开箱照&lt;/li&gt;
+&lt;li&gt;又要开工了，体会到了久违的小学生暑假开学前一天的心情，大概是因为以前一直没有好好的休假过。。。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python os walk 的坑</title>
+      <link>https://xuanwo.org/2018/04/01/python-os-walk/</link>
+      <pubDate>Sun, 01 Apr 2018 10:07:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2018/04/01/python-os-walk/</guid>
+      <description>&lt;p&gt;用户反馈使用在 windows 下使用 &lt;a href=&#34;https://github.com/yunify/qsctl&#34;&gt;qsctl&lt;/a&gt; 上传文件的时候会中断并抛出 &lt;code&gt;UnicodeDecodeError&lt;/code&gt; 异常，经过一番调查之后发现居然是 &lt;code&gt;os.walk&lt;/code&gt; 的坑。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;定位&#34;&gt;定位&lt;/h2&gt;
+
+&lt;p&gt;接到用户的反馈之后，首先尝试进行了复现，最后成功的找到了一个能复现该问题的 case:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# create a file with bad name and sync with qsctl 1.7.0 on python 2.7.13:
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; touch &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;$(&lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;echo&lt;/span&gt; -e &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;\x8b\x8bThis&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&amp;gt;&amp;gt;&amp;gt; qsctl sync ./ qs://xxxxxx&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;抛出来的异常如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;Traceback (most recent call last):
+  File &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;/home/xuanwo/.pyenv/versions/2.7.13/bin/qsctl&amp;#34;&lt;/span&gt;, line &lt;span style=&#34;color:#40a070&#34;&gt;27&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;&amp;lt;&lt;/span&gt;module&lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&lt;/span&gt;
+    sys&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;exit&lt;/span&gt;(main())
+  File &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;/home/xuanwo/.pyenv/versions/2.7.13/bin/qsctl&amp;#34;&lt;/span&gt;, line &lt;span style=&#34;color:#40a070&#34;&gt;24&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; main
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; qingstor&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;qsctl&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;driver&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;main()
+  File &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/site-packages/qingstor/qsctl/driver.py&amp;#34;&lt;/span&gt;, line &lt;span style=&#34;color:#40a070&#34;&gt;100&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; main
+    command&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;main(args[&lt;span style=&#34;color:#40a070&#34;&gt;2&lt;/span&gt;:])
+  File &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/site-packages/qingstor/qsctl/commands/base.py&amp;#34;&lt;/span&gt;, line &lt;span style=&#34;color:#40a070&#34;&gt;276&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; main
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; cls&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;send_request()
+  File &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/site-packages/qingstor/qsctl/commands/transfer.py&amp;#34;&lt;/span&gt;, line &lt;span style=&#34;color:#40a070&#34;&gt;546&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; send_request
+    cls&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;upload_files()
+  File &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/site-packages/qingstor/qsctl/commands/transfer.py&amp;#34;&lt;/span&gt;, line &lt;span style=&#34;color:#40a070&#34;&gt;165&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; upload_files
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; rt, dirs, files &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; os&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;walk(source_path):
+  File &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/os.py&amp;#34;&lt;/span&gt;, line &lt;span style=&#34;color:#40a070&#34;&gt;286&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; walk
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; isdir(join(top, name)):
+  File &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/posixpath.py&amp;#34;&lt;/span&gt;, line &lt;span style=&#34;color:#40a070&#34;&gt;71&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; join
+    path &lt;span style=&#34;color:#666&#34;&gt;+=&lt;/span&gt;  b
+&lt;span style=&#34;color:#007020&#34;&gt;UnicodeDecodeError&lt;/span&gt;: &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;ascii&amp;#39;&lt;/span&gt; codec can&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;t decode byte 0x8b in position 0: ordinal not in range(128)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;之前写过的一篇关于 Python 字符串的&lt;a href=&#34;https://xuanwo.org/2017/01/22/encoding-in-python/&#34;&gt;文章&lt;/a&gt; 曾经分析过类似的问题，Python 2 在进行字符串比较、拼接、替换时，会进行隐式的类型转换。通过查看 &lt;code&gt;posixpath.py&lt;/code&gt; 的源码，可以定位到报错的地方：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;join&lt;/span&gt;(a, &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;p):
+    &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;&amp;#34;&amp;#34;Join two or more pathname components, inserting &amp;#39;/&amp;#39; as needed.
+&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;    If any component is an absolute path, all previous path components
+&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;    will be discarded.  An empty last part will result in a path that
+&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;    ends with a separator.&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+    path &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; a
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; b &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; p:
+        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; b&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;startswith(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;):
+            path &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; b
+        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;elif&lt;/span&gt; path &lt;span style=&#34;color:#666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;or&lt;/span&gt; path&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;endswith(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;):
+            path &lt;span style=&#34;color:#666&#34;&gt;+=&lt;/span&gt;  b &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# This is line 71.&lt;/span&gt;
+        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;else&lt;/span&gt;:
+            path &lt;span style=&#34;color:#666&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;/&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; b
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; path&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在 Python 2 下，str 与 unicode 相加，str 会做一次 decode() 转换为 unicode 再相加。也就是说此处报错是因为 path 和 b 的类型不一致导致出现了本不该出现的一次 decode()。顺着代码继续分析，path 和 b 是上层传入的 top 和 name，而这一层的调用是在 os 包的内部进行的。也就是说，os.walk 在处理过程中并没有严格遵循保持类型一致的不成文约定，而是在传入 unicode 的情况下，出现了 str 类型。知道了问题出在 &lt;code&gt;os.walk&lt;/code&gt;，接下来再看看 &lt;code&gt;os.walk&lt;/code&gt; 的实现就能明白问题的所在了：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;walk&lt;/span&gt;(top, func, arg):
+  islink, join, isdir &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; path&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;islink, path&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;join, path&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;isdir
+
+  &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# We may not have read permission for top, in which case we can&amp;#39;t&lt;/span&gt;
+  &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# get a list of the files the directory contains.  os.path.walk&lt;/span&gt;
+  &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# always suppressed the exception then, rather than blow up for a&lt;/span&gt;
+  &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# minor reason when (say) a thousand readable directories are still&lt;/span&gt;
+  &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# left to visit.  That logic is copied here.&lt;/span&gt;
+  &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;try&lt;/span&gt;:
+      &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# Note that listdir and error are globals in this module due&lt;/span&gt;
+      &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# to earlier import-*.&lt;/span&gt;
+      names &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; listdir(top)
+  &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;except&lt;/span&gt; error, err:
+      &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; onerror &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;is&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;not&lt;/span&gt; None:
+          onerror(err)
+      &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt;
+
+  dirs, nondirs &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; [], []
+  &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; name &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; names:
+      &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; isdir(join(top, name)):
+          dirs&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;append(name)
+      &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;else&lt;/span&gt;:
+          nondirs&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;append(name)
+
+  &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; topdown:
+      &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;yield&lt;/span&gt; top, dirs, nondirs
+  &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; name &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; dirs:
+      new_path &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; join(top, name)
+      &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; followlinks &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;or&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;not&lt;/span&gt; islink(new_path):
+          &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; x &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; walk(new_path, topdown, onerror, followlinks):
+              &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;yield&lt;/span&gt; x
+  &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;not&lt;/span&gt; topdown:
+      &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;yield&lt;/span&gt; top, dirs, nondirs&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;等到读完 &lt;code&gt;os.walk&lt;/code&gt; 的实现我们就能明白，&lt;code&gt;os.walk&lt;/code&gt; 也是被迫背锅的，那个奇怪的 str 是由 &lt;code&gt;os.listdir&lt;/code&gt; 返回的。但是 &lt;code&gt;os.listdir&lt;/code&gt; 的实现是系统相关的，&lt;code&gt;os.walk&lt;/code&gt; 理应屏蔽掉编码的细节，为用户提供一个行为一致的接口。&lt;/p&gt;
+
+&lt;h2 id=&#34;修复&#34;&gt;修复&lt;/h2&gt;
+
+&lt;p&gt;定位到问题之后，修复起来就变得简单了。检查一下 listdir 的返回值，如果类型是 str，我们就试着去做一次 decode。如果报错了的话，我们需要通过 onerror 来处理这个情况然后把这个文件从结果中去掉以保证同步可以继续进行。
+最后通过这两个 commit 对这个问题进行了修复：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/yunify/qsctl/commit/f071667b12f8172451a9e7d63dcdd44f9348bf22&#34;&gt;Handle UnicodeDecodeError while use os.walk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/yunify/qsctl/commit/840a97ef8954fbe35659cfc6d457f461dcf2b77d&#34;&gt;Handle illegal characters in a better way&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;接口是开发者与用户的神圣契约，我们要尽量避免不一致的行为。&lt;/li&gt;
+&lt;li&gt;上层接口要尽可能屏蔽下层的细节，不要把本该自己处理的问题扔给用户处理。&lt;/li&gt;
+&lt;li&gt;Python 2 快点死掉吧 = =&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;动态&#34;&gt;动态&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;正如开头所说的，这篇文章是 “Learn From BUG” 系列的第一篇，之后我会不定期的整理和分享一些自己平时遇到的 BUG 解决思路。一方面是为了自己能够从 BUG 中学到更多，另一方面是希望能够帮助到被类似 BUG 困扰的人们。&lt;/li&gt;
+&lt;li&gt;随着再一次的心血来潮，我在 Linode 买了台机器部署并且把 Blog 迁移了过去，去掉了减速 CDN，实测速度比之前快上了不少。&lt;/li&gt;
+&lt;li&gt;《比宇宙更遥远的地方》完结撒花了，我现在唯一的感触就是这次的圣地巡礼可能有点贵 = =&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>基于 AWS Lambda 实现自动化</title>
+      <link>https://xuanwo.org/2018/01/14/automation-based-on-aws-lambda/</link>
+      <pubDate>Sun, 14 Jan 2018 10:07:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2018/01/14/automation-based-on-aws-lambda/</guid>
+      <description>&lt;p&gt;在上一篇文章中我们介绍了 &lt;a href=&#34;https://xuanwo.org/2017/12/03/integromat-intro/&#34;&gt;Integrmat&lt;/a&gt; 这个自动化平台，但是在实际的应用当中，它还是有一些不太符合我们项目需求的地方。基于 AWS Lambda 实现的自动化工具就是我们找到的替代方案，接下来我会将阐述一下项目的需求，然后根据对项目的需求分析为什么 Integrmat 不适合以及基于 AWS Lambda 实现的好处在哪里。之后会介绍一下 AWS Lambda 是什么以及如何实现我们的自动化工具，并分享一些在实现自动化工具中遇到的一些坑。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;项目需求&#34;&gt;项目需求&lt;/h2&gt;
+
+&lt;p&gt;我们项目中主要有一下几个部分需要用到自动化工具：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在 Jenkins 上运行的自动构建出错时自动在 Trello 中创建 Card&lt;/li&gt;
+&lt;li&gt;Grafana 报警时自动在 Trello 中创建 Card&lt;/li&gt;
+&lt;li&gt;移动到 Done 列表的超过两周的 Card 自动归档&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;why-not-integrmat&#34;&gt;Why not Integrmat&lt;/h3&gt;
+
+&lt;p&gt;以 &lt;code&gt;Jenkins 出错后在 Trello 中创建 Card&lt;/code&gt; 这个需求为例，我们需要的不仅仅是简单的出错之后加个 Card 就可以了。我们需要的是一个 Jenkins 出错到恢复的全生命周期的管理，也就是说根据上一次 Jenkins Job 执行的状态和本次状态，我们会有如下几种情况：&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;上次状态&lt;/th&gt;
+&lt;th&gt;本次状态&lt;/th&gt;
+&lt;th&gt;执行操作&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;成功&lt;/td&gt;
+&lt;td&gt;成功&lt;/td&gt;
+&lt;td&gt;忽略&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;成功&lt;/td&gt;
+&lt;td&gt;失败&lt;/td&gt;
+&lt;td&gt;创建一个新 Card&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;失败&lt;/td&gt;
+&lt;td&gt;失败&lt;/td&gt;
+&lt;td&gt;在之前创建的 Card 中增加新的评论&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;失败&lt;/td&gt;
+&lt;td&gt;成功&lt;/td&gt;
+&lt;td&gt;归档对应的 Card&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;这就会带来除了创建 Card 之外额外的操作次数调用，而这些都是计费的。&lt;/p&gt;
+
+&lt;p&gt;不仅如此，我们的 Jenkins 每天 24 小时都在不停的执行 Job，按照并行三个 Job，单个 Job 执行 1 分钟来计算，每天会触发 8640 次。每次 Job 如果失败的话需要操作大约 5 次，成功的话需要操作 2 次。按照 1% 的失败率来计算，我们一个月需要的操作数为 596160 次。对应到 Integrmat 的收费政策，我们需要开通每月 299 刀的最顶级套餐 = =。&lt;/p&gt;
+
+&lt;p&gt;Integrmat 在其优质服务，良好体验的背后，带来是不菲的开销。显然，此路不通。&lt;/p&gt;
+
+&lt;h3 id=&#34;why-aws-lambda&#34;&gt;Why AWS Lambda&lt;/h3&gt;
+
+&lt;p&gt;分析完了上面的为什么不是 Integrmat 之后，使用 AWS Lambda 的理由就变得非常明显了。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;不想自己从头撸一个 FaaS 框架&lt;/li&gt;
+&lt;li&gt;AWS Lambda 很便宜&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;AWS 提供的免费套餐中有着如下几条：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Lambda 每月 100 万个免费请求 （永久）&lt;/li&gt;
+&lt;li&gt;DynamoDB 25GB 存储 （永久）&lt;/li&gt;
+&lt;li&gt;API Gateway 每月接收 100 万次 （12 个月免费）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;结合前面的计算，AWS 的免费套餐已经完全可以覆盖我们的需求。&lt;/p&gt;
+
+&lt;h2 id=&#34;aws-lambda-faas-介绍&#34;&gt;AWS Lambda / FaaS 介绍&lt;/h2&gt;
+
+&lt;p&gt;FaaS 是指给 Function 提供运行环境和调度的服务，而 AWS Lambda 则是目前 FaaS 中运用比较广泛的一个服务。用户只需要实现业务逻辑，将代码上传到 AWS 之后，AWS 会负责处理接下来的所有事情：调度，伸缩，高可用，日志等等。而这些只有在方法被调用的时候才会计费，可以真正的做到按需运行，按毫秒计费。更详细的介绍可以看老王之前写的一篇文章 —— &lt;a href=&#34;http://jolestar.com/serverless-faas-current-status-and-future/&#34;&gt;Serverless/FaaS 的现状和未来&lt;/a&gt;。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;需要说明的是，从理论上来说任何 FaaS 框架都可以用来实现本文中描述功能，本文以 AWS Lambda 为例只是因为我们项目中刚好在用以及比较便宜而已，并不代表本人的任何倾向。老王的文章中也有介绍各个平台的 FaaS 服务，感兴趣的同学可以去看一看。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;如何实现自动化&#34;&gt;如何实现自动化&lt;/h2&gt;
+
+&lt;p&gt;我们主要用到了以下工具：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Lambda&lt;/li&gt;
+&lt;li&gt;DynamoDB&lt;/li&gt;
+&lt;li&gt;API Gateway&lt;/li&gt;
+&lt;li&gt;CloudWatch&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;其中 Lambda 会提供函数运行的环境，我们主要使用了 Python 3.6。Lambda 每次运行都是一个完全独立的环境，我们需要接入 DynamoDB 来提供持久化存储的能力。API Gateway 则会对外暴露出一个链接作为 Webhook 来触发 Lambda 运行，CloudWatch 除了收集日志之外，还能够定时触发任务。这四件套下来，基本上就能够覆盖我们开发自动化工具所需要的大部分功能。下面我们就以 &lt;code&gt;Jenkins 出错后在 Trello 中创建 Card&lt;/code&gt; 这个需求为例，讲解一下如何实现基于 AWS Lambda 的自动化工具。&lt;/p&gt;
+
+&lt;h3 id=&#34;创建函数&#34;&gt;创建函数&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;进入 Lambda 的界面，点击右上方的 &lt;code&gt;创建函数&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;选择 &lt;code&gt;从头开始创作&lt;/code&gt; 即可。&lt;/li&gt;
+&lt;li&gt;填写函数的名字，这个名字在创建好之后是不能修改的。&lt;/li&gt;
+&lt;li&gt;选择运行语言，根据自己的喜好选择即可&lt;/li&gt;
+&lt;li&gt;选择运行角色，这里我推荐 &lt;code&gt;创建自定义角色&lt;/code&gt;。为每一个函数都创建一个独立的角色，这样方便控制权限，以后比较容易分得清。AWS 的 IAM 超级恶心，这是我摸索出来的不太容易出问题的步骤。对 AWS IAM 熟悉的同学可以忽略我的建议。&lt;/li&gt;
+&lt;li&gt;点击 &lt;code&gt;创建函数&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这样我们的一个函数就创建好了。&lt;/p&gt;
+
+&lt;h3 id=&#34;接入服务&#34;&gt;接入服务&lt;/h3&gt;
+
+&lt;p&gt;为了能够实现我们上述的需求，我们还需要接入对应的服务： DynamoDB，API Gateway 和 CloudWatch。其中每个函数会默认添加一个 CloudWatch，因此不需要再做额外的配置。DynamoDB 和 API Gateway 都建议先再外部创建好，然后再在 Lambda 中去添加，要不然 AWS 自动创建的 IAM 规则会非常乱，很容易出现各种奇怪的问题。如果对稳定性要求比较高的同学可以将 API Gateway 绑定到一个固定的 version 上，比如创建一个 version 叫做 &lt;code&gt;production&lt;/code&gt;，然后再将 &lt;code&gt;production&lt;/code&gt; 指向某个具体的版本，这样可以保证线上运行的代码始终是不变的，同时也方便使用 API Gateway 的流量调度来做一些灰度测试之类的。没有这方面需求的同学，可以直接将 API Gateway 绑定到 &lt;code&gt;$LASTEST&lt;/code&gt; 上，这样所有的请求都会由最新的代码来执行。&lt;/p&gt;
+
+&lt;h3 id=&#34;编辑函数&#34;&gt;编辑函数&lt;/h3&gt;
+
+&lt;p&gt;函数创建好之后就进入了函数的配置界面。这个地方 AWS 嵌入了 Cloud9 的在线编辑器，自带语言高亮，缩进和提示，还是比较好用的。当然除了在线编辑之外也可以上传 zip 包或者选择从 S3 上传，之后用到的时候再讲。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#0e84b5;font-weight:bold&#34;&gt;os&lt;/span&gt;
+&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#0e84b5;font-weight:bold&#34;&gt;json&lt;/span&gt;
+&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#0e84b5;font-weight:bold&#34;&gt;boto3&lt;/span&gt;
+&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#0e84b5;font-weight:bold&#34;&gt;trello&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;import&lt;/span&gt; TrelloClient
+
+trello &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; TrelloClient(
+    api_key&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;os&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;environ[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;TRELLO_API_KEY&amp;#39;&lt;/span&gt;],
+    api_secret&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;os&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;environ[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;TRELLO_API_SECRET&amp;#39;&lt;/span&gt;],
+    token&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;os&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;environ[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;TRELLO_TOKEN&amp;#39;&lt;/span&gt;],
+    token_secret&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;os&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;environ[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;TRELLO_TOKEN_SECRET&amp;#39;&lt;/span&gt;]
+)
+board &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; trello&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;get_board(os&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;environ[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;TRELLO_BOARD_ID&amp;#39;&lt;/span&gt;])
+todo_list &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; board&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;get_list(os&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;environ[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;TRELLO_TODO_LIST_ID&amp;#39;&lt;/span&gt;])
+done_list &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; board&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;get_list(os&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;environ[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;TRELLO_DONE_LIST_ID&amp;#39;&lt;/span&gt;])
+
+dynamodb &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; boto3&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;resource(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;dynamodb&amp;#39;&lt;/span&gt;)
+table &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; dynamodb&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;Table(os&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;environ[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;DYNAMODB_TABLE&amp;#39;&lt;/span&gt;])
+
+SUCCESS &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;SUCCESS&amp;#39;&lt;/span&gt;]
+
+
+&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;main&lt;/span&gt;(event, context):
+    event &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; json&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;loads(event[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;body&amp;#39;&lt;/span&gt;])
+    name &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; event[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;]
+    status &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; event[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;build&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;status&amp;#39;&lt;/span&gt;]
+
+    q &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; table&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;get_item(Key&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;project&amp;#39;&lt;/span&gt;: name})
+    &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# Create a new card if this project is not exist.&lt;/span&gt;
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;Item&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;not&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; q:
+        &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# Nothing need to do if event is successful.&lt;/span&gt;
+        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; status &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; SUCCESS:
+            &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt;
+        card &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; todo_list&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;add_card(
+            name&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt; #&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%d&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt; Build &lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;%&lt;/span&gt; (name, event[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;build&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;number&amp;#39;&lt;/span&gt;], status),
+            desc&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;event[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;build&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;full_url&amp;#39;&lt;/span&gt;],
+            position&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;top&amp;#39;&lt;/span&gt;
+        )
+        table&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;put_item(Item&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;{
+            &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;project&amp;#39;&lt;/span&gt;: name,
+            &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;status&amp;#39;&lt;/span&gt;: status,
+            &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;card_id&amp;#39;&lt;/span&gt;: card&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;id&lt;/span&gt;
+        })
+        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt;
+
+    &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# If project exists, we should update card depends on project status.&lt;/span&gt;
+    item &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; q[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;Item&amp;#39;&lt;/span&gt;]
+    card &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; trello&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;get_card(card_id&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;item[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;card_id&amp;#39;&lt;/span&gt;])
+
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; status &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; SUCCESS:
+        table&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;delete_item(Key&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;project&amp;#39;&lt;/span&gt;: name})
+        card&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;comment(
+            &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt; #&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%d&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt; Build &lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#4070a0;font-weight:bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;%&lt;/span&gt;
+            (name, event[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;build&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;number&amp;#39;&lt;/span&gt;], status, event[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;build&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;full_url&amp;#39;&lt;/span&gt;]))
+        card&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;set_closed(True)
+        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt;
+
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; status &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;not&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; SUCCESS:
+        card&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;comment(
+            &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt; #&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%d&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt; Build &lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#4070a0;font-weight:bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;%&lt;/span&gt;
+            (name, event[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;build&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;number&amp;#39;&lt;/span&gt;], status, event[&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;build&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;full_url&amp;#39;&lt;/span&gt;]))
+
+    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;以上就是我们实现 &lt;code&gt;Jenkins 出错后在 Trello 中创建 Card&lt;/code&gt; 的全部代码。有几个需要拿出来单独讲一下的地方：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;函数运行是调用的 Handler 函数是可以修改的，比如这里就是修改成了 &lt;code&gt;main.main&lt;/code&gt;，Lambda 会在代码中寻找 &lt;code&gt;main.py&lt;/code&gt; 文件并执行该文件中的 &lt;code&gt;main&lt;/code&gt; 函数。&lt;/li&gt;
+&lt;li&gt;Handler 函数主要接收两个参数，event 与 context，event 中就是外部传入的数据。如果在 Lambda 外面套了 API Gateway 的话，API Gateway 会增加额外的内容，并且把请求体放到 &lt;code&gt;event[&#39;body&#39;]&lt;/code&gt; 中，因此我们需要 &lt;code&gt;json.loads(event[&#39;body&#39;])&lt;/code&gt; 才能取到外部传过来的真实值。&lt;/li&gt;
+&lt;li&gt;Lambda 环境中自带了 boto3 并且与 IAM 集成了，因此可以不需要额外的认证直接调用已经授权的服务，比如这个地方用到的 &lt;code&gt;dynamodb&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;Lambda 支持设置环境变量，因此可以将一些参数都放到环境变量中并通过 &lt;code&gt;os.environ&lt;/code&gt; 来读取。&lt;/li&gt;
+&lt;li&gt;如果要在 Lambda 中引用外部的库，则需要将这些库一起打包上传。以这里的 &lt;code&gt;trello&lt;/code&gt; 库为例，我们需要执行 &lt;code&gt;pip install py-trello -t .&lt;/code&gt; 将这个库及其相关依赖下载到当前目录，然后使用 &lt;code&gt;zip -r ../code.zip *&lt;/code&gt; 压缩后上传。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;具体的实现就不再多讲，相信大家都能看懂。&lt;/p&gt;
+
+&lt;h3 id=&#34;调试函数&#34;&gt;调试函数&lt;/h3&gt;
+
+&lt;p&gt;在代码写好之后，我们可以在页面直接调试。页面右上方可以配置一些测试事件，点击 &lt;code&gt;保存&lt;/code&gt; 后点 &lt;code&gt;测试&lt;/code&gt; 即可直接运行。运行结果会有对应的日志展示出来，也可以到 CloudWatch 中去查看更为完整的日志，根据日志反馈的情况修改自己的代码即可。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;从国内上传代码很是恶心，开着代理也经常出问题，不知道啥原因。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+
+&lt;p&gt;这篇文章主要介绍了如何基于 AWS Lambda 来实现一个自动化脚本。&lt;/p&gt;
+
+&lt;p&gt;优点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;除了偶尔请求 timeout 之外，服务很稳定，上线之后不用费心维护&lt;/li&gt;
+&lt;li&gt;自动集成的 CloudWatch 日志挺好用，调试很方便&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;缺点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;调试的过程比较麻烦，不能接入外部的 Git 服务，只能用 AWS 自己的那个&lt;/li&gt;
+&lt;li&gt;上线的脚本多了之后维护起来很麻烦，没有一个统一管理的方案&lt;/li&gt;
+&lt;li&gt;强依赖 AWS 自己的服务，日后迁移要大改脚本&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;动态&#34;&gt;动态&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这篇文章是一月份写的，但是一直到今天（2018.3.4）才写好结尾发出来 = =&lt;/li&gt;
+&lt;li&gt;我的 github profile 是有多像一个前端以至于所有公司给我发的 JD 都是前端？&lt;/li&gt;
+&lt;li&gt;尼尔半价了，2B 小姐姐赛高&lt;/li&gt;
+&lt;li&gt;我永远喜欢薇尔莉特.jpg&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Integromat -- 最强大的自动化平台</title>
+      <link>https://xuanwo.org/2017/12/03/integromat-intro/</link>
+      <pubDate>Sun, 03 Dec 2017 10:07:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2017/12/03/integromat-intro/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://xuanwo.org/imgs/opinion/integromat-example.png&#34; alt=&#34;Integrmat Example&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;今天想跟大家分享一个类似于 IFTTT 的自动化平台： &lt;a href=&#34;https://www.integromat.com&#34;&gt;Integromat&lt;/a&gt;。与 IFTTT 最大的区别是它允许用户通过操作每一次请求的输入和输出来构建一个完整的链条，比如上图的这个例子就是实现了这样的一个功能：当完成 Todoist 中带有指定属性的任务时，将这个任务移动到 &lt;code&gt;Done&lt;/code&gt; 列表，并将其放到 &lt;code&gt;Done&lt;/code&gt; 列表的顶端。&lt;/p&gt;
+
+&lt;p&gt;接下来我会先简单地介绍一下 Integromat，然后讲解一下 Integromat 涉及到的一些元素，最后讲讲如何定制并调试自己的场景。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;0x00-介绍&#34;&gt;0x00 介绍&lt;/h2&gt;
+
+&lt;p&gt;Integromat 是由一家专门做系统集成和外包服务的公司 &lt;a href=&#34;www.integrators.cz&#34;&gt;Integrators&lt;/a&gt; 推出的产品，2012 年开始开发， 2016 年正式面向大众推出。目前团队中有 19 人，其中负责技术的有 9 人。他们愿景是要做互联网的胶水，同时自称 Integromat 是最先进的在线自动化平台，在使用了他们的服务之后我发现他们没有骗我。&lt;/p&gt;
+
+&lt;h2 id=&#34;0x01-特点&#34;&gt;0x01 特点&lt;/h2&gt;
+
+&lt;p&gt;详细的特性列表可以参考此处： &lt;a href=&#34;https://www.integromat.com/en/features&#34;&gt;https://www.integromat.com/en/features&lt;/a&gt; ，下面我只列出一些我认为有用 &amp;amp; 特别的特性。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;完整的 ACID 事务支持，拥有处理异常的能力&lt;/li&gt;
+&lt;li&gt;可视化操作界面，可以看到每一步操作的详细数据，调试便利程度 Max&lt;/li&gt;
+&lt;li&gt;支持路由功能，可以实现多条分支的处理&lt;/li&gt;
+&lt;li&gt;支持常用函数（数值，时间和字符串的常用操作，甚至还有正则）&lt;/li&gt;
+&lt;li&gt;支持解析 JSON 到预设的数据结构当中&lt;/li&gt;
+&lt;li&gt;支持 Webhook 和 定时器 两种触发器&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;作为一个互联网自动化爱好者，我先后使用过 &lt;a href=&#34;https://ifttt.com/&#34;&gt;IFTTT&lt;/a&gt;，&lt;a href=&#34;https://zapier.com&#34;&gt;Zapier&lt;/a&gt; 等商业服务，也部署过 &lt;a href=&#34;https://github.com/muesli/beehive&#34;&gt;Beehive&lt;/a&gt;，&lt;a href=&#34;https://github.com/huginn/huginn&#34;&gt;Huginn&lt;/a&gt; 这样的开源服务，但是没有一个像 Integromat 这么强大，更何况，它的界面也是相当的简洁好看。&lt;/p&gt;
+
+&lt;h2 id=&#34;0x02-概念介绍&#34;&gt;0x02 概念介绍&lt;/h2&gt;
+
+&lt;p&gt;强大的功能通常都意味着陡峭的学习曲线，Integromat 也不例外。为了实现上文中提到的诸多特性，Integromat 引入了很多概念，这使得它的上手难度比 IFTTT 和 Zapier 高上不少。但是 Integromat 的工程师们在前端的引导和设计上下了很多功夫，尽可能地降低了新用户的门槛。根据我的实际经验，有初步编程开发经验的同学只要摸索上几分钟就能上手，而零编程基础的同学如果不使用那些高级特性的话，只需要十几分钟就能捣鼓出一个实际可用的场景。&lt;/p&gt;
+
+&lt;p&gt;为了更好的帮助新同学使用 Integromat，下面我会简单的介绍一下 Integromat 涉及到的一些元素。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Scenario（场景）：场景是 Integromat 中一系列任务的组合，相当于 IFTTT 中的 Applets。&lt;/li&gt;
+&lt;li&gt;Service（服务）：服务是 Integromat 中预设好的一些服务，比如 Dropbox，Gmail 等，相当于 IFTTT 中的 Service。
+
+&lt;ul&gt;
+&lt;li&gt;Trigger（触发器）：满足一定条件的时候会触发这个服务&lt;/li&gt;
+&lt;li&gt;Instant（实时）：某些触发器会标着实时，这意味着这个触发器可以通过 Webhook 来实时触发，否则就只能使用 Integromat 的定时器来触发。&lt;/li&gt;
+&lt;li&gt;Action（操作）：这个服务通过一定的输入来执行对应的操作。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Connection（联接）：联接是 Integromat 中绑定的服务，联接与服务是多对一的关系，可以通过创建同一个服务的多个联接来实现多帐号。&lt;/li&gt;
+&lt;li&gt;Webhook：某些服务支持在满足某些条件的时候向预先设置好的 Webhook 发送信息，Integromat 可以创建这样的 webhook 来接受指定的信息，注意这个 Webhook 跟服务的触发器是绑定的。&lt;/li&gt;
+&lt;li&gt;Key：Integromat 可以上传一些加密的文件来支持某些敏感的操作&lt;/li&gt;
+&lt;li&gt;Device： 与 IFTTT 一样， Integromat 可以与一些设备绑定来支持设备相关的操作&lt;/li&gt;
+&lt;li&gt;Data structure（数据结构）： 对于预设的服务，Integromat 已经事先解析好了对应的结构体，但是如果是自己创建的 Webhook，那需要自己定义好对应的数据结构，可以通过上传一个 JSON 文件来创建。&lt;/li&gt;
+&lt;li&gt;Data store：Integromat 提供了一个简单的 KV 存储，用于在多个场景或者同一个场景多次执行中共享数据，可以进行 Get，Set 和 Del 等操作。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Integromat 涉及到的元素确实要比 IFTTT 多上不少，但是新同学刚刚上手的时候只需要了解 Scenario，Service 和 Connection 就已经足够了，剩下的高级特性可以之后慢慢摸索。&lt;/p&gt;
+
+&lt;h2 id=&#34;0x03-收费政策&#34;&gt;0x03 收费政策&lt;/h2&gt;
+
+&lt;p&gt;Integromat 的收费政策可以参考： &lt;a href=&#34;https://www.integromat.com/en/pricing&#34;&gt;https://www.integromat.com/en/pricing&lt;/a&gt; ， 这里主要讲一下 Free 这一档：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;免费用户每个月可以进行 1000 次操作，有 100 M的流量，定时器的最小间隔为 15 分钟。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;所有用户的场景数量都是没有限制的，但是有着 1000 次的操作数量限制，在单个 Scenario 的历史记录当中可以看到每一次运行都进行了多少次操作。基本上可以看作有多少个 “圈” 就会有多少操作，没有执行到的部分不会进行计算。&lt;/p&gt;
+
+&lt;p&gt;对于轻度用户而言，1000 次操作基本上刚刚够用；如果不用来在网盘之间同步东西的话，100M 的流量是绰绰有余的。对于重度用户而言，花个 9 刀或者 29 刀购买套餐也是个不错的主意，这么强大的服务值得为止付费。&lt;/p&gt;
+
+&lt;h2 id=&#34;0x04-如何定制-调试&#34;&gt;0x04 如何定制 &amp;amp; 调试&lt;/h2&gt;
+
+&lt;p&gt;Integromat 的图形化界面已经足够优秀了，官方也提供了不少的教程，比如 &lt;a href=&#34;https://www.integromat.com/en/kb/tutorial/get-a-tweet-on-twitter-when-a-new-tweet-from-google-sheet-row-is-created.html&#34;&gt;google sheet 中增加了一行就创建一个 tweet &lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;这里主要讲讲我感觉需要注意的一些地方：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;每一个场景都必须从一个触发器开始。实际上每次创建一个场景，都会有一个无法删除的模块，你只需要点击并选择某个服务的触发器即可。&lt;/li&gt;
+&lt;li&gt;两个模块连接的地方会有一个漏斗标志，点开之后可以设置过滤器，如果条件不满足就会在这个地方中止。&lt;/li&gt;
+&lt;li&gt;Connections 和 Webhook 不需要提前创建好，只需要在开发场景的时候选择 &lt;code&gt;Add&lt;/code&gt; 即可。&lt;/li&gt;
+&lt;li&gt;所有的模块运行一次之后就会在右上方出现一个带数字的小圆，点开之后可以看到本次运行的实际数据。所以调试的时候可以点一次 &lt;code&gt;Run once&lt;/code&gt;，然后就能看到真实的数据了，这样调试起来更加方便。&lt;/li&gt;
+&lt;li&gt;左下角有一个像飞机的图标 &lt;code&gt;Explain flow&lt;/code&gt;，点击之后就会以动画的形式展示数据的流动。如果正在开发比较复杂的场景，不妨使用这个功能看看数据是怎么流动的。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;0x05-总结&#34;&gt;0x05 总结&lt;/h2&gt;
+
+&lt;p&gt;Integromat 适合以下人群：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;觉得 IFTTT 反应太慢了/可定制化程度太低了/没有想要的功能的普通用户&lt;/li&gt;
+&lt;li&gt;想要跟自己的工作流做集成的工作人士&lt;/li&gt;
+&lt;li&gt;闲着没事干就想折腾黑科技的 Geek 们&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Have fun in automation!&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>Enpass —— 超赞的密码管理工具</title>
+      <link>https://xuanwo.org/2017/11/26/enpass-intro/</link>
+      <pubDate>Sun, 26 Nov 2017 10:07:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2017/11/26/enpass-intro/</guid>
+      <description>&lt;p&gt;不想把自己的密码保存在 LastPass 的服务器上？羡慕 Mac 上好用的 1Password 但是自己的平台上却没有？不喜欢 Linux 密码管理工具过时的界面？ 如果你也曾经为这些问题苦恼过的话，那 &lt;a href=&#34;https://www.enpass.io/&#34;&gt;Enpass&lt;/a&gt; 就有可能是你的最佳之选。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;介绍&#34;&gt;介绍&lt;/h2&gt;
+
+&lt;p&gt;Enpass 是由一家在印度古尔冈的私人控股公司 &lt;a href=&#34;https://www.sinew.io/&#34;&gt;Sinew&lt;/a&gt; 推出的密码管理工具。之前在公司的内部使用，在 2011 年的时候正式面向市场推出，目前有超过 100 万用户，曾用名： Walletx 。&lt;/p&gt;
+
+&lt;h2 id=&#34;特点&#34;&gt;特点&lt;/h2&gt;
+
+&lt;h3 id=&#34;全平台支持&#34;&gt;全平台支持&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;支持 macOS，Linux，windows 三大 PC 平台&lt;/li&gt;
+&lt;li&gt;支持 iOS，Android，Windows Phone 等常用移动平台&lt;/li&gt;
+&lt;li&gt;支持 Chromebook&lt;/li&gt;
+&lt;li&gt;支持打包成 Portable 应用&lt;/li&gt;
+&lt;li&gt;浏览器插件支持 Chrome 与 Firefox&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;他们的浏览器插件非常好用，通过快捷键 &lt;code&gt;Ctrl+/&lt;/code&gt; 自动补全用户名帐号和密码。如果有多个相符的帐号会弹出窗口供选择，如果没有找到的话同样会提供一个搜索框。比 LastPass 那个臃肿又难用的浏览器插件要好上不少，1Password 在 mac 上的体验很赞，但是无奈没有 Linux 上的版本。&lt;/p&gt;
+
+&lt;h3 id=&#34;服务器不保存用户数据&#34;&gt;服务器不保存用户数据&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;跨终端同步基于已有的网盘服务实现&lt;/li&gt;
+&lt;li&gt;如果不想把数据上传到网盘，还可以通过局域网进行同步&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;可以通过自己的网盘服务来同步加密后的数据库，已经支持了主流的网盘服务，比如 Google Drive，Dropbox，OneDrive，基于 WebDAV 的 ownCloud 和 Nextcloud 等等。从我实际的体验上来看，Linux 上客户端的同步交互有些问题，有时候如果代理挂了，然后它重试数次失败之后就没有办法再手动触发同步，只好重新启动应用来解决。&lt;/p&gt;
+
+&lt;p&gt;不在服务器端存储用户数据就避免了整天担心 LastPass 数据库被盗之类的问题，据我所知 LastPass 之前就出现过一些问题。即使从来没有出现过问题，LastPass 这么大的目标本身就会吸引黑客们的兴趣，出现数据泄漏从长期来看是必然会发生的事情。因此密码这种东西还是要自己保管来的更加安全一些。&lt;/p&gt;
+
+&lt;h3 id=&#34;其它&#34;&gt;其它&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;AES-256 强加密&lt;/li&gt;
+&lt;li&gt;简单好用的密码生成工具&lt;/li&gt;
+&lt;li&gt;支持备份与恢复&lt;/li&gt;
+&lt;li&gt;支持导入导出&lt;/li&gt;
+&lt;li&gt;iOS 客户端支持指纹解锁&lt;/li&gt;
+&lt;li&gt;粘贴后自动清除剪贴板&lt;/li&gt;
+&lt;li&gt;失去焦点一定时间后自动锁定程序&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;缺点&#34;&gt;缺点&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在 Linux 平台上不支持输入法，无法输入中文，只能复制粘贴&lt;/li&gt;
+&lt;li&gt;同步功能不是很稳定，同步失败之后需要重启程序来手动触发&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;收费政策&#34;&gt;收费政策&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Desktop 端不收费&lt;/li&gt;
+&lt;li&gt;移动端可以免费同步一定条目，可以通过支付十刀解锁（只需要支付一次，终身可用）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;技巧&#34;&gt;技巧&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;可以用来同步 TOTP 的验证码，完美取代 Google Authenticator&lt;/li&gt;
+&lt;li&gt;支持加密文件，可以用来跨平台同步自己的私钥和证书&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+
+&lt;p&gt;Enpass 适合以下人群：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;想要尝试进行密码管理的新同学&lt;/li&gt;
+&lt;li&gt;Linux 平台上想获得 1Password 类似体验的用户&lt;/li&gt;
+&lt;li&gt;想要自己保管密码库，不信任集中托管服务的用户&lt;/li&gt;
+&lt;li&gt;致力于统一管理自己所有数据的用户 (Like me)&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

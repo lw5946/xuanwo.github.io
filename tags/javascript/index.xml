@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Javascript on Xuanwo&#39;s Blog</title>
+    <link>https://xuanwo.org/tags/javascript/</link>
+    <description>Recent content in Javascript on Xuanwo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 15 Jun 2017 15:44:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xuanwo.org/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>从浏览器端向 QingStor 对象存储上传文件</title>
+      <link>https://xuanwo.org/2017/06/15/upload-to-qingstor-from-browser/</link>
+      <pubDate>Thu, 15 Jun 2017 15:44:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2017/06/15/upload-to-qingstor-from-browser/</guid>
+      <description>&lt;p&gt;从浏览器端向 QingStor 对象存储上传是很多开发者的需求，虽然 QingStor 提供了相关的接口和 SDK，但是仍有很多开发者表示不知道怎么样去调用。本文的目的是系统的展示一下如何从浏览器端上传一个文件到对象存储，从而解决大多数开发者们的需求。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>nodebb-plugin-html5videoplayer 发布</title>
+      <link>https://xuanwo.org/2016/08/22/nodebb-plugin-html5videoplayer/</link>
+      <pubDate>Mon, 22 Aug 2016 17:53:25 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2016/08/22/nodebb-plugin-html5videoplayer/</guid>
+      <description>&lt;p&gt;[nodebb-plugin-html5videoplayer]() 是一个简单的 NodeBB 插件，可以让 NodeBB 支持在线视频观看。Fork 自 &lt;a href=&#34;https://github.com/ogerly&#34;&gt;@ogerly&lt;/a&gt; 开发的 &lt;a href=&#34;https://github.com/ogerly/nodebb-plugin-videoplayer&#34;&gt;nodebb-plugin-videoplayer&lt;/a&gt;， 在他的基础上做了一些微不足道的贡献，括弧笑。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NodeBB 升级迁移总结</title>
+      <link>https://xuanwo.org/2016/07/08/nodebb-upgrade/</link>
+      <pubDate>Fri, 08 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2016/07/08/nodebb-upgrade/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://community.qingcloud.com/&#34;&gt;青云用户社区&lt;/a&gt;使用了开源的 NodeBB 论坛，部署之初使用&lt;code&gt;0.7&lt;/code&gt;版本，因为没有跟随官方进度进行更新，导致论坛版本长期停滞。一方面无法享受到官方的BUG Fix，另一方面也无法使用很多业务需求的插件。思量再三后决定对社区进行升级迁移，不在原论坛直接升级，而是部署一套新的环境，将原有的数据全部导出。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>新博客上线&amp;Hexo主题开发入门</title>
+      <link>https://xuanwo.org/2016/06/29/new-blog-new-life/</link>
+      <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2016/06/29/new-blog-new-life/</guid>
+      <description>&lt;p&gt;曾经看过我的博客的同学大概都会发现，我的博客再一次大变样了~
+这一次的更新其实酝酿了很久，早在刚开始用Hexo的时候就想着要有一个自己的主题。但是那个时候觉得这是一件很难的事情，要懂HTML，CSS，JavaScript，还要懂Swig，Ejs等模板语言，还要懂Hexo的内部原理，于是就一直搁置了。在独立实现了一个&lt;a href=&#34;https://xuanwo.org/2016/06/16/jade_ims/&#34;&gt;完整的项目&lt;/a&gt;之后，我认为自己已经有这样的能力了，于是决定正式开始。
+在我看来的话，Hexo的使用者大概分为三个层次：第一种用别人的主题，第二种模仿现有的主题，第三种自己独立开发。我原来是第一种，在Next的基础上做了很多改动，这一次进入到了第二个层次。我找了一套自我感觉还不错的模板，然后套用它的CSS设定和页面结构，就成了我现在的主题。
+利用两天学习和工作的闲暇时间，我大体上完成了这个主题。做得比较糙，很多细节还有待优化，但是我已经急不可耐地想要正式上线了，笑。在未来的话，我希望能把一些配置都能整理出来，优化一下代码，然后开源这个主题，希望大家能够喜欢~
+庆祝的话已经说的差不多了，下面来讲一讲如何开发一个Hexo主题。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>马可波罗珠宝进销存系统开发手记</title>
+      <link>https://xuanwo.org/2016/06/16/jade_ims/</link>
+      <pubDate>Thu, 16 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2016/06/16/jade_ims/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://xuanwo.org/imgs/develop/jade-ims-index.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这个项目从我们这个学期开了&lt;strong&gt;系统分析与设计&lt;/strong&gt;这门课之后就开始了，首次创建这个项目是在3月26号，实际上真正的开发时间集中在6月上旬。差不多用两个星期的闲暇时间时间完成了这个简单的进销存系统。这个系统基于Flask框架，使用SQLite3数据库，前端则是使用Bootstrap框架，实现了包括客户，库存，销售，进货等管理子系统。说是管理，其实也就是简单的增加和删除而已。
+前人经常说，不要重复造轮子。既然有类似于Odoo这样强大的ERP系统珠玉在前，我为什么要再自己造一个功能简单，甚至根本不会有人用的轮子呢？从前我确实是这么想的，但是稍微有一点工作经验之后发现再造轮子的原因有两条：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;作为一个处在知识积累阶段的学生而言，再造轮子很有必要。不造一次轮子，你就永远不会明白轮子内部的真实构造。很多技术虽然看起来简单，但是想要有一个完善且健壮的实现却有很多坑需要踩。踩这些坑的过程，也正是一个技术人员成长最快的过程。&lt;/li&gt;
+&lt;li&gt;别人的轮子终究是别人的。你不知道这个轮子最大能承受多少压力，你也不知道这个轮子在什么样的情况下会爆胎。当一个轮子装上企业呼呼向前的列车，再要想把它替换下来是一件很难且成本很高的事情。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;接下来，讲讲造这个轮子的一些经历吧~&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用Github Pages做博客的新思路——Spring</title>
+      <link>https://xuanwo.org/2014/06/11/new-way-blog-spring/</link>
+      <pubDate>Wed, 11 Jun 2014 14:00:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2014/06/11/new-way-blog-spring/</guid>
+      <description>&lt;p&gt;很久之前就有了想要有一个自己的博客的想法，一直没有付诸于实施。整个初中到高中基本上就是在使用一个半死不活的CSDN博客，更新不多，质量不高，还有点嫌弃它丑陋，定制性不佳的界面。
+前两天队长要求我们每个人都必须开通一个博客，于是，我终于开始腾出精力和时间去寻找一个合适的地方来做我的博客。现有的一些博客提供商都被否决了，网易搜狐腾讯之类的并不是适合一个程序猿，文章写出来也得不到反馈与交流，失去了它的意义。随着搜索的进行，Github Pages开始频繁的出现在页面上。之前一直在用Github，但是对它的Pages业务并不了解。根据一些教程（感谢&lt;a href=&#34;http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html&#34;&gt;阮一峰先生的博客&lt;/a&gt;），我先后使用了&lt;code&gt;Hexo&lt;/code&gt;，&lt;code&gt;Jekyll&lt;/code&gt;，&lt;code&gt;Octopress&lt;/code&gt;等生成网站。网站的风格我很喜欢，只是不停地纠结于怎样的配置更好的问题，反而加重了我自己的负担。
+无意之间，我看到了@zhaoda的博客，使用自己开发的&lt;code&gt;Spring&lt;/code&gt;项目，通过抓取项目的&lt;code&gt;issues&lt;/code&gt;来撰写博客，效果出奇的好。使用Github自带的&lt;code&gt;lables&lt;/code&gt;进行标签管理，&lt;code&gt;issues&lt;/code&gt;的评论功能直接可以当做文章的评论区，操作简单，无需复杂配置，完全符合我的要求。&lt;/p&gt;
+
+&lt;h2 id=&#34;hugomore42&#34;&gt;&lt;/h2&gt;
+
+&lt;h1 id=&#34;作者本人的介绍&#34;&gt;作者本人的介绍&lt;/h1&gt;
+
+&lt;p&gt;Spring是一个通过GitHub Issues撰写内容的博客引擎，或者说是一个简单、静态化的建站系统。不需要服务器和数据库支持，你可以把它作为一个GitHub代码仓库，并托管在免费的GitHub Pages上运行，然后在这个仓库的Issues系统里撰写日志。
+你可以在这个仓库的Issues系统里添加labels标签，这些标签会成为博客的分类，然后新建Issues，并用Markdown语法写日志。
+Spring拥有响应式的页面设计，可以在手机、平板和桌面端完美展现；支持IE10+和所有现代浏览器，底端设备做了跳转的降级处理。
+你可以快速的安装并运行这个系统。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C on Xuanwo&#39;s Blog</title>
+    <link>https://xuanwo.org/tags/c/</link>
+    <description>Recent content in C on Xuanwo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 09 May 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xuanwo.org/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>基于MSP430G2553的打铃系统开发手记</title>
+      <link>https://xuanwo.org/2016/05/09/msp430g2553-bellring/</link>
+      <pubDate>Mon, 09 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2016/05/09/msp430g2553-bellring/</guid>
+      <description>&lt;p&gt;我萌萌哒的妹纸是一个代码苦手，完全无法理解 C 语言，所以每一次到单片机上机需要交作业的时候都是愁眉苦脸的样子。而我又总是因为自己确实不懂单片机里面的种种奇怪定义（中断，串口，P1.x 之类），所以也一直没有什么好办法去帮她。这一次的作业对编码能力要求较高，但是涉及到的硬件比较少，于是决定以此为契机，开始我的嵌入式开发之旅。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>动态规划——最长上升子序列问题</title>
+      <link>https://xuanwo.org/2015/07/31/dp-lis/</link>
+      <pubDate>Fri, 31 Jul 2015 15:58:35 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2015/07/31/dp-lis/</guid>
+      <description>&lt;h1 id=&#34;介绍&#34;&gt;介绍&lt;/h1&gt;
+
+&lt;p&gt;最长上升子序列问题，也就是&lt;code&gt;Longest increasing subsequence&lt;/code&gt;，缩写为&lt;code&gt;LIS&lt;/code&gt;。是指在一个序列中求长度最长的一个上升子序列的问题，是动态规划中一个相当经典问题。在这里我们可以看到，这个上升实质上就是一个对&lt;code&gt;&amp;lt;&lt;/code&gt;进行定义的过程，所以我们求解的其实是一类问题，也就是在给定序列中求解长度最长的符合某一性质的子序列的问题。在下面总结的过程中，我还是以递增为例进行阐述。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>超星学术视频下载处理一条龙</title>
+      <link>https://xuanwo.org/2015/01/07/chaoxing-download/</link>
+      <pubDate>Wed, 07 Jan 2015 01:12:07 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2015/01/07/chaoxing-download/</guid>
+      <description>&lt;p&gt;我妹纸最近开始通过看超星学术视频来&lt;del&gt;复习&lt;/del&gt;预习课程了，所以我必须搞到对应课程的所有视频（不管是收费还是免费），而且我妹纸还是一个有强迫症的萌妹纸，所有的视频都必须按照顺序拍的好好的，要不然她就会不舒服。
+根据以上描述，我需要解决以下需求：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;破解超星学术视频的加密链接，找到真实的下载链接。&lt;/li&gt;
+&lt;li&gt;重命名下载下来的视频文件。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;还是跟以往一样，直接把最终的解决方案放出来，要是对具体的实现感兴趣的可以接着往下面看。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Sublime Text 3 化身为高大上的C/C&#43;&#43; IDE</title>
+      <link>https://xuanwo.org/2014/06/05/sublime-text-3-ide/</link>
+      <pubDate>Thu, 05 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2014/06/05/sublime-text-3-ide/</guid>
+      <description>&lt;p&gt;我是一只有着小小的强迫症的苦逼菜鸟，敲代码追求一个爽快。原来一直在用Code::Blocks，虽然说是用C++开发的，效率很高，但是每次启动的时候总是要盯着它不怎么样的启动页看很久，不开心= =。这两天开始接触Sublime Text，顿时被迷住了，不管不顾的决定把它改造成一个狂霸酷拽屌的IDE，所以，走你～～&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

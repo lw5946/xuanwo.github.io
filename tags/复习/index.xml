@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>复习 on Xuanwo&#39;s Blog</title>
+    <link>https://xuanwo.org/tags/%E5%A4%8D%E4%B9%A0/</link>
+    <description>Recent content in 复习 on Xuanwo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 19 Jun 2015 16:58:58 +0000</lastBuildDate>
+    
+	<atom:link href="https://xuanwo.org/tags/%E5%A4%8D%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>信息资源管理复习</title>
+      <link>https://xuanwo.org/2015/06/19/information-manage-review/</link>
+      <pubDate>Fri, 19 Jun 2015 16:58:58 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2015/06/19/information-manage-review/</guid>
+      <description>&lt;h1 id=&#34;概述&#34;&gt;概述&lt;/h1&gt;
+
+&lt;h2 id=&#34;信息资源的分类-方法和类别&#34;&gt;信息资源的分类，方法和类别&lt;/h2&gt;
+
+&lt;h3 id=&#34;分类&#34;&gt;分类&lt;/h3&gt;
+
+&lt;p&gt;信息资源的类型可以根据多种标准来划分。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;</description>
+    </item>
+    
+    <item>
+      <title>数据库系统概论复习</title>
+      <link>https://xuanwo.org/2015/06/12/database-review/</link>
+      <pubDate>Fri, 12 Jun 2015 14:33:29 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2015/06/12/database-review/</guid>
+      <description>&lt;h1 id=&#34;绪论&#34;&gt;绪论&lt;/h1&gt;
+
+&lt;h2 id=&#34;数据库系统概述&#34;&gt;数据库系统概述&lt;/h2&gt;
+
+&lt;p&gt;数据（Data）： 描述事物的符号记录称为数据。
+记录： 计算机中表示和存储数据的一种格式或一种方法。
+数据库（DataBase，简称DB）： 数据库是长期存储在计算机内、有组织的、可共享的大量数据的集合。
+特点：
+- 数据按一定的数据模型组织、描述和存储
+- 可为各种用户共享
+- 冗余度较小
+- 数据独立性较高
+- 易扩展&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

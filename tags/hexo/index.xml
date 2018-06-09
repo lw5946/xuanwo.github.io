@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hexo on Xuanwo&#39;s Blog</title>
+    <link>https://xuanwo.org/tags/hexo/</link>
+    <description>Recent content in Hexo on Xuanwo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 23 Oct 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xuanwo.org/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>再见， Hexo</title>
+      <link>https://xuanwo.org/2016/10/23/goodbye-hexo/</link>
+      <pubDate>Sun, 23 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2016/10/23/goodbye-hexo/</guid>
+      <description>&lt;p&gt;其实我现在的心情比较复杂。
+Hexo 我从大一的暑假就开始用，大二的时候加入了 Hexo 的团队，一直到现在，关于 Hexo 的文章都是我博客点击率最高的文章。
+但是由于我实在是精力有限，没有时间去维护Hexo的相关项目，因此只能与Hexo说再见了，希望能有更多人可以加入Hexo的开发团队，希望Hexo能够发展的更好。
+下面简单地分享一下自己在Hexo团队中做的工作和学到的东西。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>新博客上线&amp;Hexo主题开发入门</title>
+      <link>https://xuanwo.org/2016/06/29/new-blog-new-life/</link>
+      <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2016/06/29/new-blog-new-life/</guid>
+      <description>&lt;p&gt;曾经看过我的博客的同学大概都会发现，我的博客再一次大变样了~
+这一次的更新其实酝酿了很久，早在刚开始用Hexo的时候就想着要有一个自己的主题。但是那个时候觉得这是一件很难的事情，要懂HTML，CSS，JavaScript，还要懂Swig，Ejs等模板语言，还要懂Hexo的内部原理，于是就一直搁置了。在独立实现了一个&lt;a href=&#34;https://xuanwo.org/2016/06/16/jade_ims/&#34;&gt;完整的项目&lt;/a&gt;之后，我认为自己已经有这样的能力了，于是决定正式开始。
+在我看来的话，Hexo的使用者大概分为三个层次：第一种用别人的主题，第二种模仿现有的主题，第三种自己独立开发。我原来是第一种，在Next的基础上做了很多改动，这一次进入到了第二个层次。我找了一套自我感觉还不错的模板，然后套用它的CSS设定和页面结构，就成了我现在的主题。
+利用两天学习和工作的闲暇时间，我大体上完成了这个主题。做得比较糙，很多细节还有待优化，但是我已经急不可耐地想要正式上线了，笑。在未来的话，我希望能把一些配置都能整理出来，优化一下代码，然后开源这个主题，希望大家能够喜欢~
+庆祝的话已经说的差不多了，下面来讲一讲如何开发一个Hexo主题。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>记一次debug的经历及反思</title>
+      <link>https://xuanwo.org/2016/02/26/debug-for-hexo-1775/</link>
+      <pubDate>Fri, 26 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2016/02/26/debug-for-hexo-1775/</guid>
+      <description>&lt;h2 id=&#34;起因&#34;&gt;起因&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/hexojs/hexo/issues/1775&#34;&gt;hexojs/hexo #1775&lt;/a&gt;
+BUG非常明显，在使用hexo 3.1.1搭建一个位于子目录下的博客，然后会发现home以及categories的链接全都忽略了子目录的设定。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>史上最详细的Hexo博客搭建图文教程</title>
+      <link>https://xuanwo.org/2015/03/26/hexo-intor/</link>
+      <pubDate>Thu, 26 Mar 2015 00:22:43 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2015/03/26/hexo-intor/</guid>
+      <description>&lt;p&gt;从2014年的八月份开始接触Hexo，一直用到现在，已经有半年的时间了。这期间，Hexo从2.X一路升级到了3.0，很多地方都发生了改变。不仅如此，很多原来使用Hexo的博主们写下了的教程并没有及时更新，导致后来人一头雾水，挫折感十足。因此，本文致力于提供一份足够简单，长期维护的基于Github Pages的Hexo博客搭建图文教程，希望能有所帮助。
+当然，我个人的力量是有限的，因此也希望使用Hexo的大家也能一起行动起来，通过&lt;a href=&#34;https://github.com/Xuanwo/xuanwo.github.io/pulls&#34;&gt;提交PR&lt;/a&gt;，&lt;a href=&#34;https://github.com/Xuanwo/xuanwo.github.io/issues&#34;&gt;发布issues&lt;/a&gt;或者在下方评论区评论等形式参与到本文档的编辑中来。浏览时，使用&lt;code&gt;Ctrl+F&lt;/code&gt;搜索关键词。&lt;em&gt;（是不是会有似曾相识的感觉，= =）&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用Github SSH Key以免去Hexo部署时输入密码</title>
+      <link>https://xuanwo.org/2015/02/07/generate-a-ssh-key/</link>
+      <pubDate>Sat, 07 Feb 2015 14:40:16 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2015/02/07/generate-a-ssh-key/</guid>
+      <description>&lt;p&gt;原文本来放在&lt;a href=&#34;http://xuanwo.org/2014/08/14/hexo-usual-problem/&#34;&gt;Hexo常见问题解决方案&lt;/a&gt;之中，但是由于步骤较多，理解起来比较困难，因此将本文独立出来单独成篇，以便于进行操作。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用Travis CI自动部署Hexo</title>
+      <link>https://xuanwo.org/2015/02/07/travis-ci-hexo-autodeploy/</link>
+      <pubDate>Sat, 07 Feb 2015 14:00:51 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2015/02/07/travis-ci-hexo-autodeploy/</guid>
+      <description>&lt;p&gt;前两天了解到了一个有趣的概念叫持续集成：
+&amp;gt; 持续集成是一种软件开发实践。在持续集成中，团队成员频繁集成他们的工作成果，一般每人每天至少集成一次，也可以多次。每次集成会经过自动构建（包括自动测试）的检验，以尽快发现集成错误。许多团队发现这种方法可以显著减少集成引起的问题，并可以加快团队合作软件开发的速度。这篇文章简要介绍了持续集成的技巧和它最新的应用。
+然后想到我的博客也恰好满足这样的需求，因为我的博客一旦有了修改，就必须要重新build并且部署，那么能不能用持续集成的思想来改造我部署博客的流程呢？&lt;/p&gt;
+
+&lt;p&gt;在这样的指导思想下，我完成了上一篇文章：&lt;a href=&#34;https://xuanwo.org/2015/02/05/VPS-Hexo-Autodeploy/&#34;&gt;VPS搭配Github Webhook实现Hexo自动发布&lt;/a&gt;，而今天我要介绍一下，在没有VPS的情况下，如何更方便的配置自己的持续集成的博客。&lt;/p&gt;
+
+&lt;h1 id=&#34;好处&#34;&gt;好处&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;方便：只需要一次配置，便省去了每一次编辑文档后，都需要进行&lt;code&gt;hexo d -g&lt;/code&gt;的麻烦，更不必说文章增多之后渲染时间还会增长。&lt;/li&gt;
+&lt;li&gt;稳定：这个是最近才发现的，Github被搞了之后，很多人反映不能更新博客了，使用&lt;code&gt;Travis CI&lt;/code&gt;，你只要想办法提交一个小md文档，就能进行构建。如果自己手动构建，只要一个文件上传失败，前面的工作都白费了。&lt;/li&gt;
+&lt;li&gt;快捷：即使是出差在外，只要能编辑Markdown，就可以撰写博客，使得Hexo拥有类似于WP一致的体验~&lt;/li&gt;
+&lt;li&gt;协作：博客的构建完全交由&lt;code&gt;Travis CI&lt;/code&gt;进行，所以完全可以通过&lt;code&gt;Hexo&lt;/code&gt;+&lt;code&gt;git&lt;/code&gt;构建一个多人协作的博客平台。实际上，Hexo的&lt;a href=&#34;https://hexo.io/&#34;&gt;官网&lt;/a&gt;正是这样构建的。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>VPS搭配Github Webhook实现Hexo自动发布</title>
+      <link>https://xuanwo.org/2015/02/05/vps-hexo-autodeploy/</link>
+      <pubDate>Thu, 05 Feb 2015 23:22:30 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2015/02/05/vps-hexo-autodeploy/</guid>
+      <description>&lt;p&gt;自从买了VPS之后，我的人生就多了一个需要思考的问题——我的VPS还能用来干嘛？然后想到Github有一个Webhook的功能，可以在每一次提交之后发送一个POST到指定的URL。那么，只要找一个办法获取这个POST，再执行指定的命令，可以实现Hexo的自动发布功能了。从此以后，不管在哪里，我只要修改我的md文件，push之后我的服务器就能自动进行编译并且部署了。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hexo常见问题解决方案</title>
+      <link>https://xuanwo.org/2014/08/14/hexo-usual-problem/</link>
+      <pubDate>Thu, 14 Aug 2014 05:20:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2014/08/14/hexo-usual-problem/</guid>
+      <description>&lt;h1 id=&#34;介绍&#34;&gt;介绍&lt;/h1&gt;
+
+&lt;p&gt;Hexo是一个非常好用的静态博客生成器，但是由于很多方面的原因，导致在使用过程中经常出现错误。这些错误中，有些是因为自己的设置不当，导致程序报错；有些是因为版本更迭，导致原有的设置失效；而有些，则是Hexo程序本身的BUG。
+本文旨在尽可能的解决前两类问题，缓解Hexo项目大量重复issues的现象。当然，我个人的力量是有限的，因此也希望使用Hexo的大家也能一起行动起来，通过&lt;a href=&#34;https://github.com/Xuanwo/xuanwo.github.io/pulls&#34;&gt;提交PR&lt;/a&gt;，&lt;a href=&#34;https://github.com/Xuanwo/xuanwo.github.io/issues&#34;&gt;发布issues&lt;/a&gt;或者在下方评论等形式参与到本文档的编辑中来。
+同时，也希望有能力的人可以将本文档翻译成英文，以帮助到更多的人。
+浏览时，使用&lt;code&gt;Ctrl+F&lt;/code&gt;搜索关键词或使用目录来定位问题。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;本文欢迎转载，但是恳请保留贡献者信息，谢谢。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Learn From Bug on Xuanwo&#39;s Blog</title>
+    <link>https://xuanwo.org/series/learn-from-bug/</link>
+    <description>Recent content in Learn From Bug on Xuanwo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 15 Apr 2018 15:07:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xuanwo.org/series/learn-from-bug/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Python 中的引用与拷贝</title>
+      <link>https://xuanwo.org/2018/04/15/reference-and-copy-in-python/</link>
+      <pubDate>Sun, 15 Apr 2018 15:07:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2018/04/15/reference-and-copy-in-python/</guid>
+      <description>&lt;p&gt;用户反馈使用 &lt;a href=&#34;https://github.com/yunify/qsctl&#34;&gt;qsctl&lt;/a&gt; 同步时文件内容不正确，调查后发现是对 Python 字典的错误使用导致了这个问题。这篇文章就来详细的介绍一下 Python 中的引用与拷贝。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python os walk 的坑</title>
+      <link>https://xuanwo.org/2018/04/01/python-os-walk/</link>
+      <pubDate>Sun, 01 Apr 2018 10:07:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2018/04/01/python-os-walk/</guid>
+      <description>&lt;p&gt;用户反馈使用在 windows 下使用 &lt;a href=&#34;https://github.com/yunify/qsctl&#34;&gt;qsctl&lt;/a&gt; 上传文件的时候会中断并抛出 &lt;code&gt;UnicodeDecodeError&lt;/code&gt; 异常，经过一番调查之后发现居然是 &lt;code&gt;os.walk&lt;/code&gt; 的坑。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

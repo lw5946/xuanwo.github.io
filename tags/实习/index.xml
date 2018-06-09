@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>实习 on Xuanwo&#39;s Blog</title>
+    <link>https://xuanwo.org/tags/%E5%AE%9E%E4%B9%A0/</link>
+    <description>Recent content in 实习 on Xuanwo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 29 May 2016 20:57:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xuanwo.org/tags/%E5%AE%9E%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>我从Qingchat中学到的教训</title>
+      <link>https://xuanwo.org/2016/05/29/learn-from-qingchat/</link>
+      <pubDate>Sun, 29 May 2016 20:57:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2016/05/29/learn-from-qingchat/</guid>
+      <description>&lt;p&gt;之前的一段时间一直在从事&lt;a href=&#34;https://github.com/Xuanwo/qingchat&#34;&gt;Qingchat&lt;/a&gt;的相关开发工作，这个项目是一个基于Mojo-Weixin提供的Rest API开发的一个微信机器人，承担了十余个群，上千人的微信直播活动。秉承着ACM训练出来的“暴力加乱搞”风格，我花了大概一个星期的课余时间，搞出了一个可用的版本。期间也迭代了很多次，既欣慰于Coding的力量，也苦恼于当初设计的不完善带来的种种问题。在这个项目即将大规模重构的前夕，我总结一下开发Qingchat的过程中的经验教训，希望自己能成为一个更好更聪明的Coder。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>基于Socket.io的虚拟计算机</title>
+      <link>https://xuanwo.org/2015/07/06/socket-vm/</link>
+      <pubDate>Mon, 06 Jul 2015 21:05:38 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2015/07/06/socket-vm/</guid>
+      <description>&lt;p&gt;基于Socket.io有很多特别强大的应用，socket.io官方提供的一个&lt;a href=&#34;http://socket.io/demos/computer/&#34;&gt;虚拟计算机Demo&lt;/a&gt;就非常赞。通过将使用Qemu虚拟取出来的PC界面转发至Socket.io的端口，然后对Canvas不断地进行绘制，形成了近似与远程操控的体验。我们&lt;a href=&#34;http://xuanwo.org/2015/06/30/together-project/&#34;&gt;Together项目&lt;/a&gt;用到了这个库，但由于这个库发布于很久之前，再加上相关文档过少，导致部署起来极为困难。所以我完成了这篇文章，希望能让后来人少走一些弯路。
+
+&lt;em&gt;下文基于Ubuntu 14.04 x64，其他系统请自行转换相应命令，谢谢~&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Teambition团队协作实践</title>
+      <link>https://xuanwo.org/2015/07/02/teambition-work/</link>
+      <pubDate>Thu, 02 Jul 2015 19:08:55 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2015/07/02/teambition-work/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://xuanwo.org/2015/06/30/together-project/&#34;&gt;Together&lt;/a&gt;团队组建完成后，一个现实的问题在于：我们怎么样进行协作。经过一番筛选之后，我选中了Teambition，一个简约但是够用的团队协作平台。我们团队围绕着我们的需求，基于Teambition建立了我们自己的协作平台。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Together网站项目设计</title>
+      <link>https://xuanwo.org/2015/06/30/together-project/</link>
+      <pubDate>Tue, 30 Jun 2015 11:08:47 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2015/06/30/together-project/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;本项目仍然处在设计阶段，一切变动以最终成果为准&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;团队介绍&#34;&gt;团队介绍&lt;/h1&gt;
+
+&lt;h2 id=&#34;团队分工&#34;&gt;团队分工&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;丁皓（组长），负责网站后端建设及维护（兼产品经理？）&lt;/li&gt;
+&lt;li&gt;满全勇，负责网站着陆页设计&amp;amp;文案&lt;/li&gt;
+&lt;li&gt;何壁伟，负责网站内容页设计&lt;/li&gt;
+&lt;li&gt;马可，担任网站首席体验师&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;协同工具&#34;&gt;协同工具&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;分工：&lt;a href=&#34;https://www.teambition.com/&#34;&gt;Teambition&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;交流：&lt;a href=&#34;http://www.qq.com/&#34;&gt;QQ&lt;/a&gt;，&lt;a href=&#34;https://jianliao.com/&#34;&gt;简聊&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;分享：&lt;a href=&#34;https://www.yinxiang.com/&#34;&gt;印象笔记&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
