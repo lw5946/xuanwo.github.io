@@ -24,7 +24,7 @@
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
-    <meta name="generator" content="Hugo 0.40.3" />
+    <meta name="generator" content="Hugo 0.37.1" />
 </head>
 
 
@@ -105,7 +105,7 @@
 <h2 id="样例">样例</h2>
 
 <p>docopt的使用非常简单，以Qingchat为例，你只需要在代码最开头加入：</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#4070a0">&#34;&#34;&#34;Qingchat CLI
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&#34;&#34;Qingchat CLI
 </span><span style="color:#4070a0">
 </span><span style="color:#4070a0">Usage:
 </span><span style="color:#4070a0">  qingchat config ip &lt;ip&gt;
@@ -123,27 +123,27 @@
 </span><span style="color:#4070a0">  -v --version     Show version.
 </span><span style="color:#4070a0">&#34;&#34;&#34;</span></code></pre></div>
 <p>然后在执行代码中加入：</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">arguments <span style="color:#666">=</span> docopt(__doc__, version<span style="color:#666">=</span><span style="color:#4070a0">&#39;Qingchat 0.3.2&#39;</span>)</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">arguments <span style="color:#666">=</span> docopt(__doc__, version<span style="color:#666">=</span><span style="color:#4070a0"></span><span style="color:#4070a0">&#39;Qingchat 0.3.2&#39;</span>)</code></pre></div>
 <p>就会在你的程序中导入一个<code>arguments</code>字典，这个字典中的内容形如：</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">{
-    <span style="color:#4070a0">&#39;-f&#39;</span>: False,
-    <span style="color:#4070a0">&#39;-i&#39;</span>: False,
-    <span style="color:#4070a0">&#39;-t&#39;</span>: False,
-    <span style="color:#4070a0">&#39;&lt;content&gt;&#39;</span>: None,
-    <span style="color:#4070a0">&#39;&lt;file&gt;&#39;</span>: None,
-    <span style="color:#4070a0">&#39;&lt;group_name&gt;&#39;</span>: [],
-    <span style="color:#4070a0">&#39;&lt;ip&gt;&#39;</span>: <span style="color:#4070a0">&#39;127.0.0.1&#39;</span>,
-    <span style="color:#4070a0">&#39;&lt;media&gt;&#39;</span>: None,
-    <span style="color:#4070a0">&#39;&lt;port&gt;&#39;</span>: None,
-    <span style="color:#4070a0">&#39;choose&#39;</span>: False,
-    <span style="color:#4070a0">&#39;clean&#39;</span>: False,
-    <span style="color:#4070a0">&#39;config&#39;</span>: True,
-    <span style="color:#4070a0">&#39;group&#39;</span>: False,
-    <span style="color:#4070a0">&#39;ip&#39;</span>: True,
-    <span style="color:#4070a0">&#39;list&#39;</span>: False,
-    <span style="color:#4070a0">&#39;login&#39;</span>: False,
-    <span style="color:#4070a0">&#39;port&#39;</span>: False,
-    <span style="color:#4070a0">&#39;send&#39;</span>: False
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;-f&#39;</span>: False,
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;-i&#39;</span>: False,
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;-t&#39;</span>: False,
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;&lt;content&gt;&#39;</span>: None,
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;&lt;file&gt;&#39;</span>: None,
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;&lt;group_name&gt;&#39;</span>: [],
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;&lt;ip&gt;&#39;</span>: <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;127.0.0.1&#39;</span>,
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;&lt;media&gt;&#39;</span>: None,
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;&lt;port&gt;&#39;</span>: None,
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;choose&#39;</span>: False,
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;clean&#39;</span>: False,
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;config&#39;</span>: True,
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;group&#39;</span>: False,
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;ip&#39;</span>: True,
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;list&#39;</span>: False,
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;login&#39;</span>: False,
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;port&#39;</span>: False,
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;send&#39;</span>: False
 }</code></pre></div>
 <p>这样应该就能很容易看出来，我们在文档中写的每一个短语，都被转化为一个对应的类型。只要直接调用<code>arguments['xxx']</code>就可以判断或者使用对应的值，从而实现对应的功能。</p>
 

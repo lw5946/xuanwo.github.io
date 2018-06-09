@@ -24,7 +24,7 @@
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
-    <meta name="generator" content="Hugo 0.40.3" />
+    <meta name="generator" content="Hugo 0.37.1" />
 </head>
 
 
@@ -114,27 +114,27 @@
 <h2 id="rss-模板的内容">RSS 模板的内容</h2>
 
 <p>忽略掉一些无关的细节，导致 RSS 输出的文章内容中只有摘要的是如下模板：</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go-html-template" data-lang="go-html-template"><span style="color:#007020">{{</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">range</span><span style="color:#bbb"> </span><span style="color:#4070a0">.Data.Pages</span><span style="color:#bbb"> </span><span style="color:#007020">}}</span>
-&lt;<span style="color:#062873;font-weight:bold">item</span>&gt;
-  &lt;<span style="color:#062873;font-weight:bold">title</span>&gt;<span style="color:#007020">{{</span><span style="color:#bbb"> </span><span style="color:#4070a0">.Title</span><span style="color:#bbb"> </span><span style="color:#007020">}}</span>&lt;/<span style="color:#062873;font-weight:bold">title</span>&gt;
-  &lt;<span style="color:#062873;font-weight:bold">link</span>&gt;<span style="color:#007020">{{</span><span style="color:#bbb"> </span><span style="color:#4070a0">.Permalink</span><span style="color:#bbb"> </span><span style="color:#007020">}}</span>&lt;/<span style="color:#062873;font-weight:bold">link</span>&gt;
-  &lt;<span style="color:#062873;font-weight:bold">pubDate</span>&gt;<span style="color:#007020">{{</span><span style="color:#bbb"> </span><span style="color:#4070a0">.Date.Format</span><span style="color:#bbb"> </span><span style="color:#4070a0">&#34;Mon, 02 Jan 2006 15:04:05 -0700&#34;</span><span style="color:#bbb"> </span><span style="color:#666">|</span><span style="color:#bbb"> </span>safeHTML<span style="color:#bbb"> </span><span style="color:#007020">}}</span>&lt;/<span style="color:#062873;font-weight:bold">pubDate</span>&gt;
-  <span style="color:#007020">{{</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">with</span><span style="color:#bbb"> </span><span style="color:#4070a0">.Site.Author.email</span><span style="color:#bbb"> </span><span style="color:#007020">}}</span>&lt;<span style="color:#062873;font-weight:bold">author</span>&gt;<span style="color:#007020">{{</span><span style="color:#4070a0">.</span><span style="color:#007020">}}{{</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">with</span><span style="color:#bbb"> </span><span style="color:#4070a0">$.Site.Author.name</span><span style="color:#bbb"> </span><span style="color:#007020">}}</span> (<span style="color:#007020">{{</span><span style="color:#4070a0">.</span><span style="color:#007020">}}</span>)<span style="color:#007020">{{</span><span style="color:#007020;font-weight:bold">end</span><span style="color:#007020">}}</span>&lt;/<span style="color:#062873;font-weight:bold">author</span>&gt;<span style="color:#007020">{{</span><span style="color:#007020;font-weight:bold">end</span><span style="color:#007020">}}</span>
-  &lt;<span style="color:#062873;font-weight:bold">guid</span>&gt;<span style="color:#007020">{{</span><span style="color:#bbb"> </span><span style="color:#4070a0">.Permalink</span><span style="color:#bbb"> </span><span style="color:#007020">}}</span>&lt;/<span style="color:#062873;font-weight:bold">guid</span>&gt;
-  &lt;<span style="color:#062873;font-weight:bold">description</span>&gt;<span style="color:#007020">{{</span><span style="color:#bbb"> </span><span style="color:#4070a0">.Summary</span><span style="color:#bbb"> </span><span style="color:#666">|</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">html</span><span style="color:#bbb"> </span><span style="color:#007020">}}</span>&lt;/<span style="color:#062873;font-weight:bold">description</span>&gt;
-&lt;/<span style="color:#062873;font-weight:bold">item</span>&gt;
-<span style="color:#007020">{{</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">end</span><span style="color:#bbb"> </span><span style="color:#007020">}}</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go-html-template" data-lang="go-html-template">{{ range .Data.Pages }}
+&lt;item&gt;
+  &lt;title&gt;{{ .Title }}&lt;/title&gt;
+  &lt;link&gt;{{ .Permalink }}&lt;/link&gt;
+  &lt;pubDate&gt;{{ .Date.Format &#34;Mon, 02 Jan 2006 15:04:05 -0700&#34; | safeHTML }}&lt;/pubDate&gt;
+  {{ with .Site.Author.email }}&lt;author&gt;{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}&lt;/author&gt;{{end}}
+  &lt;guid&gt;{{ .Permalink }}&lt;/guid&gt;
+  &lt;description&gt;{{ .Summary | html }}&lt;/description&gt;
+&lt;/item&gt;
+{{ end }}</code></pre></div>
 <p><code>.Summary</code> 引用的是文章的摘要部分，只要将其替换为 <code>.Content</code> 就能输出文章的完整内容。但是默认情况下，Hugo 会在 RSS Feed 中输出所有文章，如果输出完整内容的话，这个 Feed 会特别大，因此需要想办法限制一下展示的文章数量。继续 RTFM，<a href="https://gohugo.io/functions/first/">此处</a> 描述了一个叫 <code>first</code> 的方法，跟 <code>range</code> 搭配起来之后可以起到切片的作用。这样就能够得到如下的模板：</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go-html-template" data-lang="go-html-template"><span style="color:#007020">{{</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">range</span><span style="color:#bbb"> </span>first<span style="color:#bbb"> </span>10<span style="color:#bbb"> </span><span style="color:#4070a0">.Data.Pages</span><span style="color:#bbb"> </span><span style="color:#007020">}}</span>
-&lt;<span style="color:#062873;font-weight:bold">item</span>&gt;
-  &lt;<span style="color:#062873;font-weight:bold">title</span>&gt;<span style="color:#007020">{{</span><span style="color:#bbb"> </span><span style="color:#4070a0">.Title</span><span style="color:#bbb"> </span><span style="color:#007020">}}</span>&lt;/<span style="color:#062873;font-weight:bold">title</span>&gt;
-  &lt;<span style="color:#062873;font-weight:bold">link</span>&gt;<span style="color:#007020">{{</span><span style="color:#bbb"> </span><span style="color:#4070a0">.Permalink</span><span style="color:#bbb"> </span><span style="color:#007020">}}</span>&lt;/<span style="color:#062873;font-weight:bold">link</span>&gt;
-  &lt;<span style="color:#062873;font-weight:bold">pubDate</span>&gt;<span style="color:#007020">{{</span><span style="color:#bbb"> </span><span style="color:#4070a0">.Date.Format</span><span style="color:#bbb"> </span><span style="color:#4070a0">&#34;Mon, 02 Jan 2006 15:04:05 -0700&#34;</span><span style="color:#bbb"> </span><span style="color:#666">|</span><span style="color:#bbb"> </span>safeHTML<span style="color:#bbb"> </span><span style="color:#007020">}}</span>&lt;/<span style="color:#062873;font-weight:bold">pubDate</span>&gt;
-  <span style="color:#007020">{{</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">with</span><span style="color:#bbb"> </span><span style="color:#4070a0">.Site.Author.email</span><span style="color:#bbb"> </span><span style="color:#007020">}}</span>&lt;<span style="color:#062873;font-weight:bold">author</span>&gt;<span style="color:#007020">{{</span><span style="color:#4070a0">.</span><span style="color:#007020">}}{{</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">with</span><span style="color:#bbb"> </span><span style="color:#4070a0">$.Site.Author.name</span><span style="color:#bbb"> </span><span style="color:#007020">}}</span> (<span style="color:#007020">{{</span><span style="color:#4070a0">.</span><span style="color:#007020">}}</span>)<span style="color:#007020">{{</span><span style="color:#007020;font-weight:bold">end</span><span style="color:#007020">}}</span>&lt;/<span style="color:#062873;font-weight:bold">author</span>&gt;<span style="color:#007020">{{</span><span style="color:#007020;font-weight:bold">end</span><span style="color:#007020">}}</span>
-  &lt;<span style="color:#062873;font-weight:bold">guid</span>&gt;<span style="color:#007020">{{</span><span style="color:#bbb"> </span><span style="color:#4070a0">.Permalink</span><span style="color:#bbb"> </span><span style="color:#007020">}}</span>&lt;/<span style="color:#062873;font-weight:bold">guid</span>&gt;
-  &lt;<span style="color:#062873;font-weight:bold">description</span>&gt;<span style="color:#007020">{{</span><span style="color:#bbb"> </span><span style="color:#4070a0">.Content</span><span style="color:#bbb"> </span><span style="color:#666">|</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">html</span><span style="color:#bbb"> </span><span style="color:#007020">}}</span>&lt;/<span style="color:#062873;font-weight:bold">description</span>&gt;
-&lt;/<span style="color:#062873;font-weight:bold">item</span>&gt;
-<span style="color:#007020">{{</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">end</span><span style="color:#bbb"> </span><span style="color:#007020">}}</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go-html-template" data-lang="go-html-template">{{ range first 10 .Data.Pages }}
+&lt;item&gt;
+  &lt;title&gt;{{ .Title }}&lt;/title&gt;
+  &lt;link&gt;{{ .Permalink }}&lt;/link&gt;
+  &lt;pubDate&gt;{{ .Date.Format &#34;Mon, 02 Jan 2006 15:04:05 -0700&#34; | safeHTML }}&lt;/pubDate&gt;
+  {{ with .Site.Author.email }}&lt;author&gt;{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}&lt;/author&gt;{{end}}
+  &lt;guid&gt;{{ .Permalink }}&lt;/guid&gt;
+  &lt;description&gt;{{ .Content | html }}&lt;/description&gt;
+&lt;/item&gt;
+{{ end }}</code></pre></div>
 <p>完整的模板可以参见 commit: <a href="https://github.com/Xuanwo/xuanwo.github.io/commit/80347d6e7868f4443170fe926a762d496b736944">https://github.com/Xuanwo/xuanwo.github.io/commit/80347d6e7868f4443170fe926a762d496b736944</a></p>
 
 <h2 id="动态">动态</h2>

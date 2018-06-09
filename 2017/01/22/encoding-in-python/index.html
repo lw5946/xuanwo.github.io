@@ -24,7 +24,7 @@
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
-    <meta name="generator" content="Hugo 0.40.3" />
+    <meta name="generator" content="Hugo 0.37.1" />
 </head>
 
 
@@ -167,15 +167,15 @@ SyntaxError: Non-ASCII character <span style="color:#4070a0">&#39;\xe6&#39;</spa
 <p>Python 2 中默认用来编解码的同样是 ASCII ，在不指定 <code>UTF-8</code> 来解码的时候就会发生这样的错误：</p>
 
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#60a0b0;font-style:italic"># python 2.7.13</span>
-<span style="color:#666">&gt;&gt;&gt;</span> <span style="color:#4070a0">&#34;测试&#34;</span><span style="color:#666">.</span>decode()
+<span style="color:#666">&gt;&gt;&gt;</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;测试&#34;</span><span style="color:#666">.</span>decode()
 Traceback (most recent call last):
-  File <span style="color:#4070a0">&#34;&lt;stdin&gt;&#34;</span>, line <span style="color:#40a070">1</span>, <span style="color:#007020;font-weight:bold">in</span> <span style="color:#666">&lt;</span>module<span style="color:#666">&gt;</span>
-<span style="color:#007020">UnicodeDecodeError</span>: <span style="color:#4070a0">&#39;ascii&#39;</span> codec can<span style="color:#4070a0">&#39;t decode byte 0xe6 in position 0: ordinal not in range(128)</span></code></pre></div>
+  File <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&lt;stdin&gt;&#34;</span>, line <span style="color:#40a070">1</span>, <span style="color:#007020;font-weight:bold">in</span> <span style="color:#666">&lt;</span>module<span style="color:#666">&gt;</span>
+<span style="color:#007020">UnicodeDecodeError</span>: <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;ascii&#39;</span> codec can<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;t decode byte 0xe6 in position 0: ordinal not in range(128)</span></code></pre></div>
 
 <p>只需要指定正确的编码即可：</p>
 
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#60a0b0;font-style:italic"># python 2.7.13</span>
-<span style="color:#666">&gt;&gt;&gt;</span> <span style="color:#4070a0">&#34;测试&#34;</span><span style="color:#666">.</span>decode(<span style="color:#4070a0">&#34;utf-8&#34;</span>)
+<span style="color:#666">&gt;&gt;&gt;</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;测试&#34;</span><span style="color:#666">.</span>decode(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;utf-8&#34;</span>)
 <span style="color:#4070a0">u</span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0;font-weight:bold">\u6d4b\u8bd5</span><span style="color:#4070a0">&#39;</span></code></pre></div>
 
 <h3 id="隐含的编解码转换">隐含的编解码转换</h3>
@@ -183,19 +183,19 @@ Traceback (most recent call last):
 <p>很常见的一种错误是Python的隐式类型转换导致的。比如：</p>
 
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#60a0b0;font-style:italic"># python 2.7.13</span>
-<span style="color:#666">&gt;&gt;&gt;</span> <span style="color:#4070a0">&#34;测试&#34;</span><span style="color:#666">.</span>encode()
+<span style="color:#666">&gt;&gt;&gt;</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;测试&#34;</span><span style="color:#666">.</span>encode()
 Traceback (most recent call last):
-  File <span style="color:#4070a0">&#34;&lt;stdin&gt;&#34;</span>, line <span style="color:#40a070">1</span>, <span style="color:#007020;font-weight:bold">in</span> <span style="color:#666">&lt;</span>module<span style="color:#666">&gt;</span>
-<span style="color:#007020">UnicodeDecodeError</span>: <span style="color:#4070a0">&#39;ascii&#39;</span> codec can<span style="color:#4070a0">&#39;t decode byte 0xe6 in position 0: ordinal not in range(128)</span></code></pre></div>
+  File <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&lt;stdin&gt;&#34;</span>, line <span style="color:#40a070">1</span>, <span style="color:#007020;font-weight:bold">in</span> <span style="color:#666">&lt;</span>module<span style="color:#666">&gt;</span>
+<span style="color:#007020">UnicodeDecodeError</span>: <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;ascii&#39;</span> codec can<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;t decode byte 0xe6 in position 0: ordinal not in range(128)</span></code></pre></div>
 
 <p>第一次接触到这种错误的时候会有一种荒谬感，明明自己在做<code>encode()</code>操作，为什么报了一个<code>UnicodeDecodeError</code>？
 这是因为 python 在调用 <code>str.encode()</code> 的时候，实际上做的操作是 <code>str.decode().encode()</code>。</p>
 
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#60a0b0;font-style:italic"># python 2.7.13</span>
-<span style="color:#666">&gt;&gt;&gt;</span> <span style="color:#4070a0">&#34;测试&#34;</span><span style="color:#666">.</span>decode()<span style="color:#666">.</span>encode()
+<span style="color:#666">&gt;&gt;&gt;</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;测试&#34;</span><span style="color:#666">.</span>decode()<span style="color:#666">.</span>encode()
 Traceback (most recent call last):
-  File <span style="color:#4070a0">&#34;&lt;stdin&gt;&#34;</span>, line <span style="color:#40a070">1</span>, <span style="color:#007020;font-weight:bold">in</span> <span style="color:#666">&lt;</span>module<span style="color:#666">&gt;</span>
-<span style="color:#007020">UnicodeDecodeError</span>: <span style="color:#4070a0">&#39;ascii&#39;</span> codec can<span style="color:#4070a0">&#39;t decode byte 0xe6 in position 0: ordinal not in range(128)</span></code></pre></div>
+  File <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&lt;stdin&gt;&#34;</span>, line <span style="color:#40a070">1</span>, <span style="color:#007020;font-weight:bold">in</span> <span style="color:#666">&lt;</span>module<span style="color:#666">&gt;</span>
+<span style="color:#007020">UnicodeDecodeError</span>: <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;ascii&#39;</span> codec can<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;t decode byte 0xe6 in position 0: ordinal not in range(128)</span></code></pre></div>
 
 <p>回忆一下字符串与字节流的关系，字符串编码为字节流，字节流解码为字符串。对一个字节流进行编码，实际上是先解码成为字符串，再编码为字节流。Python 中存在着很多这样的隐式转换，包括字符串的比较、拼接、替换，读写文件，print等。遇到这样的问题的时候需要查阅Python的文档，弄清楚到底传入和返回的是什么数据类型再做判断。</p>
 
@@ -203,10 +203,10 @@ Traceback (most recent call last):
 
 <p>这种问题比较多见在 Windows 平台上：</p>
 
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#666">&gt;&gt;&gt;</span> <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;™&#34;</span>)
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#666">&gt;&gt;&gt;</span> <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;™&#34;</span>)
 Traceback (most recent call last):
-  File <span style="color:#4070a0">&#34;&lt;stdin&gt;&#34;</span>, line <span style="color:#40a070">1</span>, <span style="color:#007020;font-weight:bold">in</span> <span style="color:#666">&lt;</span>module<span style="color:#666">&gt;</span>
-<span style="color:#007020">UnicodeEncodeError</span>: <span style="color:#4070a0">&#39;gbk&#39;</span> codec can<span style="color:#4070a0">&#39;t encode character &#39;</span>\u2122<span style="color:#4070a0">&#39; in position 43: illegal multibyte sequence</span></code></pre></div>
+  File <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&lt;stdin&gt;&#34;</span>, line <span style="color:#40a070">1</span>, <span style="color:#007020;font-weight:bold">in</span> <span style="color:#666">&lt;</span>module<span style="color:#666">&gt;</span>
+<span style="color:#007020">UnicodeEncodeError</span>: <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;gbk&#39;</span> codec can<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;t encode character &#39;</span>\u2122<span style="color:#4070a0"></span><span style="color:#4070a0">&#39; in position 43: illegal multibyte sequence</span></code></pre></div>
 
 <blockquote>
 <p>最神奇的地方在于，Windows自己是可以在CMD中显示 <code>™</code> 的，这个字符还可以用做合法的 Windows 文件名，但是这个字符并不在 gbk 字符集中。</p>
@@ -236,14 +236,14 @@ Traceback (most recent call last):
 
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">if</span> is_python2:
     endpoint <span style="color:#666">=</span> endpoint<span style="color:#666">.</span>replace(
-        <span style="color:#4070a0">&#34;&lt;</span><span style="color:#70a0d0;font-style:italic">%s</span><span style="color:#4070a0">&gt;&#34;</span> <span style="color:#666">%</span> k, quote(<span style="color:#007020">unicode</span>(v)<span style="color:#666">.</span>encode(<span style="color:#4070a0">&#34;utf-8&#34;</span>))
+        <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&lt;</span><span style="color:#70a0d0;font-style:italic">%s</span><span style="color:#4070a0">&gt;&#34;</span> <span style="color:#666">%</span> k, quote(<span style="color:#007020">unicode</span>(v)<span style="color:#666">.</span>encode(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;utf-8&#34;</span>))
     )
     request_uri <span style="color:#666">=</span> request_uri<span style="color:#666">.</span>replace(
-        <span style="color:#4070a0">&#34;&lt;</span><span style="color:#70a0d0;font-style:italic">%s</span><span style="color:#4070a0">&gt;&#34;</span> <span style="color:#666">%</span> k, quote(<span style="color:#007020">unicode</span>(v)<span style="color:#666">.</span>encode(<span style="color:#4070a0">&#34;utf-8&#34;</span>))
+        <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&lt;</span><span style="color:#70a0d0;font-style:italic">%s</span><span style="color:#4070a0">&gt;&#34;</span> <span style="color:#666">%</span> k, quote(<span style="color:#007020">unicode</span>(v)<span style="color:#666">.</span>encode(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;utf-8&#34;</span>))
     )
 <span style="color:#007020;font-weight:bold">elif</span> is_python3:
-    endpoint <span style="color:#666">=</span> endpoint<span style="color:#666">.</span>replace(<span style="color:#4070a0">&#34;&lt;</span><span style="color:#70a0d0;font-style:italic">%s</span><span style="color:#4070a0">&gt;&#34;</span> <span style="color:#666">%</span> k, quote(<span style="color:#007020">str</span>(v)))
-    request_uri <span style="color:#666">=</span> request_uri<span style="color:#666">.</span>replace(<span style="color:#4070a0">&#34;&lt;</span><span style="color:#70a0d0;font-style:italic">%s</span><span style="color:#4070a0">&gt;&#34;</span> <span style="color:#666">%</span> k, quote(<span style="color:#007020">str</span>(v)))</code></pre></div>
+    endpoint <span style="color:#666">=</span> endpoint<span style="color:#666">.</span>replace(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&lt;</span><span style="color:#70a0d0;font-style:italic">%s</span><span style="color:#4070a0">&gt;&#34;</span> <span style="color:#666">%</span> k, quote(<span style="color:#007020">str</span>(v)))
+    request_uri <span style="color:#666">=</span> request_uri<span style="color:#666">.</span>replace(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&lt;</span><span style="color:#70a0d0;font-style:italic">%s</span><span style="color:#4070a0">&gt;&#34;</span> <span style="color:#666">%</span> k, quote(<span style="color:#007020">str</span>(v)))</code></pre></div>
 
 <p>这里传入的 v 可能是数字，也有可能是 <code>unicode</code> 。在 Python 2 中，如果全都使用 <code>str</code> 来做强制类型转换，很有可能导致 <code>UnicodeEncodeError</code> 错误。因此需要先转换为 <code>unicode</code> 类型再 <code>encode</code> 成为 <code>str</code> 然后再传入 <code>quote()</code> 函数。在Python 3中就简单多了，直接转换为 <code>str</code> 即可。</p>
 

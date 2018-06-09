@@ -24,7 +24,7 @@
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
-    <meta name="generator" content="Hugo 0.40.3" />
+    <meta name="generator" content="Hugo 0.37.1" />
 </head>
 
 
@@ -171,7 +171,7 @@ __interrupt <span style="color:#902000">void</span> <span style="color:#06287e">
     rec <span style="color:#666">=</span> UCA0RXBUF;
     <span style="color:#60a0b0;font-style:italic">//读取到缓冲区
 </span><span style="color:#60a0b0;font-style:italic"></span>    strtmp[strlen<span style="color:#666">++</span>] <span style="color:#666">=</span> rec;
-    strtmp[strlen] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;\0&#39;</span>;
+    strtmp[strlen] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;\0&#39;</span>;
     <span style="color:#60a0b0;font-style:italic">//切换模式
 </span><span style="color:#60a0b0;font-style:italic"></span>    mode <span style="color:#666">=</span> strtmp[<span style="color:#40a070">0</span>];
 }
@@ -186,7 +186,7 @@ __interrupt <span style="color:#902000">void</span> <span style="color:#06287e">
 </span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#902000">void</span> <span style="color:#06287e">Send_Str</span>(<span style="color:#902000">char</span> <span style="color:#666">*</span>p) {
     <span style="color:#902000">unsigned</span> <span style="color:#902000">char</span> i;
     i <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
-    <span style="color:#007020;font-weight:bold">while</span> (<span style="color:#666">*</span>(p <span style="color:#666">+</span> i) <span style="color:#666">!=</span> <span style="color:#4070a0">&#39;\0&#39;</span>) {
+    <span style="color:#007020;font-weight:bold">while</span> (<span style="color:#666">*</span>(p <span style="color:#666">+</span> i) <span style="color:#666">!=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;\0&#39;</span>) {
         <span style="color:#007020;font-weight:bold">while</span> (<span style="color:#666">!</span>(IFG2 <span style="color:#666">&amp;</span> UCA0TXIFG));
         UCA0TXBUF <span style="color:#666">=</span> <span style="color:#666">*</span>(p <span style="color:#666">+</span> i);
         i<span style="color:#666">++</span>;
@@ -206,7 +206,7 @@ __interrupt <span style="color:#902000">void</span> <span style="color:#06287e">
 <h2 id="串口输出异常">串口输出异常</h2>
 
 <p>前面提到我们直接使用三个变量保存当前时间，在输出时做进一步处理，转为字符串的过程中，我们进行了这样的操作：</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">Time[<span style="color:#40a070">0</span>] <span style="color:#666">=</span> hour <span style="color:#666">/</span> <span style="color:#40a070">10</span> <span style="color:#666">+</span> <span style="color:#4070a0">&#39;0&#39;</span>;</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">Time[<span style="color:#40a070">0</span>] <span style="color:#666">=</span> hour <span style="color:#666">/</span> <span style="color:#40a070">10</span> <span style="color:#666">+</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;0&#39;</span>;</code></pre></div>
 <p>但有趣的事情是，在初始化之后，我们得到的输出是这样的： <code>0/:0/:0/</code> 。随手输出了一下 <code>/</code> 的 ASCII 码，发现它刚好比 <code>0</code> 小一。</p>
 
 <p>难道说，存储器中的默认值不是 0 吗？ Google 一下之后发现，还真的不是 0 。 MSP430G2553 中的 Flash 存储器在默认状态下的值全为 1 ，然后写入时只能将 1 置为 0 ，所以每一次写入数据都需要先清空再写入。那么问题来了，为什么全为 1 会导致最后输出的结果小 1 呢？我来简单的阐述一下我的理解：</p>

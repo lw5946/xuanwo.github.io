@@ -24,7 +24,7 @@
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
-    <meta name="generator" content="Hugo 0.40.3" />
+    <meta name="generator" content="Hugo 0.37.1" />
 </head>
 
 
@@ -107,37 +107,37 @@
 &gt;&gt;&gt; qsctl sync ./ qs://xxxxxx</code></pre></div>
 <p>抛出来的异常如下：</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">Traceback (most recent call last):
-  File <span style="color:#4070a0">&#34;/home/xuanwo/.pyenv/versions/2.7.13/bin/qsctl&#34;</span>, line <span style="color:#40a070">27</span>, <span style="color:#007020;font-weight:bold">in</span> <span style="color:#666">&lt;</span>module<span style="color:#666">&gt;</span>
+  File <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;/home/xuanwo/.pyenv/versions/2.7.13/bin/qsctl&#34;</span>, line <span style="color:#40a070">27</span>, <span style="color:#007020;font-weight:bold">in</span> <span style="color:#666">&lt;</span>module<span style="color:#666">&gt;</span>
     sys<span style="color:#666">.</span><span style="color:#007020">exit</span>(main())
-  File <span style="color:#4070a0">&#34;/home/xuanwo/.pyenv/versions/2.7.13/bin/qsctl&#34;</span>, line <span style="color:#40a070">24</span>, <span style="color:#007020;font-weight:bold">in</span> main
+  File <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;/home/xuanwo/.pyenv/versions/2.7.13/bin/qsctl&#34;</span>, line <span style="color:#40a070">24</span>, <span style="color:#007020;font-weight:bold">in</span> main
     <span style="color:#007020;font-weight:bold">return</span> qingstor<span style="color:#666">.</span>qsctl<span style="color:#666">.</span>driver<span style="color:#666">.</span>main()
-  File <span style="color:#4070a0">&#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/site-packages/qingstor/qsctl/driver.py&#34;</span>, line <span style="color:#40a070">100</span>, <span style="color:#007020;font-weight:bold">in</span> main
+  File <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/site-packages/qingstor/qsctl/driver.py&#34;</span>, line <span style="color:#40a070">100</span>, <span style="color:#007020;font-weight:bold">in</span> main
     command<span style="color:#666">.</span>main(args[<span style="color:#40a070">2</span>:])
-  File <span style="color:#4070a0">&#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/site-packages/qingstor/qsctl/commands/base.py&#34;</span>, line <span style="color:#40a070">276</span>, <span style="color:#007020;font-weight:bold">in</span> main
+  File <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/site-packages/qingstor/qsctl/commands/base.py&#34;</span>, line <span style="color:#40a070">276</span>, <span style="color:#007020;font-weight:bold">in</span> main
     <span style="color:#007020;font-weight:bold">return</span> cls<span style="color:#666">.</span>send_request()
-  File <span style="color:#4070a0">&#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/site-packages/qingstor/qsctl/commands/transfer.py&#34;</span>, line <span style="color:#40a070">546</span>, <span style="color:#007020;font-weight:bold">in</span> send_request
+  File <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/site-packages/qingstor/qsctl/commands/transfer.py&#34;</span>, line <span style="color:#40a070">546</span>, <span style="color:#007020;font-weight:bold">in</span> send_request
     cls<span style="color:#666">.</span>upload_files()
-  File <span style="color:#4070a0">&#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/site-packages/qingstor/qsctl/commands/transfer.py&#34;</span>, line <span style="color:#40a070">165</span>, <span style="color:#007020;font-weight:bold">in</span> upload_files
+  File <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/site-packages/qingstor/qsctl/commands/transfer.py&#34;</span>, line <span style="color:#40a070">165</span>, <span style="color:#007020;font-weight:bold">in</span> upload_files
     <span style="color:#007020;font-weight:bold">for</span> rt, dirs, files <span style="color:#007020;font-weight:bold">in</span> os<span style="color:#666">.</span>walk(source_path):
-  File <span style="color:#4070a0">&#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/os.py&#34;</span>, line <span style="color:#40a070">286</span>, <span style="color:#007020;font-weight:bold">in</span> walk
+  File <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/os.py&#34;</span>, line <span style="color:#40a070">286</span>, <span style="color:#007020;font-weight:bold">in</span> walk
     <span style="color:#007020;font-weight:bold">if</span> isdir(join(top, name)):
-  File <span style="color:#4070a0">&#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/posixpath.py&#34;</span>, line <span style="color:#40a070">71</span>, <span style="color:#007020;font-weight:bold">in</span> join
+  File <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/posixpath.py&#34;</span>, line <span style="color:#40a070">71</span>, <span style="color:#007020;font-weight:bold">in</span> join
     path <span style="color:#666">+=</span>  b
-<span style="color:#007020">UnicodeDecodeError</span>: <span style="color:#4070a0">&#39;ascii&#39;</span> codec can<span style="color:#4070a0">&#39;t decode byte 0x8b in position 0: ordinal not in range(128)</span></code></pre></div>
+<span style="color:#007020">UnicodeDecodeError</span>: <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;ascii&#39;</span> codec can<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;t decode byte 0x8b in position 0: ordinal not in range(128)</span></code></pre></div>
 <p>之前写过的一篇关于 Python 字符串的<a href="https://xuanwo.org/2017/01/22/encoding-in-python/">文章</a> 曾经分析过类似的问题，Python 2 在进行字符串比较、拼接、替换时，会进行隐式的类型转换。通过查看 <code>posixpath.py</code> 的源码，可以定位到报错的地方：</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">join</span>(a, <span style="color:#666">*</span>p):
-    <span style="color:#4070a0">&#34;&#34;&#34;Join two or more pathname components, inserting &#39;/&#39; as needed.
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&#34;&#34;Join two or more pathname components, inserting &#39;/&#39; as needed.
 </span><span style="color:#4070a0">    If any component is an absolute path, all previous path components
 </span><span style="color:#4070a0">    will be discarded.  An empty last part will result in a path that
 </span><span style="color:#4070a0">    ends with a separator.&#34;&#34;&#34;</span>
     path <span style="color:#666">=</span> a
     <span style="color:#007020;font-weight:bold">for</span> b <span style="color:#007020;font-weight:bold">in</span> p:
-        <span style="color:#007020;font-weight:bold">if</span> b<span style="color:#666">.</span>startswith(<span style="color:#4070a0">&#39;/&#39;</span>):
+        <span style="color:#007020;font-weight:bold">if</span> b<span style="color:#666">.</span>startswith(<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;/&#39;</span>):
             path <span style="color:#666">=</span> b
-        <span style="color:#007020;font-weight:bold">elif</span> path <span style="color:#666">==</span> <span style="color:#4070a0">&#39;&#39;</span> <span style="color:#007020;font-weight:bold">or</span> path<span style="color:#666">.</span>endswith(<span style="color:#4070a0">&#39;/&#39;</span>):
+        <span style="color:#007020;font-weight:bold">elif</span> path <span style="color:#666">==</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;&#39;</span> <span style="color:#007020;font-weight:bold">or</span> path<span style="color:#666">.</span>endswith(<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;/&#39;</span>):
             path <span style="color:#666">+=</span>  b <span style="color:#60a0b0;font-style:italic"># This is line 71.</span>
         <span style="color:#007020;font-weight:bold">else</span>:
-            path <span style="color:#666">+=</span> <span style="color:#4070a0">&#39;/&#39;</span> <span style="color:#666">+</span> b
+            path <span style="color:#666">+=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;/&#39;</span> <span style="color:#666">+</span> b
     <span style="color:#007020;font-weight:bold">return</span> path</code></pre></div>
 <p>在 Python 2 下，str 与 unicode 相加，str 会做一次 decode() 转换为 unicode 再相加。也就是说此处报错是因为 path 和 b 的类型不一致导致出现了本不该出现的一次 decode()。顺着代码继续分析，path 和 b 是上层传入的 top 和 name，而这一层的调用是在 os 包的内部进行的。也就是说，os.walk 在处理过程中并没有严格遵循保持类型一致的不成文约定，而是在传入 unicode 的情况下，出现了 str 类型。知道了问题出在 <code>os.walk</code>，接下来再看看 <code>os.walk</code> 的实现就能明白问题的所在了：</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">walk</span>(top, func, arg):

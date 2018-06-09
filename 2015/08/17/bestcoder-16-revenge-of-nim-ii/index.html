@@ -24,7 +24,7 @@
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
-    <meta name="generator" content="Hugo 0.40.3" />
+    <meta name="generator" content="Hugo 0.37.1" />
 </head>
 
 
@@ -120,7 +120,9 @@
 ll a[maxn];
 <span style="color:#902000">int</span> mat[maxm][maxm];
 
-<span style="color:#902000">int</span> <span style="color:#06287e">rnk</span>(<span style="color:#902000">int</span> mat[][maxm], <span style="color:#902000">int</span> n, <span style="color:#902000">int</span> m)
+<span style="color:#902000">int</span> 
+<span style="color:#06287e">rnk</span>(<span style="color:#902000">int</span> mat[][maxm], <span style="color:#902000">int</span> n, <span style="color:#902000">int</span> m)
+
 {
     <span style="color:#902000">int</span> ret <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
     <span style="color:#007020;font-weight:bold">for</span> (<span style="color:#902000">int</span> i <span style="color:#666">=</span> <span style="color:#40a070">0</span>, it <span style="color:#666">=</span> <span style="color:#40a070">0</span>; i <span style="color:#666">&lt;</span> n <span style="color:#666">&amp;&amp;</span> it <span style="color:#666">&lt;</span> m; <span style="color:#666">++</span>it)
@@ -158,22 +160,24 @@ ll a[maxn];
     <span style="color:#007020;font-weight:bold">return</span> ret;
 }
 
-<span style="color:#902000">int</span> <span style="color:#06287e">main</span>()
+<span style="color:#902000">int</span> 
+<span style="color:#06287e">main</span>()
+
 {
-    scanf(<span style="color:#4070a0">&#34;%d&#34;</span>, <span style="color:#666">&amp;</span>t);
+    scanf(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;%d&#34;</span>, <span style="color:#666">&amp;</span>t);
     <span style="color:#007020;font-weight:bold">while</span> (t<span style="color:#666">--</span>)
     {
         ll sum <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
         memset(mat, <span style="color:#40a070">0</span>, <span style="color:#007020;font-weight:bold">sizeof</span>(mat));
-        scanf(<span style="color:#4070a0">&#34;%d&#34;</span>, <span style="color:#666">&amp;</span>n);
+        scanf(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;%d&#34;</span>, <span style="color:#666">&amp;</span>n);
         <span style="color:#007020;font-weight:bold">for</span> (<span style="color:#902000">int</span> i <span style="color:#666">=</span> <span style="color:#40a070">0</span>; i <span style="color:#666">&lt;</span> n; <span style="color:#666">++</span>i)
         {
-            scanf(<span style="color:#4070a0">&#34;%I64d&#34;</span>, <span style="color:#666">&amp;</span>a[i]);
+            scanf(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;%I64d&#34;</span>, <span style="color:#666">&amp;</span>a[i]);
             sum <span style="color:#666">^=</span> a[i];
         }
         <span style="color:#007020;font-weight:bold">if</span> (sum <span style="color:#666">==</span> <span style="color:#40a070">0</span> <span style="color:#666">||</span> n <span style="color:#666">&gt;</span> maxm)
         {
-            printf(<span style="color:#4070a0">&#34;Yes</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>);
+            printf(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;Yes</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>);
             <span style="color:#007020;font-weight:bold">continue</span>;
         }
         <span style="color:#007020;font-weight:bold">for</span> (<span style="color:#902000">int</span> i <span style="color:#666">=</span> <span style="color:#40a070">0</span>; i <span style="color:#666">&lt;</span> n; <span style="color:#666">++</span>i)
@@ -184,8 +188,8 @@ ll a[maxn];
             }
         }
         <span style="color:#902000">int</span> ret <span style="color:#666">=</span> rnk(mat, n, maxm);
-        <span style="color:#007020;font-weight:bold">if</span> (ret <span style="color:#666">&lt;</span> n)  printf(<span style="color:#4070a0">&#34;Yes</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>);
-        <span style="color:#007020;font-weight:bold">else</span> printf(<span style="color:#4070a0">&#34;No</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>);
+        <span style="color:#007020;font-weight:bold">if</span> (ret <span style="color:#666">&lt;</span> n)  printf(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;Yes</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>);
+        <span style="color:#007020;font-weight:bold">else</span> printf(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;No</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>);
     }
     <span style="color:#007020;font-weight:bold">return</span> <span style="color:#40a070">0</span>;
 }

@@ -24,7 +24,7 @@
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
-    <meta name="generator" content="Hugo 0.40.3" />
+    <meta name="generator" content="Hugo 0.37.1" />
 </head>
 
 
@@ -131,22 +131,22 @@
 <p>这个问题纯粹是因为一直以来都是一个脚本Boy，没有系统性的学习过软件开发导致的。很显然，按照我原来的代码去产生实例，就会导致循环导入的错误。想要解决这样的问题，就需要使用工厂函数去生成实例，而不是自己去生成它。</p>
 
 <p>在<code>__init__.py</code>中添加一个<code>create_app()</code>函数，在函数中进行参数配置，初始化和导入蓝图的操作：</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">bps <span style="color:#666">=</span> [<span style="color:#4070a0">&#39;jade_ims.views.dashboard:dashboard&#39;</span>,
-       <span style="color:#4070a0">&#39;jade_ims.views.install:install&#39;</span>,
-       <span style="color:#4070a0">&#39;jade_ims.views.login:login&#39;</span>,
-       <span style="color:#4070a0">&#39;jade_ims.views.sale:sale&#39;</span>,
-       <span style="color:#4070a0">&#39;jade_ims.views.customer:customer&#39;</span>,
-       <span style="color:#4070a0">&#39;jade_ims.views.purchase.inputbill:inputbill&#39;</span>,
-       <span style="color:#4070a0">&#39;jade_ims.views.purchase.supplier:supplier&#39;</span>,
-       <span style="color:#4070a0">&#39;jade_ims.views.stock.enterstockbill:enterstockbill&#39;</span>,
-       <span style="color:#4070a0">&#39;jade_ims.views.stock.leavestockbill:leavestockbill&#39;</span>,
-       <span style="color:#4070a0">&#39;jade_ims.views.stock.stock:stock&#39;</span>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">bps <span style="color:#666">=</span> [<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;jade_ims.views.dashboard:dashboard&#39;</span>,
+       <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;jade_ims.views.install:install&#39;</span>,
+       <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;jade_ims.views.login:login&#39;</span>,
+       <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;jade_ims.views.sale:sale&#39;</span>,
+       <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;jade_ims.views.customer:customer&#39;</span>,
+       <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;jade_ims.views.purchase.inputbill:inputbill&#39;</span>,
+       <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;jade_ims.views.purchase.supplier:supplier&#39;</span>,
+       <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;jade_ims.views.stock.enterstockbill:enterstockbill&#39;</span>,
+       <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;jade_ims.views.stock.leavestockbill:leavestockbill&#39;</span>,
+       <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;jade_ims.views.stock.stock:stock&#39;</span>
        ]
 
 <span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">create_app</span>():
     app <span style="color:#666">=</span> Flask(__name__)
-    app<span style="color:#666">.</span>config<span style="color:#666">.</span>from_object(<span style="color:#4070a0">&#39;config&#39;</span>)
-    app<span style="color:#666">.</span>config<span style="color:#666">.</span>from_pyfile(<span style="color:#4070a0">&#39;config.py&#39;</span>)
+    app<span style="color:#666">.</span>config<span style="color:#666">.</span>from_object(<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;config&#39;</span>)
+    app<span style="color:#666">.</span>config<span style="color:#666">.</span>from_pyfile(<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;config.py&#39;</span>)
 
     db<span style="color:#666">.</span>init_app(app)
 
@@ -170,13 +170,13 @@ SF的老司机给了我一个相当优雅的方案——Hook到app的<code>befor
 <p>我第一次是这样实现的：</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#555;font-weight:bold">@app.before_request</span>
 <span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">check_need_login</span>():
-    <span style="color:#007020;font-weight:bold">if</span> <span style="color:#4070a0">&#39;logged_in&#39;</span> <span style="color:#007020;font-weight:bold">not</span> <span style="color:#007020;font-weight:bold">in</span> session:
-        <span style="color:#007020;font-weight:bold">return</span> redirect(url_for(<span style="color:#4070a0">&#39;login.user_login&#39;</span>))</code></pre></div>
+    <span style="color:#007020;font-weight:bold">if</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;logged_in&#39;</span> <span style="color:#007020;font-weight:bold">not</span> <span style="color:#007020;font-weight:bold">in</span> session:
+        <span style="color:#007020;font-weight:bold">return</span> redirect(url_for(<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;login.user_login&#39;</span>))</code></pre></div>
 <p>这样就带来了一个问题，对于未登录的用户来说，所有页面都会不断地重定向从而导致整个应用崩溃。因此还需要指定在某些情况下停止重定向，所以我们还需要修改一下<code>check_need_login</code>的逻辑：</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#555;font-weight:bold">@app.before_request</span>
 <span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">check_need_login</span>():
-    <span style="color:#007020;font-weight:bold">if</span> <span style="color:#4070a0">&#39;logged_in&#39;</span> <span style="color:#007020;font-weight:bold">not</span> <span style="color:#007020;font-weight:bold">in</span> session <span style="color:#007020;font-weight:bold">and</span> request<span style="color:#666">.</span>endpoint <span style="color:#007020;font-weight:bold">not</span> <span style="color:#007020;font-weight:bold">in</span> (<span style="color:#4070a0">&#39;login.user_login&#39;</span>, <span style="color:#4070a0">&#39;static&#39;</span>):
-        <span style="color:#007020;font-weight:bold">return</span> redirect(url_for(<span style="color:#4070a0">&#39;login.user_login&#39;</span>))</code></pre></div>
+    <span style="color:#007020;font-weight:bold">if</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;logged_in&#39;</span> <span style="color:#007020;font-weight:bold">not</span> <span style="color:#007020;font-weight:bold">in</span> session <span style="color:#007020;font-weight:bold">and</span> request<span style="color:#666">.</span>endpoint <span style="color:#007020;font-weight:bold">not</span> <span style="color:#007020;font-weight:bold">in</span> (<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;login.user_login&#39;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;static&#39;</span>):
+        <span style="color:#007020;font-weight:bold">return</span> redirect(url_for(<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;login.user_login&#39;</span>))</code></pre></div>
 <p>当<code>session</code>中没有<code>logged_in</code>字段且<code>endpoint</code>不是<code>user_login</code>和<code>static</code>的时候就重定向到登录页面，这样就比较优雅地解决了重定向未登录用户到登陆界面的需求。</p>
 
 <h3 id="flask-sqlalchemy-插入数据时发生错误后如何处理">flask_sqlalchemy 插入数据时发生错误后如何处理</h3>
@@ -185,24 +185,24 @@ SF的老司机给了我一个相当优雅的方案——Hook到app的<code>befor
 
 <p>在实际开发的过程中发现，如果<code>db.session</code>中添加的记录有问题，在commit的时候会出现一个报错。所以我们需要在出错的时候进行一些处理，以保证程序出错之后还能够正常地运行。网友 @学不会编程的永仲 给出的回答是我应该在form中验证数据的正确性。虽然我相信他的理解可能是正确的，但是不太符合我的哲学，我更加倾向于<strong>让它崩溃，然后处理异常</strong>而不是<strong>事先处理好所有的错误</strong>。
 通过查阅文档，了解到<code>db.session.rollback()</code>这一函数可以在出错是进行回滚，于是最后的实现变成了这样：</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#555;font-weight:bold">@supplier.route</span>(<span style="color:#4070a0">&#39;/purchase/supplier/add&#39;</span>, methods<span style="color:#666">=</span>[<span style="color:#4070a0">&#39;POST&#39;</span>])
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#555;font-weight:bold">@supplier.route</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;/purchase/supplier/add&#39;</span>, methods<span style="color:#666">=</span>[<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;POST&#39;</span>])
 <span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">add_supplier</span>():
     form <span style="color:#666">=</span> request<span style="color:#666">.</span>form
-    <span style="color:#007020;font-weight:bold">if</span> request<span style="color:#666">.</span>method <span style="color:#666">==</span> <span style="color:#4070a0">&#39;POST&#39;</span>:
+    <span style="color:#007020;font-weight:bold">if</span> request<span style="color:#666">.</span>method <span style="color:#666">==</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;POST&#39;</span>:
         <span style="color:#007020;font-weight:bold">print</span>(form)
-        supplier <span style="color:#666">=</span> Supplier(form[<span style="color:#4070a0">&#39;supplier_name&#39;</span>],
-                            form[<span style="color:#4070a0">&#39;supplier_constract&#39;</span>],
-                            form[<span style="color:#4070a0">&#39;supplier_phone&#39;</span>],
-                            form[<span style="color:#4070a0">&#39;supplier_address&#39;</span>],
-                            form[<span style="color:#4070a0">&#39;supplier_remark&#39;</span>])
+        supplier <span style="color:#666">=</span> Supplier(form[<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;supplier_name&#39;</span>],
+                            form[<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;supplier_constract&#39;</span>],
+                            form[<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;supplier_phone&#39;</span>],
+                            form[<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;supplier_address&#39;</span>],
+                            form[<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;supplier_remark&#39;</span>])
         <span style="color:#007020;font-weight:bold">try</span>:
             db<span style="color:#666">.</span>session<span style="color:#666">.</span>add(supplier)
             db<span style="color:#666">.</span>session<span style="color:#666">.</span>commit()
-            flash(<span style="color:#4070a0">&#39;供应商添加成功！&#39;</span>, <span style="color:#4070a0">&#39;success&#39;</span>)
+            flash(<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;供应商添加成功！&#39;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;success&#39;</span>)
         <span style="color:#007020;font-weight:bold">except</span>:
             db<span style="color:#666">.</span>session<span style="color:#666">.</span>rollback()
-            flash(<span style="color:#4070a0">&#39;输入不合法，请重新输入！&#39;</span>, <span style="color:#4070a0">&#39;danger&#39;</span>)
-    <span style="color:#007020;font-weight:bold">return</span> redirect(url_for(<span style="color:#4070a0">&#39;supplier.list_supplier&#39;</span>))</code></pre></div>
+            flash(<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;输入不合法，请重新输入！&#39;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;danger&#39;</span>)
+    <span style="color:#007020;font-weight:bold">return</span> redirect(url_for(<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;supplier.list_supplier&#39;</span>))</code></pre></div>
 <h1 id="项目总结">项目总结</h1>
 
 <p>随着答辩的完成，这个项目进入了尾声。因为很多东西需要去学习，有新的东西需要去探索，所以这个项目也很有可能不会再继续维护了。那么这个项目开源出来的价值在哪里呢？我想，这个项目虽然简单，但它毕竟还算是一个完整的Flask项目，除了<code>flask_sqlalchemy</code>之外没有多余的依赖，非常适合一个跟我一样的Python初学者进行入门学习。如果说有人能够因为这个项目少走一些弯路，少在一些死胡同浪费时间，我想这个项目的价值就已经实现了。如果再往大一点来说，开源的价值也就实现了。

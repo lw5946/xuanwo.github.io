@@ -24,7 +24,7 @@
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
-    <meta name="generator" content="Hugo 0.40.3" />
+    <meta name="generator" content="Hugo 0.37.1" />
 </head>
 
 
@@ -181,20 +181,20 @@ json<span style="color:#666">.</span>dumps(obj, skipkeys<span style="color:#666"
 <h3 id="示范">示范</h3>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#666">&gt;&gt;&gt;</span> <span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">json</span>
 
-<span style="color:#666">&gt;&gt;&gt;</span> json<span style="color:#666">.</span>dumps([<span style="color:#4070a0">&#39;foo&#39;</span>, {<span style="color:#4070a0">&#39;bar&#39;</span>: (<span style="color:#4070a0">&#39;baz&#39;</span>, None, <span style="color:#40a070">1.0</span>, <span style="color:#40a070">2</span>)}])
-<span style="color:#4070a0">&#39;[&#34;foo&#34;, {&#34;bar&#34;: [&#34;baz&#34;, null, 1.0, 2]}]&#39;</span>
+<span style="color:#666">&gt;&gt;&gt;</span> json<span style="color:#666">.</span>dumps([<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;foo&#39;</span>, {<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;bar&#39;</span>: (<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;baz&#39;</span>, None, <span style="color:#40a070">1.0</span>, <span style="color:#40a070">2</span>)}])
+<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;[&#34;foo&#34;, {&#34;bar&#34;: [&#34;baz&#34;, null, 1.0, 2]}]&#39;</span>
 
 <span style="color:#60a0b0;font-style:italic"># 排序</span>
-<span style="color:#666">&gt;&gt;&gt;</span> <span style="color:#007020;font-weight:bold">print</span>(json<span style="color:#666">.</span>dumps({<span style="color:#4070a0">&#34;c&#34;</span>: <span style="color:#40a070">0</span>, <span style="color:#4070a0">&#34;b&#34;</span>: <span style="color:#40a070">0</span>, <span style="color:#4070a0">&#34;a&#34;</span>: <span style="color:#40a070">0</span>}, sort_keys<span style="color:#666">=</span>True))
-{<span style="color:#4070a0">&#34;a&#34;</span>: <span style="color:#40a070">0</span>, <span style="color:#4070a0">&#34;b&#34;</span>: <span style="color:#40a070">0</span>, <span style="color:#4070a0">&#34;c&#34;</span>: <span style="color:#40a070">0</span>}
+<span style="color:#666">&gt;&gt;&gt;</span> <span style="color:#007020;font-weight:bold">print</span>(json<span style="color:#666">.</span>dumps({<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;c&#34;</span>: <span style="color:#40a070">0</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;b&#34;</span>: <span style="color:#40a070">0</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;a&#34;</span>: <span style="color:#40a070">0</span>}, sort_keys<span style="color:#666">=</span>True))
+{<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;a&#34;</span>: <span style="color:#40a070">0</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;b&#34;</span>: <span style="color:#40a070">0</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;c&#34;</span>: <span style="color:#40a070">0</span>}
 
 <span style="color:#60a0b0;font-style:italic"># 分隔符</span>
-<span style="color:#666">&gt;&gt;&gt;</span> json<span style="color:#666">.</span>dumps([<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,{<span style="color:#4070a0">&#39;4&#39;</span>: <span style="color:#40a070">5</span>, <span style="color:#4070a0">&#39;6&#39;</span>: <span style="color:#40a070">7</span>}], separators<span style="color:#666">=</span>(<span style="color:#4070a0">&#39;,&#39;</span>, <span style="color:#4070a0">&#39;:&#39;</span>))
-<span style="color:#4070a0">&#39;[1,2,3,{&#34;4&#34;:5,&#34;6&#34;:7}]&#39;</span>
+<span style="color:#666">&gt;&gt;&gt;</span> json<span style="color:#666">.</span>dumps([<span style="color:#40a070">1</span>,<span style="color:#40a070">2</span>,<span style="color:#40a070">3</span>,{<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;4&#39;</span>: <span style="color:#40a070">5</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;6&#39;</span>: <span style="color:#40a070">7</span>}], separators<span style="color:#666">=</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;,&#39;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;:&#39;</span>))
+<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;[1,2,3,{&#34;4&#34;:5,&#34;6&#34;:7}]&#39;</span>
 
 <span style="color:#60a0b0;font-style:italic"># Unicode输出</span>
-<span style="color:#666">&gt;&gt;&gt;</span> json<span style="color:#666">.</span>dumps(<span style="color:#4070a0">&#34;</span><span style="color:#4070a0;font-weight:bold">\u5317\u4eac</span><span style="color:#4070a0">&#34;</span>, ensure_ascii<span style="color:#666">=</span>False)
-<span style="color:#4070a0">&#39;北京&#39;</span></code></pre></div>
+<span style="color:#666">&gt;&gt;&gt;</span> json<span style="color:#666">.</span>dumps(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0;font-weight:bold">\u5317\u4eac</span><span style="color:#4070a0">&#34;</span>, ensure_ascii<span style="color:#666">=</span>False)
+<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;北京&#39;</span></code></pre></div>
 <h2 id="解码">解码</h2>
 
 <h3 id="对应类型-1">对应类型</h3>
@@ -231,8 +231,8 @@ json<span style="color:#666">.</span>loads(s, encoding<span style="color:#666">=
 <h3 id="示范-1">示范</h3>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#666">&gt;&gt;&gt;</span> <span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">json</span>
 
-<span style="color:#666">&gt;&gt;&gt;</span> json<span style="color:#666">.</span>loads(<span style="color:#4070a0">&#39;[&#34;foo&#34;, {&#34;bar&#34;:[&#34;baz&#34;, null, 1.0, 2]}]&#39;</span>)
-[<span style="color:#4070a0">&#39;foo&#39;</span>, {<span style="color:#4070a0">&#39;bar&#39;</span>: [<span style="color:#4070a0">&#39;baz&#39;</span>, None, <span style="color:#40a070">1.0</span>, <span style="color:#40a070">2</span>]}]</code></pre></div>
+<span style="color:#666">&gt;&gt;&gt;</span> json<span style="color:#666">.</span>loads(<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;[&#34;foo&#34;, {&#34;bar&#34;:[&#34;baz&#34;, null, 1.0, 2]}]&#39;</span>)
+[<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;foo&#39;</span>, {<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;bar&#39;</span>: [<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;baz&#39;</span>, None, <span style="color:#40a070">1.0</span>, <span style="color:#40a070">2</span>]}]</code></pre></div>
 <h1 id="更新日志">更新日志</h1>
 
 <ul>
