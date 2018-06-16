@@ -64,6 +64,53 @@
                 
                 
                 <header class="article-header">
+                    <h1 itemprop="name"><a class="article-title" href="/2014/11/19/contest-cugb-cf4/">CF拉练第四场</a></h1>
+                </header>
+                
+                <div class="article-meta">
+                    <a href="/2014/11/19/contest-cugb-cf4/" class="article-date">
+                        <time datetime='2014-11-19T15:59:18.000&#43;00:00' itemprop="datePublished">2014-11-19</time>
+                    </a>
+                    
+                    
+                    <div class="post-categories">
+                        <div class="article-category">
+                            
+                            <a class="article-category-link" href="https://xuanwo.org/categories/exercise">Exercise</a>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="article-comment-link-wrap">
+                        <a href="/2014/11/19/contest-cugb-cf4/#disqus_thread" class="article-comment-link">Comments</a>
+                    </div>
+                    
+                </div>
+                <div class="article-entry" itemprop="articleBody">
+                    <p>
+                        
+                     比赛地址 http://acm.hust.edu.cn/vjudge/contest/view.action?cid=62931#overview
+比赛总结 这场比赛开的时候，我还在南京= =，并没有好好做，过了水题之后就没有继续往下做了。 剩下的都是赛后补的题，不过自己的DP确实弱，很多都是自己想不明白，一看题解就懂。
+分题讲解 A题（阅读题） 题意理解题，只要读懂题目就能A，并不是很难。 http://xuanwo.org/2014/11/13/CF-9A/
+B题（字符串） C题（模拟） 感觉也是题意理解题，没有什么算法，只要模拟出翻面的操作就可以。 http://xuanwo.org/2014/11/13/CF-7A/
+D题（扩展欧几里得） 用到了扩展欧几里得，模板题。 http://xuanwo.org/2014/11/19/CF-7C/
+E题（状态压缩DP） 一开始不是特别明白，折腾了很久才看懂这个递推的公式。 http://xuanwo.org/2014/11/19/CF-8C/
+更新日志  2014年11月19日 初稿。  
+                    </p>
+                    <p class="article-more-link">
+                        <a href="/2014/11/19/contest-cugb-cf4/">Read More</a>
+                    </p>
+                </div>
+
+                
+            </div>
+        </article>
+        
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+            <div class="article-inner">
+                
+                
+                <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/19/cf-8c/">Codeforces Beta Round 8 C Looking for Order</a></h1>
                 </header>
                 
@@ -535,62 +582,6 @@ E题（神DP） 有一个神奇的递推公式，猜一猜，看RP，赛后出�
                     </p>
                     <p class="article-more-link">
                         <a href="/2014/11/16/cf-9d/">Read More</a>
-                    </p>
-                </div>
-
-                
-            </div>
-        </article>
-        
-        <article class="article article-type-post" itemscope itemprop="blogPost">
-            <div class="article-inner">
-                
-                
-                <header class="article-header">
-                    <h1 itemprop="name"><a class="article-title" href="/2014/11/16/cf-7d/">Codeforces Beta Round 7 D Palindrome Degree</a></h1>
-                </header>
-                
-                <div class="article-meta">
-                    <a href="/2014/11/16/cf-7d/" class="article-date">
-                        <time datetime='2014-11-16T11:29:22.000&#43;00:00' itemprop="datePublished">2014-11-16</time>
-                    </a>
-                    
-                    
-                    <div class="post-categories">
-                        <div class="article-category">
-                            
-                            <a class="article-category-link" href="https://xuanwo.org/categories/exercise">Exercise</a>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="article-comment-link-wrap">
-                        <a href="/2014/11/16/cf-7d/#disqus_thread" class="article-comment-link">Comments</a>
-                    </div>
-                    
-                </div>
-                <div class="article-entry" itemprop="articleBody">
-                    <p>
-                        
-                    <h2 id="题目">题目</h2>
-
-<p>源地址：</p>
-
-<p><a href="http://codeforces.com/problemset/problem/7/D">http://codeforces.com/problemset/problem/7/D</a></p>
-
-<h1 id="理解">理解</h1>
-
-<p>被引入的新概念吓到了= =，其实这道题就是一个求最大回文串的问题。
-不过按照这个数据量，每一次都进行strcmp肯定不现实，所以我们需要一个好的字符串hash（的板子）。预处理之后，分别计算前缀和后缀的hash值。如果hash值相等，说明前缀和后缀相同，它们的度数就是长度/2再加上一。然后结果就是度数的和。</p>
-
-<blockquote>
-<p>字符串hash的时候那个素数开大一点比较好，不用去处理hash冲突，23333。</p>
-</blockquote>
-
-<p></p>
-                    </p>
-                    <p class="article-more-link">
-                        <a href="/2014/11/16/cf-7d/">Read More</a>
                     </p>
                 </div>
 

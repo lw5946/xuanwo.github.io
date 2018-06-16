@@ -6,10 +6,123 @@
     <description>Recent content on Xuanwo&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 22 May 2018 04:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 15 Jun 2018 18:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://xuanwo.org/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>文档误读导致的 BUG</title>
+      <link>https://xuanwo.org/2018/06/15/bug-caused-by-misreading/</link>
+      <pubDate>Fri, 15 Jun 2018 18:00:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2018/06/15/bug-caused-by-misreading/</guid>
+      <description>&lt;p&gt;之前听说过开发人员&lt;a href=&#34;https://www.theregister.co.uk/2018/05/09/intel_amd_kernel_privilege_escalation_flaws/&#34;&gt;读错 Intel 的文档&lt;/a&gt;导致出现了严重 &lt;a href=&#34;https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8897&#34;&gt;BUG&lt;/a&gt;，但是只是当成玩笑看待，但是等到这种事情发生在自己身上，还影响到了项目在用户生产环境的上线进度的时候，就不是那么好笑了。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;本文取材自真实事件的复盘，项目相关信息已经去敏。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;经过&#34;&gt;经过&lt;/h2&gt;
+
+&lt;p&gt;项目服务上线完毕，但是在上线后的测试中发现后端出现大量 502 错误。通过跟踪日志得知报错问题是后端数据库查询超时，在确定问题稳定复现之后，首先排除了服务器抖动，上线操作失误等问题，将原因锁定在了代码的层面。进一步的，还发现这个问题与后端的某个异步任务组件有关：只要开启该组件，错误就会出现；只要关闭，错误就会消失。该组件最近实施过一次较大的重构，在对代码进行二次 Review 之后，我们发现了可能出问题的点：重构时为了提升性能，组件内部会开多个 Goroutine 并发查询数据库，在业务首次启动时可能会对数据库造成特别大的压力。将并发改成 for 循环之后情况有所好转但是还是会有查询超时，没有修复到位。再次检查该组件中涉及到的数据库操作相关代码，发现有些 Query 操作返回的 row 没有手动做 Close 。在增加手动 Close 的代码后，超时问题消失。&lt;/p&gt;
+
+&lt;h2 id=&#34;溯源&#34;&gt;溯源&lt;/h2&gt;
+
+&lt;p&gt;第二天我再回过来看这段代码，发现导致这个错误的根源是我对一段文档的误读：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Close closes the Rows, preventing further enumeration. If Next is called
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// and returns false and there are no further result sets,
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// the Rows are closed automatically and it will suffice to check the
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// result of Err. Close is idempotent and does not affect the result of Err.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;func&lt;/span&gt; (rs &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;Rows) Close() &lt;span style=&#34;color:#902000&#34;&gt;error&lt;/span&gt; {
+	&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; rs.&lt;span style=&#34;color:#007020&#34;&gt;close&lt;/span&gt;(&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;nil&lt;/span&gt;)
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;文档中的描述是：如果 Next 被调用，并返回了 false 而且没有更多结果的时候，rows 将会自动 close。但是我实际上写出来的代码是这样的：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;value &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; sql.NullInt64{}
+row, err &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; builder.Select(db.Func(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;COUNT&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;?&amp;#34;&lt;/span&gt;)).
+	From(table).Where(cond).Query()
+&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; err &lt;span style=&#34;color:#666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;nil&lt;/span&gt; {
+	log.Errorf(ctx, &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;MySQL error for %v.&amp;#34;&lt;/span&gt;, err)
+	&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt;
+}
+&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; row.Next() {
+	err = row.Scan(&lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;value)
+	&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; err &lt;span style=&#34;color:#666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;nil&lt;/span&gt; {
+		log.Errorf(ctx, &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;MySQL scan error for %v.&amp;#34;&lt;/span&gt;, err)
+		&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt;
+	}
+	&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; value.Valid {
+		n = &lt;span style=&#34;color:#007020&#34;&gt;int64&lt;/span&gt;(value.Int64)
+	}
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;区别在于我将这段文档理解成了：如果调用了 Next，而且没有更多结果的时候，rows 将会自动 close。实际上，Next 在返回 false 的时候后，其对应的 rows 才会 close。我们可以看一下 upperdb Rows 结构体的 Next 函数实现：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Next prepares the next result row for reading with the Scan method. It
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// returns true on success, or false if there is no next result row or an error
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// happened while preparing it. Err should be consulted to distinguish between
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// the two cases.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;//
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Every call to Scan, even the first one, must be preceded by a call to Next.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;func&lt;/span&gt; (rs &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;Rows) Next() &lt;span style=&#34;color:#902000&#34;&gt;bool&lt;/span&gt; {
+	&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;var&lt;/span&gt; doClose, ok &lt;span style=&#34;color:#902000&#34;&gt;bool&lt;/span&gt;
+	withLock(rs.closemu.RLocker(), &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;func&lt;/span&gt;() {
+		doClose, ok = rs.nextLocked()
+	})
+	&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; doClose {
+		rs.Close()
+	}
+	&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; ok
+}
+
+&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;func&lt;/span&gt; (rs &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;Rows) nextLocked() (doClose, ok &lt;span style=&#34;color:#902000&#34;&gt;bool&lt;/span&gt;) {
+	&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; rs.closed {
+		&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;false&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;false&lt;/span&gt;
+	}
+
+	&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Lock the driver connection before calling the driver interface
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;	&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// rowsi to prevent a Tx from rolling back the connection at the same time.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;	rs.dc.Lock()
+	&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;defer&lt;/span&gt; rs.dc.Unlock()
+
+	&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; rs.lastcols &lt;span style=&#34;color:#666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;nil&lt;/span&gt; {
+		rs.lastcols = &lt;span style=&#34;color:#007020&#34;&gt;make&lt;/span&gt;([]driver.Value, &lt;span style=&#34;color:#007020&#34;&gt;len&lt;/span&gt;(rs.rowsi.Columns()))
+	}
+
+	rs.lasterr = rs.rowsi.Next(rs.lastcols)
+	&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; rs.lasterr &lt;span style=&#34;color:#666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;nil&lt;/span&gt; {
+		&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Close the connection if there is a driver error.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;		&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; rs.lasterr &lt;span style=&#34;color:#666&#34;&gt;!=&lt;/span&gt; io.EOF {
+			&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;true&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;false&lt;/span&gt;
+		}
+		nextResultSet, ok &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; rs.rowsi.(driver.RowsNextResultSet)
+		&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; !ok {
+			&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;true&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;false&lt;/span&gt;
+		}
+		&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// The driver is at the end of the current result set.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;		&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Test to see if there is another result set after the current one.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;		&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Only close Rows if there is no further result sets to read.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;		&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; !nextResultSet.HasNextResultSet() {
+			doClose = &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;true&lt;/span&gt;
+		}
+		&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; doClose, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;false&lt;/span&gt;
+	}
+	&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;false&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;true&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;可以看到 Next 只有在 &lt;code&gt;nextLocked&lt;/code&gt; 返回的 &lt;code&gt;doClose&lt;/code&gt; 为 &lt;code&gt;true&lt;/code&gt; 时才会主动调用 &lt;code&gt;rs.Close()&lt;/code&gt;，而按照 &lt;code&gt;nextLocked&lt;/code&gt; 中的逻辑，如果有值的话，会返回 &lt;code&gt;false, true&lt;/code&gt;。也就是说，当 Next 返回 &lt;code&gt;true&lt;/code&gt; 的时候，是不会去 Close rows 的。分析到这里，昨晚上线翻车的原因就很明显了，大量的 count query 的 rows 没有被 close 导致链接无法释放，从而新的请求无法执行以至于超时了。&lt;/p&gt;
+
+&lt;h2 id=&#34;动态&#34;&gt;动态&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;好不容易调整回来的作息被这次上线打回去了，现在很蓝瘦&lt;/li&gt;
+&lt;li&gt;用户环境上一次线就欠别人一顿饭，多上几次我要破产了。。。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.cn/dp/B00L1VVUTC&#34;&gt;GEB&lt;/a&gt; 虽然看不懂，但是我感觉很有意思&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.qingcloud.com/qingstor/developer_tools/qscamel.html&#34;&gt;qscamel&lt;/a&gt; 在经历了多个大用户的捶打之后终于正式发布了，有机会要写一个系列的文章讲讲自己在开发 qscamel 的时候都学到了啥&lt;/li&gt;
+&lt;li&gt;好久没有发文章了，找个由头水一篇&lt;/li&gt;
+&lt;li&gt;博客在 Linode 上跑了两个月之后，还是乖乖的回到了 gh-pages 的怀抱，真香&lt;/li&gt;
+&lt;li&gt;话说动态这个章节有人看么，如果不讨喜的我考虑一下去掉 = =&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     
     <item>
       <title>Tiresias —— 服务器信息管理工具</title>
@@ -1231,90 +1344,6 @@ SUCCESS &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; [&lt;span style=&#
 &lt;blockquote&gt;
 &lt;p&gt;Have fun in automation!&lt;/p&gt;
 &lt;/blockquote&gt;</description>
-    </item>
-    
-    <item>
-      <title>Enpass —— 超赞的密码管理工具</title>
-      <link>https://xuanwo.org/2017/11/26/enpass-intro/</link>
-      <pubDate>Sun, 26 Nov 2017 10:07:00 +0000</pubDate>
-      
-      <guid>https://xuanwo.org/2017/11/26/enpass-intro/</guid>
-      <description>&lt;p&gt;不想把自己的密码保存在 LastPass 的服务器上？羡慕 Mac 上好用的 1Password 但是自己的平台上却没有？不喜欢 Linux 密码管理工具过时的界面？ 如果你也曾经为这些问题苦恼过的话，那 &lt;a href=&#34;https://www.enpass.io/&#34;&gt;Enpass&lt;/a&gt; 就有可能是你的最佳之选。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;介绍&#34;&gt;介绍&lt;/h2&gt;
-
-&lt;p&gt;Enpass 是由一家在印度古尔冈的私人控股公司 &lt;a href=&#34;https://www.sinew.io/&#34;&gt;Sinew&lt;/a&gt; 推出的密码管理工具。之前在公司的内部使用，在 2011 年的时候正式面向市场推出，目前有超过 100 万用户，曾用名： Walletx 。&lt;/p&gt;
-
-&lt;h2 id=&#34;特点&#34;&gt;特点&lt;/h2&gt;
-
-&lt;h3 id=&#34;全平台支持&#34;&gt;全平台支持&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;支持 macOS，Linux，windows 三大 PC 平台&lt;/li&gt;
-&lt;li&gt;支持 iOS，Android，Windows Phone 等常用移动平台&lt;/li&gt;
-&lt;li&gt;支持 Chromebook&lt;/li&gt;
-&lt;li&gt;支持打包成 Portable 应用&lt;/li&gt;
-&lt;li&gt;浏览器插件支持 Chrome 与 Firefox&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;他们的浏览器插件非常好用，通过快捷键 &lt;code&gt;Ctrl+/&lt;/code&gt; 自动补全用户名帐号和密码。如果有多个相符的帐号会弹出窗口供选择，如果没有找到的话同样会提供一个搜索框。比 LastPass 那个臃肿又难用的浏览器插件要好上不少，1Password 在 mac 上的体验很赞，但是无奈没有 Linux 上的版本。&lt;/p&gt;
-
-&lt;h3 id=&#34;服务器不保存用户数据&#34;&gt;服务器不保存用户数据&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;跨终端同步基于已有的网盘服务实现&lt;/li&gt;
-&lt;li&gt;如果不想把数据上传到网盘，还可以通过局域网进行同步&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;可以通过自己的网盘服务来同步加密后的数据库，已经支持了主流的网盘服务，比如 Google Drive，Dropbox，OneDrive，基于 WebDAV 的 ownCloud 和 Nextcloud 等等。从我实际的体验上来看，Linux 上客户端的同步交互有些问题，有时候如果代理挂了，然后它重试数次失败之后就没有办法再手动触发同步，只好重新启动应用来解决。&lt;/p&gt;
-
-&lt;p&gt;不在服务器端存储用户数据就避免了整天担心 LastPass 数据库被盗之类的问题，据我所知 LastPass 之前就出现过一些问题。即使从来没有出现过问题，LastPass 这么大的目标本身就会吸引黑客们的兴趣，出现数据泄漏从长期来看是必然会发生的事情。因此密码这种东西还是要自己保管来的更加安全一些。&lt;/p&gt;
-
-&lt;h3 id=&#34;其它&#34;&gt;其它&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;AES-256 强加密&lt;/li&gt;
-&lt;li&gt;简单好用的密码生成工具&lt;/li&gt;
-&lt;li&gt;支持备份与恢复&lt;/li&gt;
-&lt;li&gt;支持导入导出&lt;/li&gt;
-&lt;li&gt;iOS 客户端支持指纹解锁&lt;/li&gt;
-&lt;li&gt;粘贴后自动清除剪贴板&lt;/li&gt;
-&lt;li&gt;失去焦点一定时间后自动锁定程序&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;缺点&#34;&gt;缺点&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;在 Linux 平台上不支持输入法，无法输入中文，只能复制粘贴&lt;/li&gt;
-&lt;li&gt;同步功能不是很稳定，同步失败之后需要重启程序来手动触发&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;收费政策&#34;&gt;收费政策&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Desktop 端不收费&lt;/li&gt;
-&lt;li&gt;移动端可以免费同步一定条目，可以通过支付十刀解锁（只需要支付一次，终身可用）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;技巧&#34;&gt;技巧&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;可以用来同步 TOTP 的验证码，完美取代 Google Authenticator&lt;/li&gt;
-&lt;li&gt;支持加密文件，可以用来跨平台同步自己的私钥和证书&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
-
-&lt;p&gt;Enpass 适合以下人群：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;想要尝试进行密码管理的新同学&lt;/li&gt;
-&lt;li&gt;Linux 平台上想获得 1Password 类似体验的用户&lt;/li&gt;
-&lt;li&gt;想要自己保管密码库，不信任集中托管服务的用户&lt;/li&gt;
-&lt;li&gt;致力于统一管理自己所有数据的用户 (Like me)&lt;/li&gt;
-&lt;/ul&gt;</description>
     </item>
     
   </channel>

@@ -64,6 +64,57 @@
                 
                 
                 <header class="article-header">
+                    <h1 itemprop="name"><a class="article-title" href="/2014/10/20/codevs-1842/">CodeVS 1842 递归第一次</a></h1>
+                </header>
+                
+                <div class="article-meta">
+                    <a href="/2014/10/20/codevs-1842/" class="article-date">
+                        <time datetime='2014-10-20T21:40:51.000&#43;00:00' itemprop="datePublished">2014-10-20</time>
+                    </a>
+                    
+                    
+                    <div class="post-categories">
+                        <div class="article-category">
+                            
+                            <a class="article-category-link" href="https://xuanwo.org/categories/exercise">Exercise</a>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="article-comment-link-wrap">
+                        <a href="/2014/10/20/codevs-1842/#disqus_thread" class="article-comment-link">Comments</a>
+                    </div>
+                    
+                </div>
+                <div class="article-entry" itemprop="articleBody">
+                    <p>
+                        
+                    <h2 id="题目">题目</h2>
+
+<p>源地址：</p>
+
+<p><a href="http://codevs.cn/problem/1842/">http://codevs.cn/problem/1842/</a></p>
+
+<h1 id="理解">理解</h1>
+
+<p>还是一道水题，不过卡了RE。研究之后发现，问题出在我的记忆化搜索上面，我的记忆化数组的下标出现了负值，所以出现了RE。后来想了想，通过加上一个最小负数的绝对值，使得出现的每一个x都是非负数，然后解决了这个问题。</p>
+
+<p></p>
+                    </p>
+                    <p class="article-more-link">
+                        <a href="/2014/10/20/codevs-1842/">Read More</a>
+                    </p>
+                </div>
+
+                
+            </div>
+        </article>
+        
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+            <div class="article-inner">
+                
+                
+                <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/10/20/codevs-1475/">CodeVS 1475 m进制转十进制</a></h1>
                 </header>
                 
@@ -508,62 +559,6 @@
                     </p>
                     <p class="article-more-link">
                         <a href="/2014/10/03/srun/">Read More</a>
-                    </p>
-                </div>
-
-                
-                <footer class="article-footer">
-                    <ul class="article-tag-list">
-                        
-                        <li class="article-tag-list-item">
-                            <a class="article-tag-list-link" href="https://xuanwo.org/tags/web">Web
-                            </a>
-                        </li>
-                        
-                    </ul>
-                </footer>
-                
-            </div>
-        </article>
-        
-        <article class="article article-type-post" itemscope itemprop="blogPost">
-            <div class="article-inner">
-                
-                
-                <header class="article-header">
-                    <h1 itemprop="name"><a class="article-title" href="/2014/09/10/transport-website/">跨城公交网站的想法</a></h1>
-                </header>
-                
-                <div class="article-meta">
-                    <a href="/2014/09/10/transport-website/" class="article-date">
-                        <time datetime='2014-09-10T09:49:15.000&#43;00:00' itemprop="datePublished">2014-09-10</time>
-                    </a>
-                    
-                    
-                    <div class="post-categories">
-                        <div class="article-category">
-                            
-                            <a class="article-category-link" href="https://xuanwo.org/categories/opinion">Opinion</a>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="article-comment-link-wrap">
-                        <a href="/2014/09/10/transport-website/#disqus_thread" class="article-comment-link">Comments</a>
-                    </div>
-                    
-                </div>
-                <div class="article-entry" itemprop="articleBody">
-                    <p>
-                        
-                     功能痛点 跨城市的公共交通导航
-实现途径 调用各大地图服务提供商的API（比如百度）
-实现方法 将一条需求的导航路线分成三段：
-出发城市-&gt;城市之间的长途交通（长途汽车，火车，飞机，轮船）-&gt;到达城市  根据所选择的交通方式的不同，分别在各自城市内设定起点至对应站点。
-可能的具体功能点  最优费用计算 最短到达时间 行程规划 用于旅游导航服务（携程快来收购我，233333）  盈利方式  关联广告（流量变现） 票券代购（收取服务费，感觉不靠谱）  相关风险  没有什么技术难度，很容易被百度地图之类的作为一个小功能加入，难以竞争。 地图依赖于服务提供商的更新，上游受到控制，相关API可能被限制调用。  更新日志  2014年09月10日 简单的完成列举了自己的想法。  
-                    </p>
-                    <p class="article-more-link">
-                        <a href="/2014/09/10/transport-website/">Read More</a>
                     </p>
                 </div>
 

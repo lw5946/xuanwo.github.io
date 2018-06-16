@@ -64,6 +64,58 @@
                 
                 
                 <header class="article-header">
+                    <h1 itemprop="name"><a class="article-title" href="/2014/11/01/codevs-1011/">CodeVS 1011 数的计算</a></h1>
+                </header>
+                
+                <div class="article-meta">
+                    <a href="/2014/11/01/codevs-1011/" class="article-date">
+                        <time datetime='2014-11-01T10:39:19.000&#43;00:00' itemprop="datePublished">2014-11-01</time>
+                    </a>
+                    
+                    
+                    <div class="post-categories">
+                        <div class="article-category">
+                            
+                            <a class="article-category-link" href="https://xuanwo.org/categories/exercise">Exercise</a>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="article-comment-link-wrap">
+                        <a href="/2014/11/01/codevs-1011/#disqus_thread" class="article-comment-link">Comments</a>
+                    </div>
+                    
+                </div>
+                <div class="article-entry" itemprop="articleBody">
+                    <p>
+                        
+                    <h2 id="题目">题目</h2>
+
+<p>源地址：</p>
+
+<p><a href="http://codevs.cn/problem/1011/">http://codevs.cn/problem/1011/</a></p>
+
+<h1 id="理解">理解</h1>
+
+<p>题目的分类是递推，自然就往递推那个方向去想。
+通过简单的推理可以发现，f[n]的值恰好等于f[1]~f[n/2]的和，之后的代码就比较简单了。</p>
+
+<p></p>
+                    </p>
+                    <p class="article-more-link">
+                        <a href="/2014/11/01/codevs-1011/">Read More</a>
+                    </p>
+                </div>
+
+                
+            </div>
+        </article>
+        
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+            <div class="article-inner">
+                
+                
+                <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/01/codevs-1012/">CodeVS 1012 最大公约数和最小公倍数问题</a></h1>
                 </header>
                 
@@ -527,59 +579,6 @@ Debug之后，幸福的A了</p>
                     </p>
                     <p class="article-more-link">
                         <a href="/2014/10/29/codevs-1160/">Read More</a>
-                    </p>
-                </div>
-
-                
-            </div>
-        </article>
-        
-        <article class="article article-type-post" itemscope itemprop="blogPost">
-            <div class="article-inner">
-                
-                
-                <header class="article-header">
-                    <h1 itemprop="name"><a class="article-title" href="/2014/10/29/codevs-1083/">CodeVS 1083 Cantor表</a></h1>
-                </header>
-                
-                <div class="article-meta">
-                    <a href="/2014/10/29/codevs-1083/" class="article-date">
-                        <time datetime='2014-10-29T21:05:44.000&#43;00:00' itemprop="datePublished">2014-10-29</time>
-                    </a>
-                    
-                    
-                    <div class="post-categories">
-                        <div class="article-category">
-                            
-                            <a class="article-category-link" href="https://xuanwo.org/categories/exercise">Exercise</a>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="article-comment-link-wrap">
-                        <a href="/2014/10/29/codevs-1083/#disqus_thread" class="article-comment-link">Comments</a>
-                    </div>
-                    
-                </div>
-                <div class="article-entry" itemprop="articleBody">
-                    <p>
-                        
-                    <h2 id="题目">题目</h2>
-
-<p>源地址：</p>
-
-<p><a href="http://codevs.cn/problem/1083/">http://codevs.cn/problem/1083/</a></p>
-
-<h1 id="理解">理解</h1>
-
-<p>一道基础题，但是我在如何建立模型上面想了很久。
-事实上，我们可以按照斜线分类，第1条斜线有1个数，第2条有2个数，以此类推，第i条有i个数。这样，我们可以很轻松的知道，前i条共有S(i)=<sup>1</sup>&frasl;<sub>2</sub><em>i</em>(i+1)个数。由方程n&lt;=S(k)，我们可以求出n所在的斜线的位置，也就是floor(sqrt(8.0*n+1)-1)/2。
-本来在小白书上面，这个问题已经被解决了，但是CodeVS上面的这道题采用了不同的排列规则。通过观察可以发现，这个规则和斜线数k的奇偶性有关。只要进行一次简单的判断就可以让结果按照需要的规则进行排列了。</p>
-
-<p></p>
-                    </p>
-                    <p class="article-more-link">
-                        <a href="/2014/10/29/codevs-1083/">Read More</a>
                     </p>
                 </div>
 

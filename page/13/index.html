@@ -64,6 +64,59 @@
                 
                 
                 <header class="article-header">
+                    <h1 itemprop="name"><a class="article-title" href="/2014/11/05/cf-5b/">Codeforces Beta Round 5 B Center Alignment</a></h1>
+                </header>
+                
+                <div class="article-meta">
+                    <a href="/2014/11/05/cf-5b/" class="article-date">
+                        <time datetime='2014-11-05T15:43:15.000&#43;00:00' itemprop="datePublished">2014-11-05</time>
+                    </a>
+                    
+                    
+                    <div class="post-categories">
+                        <div class="article-category">
+                            
+                            <a class="article-category-link" href="https://xuanwo.org/categories/exercise">Exercise</a>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="article-comment-link-wrap">
+                        <a href="/2014/11/05/cf-5b/#disqus_thread" class="article-comment-link">Comments</a>
+                    </div>
+                    
+                </div>
+                <div class="article-entry" itemprop="articleBody">
+                    <p>
+                        
+                    <h2 id="题目">题目</h2>
+
+<p>源地址：</p>
+
+<p><a href="http://codeforces.com/contest/5/problem/B">http://codeforces.com/contest/5/problem/B</a></p>
+
+<h1 id="理解">理解</h1>
+
+<p>题目不难，不过输出上有点问题，因为题目要求左右均匀分布，上一次偏左则下一次需要偏右。
+当总长度为偶数的时候，没有太大的问题；但是当总长度为奇数时，则需要考虑到底应该偏左还是偏右的问题。那么就需要两次判断，首先判断总长度，也就是最大长度是不是
+偶数，当总长度不是偶数时，则判断这个字符串是不是偶数。使用一个计数变量num来保存是否是否应该偏左，每一次判断完毕之后都自增一次，这样就能实现保持左右均衡。</p>
+
+<p></p>
+                    </p>
+                    <p class="article-more-link">
+                        <a href="/2014/11/05/cf-5b/">Read More</a>
+                    </p>
+                </div>
+
+                
+            </div>
+        </article>
+        
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+            <div class="article-inner">
+                
+                
+                <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/05/cf-5a/">Codeforces Beta Round 5 A Chat Server&#39;s Outgoing Traffic</a></h1>
                 </header>
                 
@@ -600,58 +653,6 @@ E题（贪心） 用的贪心的思想，先使得所有的&rsquo;?&lsquo;都变
                     </p>
                     <p class="article-more-link">
                         <a href="/2014/11/04/contest-cugb-cf1/">Read More</a>
-                    </p>
-                </div>
-
-                
-            </div>
-        </article>
-        
-        <article class="article article-type-post" itemscope itemprop="blogPost">
-            <div class="article-inner">
-                
-                
-                <header class="article-header">
-                    <h1 itemprop="name"><a class="article-title" href="/2014/11/03/cf-4b/">Codeforces Beta Round 4 B Before an Exam</a></h1>
-                </header>
-                
-                <div class="article-meta">
-                    <a href="/2014/11/03/cf-4b/" class="article-date">
-                        <time datetime='2014-11-03T19:13:39.000&#43;00:00' itemprop="datePublished">2014-11-03</time>
-                    </a>
-                    
-                    
-                    <div class="post-categories">
-                        <div class="article-category">
-                            
-                            <a class="article-category-link" href="https://xuanwo.org/categories/exercise">Exercise</a>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="article-comment-link-wrap">
-                        <a href="/2014/11/03/cf-4b/#disqus_thread" class="article-comment-link">Comments</a>
-                    </div>
-                    
-                </div>
-                <div class="article-entry" itemprop="articleBody">
-                    <p>
-                        
-                    <h2 id="题目">题目</h2>
-
-<p>源地址：</p>
-
-<p><a href="http://codeforces.com/contest/4/problem/B">http://codeforces.com/contest/4/problem/B</a></p>
-
-<h1 id="理解">理解</h1>
-
-<p>水题一枚。
-首先计算出最小的边界和，然后计算出最大的边界和。只要题目给定的sum不在这个范围内，一定无解。然后使用贪心的方法，计算出tem=最大边界和-sum。然后一个一个减去两个边界之间的差值，直到tem被减为零。</p>
-
-<p></p>
-                    </p>
-                    <p class="article-more-link">
-                        <a href="/2014/11/03/cf-4b/">Read More</a>
                     </p>
                 </div>
 
