@@ -64,6 +64,58 @@
                 
                 
                 <header class="article-header">
+                    <h1 itemprop="name"><a class="article-title" href="/2014/11/02/uva-725-division/">UVa 725 Division</a></h1>
+                </header>
+                
+                <div class="article-meta">
+                    <a href="/2014/11/02/uva-725-division/" class="article-date">
+                        <time datetime='2014-11-02T11:58:24.000&#43;00:00' itemprop="datePublished">2014-11-02</time>
+                    </a>
+                    
+                    
+                    <div class="post-categories">
+                        <div class="article-category">
+                            
+                            <a class="article-category-link" href="https://xuanwo.org/categories/exercise">Exercise</a>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="article-comment-link-wrap">
+                        <a href="/2014/11/02/uva-725-division/#disqus_thread" class="article-comment-link">Comments</a>
+                    </div>
+                    
+                </div>
+                <div class="article-entry" itemprop="articleBody">
+                    <p>
+                        
+                    <h2 id="题目">题目</h2>
+
+<p>源地址：</p>
+
+<p><a href="http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=9&amp;page=show_problem&amp;problem=666">http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=9&amp;page=show_problem&amp;problem=666</a></p>
+
+<h1 id="理解">理解</h1>
+
+<p>提议比较简单，给你0~9这十个数字，要求将其组合为两个五位数X和Y，使得其满足<code>X/Y=N</code>这样的形式。然后就想到了用STL里面的next_permutation函数，很快把代码写了出来，中间还用到了queue来存储答案。不过WA了两发之后开始怀疑是不是STL效率太低导致T了，改用数组模拟，但是还是WA了。经过三个小时的漫长Debug之路，才发现原来问题出在<strong>输入输出</strong>，<strong>我多输出了一个空行！！！</strong>
+真的是。。。太。。。</p>
+
+<p></p>
+                    </p>
+                    <p class="article-more-link">
+                        <a href="/2014/11/02/uva-725-division/">Read More</a>
+                    </p>
+                </div>
+
+                
+            </div>
+        </article>
+        
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+            <div class="article-inner">
+                
+                
+                <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/01/codevs-1011/">CodeVS 1011 数的计算</a></h1>
                 </header>
                 
@@ -527,58 +579,6 @@ Debug之后，幸福的A了</p>
                     </p>
                     <p class="article-more-link">
                         <a href="/2014/10/30/uva-10300-ecological-premium/">Read More</a>
-                    </p>
-                </div>
-
-                
-            </div>
-        </article>
-        
-        <article class="article article-type-post" itemscope itemprop="blogPost">
-            <div class="article-inner">
-                
-                
-                <header class="article-header">
-                    <h1 itemprop="name"><a class="article-title" href="/2014/10/29/codevs-1160/">CodeVS 1160 蛇形矩阵</a></h1>
-                </header>
-                
-                <div class="article-meta">
-                    <a href="/2014/10/29/codevs-1160/" class="article-date">
-                        <time datetime='2014-10-29T22:01:17.000&#43;00:00' itemprop="datePublished">2014-10-29</time>
-                    </a>
-                    
-                    
-                    <div class="post-categories">
-                        <div class="article-category">
-                            
-                            <a class="article-category-link" href="https://xuanwo.org/categories/exercise">Exercise</a>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="article-comment-link-wrap">
-                        <a href="/2014/10/29/codevs-1160/#disqus_thread" class="article-comment-link">Comments</a>
-                    </div>
-                    
-                </div>
-                <div class="article-entry" itemprop="articleBody">
-                    <p>
-                        
-                    <h2 id="题目">题目</h2>
-
-<p>源地址：</p>
-
-<p><a href="http://codevs.cn/problem/1160/">http://codevs.cn/problem/1160/</a></p>
-
-<h1 id="理解">理解</h1>
-
-<p>一道模拟的，一直在纠结这个规律怎么推。
-一开始的想法是，从最中间开始，由1向n*n不断循环，后来发现这个循环有点难写。折腾了很久还是没有写出来，后来通过观察发现，这个矩阵的右下对角线正好满足一个公差为2的等差数列的平方。根据这个分别来完成递加和递减的过程。</p>
-
-<p></p>
-                    </p>
-                    <p class="article-more-link">
-                        <a href="/2014/10/29/codevs-1160/">Read More</a>
                     </p>
                 </div>
 

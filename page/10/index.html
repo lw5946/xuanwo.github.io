@@ -64,6 +64,58 @@
                 
                 
                 <header class="article-header">
+                    <h1 itemprop="name"><a class="article-title" href="/2014/11/21/cf-12a/">Codeforces Beta Round 12 A Super Agent (Div.2 Only)</a></h1>
+                </header>
+                
+                <div class="article-meta">
+                    <a href="/2014/11/21/cf-12a/" class="article-date">
+                        <time datetime='2014-11-21T21:44:24.000&#43;00:00' itemprop="datePublished">2014-11-21</time>
+                    </a>
+                    
+                    
+                    <div class="post-categories">
+                        <div class="article-category">
+                            
+                            <a class="article-category-link" href="https://xuanwo.org/categories/exercise">Exercise</a>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="article-comment-link-wrap">
+                        <a href="/2014/11/21/cf-12a/#disqus_thread" class="article-comment-link">Comments</a>
+                    </div>
+                    
+                </div>
+                <div class="article-entry" itemprop="articleBody">
+                    <p>
+                        
+                    <h2 id="题目">题目</h2>
+
+<p>源地址：</p>
+
+<p><a href="http://codeforces.com/problemset/problem/12/A">http://codeforces.com/problemset/problem/12/A</a></p>
+
+<h1 id="理解">理解</h1>
+
+<p>问题很简单，要求判断是不是一个中心对称的图形。
+直接暴力搞，判断了六次。</p>
+
+<p></p>
+                    </p>
+                    <p class="article-more-link">
+                        <a href="/2014/11/21/cf-12a/">Read More</a>
+                    </p>
+                </div>
+
+                
+            </div>
+        </article>
+        
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+            <div class="article-inner">
+                
+                
+                <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/19/contest-cugb-cf4/">CF拉练第四场</a></h1>
                 </header>
                 
@@ -526,62 +578,6 @@ E题（神DP） 有一个神奇的递推公式，猜一猜，看RP，赛后出�
                     </p>
                     <p class="article-more-link">
                         <a href="/2014/11/16/contest-cugb-cf5/">Read More</a>
-                    </p>
-                </div>
-
-                
-            </div>
-        </article>
-        
-        <article class="article article-type-post" itemscope itemprop="blogPost">
-            <div class="article-inner">
-                
-                
-                <header class="article-header">
-                    <h1 itemprop="name"><a class="article-title" href="/2014/11/16/cf-9d/">Codeforces Beta Round 9 D How many trees? (Div.2 Only)</a></h1>
-                </header>
-                
-                <div class="article-meta">
-                    <a href="/2014/11/16/cf-9d/" class="article-date">
-                        <time datetime='2014-11-16T11:41:12.000&#43;00:00' itemprop="datePublished">2014-11-16</time>
-                    </a>
-                    
-                    
-                    <div class="post-categories">
-                        <div class="article-category">
-                            
-                            <a class="article-category-link" href="https://xuanwo.org/categories/exercise">Exercise</a>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="article-comment-link-wrap">
-                        <a href="/2014/11/16/cf-9d/#disqus_thread" class="article-comment-link">Comments</a>
-                    </div>
-                    
-                </div>
-                <div class="article-entry" itemprop="articleBody">
-                    <p>
-                        
-                    <h2 id="题目">题目</h2>
-
-<p>源地址：</p>
-
-<p><a href="http://codeforces.com/problemset/problem/9/D">http://codeforces.com/problemset/problem/9/D</a></p>
-
-<h1 id="理解">理解</h1>
-
-<p>神DP，给战斗民族的数学功底跪了。
-一个二叉搜索树，要求左子树的和小于右子树，问存在多少个这样的数。由题意可以推出这样一个结论：左子树的和小于右子树，只要左子树的最大值小于右子树的最大值即可，因为2^0+2^1+2^p-1&lt;2^p。
-所以在求dp[i][j]~（dp[i][j]表示i个点组成高度小于等于j的树的总数）~的时候，有两种情况：
-1. 子树的中n-1个点权在左子树，要么全在右子树，这样的话就没有条件限制了。
-2. 如果左右子树都有，那么最大的肯定要放在右子树上，所以除了当前根和最大的点，其他点（总共i-2个）随便取 ,枚举左子树最多放几个,右子树最多放几个就可以推出来。
-转移转移方程为：<code>dp[i][j]+=dp[k][j-1]*dp[i-k-1][j-1]</code></p>
-
-<p></p>
-                    </p>
-                    <p class="article-more-link">
-                        <a href="/2014/11/16/cf-9d/">Read More</a>
                     </p>
                 </div>
 
