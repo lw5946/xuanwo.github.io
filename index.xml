@@ -410,7 +410,7 @@ $ mysql -h staging-server -u root -p&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
 &lt;li&gt;Xorg + KDE 对不同 DPI 的屏幕支持不太好，导致外接屏幕的时候用起来比较难受。&lt;/li&gt;
 &lt;li&gt;指纹识别器驱动正在&lt;a href=&#34;https://github.com/nmikhailov/Validity90&#34;&gt;开发当中&lt;/a&gt;，暂时还用不了。&lt;/li&gt;
-&lt;li&gt;在 KDE + SDDM 的组合下，进入休眠状态后再恢复，会有一定概率出现屏幕一直闪动的情况。重启 SDDM 之后会恢复正常，从 Xorg 的报错日志能看到类似这样的错误：&lt;code&gt;Failed to set drm version: Permission denied&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;在 KDE + SDDM 的组合下，进入休眠状态后再恢复，会有一定概率出现屏幕一直闪动的情况。重启 SDDM 之后会恢复正常，从 Xorg 的报错日志能看到类似这样的错误：&lt;code&gt;Failed to set drm version: Permission denied&lt;/code&gt;。&lt;/del&gt; 最新版本的 KDE + SDDM 已经修复。&lt;/li&gt;
 &lt;li&gt;X1C 支持 S0i3 待机，但是不支持 S3 待机。两者的区别是在 S0i3 下 CPU 的功耗被降到最低，但仍保持着上电状态，而 S3 则不会。
 
 &lt;ul&gt;
