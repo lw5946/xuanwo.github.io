@@ -6,10 +6,312 @@
     <description>Recent content on Xuanwo&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 22 Jul 2018 16:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 05 Sep 2018 09:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://xuanwo.org/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>qscamel —— 数据迁移工具</title>
+      <link>https://xuanwo.org/2018/09/05/qscamel-intro/</link>
+      <pubDate>Wed, 05 Sep 2018 09:00:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2018/09/05/qscamel-intro/</guid>
+      <description>&lt;p&gt;qscamel 是一个用于在不同的端点 (Endpoint) 中高效迁移数据的工具。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;作为一个面向用户的数据迁移工具，它必须要满足如下要求：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;不丢数据：这是一个数据迁移工具最基本的要求。不能多，不能少，不能错，要支持校验和修复。&lt;/li&gt;
+&lt;li&gt;好用：作为一个给用户使用的工具，它需要足够好用。有完善的日志，不会无故退出，网络波动时能够自动重试，部署 &amp;amp; 配置容易，能够支持断点续传，无需人工干预。&lt;/li&gt;
+&lt;li&gt;高效：数据迁移通常都会有大量的文件传输，工具必须能够高效的使用服务器资源和带宽，节省用户执行迁移所需要的时间。&lt;/li&gt;
+&lt;li&gt;扩展性强：数据迁移所需要的场景千奇百怪，工具必须能够扩展并支持大多数用户的场景，减少后续开发和维护的成本。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;qscamel 正是在这些要求下诞生的产物，它或许还不是那么完美，但是已经可用。目前已经圆满完成了很多数据迁移任务，任务涉及文件数量上亿，文件大小达数百 TB 。这篇文章将会介绍 qscamel 设计，实现和开发过程中的一些小故事，希望能够简单的告诉大家在 QingCloud 我们是如何做产品的，以及为我们的 HR 小姐姐提前打一个招聘的广告:)&lt;/p&gt;
+
+&lt;h2 id=&#34;设计&#34;&gt;设计&lt;/h2&gt;
+
+&lt;p&gt;qscamel 只有一个功能，但是为了把这个功能做好，它需要在各个层面上都有一个比较良好的设计。&lt;/p&gt;
+
+&lt;h3 id=&#34;用户交互&#34;&gt;用户交互&lt;/h3&gt;
+
+&lt;p&gt;一个好的命令行工具应该如何跟用户交互呢？嗯，抛开使用场景谈好坏都是耍流氓，那我重新组织一下语言：一个给&lt;strong&gt;终端用户&lt;/strong&gt;使用的&lt;strong&gt;数据迁移&lt;/strong&gt;工具应该如何跟用户交互？这里有两个关键点：第一，终端用户意味着使用者不是像我这样的高级用户，他们大多数只有一点甚至是没有使用命令行程序的经验，他们能读一些中文的文档，他们无法自行处理或者理解程序返回的错误，他们记不住程序的参数；第二，数据迁移意味着这个程序可能会运行很长的时间，用户不会一直在边上守着，同时这个程序用户可能不会频繁使用。分析到这里，我们已经能够大概的想象到这个工具应该是什么样子了：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;命令要少，参数要少&lt;/li&gt;
+&lt;li&gt;学习成本要低，迁移成本要低（换个任务类型不需要重新学习配置方法）&lt;/li&gt;
+&lt;li&gt;任务启动后无需用户介入&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;除了需要考虑用户体验之外，我们还需要考虑开发体验。一个数据迁移工具，必然需要能够处理多种不同的数据来源和迁移目标，以及他们各自不一样的复杂参数。如果按照传统开发命令行工具的习惯，每个不同的端点都使用参数来进行配置，那光是参数解析和处理就要写很久。&lt;/p&gt;
+
+&lt;p&gt;因此，qscamel 最终的交互设计稿是这样的：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ qscamel run task-name &lt;span style=&#34;color:#666&#34;&gt;[&lt;/span&gt; -t /path/to/task/file &lt;span style=&#34;color:#666&#34;&gt;]&lt;/span&gt;
+$ qscamel delete task-name
+$ qscamel status
+$ qscamel clean
+$ qscamel version&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;与之相对比的是 v1 版本的 qscamel：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ qscamel -t s3 -s s3-bucket-name -z us-east-1 -a &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;S3ACCESSKEYID&amp;#34;&lt;/span&gt; -S &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;S3SECRETACCESSKEY&amp;#34;&lt;/span&gt; -b qingstor-bucket-name -d &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;migrate 05&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;同时，我们将复杂的任务配置拆分为三块：qscamel 本身的配置，任务的配置，端点的配置，并将他们分成两个文件：qscamel 本身的配置独立的存储在一个全局的配置文件中，任务和端点的配置放在一个我们定义好的任务配置当中。&lt;/p&gt;
+
+&lt;p&gt;全局的配置文件形如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;concurrency:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;log_level:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;info&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;pid_file:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;~/.qscamel/qscamel.pid&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;log_file:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;~/.qscamel/qscamel.log&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;database_file:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;~/.qscamel/db&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;而任务的配置文件格式同样是精心设计过的：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;type:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;copy&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;source:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;type:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;fs&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;path:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;/path/to/source&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;destination:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;type:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;qingstor&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;path:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;/path/to/destination&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;options:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;bucket_name:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;example_bucket&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;access_key_id:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;example_access_key_id&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;secret_access_key:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;example_secret_access_key&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;ignore_existing:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;last_modified&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;每个任务会由 &lt;code&gt;type&lt;/code&gt;，&lt;code&gt;source&lt;/code&gt;，&lt;code&gt;destination&lt;/code&gt; 和任务相关的配置组成。其中 &lt;code&gt;source&lt;/code&gt; 和 &lt;code&gt;destination&lt;/code&gt; 配置格式一样，都由 &lt;code&gt;type&lt;/code&gt;，&lt;code&gt;path&lt;/code&gt; 和 &lt;code&gt;options&lt;/code&gt; 组成。藉由这样的设计，我们希望能够在易用性和扩展性上取得一个统一。用户可以很快的知道自己需要配置的东西，并且能够忽略无关参数的干扰，比如说我要配置从 fs 迁移到 qingstor，我就不需要了解 s3 的配置参数。还有一个好处是，用户只要写一次配置文件，他就能够将其应用到别的场景：比如说进行 &lt;code&gt;delete&lt;/code&gt; 而不是 &lt;code&gt;copy&lt;/code&gt;，比如说从 &lt;code&gt;s3&lt;/code&gt; 迁移到 &lt;code&gt;qingstor&lt;/code&gt; 而不是从 &lt;code&gt;fs&lt;/code&gt;。使用一个格式规范的配置文件对于开发来说更是意义重大，开发者不再需要去维护一份晦涩难懂的参数列表，能够用更加一致的方法来处理所有的端点。&lt;/p&gt;
+
+&lt;p&gt;下面我们同样用 v1 版本的 qscamel 来做对比：&lt;/p&gt;
+
+&lt;p&gt;他首先有一个参数列表&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;| short | full             | type   | required |
+|-------|------------------|--------|----------|
+| -z    | --src-zone       | string | N        |
+| -a    | --src-access-key | string | N        |
+| -S    | --src-secret-key | string | N        |
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后根据不同的 Source 还需要选择不同参数的组合：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;| platform | require --src-zone | require --src-access-key | require --src-secret-key |
+|----------|--------------------|--------------------------|--------------------------|
+| s3       | Y                  | Y                        | Y                        |
+| qiniu    | N                  | Y                        | Y                        |
+| aliyun   | Y                  | Y                        | Y                        |
+| upyun    | Y                  | Y                        | Y                        |
+| qingstor | Y                  | Y                        | Y                        |
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这还没有考虑到不同 Source 各自不同的参数配置呐 (๑•̀ㅂ•́) ✧&lt;/p&gt;
+
+&lt;h3 id=&#34;整体流程&#34;&gt;整体流程&lt;/h3&gt;
+
+&lt;p&gt;上面我们说到 qscamel 需要做到&lt;code&gt;任务启动后无需用户介入&lt;/code&gt;，接下来就聊一聊 qscamel 整体的任务流程是怎么样的。&lt;/p&gt;
+
+&lt;p&gt;启动任务，检查任务文件的内容是否正确，初始化 Source 和 Destination 之后，qscamel 会不断的进行如下循环：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;启动一个 listWorker 不断的从 Source 中遍历 Object
+
+&lt;ul&gt;
+&lt;li&gt;如果遍历失败将会自动重试&lt;/li&gt;
+&lt;li&gt;如果遍历结束将会关闭任务队列，不再追加新的任务&lt;/li&gt;
+&lt;li&gt;如果获取到新的 Object，则首先会将其保存到数据库，然后再添加到任务队列&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;启动指定数量的 migrateWorker 不断的从任务队列中获取任务
+
+&lt;ul&gt;
+&lt;li&gt;如果任务执行失败则会重试三次，每次重试的间隔会变长，若还是失败则会跳过&lt;/li&gt;
+&lt;li&gt;如果任务执行成功则会从数据库中删除该任务&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;等到任务队列中所有的任务均已执行完毕，qscamel 将会遍历数据库
+
+&lt;ul&gt;
+&lt;li&gt;如果数据库中没有未执行完毕的任务，则该迁移任务已成功，退出&lt;/li&gt;
+&lt;li&gt;如果数据库中还有未执行完毕的任务，则重新开始上述流程&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;不难发现，如果因为某些原因，某个 Object 一直在重试，那么 qscamel 将永远不会退出，并一直在输出报错的日志。这个在设计中是作为一个产品特性考虑的，但是根据实际的用户反馈，他们更希望程序能够将这些一直失败的任务在最后的时候统一输出，因此之后重新考虑一下，看如何交互更好。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;分段上传&#34;&gt;分段上传&lt;/h3&gt;
+
+&lt;p&gt;分段上传并不是什么新奇玩意儿，但是如果要做一个不依赖服务器状态，支持并发上传多个块，支持从断点恢复而且还好看的分段上传，却实打实的花了我整整一个下午的时间。不依赖服务器状态是说我们需要在本地存储分块上传的完成情况，而不是通过调用服务器端的 API 来获取，这样可以减少很多轮查询的开销；支持并发上传多个块就是字面意思，我们需要在分块的级别上做到并发，而不是单线程跑；支持从断点恢复是说已经上传的块需要跳过，只上传还没有完成的块。之前 qscamel 使用的是 qingstor-sdk-go 提供的一个比较简陋的 upload client 封装，只是简单的顺序调用接口，没有异常的处理。直到有一天，一个用户说我要上传一个 11 TB 的单文件到对象存储 (狗头.png)&lt;/p&gt;
+
+&lt;p&gt;为了将分块上传的逻辑与我们刚才的逻辑可以优雅的结合起来，原来的 Object 和 Job （也就是一个 Folder）被组合并拆分成了三种 Object：DirectoryObject，SingleObject，PartialObject。顾名思义，DirectoryObject 就等同于原来的 Job，SingleObject 表示一个完整的 Object，而 PartialObject 除了有跟 SingleObject 一样的属性之外，它还会携带着与分段上传有关的信息，比如 part number，upload id 等。这样就使得每一个 PartialObject 都可以独立的进行上传，不需要依赖外部的信息。&lt;/p&gt;
+
+&lt;p&gt;分段上传在实现的过程中最大限度的复用了原有的逻辑，只不过在每一个 Object 开始上传时会做相关的检查：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如果是 PartialObject，则会使用 Object 中的信息进行分段上传。&lt;/li&gt;
+&lt;li&gt;如果是 SingleObject，则会根据 Endpoint 是否支持分段和这个 Object 的大小来判断是否需要拆分成 PartialObject：
+
+&lt;ul&gt;
+&lt;li&gt;如果 Endpoint 不支持分段，或者 Object 的大小不够大，则会直接上传。&lt;/li&gt;
+&lt;li&gt;反之，则会使用 Endpoint 的初始化分段接口进行分片，并将所有的 PartialObject 创建好。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;实现&#34;&gt;实现&lt;/h2&gt;
+
+&lt;p&gt;刚才我们讲了 qscamel 几处关键部分的设计，下面我们聊一聊 qscamel 的实现。qscamel 在实现过程中保持着对开发者友好的风格，没有使用什么黑科技，也没有使用什么奇怪的 Hack，简单直接，使用的也都是最常见的模型。&lt;/p&gt;
+
+&lt;h3 id=&#34;生产者-消费者&#34;&gt;生产者-消费者&lt;/h3&gt;
+
+&lt;p&gt;在绝大部分场景下，列取操作都要比上传和下载操作来得快，因此使用单生产者多消费者的模型更加合适，同时逻辑也会变得更加清晰。实现上我们使用 &lt;code&gt;sync.WaitGroup&lt;/code&gt; 做了一个简单的 &lt;code&gt;goroutine&lt;/code&gt; 池，在初始化的时候会一次性创建完毕，并始终监听 Object Channel，在 channel 关闭后自动退出。&lt;/p&gt;
+
+&lt;h3 id=&#34;endpoint-中的-interface&#34;&gt;Endpoint 中的 interface&lt;/h3&gt;
+
+&lt;p&gt;qscamel 要求支持的 endpoint 类型很多，从本地文件系统到各种对象存储，还包括本地文件的列表和 URL 的列表。想要快速开发，便于维护就要求将各个 endpoint 中的公共部分尽可能抽象出来，让 endpoint 实现者只需要关注自己逻辑相关的部分。为了做到这一点，qscamel 将 endpoint 中需要用到的所有方法拆分成了三个 interface，endpoint 实现者可以自行实现自己想要支持的功能。&lt;/p&gt;
+
+&lt;p&gt;其中，所有 endpoint 都必须要实现的 base interface 中包括如下函数：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Base is the interface that both Source and Destination should implement.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;type&lt;/span&gt; Base &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;interface&lt;/span&gt; {
+	&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Name will return the endpoint&amp;#39;s name.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;	Name(ctx context.Context) (name &lt;span style=&#34;color:#902000&#34;&gt;string&lt;/span&gt;)
+
+	&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Stat will get the metadata.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;	Stat(ctx context.Context, p &lt;span style=&#34;color:#902000&#34;&gt;string&lt;/span&gt;) (o &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;model.SingleObject, err &lt;span style=&#34;color:#902000&#34;&gt;error&lt;/span&gt;)
+
+	&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Read will return a reader.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;	Read(ctx context.Context, p &lt;span style=&#34;color:#902000&#34;&gt;string&lt;/span&gt;) (r io.Reader, err &lt;span style=&#34;color:#902000&#34;&gt;error&lt;/span&gt;)
+	&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// ReadRange will read content with range [offset, offset+size)
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;	ReadRange(ctx context.Context, p &lt;span style=&#34;color:#902000&#34;&gt;string&lt;/span&gt;, offset, size &lt;span style=&#34;color:#902000&#34;&gt;int64&lt;/span&gt;) (r io.Reader, err &lt;span style=&#34;color:#902000&#34;&gt;error&lt;/span&gt;)
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如果想要作为 Source，则还需要 Source interface：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Source is the interface for source endpoint.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;type&lt;/span&gt; Source &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;interface&lt;/span&gt; {
+	Base
+
+	&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// List will list from the job.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;	List(ctx context.Context, j &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;model.DirectoryObject, fn &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;func&lt;/span&gt;(model.Object)) (err &lt;span style=&#34;color:#902000&#34;&gt;error&lt;/span&gt;)
+
+	&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Reach will return an accessible url.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;	Reach(ctx context.Context, p &lt;span style=&#34;color:#902000&#34;&gt;string&lt;/span&gt;) (url &lt;span style=&#34;color:#902000&#34;&gt;string&lt;/span&gt;, err &lt;span style=&#34;color:#902000&#34;&gt;error&lt;/span&gt;)
+	&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Reachable will return whether current endpoint supports reach.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;	Reachable() &lt;span style=&#34;color:#902000&#34;&gt;bool&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;其中 List 会用来支持列取，而 Reach 则是可选的，这主要是用来支持对象存储的 Object Fetch 功能。&lt;/p&gt;
+
+&lt;p&gt;如果想要作为一个 Task 的 Destination，则需要实现 Destination interface：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Destination is the interface for destination endpoint.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;type&lt;/span&gt; Destination &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;interface&lt;/span&gt; {
+	Base
+
+	&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Delete will use endpoint to delete the path.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;	Delete(ctx context.Context, p &lt;span style=&#34;color:#902000&#34;&gt;string&lt;/span&gt;) (err &lt;span style=&#34;color:#902000&#34;&gt;error&lt;/span&gt;)
+	&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Deletable will return whether current endpoint supports delete.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;	Deletable() &lt;span style=&#34;color:#902000&#34;&gt;bool&lt;/span&gt;
+
+	&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Fetch will use endpoint to fetch the url.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;	Fetch(ctx context.Context, path, url &lt;span style=&#34;color:#902000&#34;&gt;string&lt;/span&gt;) (err &lt;span style=&#34;color:#902000&#34;&gt;error&lt;/span&gt;)
+	&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Fetchable will return whether current endpoint supports fetch.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;	Fetchable() &lt;span style=&#34;color:#902000&#34;&gt;bool&lt;/span&gt;
+
+	&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// InitPart will inti a multipart upload.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;	InitPart(ctx context.Context, p &lt;span style=&#34;color:#902000&#34;&gt;string&lt;/span&gt;, size &lt;span style=&#34;color:#902000&#34;&gt;int64&lt;/span&gt;) (uploadID &lt;span style=&#34;color:#902000&#34;&gt;string&lt;/span&gt;, partSize &lt;span style=&#34;color:#902000&#34;&gt;int64&lt;/span&gt;, partNumbers &lt;span style=&#34;color:#902000&#34;&gt;int&lt;/span&gt;, err &lt;span style=&#34;color:#902000&#34;&gt;error&lt;/span&gt;)
+	&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// UploadPart will upload a part.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;	UploadPart(ctx context.Context, o &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;model.PartialObject, r io.Reader) (err &lt;span style=&#34;color:#902000&#34;&gt;error&lt;/span&gt;)
+	&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Partable will return whether current endpoint supports multipart upload.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;	Partable() &lt;span style=&#34;color:#902000&#34;&gt;bool&lt;/span&gt;
+
+	&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Write will read data from the reader and write to endpoint.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;	Write(ctx context.Context, path &lt;span style=&#34;color:#902000&#34;&gt;string&lt;/span&gt;, size &lt;span style=&#34;color:#902000&#34;&gt;int64&lt;/span&gt;, r io.Reader) (err &lt;span style=&#34;color:#902000&#34;&gt;error&lt;/span&gt;)
+	&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Writable will return whether current endpoint supports write.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;	Writable() &lt;span style=&#34;color:#902000&#34;&gt;bool&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在每个 interface 中，开发者对自己不想或者暂时不想实现的功能都可以在对应的 &lt;code&gt;Xxxable()&lt;/code&gt; 函数中返回 &lt;code&gt;false&lt;/code&gt; 即可，qscamel 在初始化任务时会进行对应功能的检查，并在任务要求不满足时报错。&lt;/p&gt;
+
+&lt;p&gt;这样，我们 qscamel 就能够方便快捷的扩展新 endpoint 了~&lt;/p&gt;
+
+&lt;h3 id=&#34;leveldb&#34;&gt;LevelDB&lt;/h3&gt;
+
+&lt;p&gt;qscamel 是我们 QingStor Team 推出的第一款有状态的命令行工具，之前我们做 &lt;code&gt;qingcloud-cli&lt;/code&gt; 和 &lt;code&gt;qsctl&lt;/code&gt; 都只是直接调用对象存储的 API，不会在本地存储持久化的状态。但是 qscamel 作为一款数据迁移工具，它必须在本地维护大量信息以支持任务的断点续传。&lt;/p&gt;
+
+&lt;p&gt;qscamel 在选型过程中考察了很多方案：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;首先排除掉了所有 Server - Client 模式的数据库，迁移工具要求部署简单，轻量级，如果迁移数据还需要部署一个 MySQL 或者 Redis，那就太滑稽了，因此可选择的一定是嵌入式 DB。&lt;/li&gt;
+&lt;li&gt;然后因为开发者（没错，就是我）的个人偏好，排除掉了所有必须使用 CGO 的嵌入式 DB。RocksDB 非常酷炫，但是因为找不到一个足够好的纯 go 实现，所以被否决了。&lt;/li&gt;
+&lt;li&gt;再次因为 qscamel 规划当中会在 DB 中存储的数据类型不会超过 3 种，同时也不会存在需要 Join 的情况，所以排除掉了所有嵌入式 SQL 数据库。&lt;/li&gt;
+&lt;li&gt;最后在社区那么多嵌入式 K-V 数据库中，我们还需要排除掉所有不靠谱的，没有生产环境实际验证过的，维护状态不佳的，以及看着就不大行的项目。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在筛过好几轮之后，摆在我们面前的可选方案有三个：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/etcd-io/bbolt&#34;&gt;BoltDB&lt;/a&gt; &lt;em&gt;原作者已经不维护了，现在由 coreos team 的人 Fork 并维护了一份，最近转移给了 etcd-io&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/dgraph-io/badger&#34;&gt;Badger&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/syndtr/goleveldb&#34;&gt;LevelDB&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;BoltDB 使用了 B+tree，LevelDB 使用了 LSM tree，而 Badger 则是借鉴了论文 &lt;a href=&#34;https://www.usenix.org/system/files/conference/fast16/fast16-papers-lu.pdf&#34;&gt;WiscKey&lt;/a&gt;，论文我没有细看，但大致的思想是将 LSM trees 中的 Key 和 Value 分开，将 Key 存储在 LSM tree 中，而 Value 则存在 value logs 里面。相对的来说，BoltDB 更加适合于读多写少的场景，而基于 LSM tree 的 DB 写入会更有优势。此外，LevelDB 不提供事务，它提供批量写入和读取时的 Snapshot，而 BoltDB 和 Badger 提供了完整的 ACID 事务，其中 BoltDB 不支持并发写事务，而 Badger 则支持。再三权衡之后，我首先放弃了 Badger。虽然特性很多，功能很强，Benchmark 也非常好看，但是它的特性我们基本上都用不到，加上我个人对这个项目的代码还不是很熟悉，可靠性上还有着疑虑，所以放弃了。&lt;/p&gt;
+
+&lt;p&gt;本着够用就行的想法，我一开始选择了被广泛运用的 BoltDB 。但是事实证明这个选择是错误的，在 qscamel 实际的场景下，剧烈的写事务竞争导致性能很差，并且发现 qscamel 对事务其实并没有什么需求，因此切换成了 LevelDB。&lt;/p&gt;
+
+&lt;h2 id=&#34;故事&#34;&gt;故事&lt;/h2&gt;
+
+&lt;h3 id=&#34;遇事不决-黄金切割&#34;&gt;遇事不决，黄金切割&lt;/h3&gt;
+
+&lt;p&gt;在 qscamel 探索的过程中，有过需要 magic number 的阶段，处于个人偏好，我无一例外的全部选择了黄金切割比。&lt;/p&gt;
+
+&lt;p&gt;案例一：生产者与消费者比例&lt;/p&gt;
+
+&lt;p&gt;之前 qscamel 是采用的多生产者，多消费者的方案，每个 worker 从一个统一的任务队列中取任务，又是生产者，又是消费者。看起来很美好，但是运行到某个时点，qscamel 总是会停止响应。当然了，现在回头来看可以知道这个 BUG 是由多种原因导致的。但是当时的一个分析是 Worker 的调度有问题，有可能所有的 Worker 都在生产，没有消费，导致整个任务队列阻塞了。作为一个解决方案，需要人为的固定生产者和消费者的比例，纠结了一会儿，选择了 0.618。&lt;/p&gt;
+
+&lt;p&gt;事后的测试中发现这个 Fix 完全没有什么用，于是删掉了（&lt;/p&gt;
+
+&lt;p&gt;案例二：乱搞的文件一致性检验&lt;/p&gt;
+
+&lt;p&gt;为了加快一致性检验的速度，qscamel 曾经自己乱搞过一个&lt;a href=&#34;https://github.com/yunify/qscamel/commit/5a29fc9346b56b6ab5c6377f58d49675ace49838#diff-77889babdacd806bb9d5b8299a56e9a9&#34;&gt;一致性的算法&lt;/a&gt;。想法非常简单，从文件的头尾和 0.618 处，分别取 3 MB，总计 9 MB，然后计算它们的 MD5 。很快这个想法被毙了，用户开 MD5 的检查就是为了保证自己文件上传没错，搞一个所谓 quickMD5 完全没有实际的意义，要是万一有一个文件 MD5 不对，结果没有检查出来，那就大发了。&lt;/p&gt;
+
+&lt;p&gt;总的来说，所有引入黄金切割的尝试全都失败了，但是我还在期待着下一个机会（&lt;/p&gt;
+
+&lt;h3 id=&#34;buffer-的-bytes&#34;&gt;Buffer 的 Bytes&lt;/h3&gt;
+
+&lt;p&gt;qscamel 很多地方都使用了我朋友 &lt;a href=&#34;https://pjw.io/&#34;&gt;@Aspire&lt;/a&gt; 写的&lt;a href=&#34;https://github.com/pengsrc/go-shared&#34;&gt;库&lt;/a&gt;，但是有一天被坑了一手，因为我发现它的 &lt;code&gt;buffer.Bytes()&lt;/code&gt; 不是线程安全的。因为它是这样实现的：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Bytes returns a mutable reference to the underlying byte slice.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;func&lt;/span&gt; (b &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;BytesBuffer) Bytes() []&lt;span style=&#34;color:#902000&#34;&gt;byte&lt;/span&gt; {
+	&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; b.bs
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;他将底层的 byte slice 直接返回，那就有可能在使用到一半的时候这个 buffer 被释放并写入了新的值，从而导致外部的调用者看到了一个错误的值。我提了一个 &lt;a href=&#34;https://github.com/pengsrc/go-shared/pull/3&#34;&gt;PR&lt;/a&gt;，跟 @Aspire 讨论了一下这个问题。虽说当初他实现的时候没有怎么考虑这个问题，但是想了一下他认为这是设计预期的，主要的点有两个：第一，设计这个 buffer 库就是为了复用内存，减少频繁创建 bytes slice 带来的开销，降低 gc 的压力，如果这个地方按照我的 PR 那样返回了一个新的 bytes slice 的话，那这个库就跟它的设计目标相违背了；第二，在 Golang 中，如果没有明确声明并发访问某事物是安全的，那它就不是安全的，比如 Golang 自己 &lt;a href=&#34;https://golang.org/src/bytes/buffer.go&#34;&gt;Buffer 实现&lt;/a&gt;就不是并发安全的：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Bytes returns a slice of length b.Len() holding the unread portion of the buffer.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// The slice is valid for use only until the next buffer modification (that is,
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// only until the next call to a method like Read, Write, Reset, or Truncate).
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// The slice aliases the buffer content at least until the next buffer modification,
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// so immediate changes to the slice will affect the result of future reads.
+&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;func&lt;/span&gt; (b &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;Buffer) Bytes() []&lt;span style=&#34;color:#902000&#34;&gt;byte&lt;/span&gt; { &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; b.buf[b.off:] }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;最后的决定是增加一个类似于 &lt;code&gt;SafeBytes()&lt;/code&gt; 的函数，不过因为懒，所以一直没有做，以后再补上吧~&lt;/p&gt;
+
+&lt;h3 id=&#34;小人物的重构-从早到晚&#34;&gt;小人物的重构，从早到晚&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;语出猫腻《间客》许乐在老虎死后跟随舰队穿越虫洞，手刃卡顿郡王前：“大人物报仇，隐忍十年也不算晚，小人物的复仇，却是从早到晚。”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;其实 qscamel 的分段上传逻辑写了两遍，最开始是在原来的基础上缝缝补补，为 Object 加了很多新的属性，然后加了很多复杂判断，基本可用之后交付给了售前去做测试。晚上下班回家之后实在不满意那个版本，于是采用新的，也就是现在这样的逻辑重新实现了一遍。性能上有轻微提升，逻辑上变得更加顺畅，更主要的是我更加开心了  ʅ(‾◡◝)ʃ&lt;/p&gt;
+
+&lt;h2 id=&#34;动态&#34;&gt;动态&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这文章写了好几个月了，都不知道动态该写啥了。。&lt;/li&gt;
+&lt;li&gt;LOL 洲际赛夺冠了，亚运会也夺冠了，又又又是最有希望的一年，希望今年能拿到 S 系列赛的冠军&lt;/li&gt;
+&lt;li&gt;最近在重温《希灵帝国》，还买了微信读书新出的无限卡，每个月可以免费解锁 300 个章节，按照每个章节 0.3 元的均价，每月 19 块还是比较划算的（会计小能手&lt;/li&gt;
+&lt;li&gt;PS 会免了命运 2，跟小伙伴一起突突突了两天，导致接下来的一个星期睡觉都满脑子枪声&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;广告&#34;&gt;广告&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;广告位招租，8 点 17 分发&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;想要加入我们一起来做靠谱的产品吗，快访问 &lt;a href=&#34;https://www.qingcloud.com/jobs&#34;&gt;https://www.qingcloud.com/jobs&lt;/a&gt; 寻找自己中意的岗位并且给我发简历吧~&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Tiresias v0.3</title>
@@ -1084,245 +1386,6 @@ test()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;li&gt;正如开头所说的，这篇文章是 “Learn From BUG” 系列的第一篇，之后我会不定期的整理和分享一些自己平时遇到的 BUG 解决思路。一方面是为了自己能够从 BUG 中学到更多，另一方面是希望能够帮助到被类似 BUG 困扰的人们。&lt;/li&gt;
 &lt;li&gt;随着再一次的心血来潮，我在 Linode 买了台机器部署并且把 Blog 迁移了过去，去掉了减速 CDN，实测速度比之前快上了不少。&lt;/li&gt;
 &lt;li&gt;《比宇宙更遥远的地方》完结撒花了，我现在唯一的感触就是这次的圣地巡礼可能有点贵 = =&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>基于 AWS Lambda 实现自动化</title>
-      <link>https://xuanwo.org/2018/01/14/automation-based-on-aws-lambda/</link>
-      <pubDate>Sun, 14 Jan 2018 10:07:00 +0000</pubDate>
-      
-      <guid>https://xuanwo.org/2018/01/14/automation-based-on-aws-lambda/</guid>
-      <description>&lt;p&gt;在上一篇文章中我们介绍了 &lt;a href=&#34;https://xuanwo.org/2017/12/03/integromat-intro/&#34;&gt;Integrmat&lt;/a&gt; 这个自动化平台，但是在实际的应用当中，它还是有一些不太符合我们项目需求的地方。基于 AWS Lambda 实现的自动化工具就是我们找到的替代方案，接下来我会将阐述一下项目的需求，然后根据对项目的需求分析为什么 Integrmat 不适合以及基于 AWS Lambda 实现的好处在哪里。之后会介绍一下 AWS Lambda 是什么以及如何实现我们的自动化工具，并分享一些在实现自动化工具中遇到的一些坑。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;项目需求&#34;&gt;项目需求&lt;/h2&gt;
-
-&lt;p&gt;我们项目中主要有一下几个部分需要用到自动化工具：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;在 Jenkins 上运行的自动构建出错时自动在 Trello 中创建 Card&lt;/li&gt;
-&lt;li&gt;Grafana 报警时自动在 Trello 中创建 Card&lt;/li&gt;
-&lt;li&gt;移动到 Done 列表的超过两周的 Card 自动归档&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;why-not-integrmat&#34;&gt;Why not Integrmat&lt;/h3&gt;
-
-&lt;p&gt;以 &lt;code&gt;Jenkins 出错后在 Trello 中创建 Card&lt;/code&gt; 这个需求为例，我们需要的不仅仅是简单的出错之后加个 Card 就可以了。我们需要的是一个 Jenkins 出错到恢复的全生命周期的管理，也就是说根据上一次 Jenkins Job 执行的状态和本次状态，我们会有如下几种情况：&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;上次状态&lt;/th&gt;
-&lt;th&gt;本次状态&lt;/th&gt;
-&lt;th&gt;执行操作&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;成功&lt;/td&gt;
-&lt;td&gt;成功&lt;/td&gt;
-&lt;td&gt;忽略&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;成功&lt;/td&gt;
-&lt;td&gt;失败&lt;/td&gt;
-&lt;td&gt;创建一个新 Card&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;失败&lt;/td&gt;
-&lt;td&gt;失败&lt;/td&gt;
-&lt;td&gt;在之前创建的 Card 中增加新的评论&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;失败&lt;/td&gt;
-&lt;td&gt;成功&lt;/td&gt;
-&lt;td&gt;归档对应的 Card&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;这就会带来除了创建 Card 之外额外的操作次数调用，而这些都是计费的。&lt;/p&gt;
-
-&lt;p&gt;不仅如此，我们的 Jenkins 每天 24 小时都在不停的执行 Job，按照并行三个 Job，单个 Job 执行 1 分钟来计算，每天会触发 8640 次。每次 Job 如果失败的话需要操作大约 5 次，成功的话需要操作 2 次。按照 1% 的失败率来计算，我们一个月需要的操作数为 596160 次。对应到 Integrmat 的收费政策，我们需要开通每月 299 刀的最顶级套餐 = =。&lt;/p&gt;
-
-&lt;p&gt;Integrmat 在其优质服务，良好体验的背后，带来是不菲的开销。显然，此路不通。&lt;/p&gt;
-
-&lt;h3 id=&#34;why-aws-lambda&#34;&gt;Why AWS Lambda&lt;/h3&gt;
-
-&lt;p&gt;分析完了上面的为什么不是 Integrmat 之后，使用 AWS Lambda 的理由就变得非常明显了。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;不想自己从头撸一个 FaaS 框架&lt;/li&gt;
-&lt;li&gt;AWS Lambda 很便宜&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;AWS 提供的免费套餐中有着如下几条：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Lambda 每月 100 万个免费请求 （永久）&lt;/li&gt;
-&lt;li&gt;DynamoDB 25GB 存储 （永久）&lt;/li&gt;
-&lt;li&gt;API Gateway 每月接收 100 万次 （12 个月免费）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;结合前面的计算，AWS 的免费套餐已经完全可以覆盖我们的需求。&lt;/p&gt;
-
-&lt;h2 id=&#34;aws-lambda-faas-介绍&#34;&gt;AWS Lambda / FaaS 介绍&lt;/h2&gt;
-
-&lt;p&gt;FaaS 是指给 Function 提供运行环境和调度的服务，而 AWS Lambda 则是目前 FaaS 中运用比较广泛的一个服务。用户只需要实现业务逻辑，将代码上传到 AWS 之后，AWS 会负责处理接下来的所有事情：调度，伸缩，高可用，日志等等。而这些只有在方法被调用的时候才会计费，可以真正的做到按需运行，按毫秒计费。更详细的介绍可以看老王之前写的一篇文章 —— &lt;a href=&#34;http://jolestar.com/serverless-faas-current-status-and-future/&#34;&gt;Serverless/FaaS 的现状和未来&lt;/a&gt;。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;需要说明的是，从理论上来说任何 FaaS 框架都可以用来实现本文中描述功能，本文以 AWS Lambda 为例只是因为我们项目中刚好在用以及比较便宜而已，并不代表本人的任何倾向。老王的文章中也有介绍各个平台的 FaaS 服务，感兴趣的同学可以去看一看。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;如何实现自动化&#34;&gt;如何实现自动化&lt;/h2&gt;
-
-&lt;p&gt;我们主要用到了以下工具：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Lambda&lt;/li&gt;
-&lt;li&gt;DynamoDB&lt;/li&gt;
-&lt;li&gt;API Gateway&lt;/li&gt;
-&lt;li&gt;CloudWatch&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;其中 Lambda 会提供函数运行的环境，我们主要使用了 Python 3.6。Lambda 每次运行都是一个完全独立的环境，我们需要接入 DynamoDB 来提供持久化存储的能力。API Gateway 则会对外暴露出一个链接作为 Webhook 来触发 Lambda 运行，CloudWatch 除了收集日志之外，还能够定时触发任务。这四件套下来，基本上就能够覆盖我们开发自动化工具所需要的大部分功能。下面我们就以 &lt;code&gt;Jenkins 出错后在 Trello 中创建 Card&lt;/code&gt; 这个需求为例，讲解一下如何实现基于 AWS Lambda 的自动化工具。&lt;/p&gt;
-
-&lt;h3 id=&#34;创建函数&#34;&gt;创建函数&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;进入 Lambda 的界面，点击右上方的 &lt;code&gt;创建函数&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;选择 &lt;code&gt;从头开始创作&lt;/code&gt; 即可。&lt;/li&gt;
-&lt;li&gt;填写函数的名字，这个名字在创建好之后是不能修改的。&lt;/li&gt;
-&lt;li&gt;选择运行语言，根据自己的喜好选择即可&lt;/li&gt;
-&lt;li&gt;选择运行角色，这里我推荐 &lt;code&gt;创建自定义角色&lt;/code&gt;。为每一个函数都创建一个独立的角色，这样方便控制权限，以后比较容易分得清。AWS 的 IAM 超级恶心，这是我摸索出来的不太容易出问题的步骤。对 AWS IAM 熟悉的同学可以忽略我的建议。&lt;/li&gt;
-&lt;li&gt;点击 &lt;code&gt;创建函数&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;这样我们的一个函数就创建好了。&lt;/p&gt;
-
-&lt;h3 id=&#34;接入服务&#34;&gt;接入服务&lt;/h3&gt;
-
-&lt;p&gt;为了能够实现我们上述的需求，我们还需要接入对应的服务： DynamoDB，API Gateway 和 CloudWatch。其中每个函数会默认添加一个 CloudWatch，因此不需要再做额外的配置。DynamoDB 和 API Gateway 都建议先再外部创建好，然后再在 Lambda 中去添加，要不然 AWS 自动创建的 IAM 规则会非常乱，很容易出现各种奇怪的问题。如果对稳定性要求比较高的同学可以将 API Gateway 绑定到一个固定的 version 上，比如创建一个 version 叫做 &lt;code&gt;production&lt;/code&gt;，然后再将 &lt;code&gt;production&lt;/code&gt; 指向某个具体的版本，这样可以保证线上运行的代码始终是不变的，同时也方便使用 API Gateway 的流量调度来做一些灰度测试之类的。没有这方面需求的同学，可以直接将 API Gateway 绑定到 &lt;code&gt;$LASTEST&lt;/code&gt; 上，这样所有的请求都会由最新的代码来执行。&lt;/p&gt;
-
-&lt;h3 id=&#34;编辑函数&#34;&gt;编辑函数&lt;/h3&gt;
-
-&lt;p&gt;函数创建好之后就进入了函数的配置界面。这个地方 AWS 嵌入了 Cloud9 的在线编辑器，自带语言高亮，缩进和提示，还是比较好用的。当然除了在线编辑之外也可以上传 zip 包或者选择从 S3 上传，之后用到的时候再讲。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#0e84b5;font-weight:bold&#34;&gt;os&lt;/span&gt;
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#0e84b5;font-weight:bold&#34;&gt;json&lt;/span&gt;
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#0e84b5;font-weight:bold&#34;&gt;boto3&lt;/span&gt;
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#0e84b5;font-weight:bold&#34;&gt;trello&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;import&lt;/span&gt; TrelloClient
-
-trello &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; TrelloClient(
-    api_key&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;os&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;environ[&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;TRELLO_API_KEY&amp;#39;&lt;/span&gt;],
-    api_secret&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;os&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;environ[&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;TRELLO_API_SECRET&amp;#39;&lt;/span&gt;],
-    token&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;os&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;environ[&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;TRELLO_TOKEN&amp;#39;&lt;/span&gt;],
-    token_secret&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;os&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;environ[&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;TRELLO_TOKEN_SECRET&amp;#39;&lt;/span&gt;]
-)
-board &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; trello&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;get_board(os&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;environ[&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;TRELLO_BOARD_ID&amp;#39;&lt;/span&gt;])
-todo_list &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; board&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;get_list(os&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;environ[&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;TRELLO_TODO_LIST_ID&amp;#39;&lt;/span&gt;])
-done_list &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; board&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;get_list(os&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;environ[&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;TRELLO_DONE_LIST_ID&amp;#39;&lt;/span&gt;])
-
-dynamodb &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; boto3&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;resource(&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;dynamodb&amp;#39;&lt;/span&gt;)
-table &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; dynamodb&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;Table(os&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;environ[&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;DYNAMODB_TABLE&amp;#39;&lt;/span&gt;])
-
-SUCCESS &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;SUCCESS&amp;#39;&lt;/span&gt;]
-
-
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;main&lt;/span&gt;(event, context):
-    event &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; json&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;loads(event[&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;body&amp;#39;&lt;/span&gt;])
-    name &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; event[&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;]
-    status &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; event[&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;build&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;status&amp;#39;&lt;/span&gt;]
-
-    q &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; table&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;get_item(Key&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;project&amp;#39;&lt;/span&gt;: name})
-    &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# Create a new card if this project is not exist.&lt;/span&gt;
-    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;Item&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;not&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; q:
-        &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# Nothing need to do if event is successful.&lt;/span&gt;
-        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; status &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; SUCCESS:
-            &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt;
-        card &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; todo_list&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;add_card(
-            name&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt; #&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%d&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt; Build &lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;%&lt;/span&gt; (name, event[&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;build&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;number&amp;#39;&lt;/span&gt;], status),
-            desc&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;event[&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;build&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;full_url&amp;#39;&lt;/span&gt;],
-            position&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;top&amp;#39;&lt;/span&gt;
-        )
-        table&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;put_item(Item&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;{
-            &lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;project&amp;#39;&lt;/span&gt;: name,
-            &lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;status&amp;#39;&lt;/span&gt;: status,
-            &lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;card_id&amp;#39;&lt;/span&gt;: card&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;id&lt;/span&gt;
-        })
-        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt;
-
-    &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# If project exists, we should update card depends on project status.&lt;/span&gt;
-    item &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; q[&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;Item&amp;#39;&lt;/span&gt;]
-    card &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; trello&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;get_card(card_id&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;item[&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;card_id&amp;#39;&lt;/span&gt;])
-
-    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; status &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; SUCCESS:
-        table&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;delete_item(Key&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;project&amp;#39;&lt;/span&gt;: name})
-        card&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;comment(
-            &lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt; #&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%d&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt; Build &lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#4070a0;font-weight:bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;%&lt;/span&gt;
-            (name, event[&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;build&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;number&amp;#39;&lt;/span&gt;], status, event[&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;build&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;full_url&amp;#39;&lt;/span&gt;]))
-        card&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;set_closed(True)
-        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt;
-
-    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; status &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;not&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; SUCCESS:
-        card&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;comment(
-            &lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt; #&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%d&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt; Build &lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#4070a0;font-weight:bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;%&lt;/span&gt;
-            (name, event[&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;build&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;number&amp;#39;&lt;/span&gt;], status, event[&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;build&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#4070a0&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;full_url&amp;#39;&lt;/span&gt;]))
-
-    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;以上就是我们实现 &lt;code&gt;Jenkins 出错后在 Trello 中创建 Card&lt;/code&gt; 的全部代码。有几个需要拿出来单独讲一下的地方：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;函数运行是调用的 Handler 函数是可以修改的，比如这里就是修改成了 &lt;code&gt;main.main&lt;/code&gt;，Lambda 会在代码中寻找 &lt;code&gt;main.py&lt;/code&gt; 文件并执行该文件中的 &lt;code&gt;main&lt;/code&gt; 函数。&lt;/li&gt;
-&lt;li&gt;Handler 函数主要接收两个参数，event 与 context，event 中就是外部传入的数据。如果在 Lambda 外面套了 API Gateway 的话，API Gateway 会增加额外的内容，并且把请求体放到 &lt;code&gt;event[&#39;body&#39;]&lt;/code&gt; 中，因此我们需要 &lt;code&gt;json.loads(event[&#39;body&#39;])&lt;/code&gt; 才能取到外部传过来的真实值。&lt;/li&gt;
-&lt;li&gt;Lambda 环境中自带了 boto3 并且与 IAM 集成了，因此可以不需要额外的认证直接调用已经授权的服务，比如这个地方用到的 &lt;code&gt;dynamodb&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;Lambda 支持设置环境变量，因此可以将一些参数都放到环境变量中并通过 &lt;code&gt;os.environ&lt;/code&gt; 来读取。&lt;/li&gt;
-&lt;li&gt;如果要在 Lambda 中引用外部的库，则需要将这些库一起打包上传。以这里的 &lt;code&gt;trello&lt;/code&gt; 库为例，我们需要执行 &lt;code&gt;pip install py-trello -t .&lt;/code&gt; 将这个库及其相关依赖下载到当前目录，然后使用 &lt;code&gt;zip -r ../code.zip *&lt;/code&gt; 压缩后上传。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;具体的实现就不再多讲，相信大家都能看懂。&lt;/p&gt;
-
-&lt;h3 id=&#34;调试函数&#34;&gt;调试函数&lt;/h3&gt;
-
-&lt;p&gt;在代码写好之后，我们可以在页面直接调试。页面右上方可以配置一些测试事件，点击 &lt;code&gt;保存&lt;/code&gt; 后点 &lt;code&gt;测试&lt;/code&gt; 即可直接运行。运行结果会有对应的日志展示出来，也可以到 CloudWatch 中去查看更为完整的日志，根据日志反馈的情况修改自己的代码即可。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;从国内上传代码很是恶心，开着代理也经常出问题，不知道啥原因。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
-
-&lt;p&gt;这篇文章主要介绍了如何基于 AWS Lambda 来实现一个自动化脚本。&lt;/p&gt;
-
-&lt;p&gt;优点：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;除了偶尔请求 timeout 之外，服务很稳定，上线之后不用费心维护&lt;/li&gt;
-&lt;li&gt;自动集成的 CloudWatch 日志挺好用，调试很方便&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;缺点：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;调试的过程比较麻烦，不能接入外部的 Git 服务，只能用 AWS 自己的那个&lt;/li&gt;
-&lt;li&gt;上线的脚本多了之后维护起来很麻烦，没有一个统一管理的方案&lt;/li&gt;
-&lt;li&gt;强依赖 AWS 自己的服务，日后迁移要大改脚本&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;动态&#34;&gt;动态&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;这篇文章是一月份写的，但是一直到今天（2018.3.4）才写好结尾发出来 = =&lt;/li&gt;
-&lt;li&gt;我的 github profile 是有多像一个前端以至于所有公司给我发的 JD 都是前端？&lt;/li&gt;
-&lt;li&gt;尼尔半价了，2B 小姐姐赛高&lt;/li&gt;
-&lt;li&gt;我永远喜欢薇尔莉特.jpg&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     

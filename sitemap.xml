@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://xuanwo.org/2018/09/05/qscamel-intro/</loc>
+    <lastmod>2018-09-05T09:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://xuanwo.org/2018/07/22/tiresias-v0.3/</loc>
     <lastmod>2018-07-22T16:00:00+00:00</lastmod>
   </url>
@@ -2083,7 +2088,7 @@
   
   <url>
     <loc>https://xuanwo.org/2018/</loc>
-    <lastmod>2018-07-22T16:00:00+00:00</lastmod>
+    <lastmod>2018-09-05T09:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2170,7 +2175,7 @@
   
   <url>
     <loc>https://xuanwo.org/categories/develop/</loc>
-    <lastmod>2018-07-22T16:00:00+00:00</lastmod>
+    <lastmod>2018-09-05T09:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2224,7 +2229,7 @@
   
   <url>
     <loc>https://xuanwo.org/tags/golang/</loc>
-    <lastmod>2018-07-22T16:00:00+00:00</lastmod>
+    <lastmod>2018-09-05T09:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2356,13 +2361,13 @@
   
   <url>
     <loc>https://xuanwo.org/tags/qingcloud/</loc>
-    <lastmod>2016-09-13T01:58:33+00:00</lastmod>
+    <lastmod>2018-09-05T09:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xuanwo.org/tags/qingstor/</loc>
-    <lastmod>2017-06-15T15:44:00+00:00</lastmod>
+    <lastmod>2018-09-05T09:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2384,7 +2389,7 @@
   
   <url>
     <loc>https://xuanwo.org/series/self-made-wheels/</loc>
-    <lastmod>2018-07-22T16:00:00+00:00</lastmod>
+    <lastmod>2018-09-05T09:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2486,7 +2491,7 @@
   
   <url>
     <loc>https://xuanwo.org/</loc>
-    <lastmod>2018-07-22T16:00:00+00:00</lastmod>
+    <lastmod>2018-09-05T09:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

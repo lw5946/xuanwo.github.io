@@ -92,7 +92,7 @@
             <blockquote>
             
               
-              <p>本文是 <a href="https://xuanwo.org/series/self-made-wheels">Self-made Wheels</a> 系列的第    2  篇文章, 共 3 篇。</p>
+              <p>本文是 <a href="https://xuanwo.org/series/self-made-wheels">Self-made Wheels</a> 系列的第     2  篇文章, 共 4 篇。</p>
             
             </blockquote>
             <p>大概从大二的时候开始就有这种困惑：不同的服务器所在的云服务商，数据中心，网段，用户名和私钥各不相同，他们的信息要如何管理？最开始是把所有的服务器信息都存放在了密码管理工具当中，后来知道了使用 <a href="https://github.com/moul/advanced-ssh-config">assh</a> 来生成 <code>ssh_config</code>，最后是 <a href="https://pjw.io/">@Aspire</a> 提供的一个思路：使用脚本生成 <code>hosts</code> 文件。于是我顺着 Aspire 的思路开发了一个工具：<a href="https://github.com/Xuanwo/tiresias">Tiresias</a>，它可以读取事先写好的 YAML 配置文件并生成 <code>ssh_config</code> 和 <code>hosts</code> 文件。今天这篇文章就主要介绍一下我造的又一个轮子。</p>

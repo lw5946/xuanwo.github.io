@@ -64,6 +64,58 @@
                 
                 
                 <header class="article-header">
+                    <h1 itemprop="name"><a class="article-title" href="/2014/10/05/poj-3624-charm-bracelet/">POJ 3624 Charm Bracelet</a></h1>
+                </header>
+                
+                <div class="article-meta">
+                    <a href="/2014/10/05/poj-3624-charm-bracelet/" class="article-date">
+                        <time datetime='2014-10-05T10:52:48.000&#43;00:00' itemprop="datePublished">2014-10-05</time>
+                    </a>
+                    
+                    
+                    <div class="post-categories">
+                        <div class="article-category">
+                            
+                            <a class="article-category-link" href="https://xuanwo.org/categories/exercise">Exercise</a>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="article-comment-link-wrap">
+                        <a href="/2014/10/05/poj-3624-charm-bracelet/#disqus_thread" class="article-comment-link">Comments</a>
+                    </div>
+                    
+                </div>
+                <div class="article-entry" itemprop="articleBody">
+                    <p>
+                        
+                    <h2 id="题目">题目</h2>
+
+<p>源地址：</p>
+
+<p><a href="http://poj.org/problem?id=3624">http://poj.org/problem?id=3624</a></p>
+
+<h1 id="理解">理解</h1>
+
+<p>这道题拖了很久很久，一直没有搞定，对DP以及背包问题的理解，一直处在一个瓶颈之中，特别烦躁。
+知道今天在比赛群里面问了学长，才发现是空间优化的问题，二维的记忆化数组会直接超出容量限制。想通了这一点后，优化就变得简单了。只要另外定义一个新的数组f[MAXN]，从M-&gt;w[i]进行循环，最后的f[m]就是所要求的结果。</p>
+
+<p></p>
+                    </p>
+                    <p class="article-more-link">
+                        <a href="/2014/10/05/poj-3624-charm-bracelet/">Read More</a>
+                    </p>
+                </div>
+
+                
+            </div>
+        </article>
+        
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+            <div class="article-inner">
+                
+                
+                <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/10/03/srun/">深澜HTML登陆——防掉线，开共享</a></h1>
                 </header>
                 
@@ -548,58 +600,6 @@
                     </p>
                     <p class="article-more-link">
                         <a href="/2014/08/24/poj-3617-best-cow-line/">Read More</a>
-                    </p>
-                </div>
-
-                
-            </div>
-        </article>
-        
-        <article class="article article-type-post" itemscope itemprop="blogPost">
-            <div class="article-inner">
-                
-                
-                <header class="article-header">
-                    <h1 itemprop="name"><a class="article-title" href="/2014/08/24/poj-3414-pots/">POJ 3414 Pots</a></h1>
-                </header>
-                
-                <div class="article-meta">
-                    <a href="/2014/08/24/poj-3414-pots/" class="article-date">
-                        <time datetime='2014-08-24T21:11:39.000&#43;00:00' itemprop="datePublished">2014-08-24</time>
-                    </a>
-                    
-                    
-                    <div class="post-categories">
-                        <div class="article-category">
-                            
-                            <a class="article-category-link" href="https://xuanwo.org/categories/exercise">Exercise</a>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="article-comment-link-wrap">
-                        <a href="/2014/08/24/poj-3414-pots/#disqus_thread" class="article-comment-link">Comments</a>
-                    </div>
-                    
-                </div>
-                <div class="article-entry" itemprop="articleBody">
-                    <p>
-                        
-                    <h2 id="题目">题目</h2>
-
-<p>源地址：</p>
-
-<p><a href="http://poj.org/problem?id=3414">http://poj.org/problem?id=3414</a></p>
-
-<h1 id="理解">理解</h1>
-
-<p>因为卡一道题然后整整两天没有做题目什么的太不科学了- -。
-纠结的难点在于，我怎么样把实现操作的路径打印出来。事实上，标记全部的六种状态，然后在bfs的过程中，把每一个状态全都输出到一个数组中去，然后再进行输出。</p>
-
-<p></p>
-                    </p>
-                    <p class="article-more-link">
-                        <a href="/2014/08/24/poj-3414-pots/">Read More</a>
                     </p>
                 </div>
 

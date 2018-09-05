@@ -6,10 +6,21 @@
     <description>Recent content in Qingstor on Xuanwo&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 15 Jun 2017 15:44:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 05 Sep 2018 09:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xuanwo.org/tags/qingstor/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>qscamel —— 数据迁移工具</title>
+      <link>https://xuanwo.org/2018/09/05/qscamel-intro/</link>
+      <pubDate>Wed, 05 Sep 2018 09:00:00 +0000</pubDate>
+      
+      <guid>https://xuanwo.org/2018/09/05/qscamel-intro/</guid>
+      <description>&lt;p&gt;qscamel 是一个用于在不同的端点 (Endpoint) 中高效迁移数据的工具。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>从浏览器端向 QingStor 对象存储上传文件</title>

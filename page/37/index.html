@@ -64,6 +64,98 @@
                 
                 
                 <header class="article-header">
+                    <h1 itemprop="name"><a class="article-title" href="/2014/07/22/poj-1703-find-them-catch-them/">POJ 1703 Find them, Catch them</a></h1>
+                </header>
+                
+                <div class="article-meta">
+                    <a href="/2014/07/22/poj-1703-find-them-catch-them/" class="article-date">
+                        <time datetime='2014-07-22T13:51:22.000&#43;00:00' itemprop="datePublished">2014-07-22</time>
+                    </a>
+                    
+                    
+                    <div class="post-categories">
+                        <div class="article-category">
+                            
+                            <a class="article-category-link" href="https://xuanwo.org/categories/exercise">Exercise</a>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="article-comment-link-wrap">
+                        <a href="/2014/07/22/poj-1703-find-them-catch-them/#disqus_thread" class="article-comment-link">Comments</a>
+                    </div>
+                    
+                </div>
+                <div class="article-entry" itemprop="articleBody">
+                    <p>
+                        
+                    <h2 id="题目">题目</h2>
+
+<p>源地址：</p>
+
+<p><a href="http://poj.org/problem?id=1703">http://poj.org/problem?id=1703</a></p>
+
+<h1 id="理解">理解</h1>
+
+<p>这个并查集有点不一样，之前做过的全都是判断是否连通，这一次确实要判断是否不连通。想了一想，其实还是可以转换过来的。假定r1，r2分别表示ab，bc之间的关系，0表示相同，1表示不同，则有下面的逻辑表。</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">(a, b)</th>
+<th align="center">(b, c)</th>
+<th align="center">(a, c)</th>
+<th align="center">(r1+r2)%2</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+
+<tr>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+
+<tr>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+
+<tr>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+
+<p></p>
+                    </p>
+                    <p class="article-more-link">
+                        <a href="/2014/07/22/poj-1703-find-them-catch-them/">Read More</a>
+                    </p>
+                </div>
+
+                
+            </div>
+        </article>
+        
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+            <div class="article-inner">
+                
+                
+                <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/07/22/poj-1308-is-it-a-tree/">POJ 1308 Is It A Tree?</a></h1>
                 </header>
                 
@@ -511,57 +603,6 @@
                     </p>
                     <p class="article-more-link">
                         <a href="/2014/07/18/poj-1306-combinations/">Read More</a>
-                    </p>
-                </div>
-
-                
-            </div>
-        </article>
-        
-        <article class="article article-type-post" itemscope itemprop="blogPost">
-            <div class="article-inner">
-                
-                
-                <header class="article-header">
-                    <h1 itemprop="name"><a class="article-title" href="/2014/07/18/poj-1131-octal-fractions/">POJ 1131 Octal Fractions</a></h1>
-                </header>
-                
-                <div class="article-meta">
-                    <a href="/2014/07/18/poj-1131-octal-fractions/" class="article-date">
-                        <time datetime='2014-07-18T15:29:12.000&#43;00:00' itemprop="datePublished">2014-07-18</time>
-                    </a>
-                    
-                    
-                    <div class="post-categories">
-                        <div class="article-category">
-                            
-                            <a class="article-category-link" href="https://xuanwo.org/categories/exercise">Exercise</a>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="article-comment-link-wrap">
-                        <a href="/2014/07/18/poj-1131-octal-fractions/#disqus_thread" class="article-comment-link">Comments</a>
-                    </div>
-                    
-                </div>
-                <div class="article-entry" itemprop="articleBody">
-                    <p>
-                        
-                    <h2 id="题目">题目</h2>
-
-<p>源地址：</p>
-
-<p><a href="http://poj.org/problem?id=1131">http://poj.org/problem?id=1131</a></p>
-
-<h1 id="理解">理解</h1>
-
-<p>题意挺简单，就是把八进制浮点数转化为十进制，同样是用高精度类，叠乘即可～</p>
-
-<p></p>
-                    </p>
-                    <p class="article-more-link">
-                        <a href="/2014/07/18/poj-1131-octal-fractions/">Read More</a>
                     </p>
                 </div>
 

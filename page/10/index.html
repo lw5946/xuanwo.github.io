@@ -64,6 +64,59 @@
                 
                 
                 <header class="article-header">
+                    <h1 itemprop="name"><a class="article-title" href="/2014/11/21/cf-12c/">Codeforces Beta Round 12 C Fruits (Div.2 Only)</a></h1>
+                </header>
+                
+                <div class="article-meta">
+                    <a href="/2014/11/21/cf-12c/" class="article-date">
+                        <time datetime='2014-11-21T21:54:07.000&#43;00:00' itemprop="datePublished">2014-11-21</time>
+                    </a>
+                    
+                    
+                    <div class="post-categories">
+                        <div class="article-category">
+                            
+                            <a class="article-category-link" href="https://xuanwo.org/categories/exercise">Exercise</a>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="article-comment-link-wrap">
+                        <a href="/2014/11/21/cf-12c/#disqus_thread" class="article-comment-link">Comments</a>
+                    </div>
+                    
+                </div>
+                <div class="article-entry" itemprop="articleBody">
+                    <p>
+                        
+                    <h2 id="题目">题目</h2>
+
+<p>源地址：</p>
+
+<p><a href="http://codeforces.com/contest/12/problem/C">http://codeforces.com/contest/12/problem/C</a></p>
+
+<h1 id="理解">理解</h1>
+
+<p>题意并不复杂：给定一些标价牌，然后再给定一些水果的名字，每种水果对应一个标价牌。要求输出水果总价的最大值和最小值。
+第一眼感觉很简单，贪心乱搞。标价牌排序之后，如果求最小值就从前往后选；如果求最大值，就从后往前选。这个思路没有太大的问题，然后问题来了，我怎么样才能够得到一个去除重复项，并且能计算出每种水果数量的数据结构呢？
+然后我就开始SB了，因为循环的时候字符串写得搓，debug半天，都不符合我的预期。等到队友们基本都过了，我才勉强A题。</p>
+
+<p></p>
+                    </p>
+                    <p class="article-more-link">
+                        <a href="/2014/11/21/cf-12c/">Read More</a>
+                    </p>
+                </div>
+
+                
+            </div>
+        </article>
+        
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+            <div class="article-inner">
+                
+                
+                <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/21/cf-12a/">Codeforces Beta Round 12 A Super Agent (Div.2 Only)</a></h1>
                 </header>
                 
@@ -530,54 +583,6 @@ dp[i][j]=dp[i-1][j]+dis(i,i-1);
                     </p>
                     <p class="article-more-link">
                         <a href="/2014/11/16/uva-1347-tour/">Read More</a>
-                    </p>
-                </div>
-
-                
-            </div>
-        </article>
-        
-        <article class="article article-type-post" itemscope itemprop="blogPost">
-            <div class="article-inner">
-                
-                
-                <header class="article-header">
-                    <h1 itemprop="name"><a class="article-title" href="/2014/11/16/contest-cugb-cf5/">CF拉练第五场</a></h1>
-                </header>
-                
-                <div class="article-meta">
-                    <a href="/2014/11/16/contest-cugb-cf5/" class="article-date">
-                        <time datetime='2014-11-16T13:06:10.000&#43;00:00' itemprop="datePublished">2014-11-16</time>
-                    </a>
-                    
-                    
-                    <div class="post-categories">
-                        <div class="article-category">
-                            
-                            <a class="article-category-link" href="https://xuanwo.org/categories/exercise">Exercise</a>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="article-comment-link-wrap">
-                        <a href="/2014/11/16/contest-cugb-cf5/#disqus_thread" class="article-comment-link">Comments</a>
-                    </div>
-                    
-                </div>
-                <div class="article-entry" itemprop="articleBody">
-                    <p>
-                        
-                     比赛地址 http://acm.hust.edu.cn/vjudge/contest/view.action?cid=62933#overview
-比赛总结 前面被BC艹了一顿爆零之后，这场手感还不错。好多都是暴力+乱搞的题目，打得还行。不过自己的DP还是太弱，那场DP还得好好补，要不然像E这种题目只能看人品。
-分题讲解 A题（字符串） 贪心+乱搞，水过的题目。为了抢时间都没有测数据，幸运1A。 http://xuanwo.org/2014/11/16/CF-11A/
-B题（进制转换） 机智+乱搞。 这个题正好跟前面那场BC有点像，能过也有点运气成分。不过思路出来之后敲得有点慢，这个是弱点。水题要出的快，出的稳，这样才能保住铜牌，233333。 http://xuanwo.org/2014/11/16/CF-9C/
-C题（暴力） 暴力+乱搞。 这道题只要能正确的找出导致BUG的两类情况就能A，我少考虑了一种，WA了一发，2A。 http://xuanwo.org/2014/11/16/CF-8B/
-D题（字符串Hash，DP） 字符串Hash+乱搞。 开了一个好几个50万的数组乱搞，感谢CF不限制内存占用= =。 http://xuanwo.org/2014/11/16/CF-7D/
-E题（神DP） 有一个神奇的递推公式，猜一猜，看RP，赛后出证明。 http://xuanwo.org/2014/11/16/CF-9D/
-更新日志  2014年11月16日 完成题解。  
-                    </p>
-                    <p class="article-more-link">
-                        <a href="/2014/11/16/contest-cugb-cf5/">Read More</a>
                     </p>
                 </div>
 

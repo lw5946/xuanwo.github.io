@@ -64,6 +64,59 @@
                 
                 
                 <header class="article-header">
+                    <h1 itemprop="name"><a class="article-title" href="/2014/11/02/uva-524-prime-ring-problem/">UVa 524 Prime Ring Problem</a></h1>
+                </header>
+                
+                <div class="article-meta">
+                    <a href="/2014/11/02/uva-524-prime-ring-problem/" class="article-date">
+                        <time datetime='2014-11-02T13:47:34.000&#43;00:00' itemprop="datePublished">2014-11-02</time>
+                    </a>
+                    
+                    
+                    <div class="post-categories">
+                        <div class="article-category">
+                            
+                            <a class="article-category-link" href="https://xuanwo.org/categories/exercise">Exercise</a>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="article-comment-link-wrap">
+                        <a href="/2014/11/02/uva-524-prime-ring-problem/#disqus_thread" class="article-comment-link">Comments</a>
+                    </div>
+                    
+                </div>
+                <div class="article-entry" itemprop="articleBody">
+                    <p>
+                        
+                    <h2 id="题目">题目</h2>
+
+<p>源地址：</p>
+
+<p><a href="http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=465">http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=465</a></p>
+
+<h1 id="理解">理解</h1>
+
+<p>一开始写了一个特别暴力的程序，吃饭之前让它一直跑，但是一直到我吃完饭回来还在跑14- -，默然泪。
+然后推倒重来，开始用回朔法重写。实际上，我并不需要把所有的排列完全生成出来再进行判断，通过回朔法，我可以在生成排列的同时进行判断。这里也运用了深搜的思想，实际上是一个n*n的矩阵，我要找出满足表达式<code>i+A[cur-1]</code>为指数的那条路径。
+搞定了主要的算法，下面就是一些细节的处理。首先，我不需要每一次都调用isPrime函数，因为n&lt;=16，也就是可能出现的最大和是小于32的，我可以在预处理中先判断好是否为质数再拿来用。其次，事先必须指定A[0]=1，vis[1]=1，同时dfs()是从1开始的，注意数组的下标。最后，是输出的处理：每一行末尾的空格，每组数据之间的空行，不要多也不要少，虽然琐碎但是却会决定你能否AC。</p>
+
+<p></p>
+                    </p>
+                    <p class="article-more-link">
+                        <a href="/2014/11/02/uva-524-prime-ring-problem/">Read More</a>
+                    </p>
+                </div>
+
+                
+            </div>
+        </article>
+        
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+            <div class="article-inner">
+                
+                
+                <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/02/uva-725-division/">UVa 725 Division</a></h1>
                 </header>
                 
@@ -527,58 +580,6 @@ Debug之后，幸福的A了</p>
                     </p>
                     <p class="article-more-link">
                         <a href="/2014/10/30/uva-458-the-decoder/">Read More</a>
-                    </p>
-                </div>
-
-                
-            </div>
-        </article>
-        
-        <article class="article article-type-post" itemscope itemprop="blogPost">
-            <div class="article-inner">
-                
-                
-                <header class="article-header">
-                    <h1 itemprop="name"><a class="article-title" href="/2014/10/30/uva-10300-ecological-premium/">UVa 10300 Ecological Premium</a></h1>
-                </header>
-                
-                <div class="article-meta">
-                    <a href="/2014/10/30/uva-10300-ecological-premium/" class="article-date">
-                        <time datetime='2014-10-30T15:00:57.000&#43;00:00' itemprop="datePublished">2014-10-30</time>
-                    </a>
-                    
-                    
-                    <div class="post-categories">
-                        <div class="article-category">
-                            
-                            <a class="article-category-link" href="https://xuanwo.org/categories/exercise">Exercise</a>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="article-comment-link-wrap">
-                        <a href="/2014/10/30/uva-10300-ecological-premium/#disqus_thread" class="article-comment-link">Comments</a>
-                    </div>
-                    
-                </div>
-                <div class="article-entry" itemprop="articleBody">
-                    <p>
-                        
-                    <h2 id="题目">题目</h2>
-
-<p>源地址：</p>
-
-<p><a href="http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=1241">http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=1241</a></p>
-
-<h1 id="理解">理解</h1>
-
-<p>这个是英文阅读理解题= =。
-看起来很绕很绕的样子，要求每个动物占据的面积然后乘上什么环境友好度，再乘上动物的个数。实际上，就是求面积乘上环境友好度的和。</p>
-
-<p></p>
-                    </p>
-                    <p class="article-more-link">
-                        <a href="/2014/10/30/uva-10300-ecological-premium/">Read More</a>
                     </p>
                 </div>
 
