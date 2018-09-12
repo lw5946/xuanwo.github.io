@@ -709,16 +709,59 @@ $ mysql -h staging-server -u root -p&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;X1C 使用 Arch Linux 整体上没啥问题，但是在很多细节的地方有比较坑的地方：&lt;/p&gt;
 
+&lt;h3 id=&#34;支持-s3-待机&#34;&gt;支持 S3 待机&lt;/h3&gt;
+
+&lt;blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;Xorg + KDE 对不同 DPI 的屏幕支持不太好，导致外接屏幕的时候用起来比较难受。&lt;/li&gt;
-&lt;li&gt;指纹识别器驱动正在&lt;a href=&#34;https://github.com/nmikhailov/Validity90&#34;&gt;开发当中&lt;/a&gt;，暂时还用不了。&lt;/li&gt;
-&lt;li&gt;&lt;del&gt;在 KDE + SDDM 的组合下，进入休眠状态后再恢复，会有一定概率出现屏幕一直闪动的情况。重启 SDDM 之后会恢复正常，从 Xorg 的报错日志能看到类似这样的错误：&lt;code&gt;Failed to set drm version: Permission denied&lt;/code&gt;。&lt;/del&gt; 最新版本的 KDE + SDDM 已经修复。&lt;/li&gt;
 &lt;li&gt;X1C 支持 S0i3 待机，但是不支持 S3 待机。两者的区别是在 S0i3 下 CPU 的功耗被降到最低，但仍保持着上电状态，而 S3 则不会。
 
 &lt;ul&gt;
 &lt;li&gt;X1C 支持 S3 需要 BIOS 的支持，社区中有人通过为 ACPI DSDT Table 打 Patch 来支持，但是这个 Hack 在最新版的 BIOS 中已经失效了，而且这个操作比较危险。因此我选择等待联想官方修复。就像论坛中有人说的那样：“Come on Lonove, show more love for linux users.”&lt;/li&gt;
 &lt;li&gt;而 S0i3 待机需要修改内核参数来提供支持，并且增加该参数后会导致无法打开屏盖来唤醒机器。&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;评论区有童鞋说最新版本的固件中已经修复了该问题，我升级了固件发现确实如此。此外，联想已经加入了 LVFS (Linux Vendor Firmware Service)，因此我们可以通过 LVFS 来更新固件。&lt;/p&gt;
+
+&lt;p&gt;下面简单说一下如何更新固件并开启 S3 支持：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用 Arch 的同学可以通过 pacman 来安装 &lt;a href=&#34;https://www.archlinux.org/packages/community/x86_64/fwupd&#34;&gt;&lt;code&gt;fwupd&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;fwupdmgr get-devices&lt;/code&gt; 获取设备中所有支持固件升级的硬件列表&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;fwupdmgr refresh&lt;/code&gt; 更新 metadata&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;fwupdmgr get-updates&lt;/code&gt; 来检查是不是有更新可用&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;fwupdmgr update&lt;/code&gt; 来进行固件升级
+
+&lt;ul&gt;
+&lt;li&gt;某些固件可能需要 root 权限&lt;/li&gt;
+&lt;li&gt;某些固件可能需要重启&lt;/li&gt;
+&lt;li&gt;固件升级的时候务必接好电源，同时电池的电量要保持在 60% 以上，最好能充满&lt;/li&gt;
+&lt;li&gt;固件升级的时候可能会把引导项删除，因此最好事先准备一个 live CD，在固件升级完毕之后重新 &lt;code&gt;grub-install&lt;/code&gt; 一下即可&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;固件升级完毕后在 BIOS 的 &lt;code&gt;Config -&amp;gt; Power -&amp;gt; Sleep State&lt;/code&gt; 中将原来的 &lt;code&gt;Windows 10&lt;/code&gt; 修改为 &lt;code&gt;Linux&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;做完上述的操作之后可以通过 &lt;code&gt;dmesg&lt;/code&gt; 来检查是不是已经开启了 S3 的支持：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;:&lt;span style=&#34;color:#666&#34;&gt;)&lt;/span&gt; dmesg | grep -i &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;acpi: (supports&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#666&#34;&gt;[&lt;/span&gt;    &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;.500484&lt;span style=&#34;color:#666&#34;&gt;]&lt;/span&gt; ACPI: &lt;span style=&#34;color:#666&#34;&gt;(&lt;/span&gt;supports S0 S3 S4 S5&lt;span style=&#34;color:#666&#34;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;看到 S3 的话，说明已经搞定啦~&lt;/p&gt;
+
+&lt;h3 id=&#34;已经解决的坑&#34;&gt;已经解决的坑&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在 KDE + SDDM 的组合下，进入休眠状态后再恢复，会有一定概率出现屏幕一直闪动的情况。重启 SDDM 之后会恢复正常，从 Xorg 的报错日志能看到类似这样的错误：&lt;code&gt;Failed to set drm version: Permission denied&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;最新版本的 KDE + SDDM 中已经修复了&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;尚未解决的坑&#34;&gt;尚未解决的坑&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Xorg + KDE 对不同 DPI 的屏幕支持不太好，导致外接屏幕的时候用起来比较难受。&lt;/li&gt;
+&lt;li&gt;指纹识别器驱动正在&lt;a href=&#34;https://github.com/nmikhailov/Validity90&#34;&gt;开发当中&lt;/a&gt;，暂时还用不了。&lt;/li&gt;
 &lt;li&gt;默认配置下 &lt;code&gt;Thunderbolt BIOS Assist Mode&lt;/code&gt; 是 Disable 的，这会导致 Linux 在 s2idle 下的能耗特别高，需要进 BIOS 将其设置为 Enable。&lt;/li&gt;
 &lt;li&gt;默认配置下，Linux 的 CPU 温度上限是 80 度，而 Windows 下是 97 度。这会导致 Linux 的 CPU 性能比 Windows 下要低，目前有一些 dirty hack，官方还没有修复。&lt;/li&gt;
 &lt;/ul&gt;
@@ -731,6 +774,7 @@ $ mysql -h staging-server -u root -p&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;li&gt;&lt;a href=&#34;https://forums.lenovo.com/t5/Linux-Discussion/X1C6-T480s-low-cTDP-and-trip-temperature-in-Linux/td-p/4028489&#34;&gt;low cTDP and trip temperature in Linux&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://bbs.archlinux.org/viewtopic.php?id=234913&#34;&gt;Lenovo X1C6 / X1Y3 (2018): No deep sleep (S3)?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://forums.lenovo.com/t5/Linux-Discussion/X1-Carbon-Gen-6-cannot-enter-deep-sleep-S3-state-aka-Suspend-to/td-p/3998182/highlight/true&#34;&gt;X1 Carbon Gen 6 cannot enter deep sleep (S3 state aka Suspend-to-RAM) on Linux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.archlinux.org/index.php/Fwupd&#34;&gt;fwupd&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;动态&#34;&gt;动态&lt;/h2&gt;
