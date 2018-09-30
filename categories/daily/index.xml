@@ -1,98 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Daily on Xuanwo&#39;s Blog</title>
-    <link>https://xuanwo.org/categories/daily/</link>
-    <description>Recent content in Daily on Xuanwo&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Wed, 16 May 2018 11:30:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://xuanwo.org/categories/daily/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>ThinkPad X1 Carbon 2018 开箱手记</title>
-      <link>https://xuanwo.org/2018/05/16/thinkpad-x1-carbon-6th/</link>
-      <pubDate>Wed, 16 May 2018 11:30:00 +0000</pubDate>
-      
-      <guid>https://xuanwo.org/2018/05/16/thinkpad-x1-carbon-6th/</guid>
-      <description>&lt;p&gt;经过了漫长的等待之后，我的新玩具终于到手了。这篇文章主要晒一些照片，并分享一下我这第一次海淘的经历。&lt;/p&gt;
-
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Daily on Xuanwo&#39;s Blog</title><link>https://xuanwo.org/categories/daily/</link><description>Recent content in Daily on Xuanwo&#39;s Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 16 May 2018 11:30:00 +0000</lastBuildDate><atom:link href="https://xuanwo.org/categories/daily/index.xml" rel="self" type="application/rss+xml"/><item><title>ThinkPad X1 Carbon 2018 开箱手记</title><link>https://xuanwo.org/2018/05/16/thinkpad-x1-carbon-6th/</link><pubDate>Wed, 16 May 2018 11:30:00 +0000</pubDate><guid>https://xuanwo.org/2018/05/16/thinkpad-x1-carbon-6th/</guid><description>&lt;p&gt;经过了漫长的等待之后，我的新玩具终于到手了。这篇文章主要晒一些照片，并分享一下我这第一次海淘的经历。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;多图预警&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>如何识别真假链接？</title>
-      <link>https://xuanwo.org/2016/01/13/how-to-differ-invalid-link/</link>
-      <pubDate>Wed, 13 Jan 2016 01:18:51 +0000</pubDate>
-      
-      <guid>https://xuanwo.org/2016/01/13/how-to-differ-invalid-link/</guid>
-      <description>&lt;p&gt;前两天我的朋友圈被微信公开课活动的链接+截图刷屏，随后一大帮“业内人士”站出来说这个是盗号连接，只要点开，微信钱包和支付宝就会被盗。作为半个业内人士，我不能忍了，决定跟大家谈一谈如何识别真假链接。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>断电也能上网！——路由器改造记</title>
-      <link>https://xuanwo.org/2015/11/27/surf-with-poweroff/</link>
-      <pubDate>Fri, 27 Nov 2015 01:34:33 +0000</pubDate>
-      
-      <guid>https://xuanwo.org/2015/11/27/surf-with-poweroff/</guid>
-      <description>&lt;h1 id=&#34;介绍&#34;&gt;介绍&lt;/h1&gt;
-
+&lt;p&gt;&lt;/p&gt;</description></item><item><title>如何识别真假链接？</title><link>https://xuanwo.org/2016/01/13/how-to-differ-invalid-link/</link><pubDate>Wed, 13 Jan 2016 01:18:51 +0000</pubDate><guid>https://xuanwo.org/2016/01/13/how-to-differ-invalid-link/</guid><description>&lt;p&gt;前两天我的朋友圈被微信公开课活动的链接+截图刷屏，随后一大帮“业内人士”站出来说这个是盗号连接，只要点开，微信钱包和支付宝就会被盗。作为半个业内人士，我不能忍了，决定跟大家谈一谈如何识别真假链接。&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description></item><item><title>断电也能上网！——路由器改造记</title><link>https://xuanwo.org/2015/11/27/surf-with-poweroff/</link><pubDate>Fri, 27 Nov 2015 01:34:33 +0000</pubDate><guid>https://xuanwo.org/2015/11/27/surf-with-poweroff/</guid><description>&lt;h1 id=&#34;介绍&#34;&gt;介绍&lt;/h1&gt;
 &lt;p&gt;前两天我对我们宿舍的路由器进行了小小的改造，使得我们在断电之后也能照常上网。原理非常简单：就是使用充电宝来给路由器供电——因为我们墙上的网口是不会断电的，所以只要解决了路由器没有电的问题，就可以解决断网问题。路由器要求的输入电压为5V，电流为0.3A，恰好跟我们常用的充电宝是一致的，淘宝买一根USB转DV线成功解决问题。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>我的五样</title>
-      <link>https://xuanwo.org/2015/10/08/my-staff/</link>
-      <pubDate>Thu, 08 Oct 2015 11:08:16 +0000</pubDate>
-      
-      <guid>https://xuanwo.org/2015/10/08/my-staff/</guid>
-      <description>&lt;p&gt;此文用以记录自己用过&amp;amp;在用的各类工具及软件，欢迎推荐&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>青云参观计划</title>
-      <link>https://xuanwo.org/2015/02/18/event-qingcould-plan/</link>
-      <pubDate>Wed, 18 Feb 2015 22:50:33 +0000</pubDate>
-      
-      <guid>https://xuanwo.org/2015/02/18/event-qingcould-plan/</guid>
-      <description> 青云是啥？  想做中国的AWS：IaaS提供商QingCloud按“秒”计费实现弹性特征，瞄准中国的DevOps开发市场 国内创业公司QingCloud的魄力：做一个世界级的IaaS服务 青云B轮获2000万美元VC的背后逻辑：用技术超越巨头  个人认为对其的了解有助与我们信息管理专业的发展，所以尝试着联系了一下青云的有关人士。后来发现青云那边的人非常nice，非常热心，非常爽快的同意了我们的请求，所以开学后不久我们就可以出发啦。
+&lt;p&gt;&lt;/p&gt;</description></item><item><title>我的五样</title><link>https://xuanwo.org/2015/10/08/my-staff/</link><pubDate>Thu, 08 Oct 2015 11:08:16 +0000</pubDate><guid>https://xuanwo.org/2015/10/08/my-staff/</guid><description>&lt;p&gt;此文用以记录自己用过&amp;amp;在用的各类工具及软件，欢迎推荐&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description></item><item><title>青云参观计划</title><link>https://xuanwo.org/2015/02/18/event-qingcould-plan/</link><pubDate>Wed, 18 Feb 2015 22:50:33 +0000</pubDate><guid>https://xuanwo.org/2015/02/18/event-qingcould-plan/</guid><description> 青云是啥？ 想做中国的AWS：IaaS提供商QingCloud按“秒”计费实现弹性特征，瞄准中国的DevOps开发市场 国内创业公司QingCloud的魄力：做一个世界级的IaaS服务 青云B轮获2000万美元VC的背后逻辑：用技术超越巨头 个人认为对其的了解有助与我们信息管理专业的发展，所以尝试着联系了一下青云的有关人士。后来发现青云那边的人非常nice，非常热心，非常爽快的同意了我们的请求，所以开学后不久我们就可以出发啦。
 青云在哪？ 地址：北京市朝阳区北苑路甲13号北辰新纪元大厦2号楼1503 公交路线：地铁13号线 → 地铁2号线 → 地铁5号线全程约1小时
-五道口 3站 乘坐 地铁13号线(西直门方向), 在 西直门站 下车 420米 站内换乘 地铁2号线(内环) 4站 乘坐 地铁2号线(内环), 在 雍和宫站 下车 160米 站内换乘 地铁5号线(天通苑北方向) 6站 乘坐 地铁5号线(天通苑北方向), 在 北苑路北站 下车(A2西北口出) 350米 步行至 北辰新纪元2  去看什么？  公司参观 员工分享个人经历 CEO分享关于云计算的理解  啥时候去？ 2015年3月19日14点
+五道口 3站 乘坐 地铁13号线(西直门方向), 在 西直门站 下车 420米 站内换乘 地铁2号线(内环) 4站 乘坐 地铁2号线(内环), 在 雍和宫站 下车 160米 站内换乘 地铁5号线(天通苑北方向) 6站 乘坐 地铁5号线(天通苑北方向), 在 北苑路北站 下车(A2西北口出) 350米 步行至 北辰新纪元2 去看什么？ 公司参观 员工分享个人经历 CEO分享关于云计算的理解 啥时候去？ 2015年3月19日14点
 有啥收获？ 这个根据看到了什么而定，不过涨姿势肯定是有的~ 我想看看真正的服务器长啥样= =
-更新日志  2015年02月18日 发起活动，修正行文格式。 2015年03月18日 补充活动更新信息。  </description>
-    </item>
-    
-    <item>
-      <title>暑期刷题计划</title>
-      <link>https://xuanwo.org/2014/07/03/summer-training-plan/</link>
-      <pubDate>Thu, 03 Jul 2014 20:04:23 +0000</pubDate>
-      
-      <guid>https://xuanwo.org/2014/07/03/summer-training-plan/</guid>
-      <description>&lt;p&gt;我很喜欢Coding，也很喜欢AC那一刻的快感。为了追求这样的快感，我参加校赛，并且幸运的拿到了金牌，加入了CUGBACM的团体。
+更新日志 2015年02月18日 发起活动，修正行文格式。 2015年03月18日 补充活动更新信息。</description></item><item><title>暑期刷题计划</title><link>https://xuanwo.org/2014/07/03/summer-training-plan/</link><pubDate>Thu, 03 Jul 2014 20:04:23 +0000</pubDate><guid>https://xuanwo.org/2014/07/03/summer-training-plan/</guid><description>&lt;p&gt;我很喜欢Coding，也很喜欢AC那一刻的快感。为了追求这样的快感，我参加校赛，并且幸运的拿到了金牌，加入了CUGBACM的团体。
 但加入之后，我迷茫了。从学长学姐的口中，我知道我们学校的ACM并不是很强，甚至算得上弱校。参加了这么多年的比赛，我们从来没有出线过。每一年，我们都只能围观World Final的赛场，我们不停地刷新着List，不停地点评着清华为什么卡题卡这么久，不停地吐槽着CLJ拿到奖牌时的郁闷表情。心中其实一直有一个问题：为什么WF上，不能出现CUGB的队伍呢？这个问题真的很简单，我们太水。
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>ACM队友们的博客</title>
-      <link>https://xuanwo.org/2014/06/12/acm-teammates-blog/</link>
-      <pubDate>Thu, 12 Jun 2014 15:00:00 +0000</pubDate>
-      
-      <guid>https://xuanwo.org/2014/06/12/acm-teammates-blog/</guid>
-      <description> 2009级  JoinHands http://blog.csdn.net/wsniyufang  2010级  Alan http://blog.csdn.net/cugb1004101218 maddoctor http://blog.csdn.net/sdj222555 walk_upon http://blog.csdn.net/walk_upon  2011级  kdqzzxxcc http://blog.csdn.net/just_water 止于至善 http://blog.csdn.net/qq415200973  2012级  聂小白 http://blog.csdn.net/q295657451 FreeMeepo http://www.freemeepo.com/acm/ 昊天 http://blog.csdn.net/ooooooooe 潇洒走一回 http://blog.csdn.net/u011466175 SIO__Five http://SIOFive.github.io/  2013级  康逗 http://blog.csdn.net/zxk422/ Isco http://blog.csdn.net/chenyuwen666 浮沉独步 http://blog.csdn.net/u013588639 Peter http://blog.csdn.net/userluoxuan Fly in the s http://blog.csdn.net/mjoinir Every Day http://blog.csdn.net/u013044116  </description>
-    </item>
-    
-  </channel>
-</rss>
+&lt;/p&gt;</description></item><item><title>ACM队友们的博客</title><link>https://xuanwo.org/2014/06/12/acm-teammates-blog/</link><pubDate>Thu, 12 Jun 2014 15:00:00 +0000</pubDate><guid>https://xuanwo.org/2014/06/12/acm-teammates-blog/</guid><description> 2009级 JoinHands http://blog.csdn.net/wsniyufang 2010级 Alan http://blog.csdn.net/cugb1004101218 maddoctor http://blog.csdn.net/sdj222555 walk_upon http://blog.csdn.net/walk_upon 2011级 kdqzzxxcc http://blog.csdn.net/just_water 止于至善 http://blog.csdn.net/qq415200973 2012级 聂小白 http://blog.csdn.net/q295657451 FreeMeepo http://www.freemeepo.com/acm/ 昊天 http://blog.csdn.net/ooooooooe 潇洒走一回 http://blog.csdn.net/u011466175 SIO__Five http://SIOFive.github.io/ 2013级 康逗 http://blog.csdn.net/zxk422/ Isco http://blog.csdn.net/chenyuwen666 浮沉独步 http://blog.csdn.net/u013588639 Peter http://blog.csdn.net/userluoxuan Fly in the s http://blog.csdn.net/mjoinir Every Day http://blog.csdn.net/u013044116</description></item></channel></rss>

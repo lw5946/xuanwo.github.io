@@ -1,56 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Linux on Xuanwo&#39;s Blog</title>
-    <link>https://xuanwo.org/tags/linux/</link>
-    <description>Recent content in Linux on Xuanwo&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Wed, 16 May 2018 11:30:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://xuanwo.org/tags/linux/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>ThinkPad X1 Carbon 2018 开箱手记</title>
-      <link>https://xuanwo.org/2018/05/16/thinkpad-x1-carbon-6th/</link>
-      <pubDate>Wed, 16 May 2018 11:30:00 +0000</pubDate>
-      
-      <guid>https://xuanwo.org/2018/05/16/thinkpad-x1-carbon-6th/</guid>
-      <description>&lt;p&gt;经过了漫长的等待之后，我的新玩具终于到手了。这篇文章主要晒一些照片，并分享一下我这第一次海淘的经历。&lt;/p&gt;
-
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on Xuanwo&#39;s Blog</title><link>https://xuanwo.org/tags/linux/</link><description>Recent content in Linux on Xuanwo&#39;s Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 16 May 2018 11:30:00 +0000</lastBuildDate><atom:link href="https://xuanwo.org/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>ThinkPad X1 Carbon 2018 开箱手记</title><link>https://xuanwo.org/2018/05/16/thinkpad-x1-carbon-6th/</link><pubDate>Wed, 16 May 2018 11:30:00 +0000</pubDate><guid>https://xuanwo.org/2018/05/16/thinkpad-x1-carbon-6th/</guid><description>&lt;p&gt;经过了漫长的等待之后，我的新玩具终于到手了。这篇文章主要晒一些照片，并分享一下我这第一次海淘的经历。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;多图预警&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>译-Ubuntu下五个最好的BT客户端</title>
-      <link>https://xuanwo.org/2015/09/01/translated-five-best-bt-client-in-ubuntu/</link>
-      <pubDate>Tue, 01 Sep 2015 10:54:20 +0000</pubDate>
-      
-      <guid>https://xuanwo.org/2015/09/01/translated-five-best-bt-client-in-ubuntu/</guid>
-      <description>&lt;p&gt;&lt;em&gt;本文是我加入LCTT后翻译的第一篇文章，感谢LCTT项目组伙伴们的支持，感谢组长wxy的仔细校对，也欢迎大家加入LCTT项目，共同翻译优质的Linux文章~&lt;/em&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;/p&gt;</description></item><item><title>译-Ubuntu下五个最好的BT客户端</title><link>https://xuanwo.org/2015/09/01/translated-five-best-bt-client-in-ubuntu/</link><pubDate>Tue, 01 Sep 2015 10:54:20 +0000</pubDate><guid>https://xuanwo.org/2015/09/01/translated-five-best-bt-client-in-ubuntu/</guid><description>&lt;p&gt;&lt;em&gt;本文是我加入LCTT后翻译的第一篇文章，感谢LCTT项目组伙伴们的支持，感谢组长wxy的仔细校对，也欢迎大家加入LCTT项目，共同翻译优质的Linux文章~&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://xuanwo.org/imgs/opinion/5_Best_Torrent_Ubuntu.png&#34; alt=&#34;Best Torrent clients for Ubuntu Linux&#34; /&gt;&lt;/p&gt;
-
 &lt;p&gt;在寻找 &lt;strong&gt;Ubuntu 中最好的 BT 客户端&lt;/strong&gt;吗？事实上，Linux 桌面平台中有许多 BT 客户端，但是它们中的哪些才是&lt;strong&gt;最好的 Ubuntu 客户端&lt;/strong&gt;呢？&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>使用Screen管理会话</title>
-      <link>https://xuanwo.org/2015/07/01/screen-ssh/</link>
-      <pubDate>Wed, 01 Jul 2015 09:49:31 +0000</pubDate>
-      
-      <guid>https://xuanwo.org/2015/07/01/screen-ssh/</guid>
-      <description>&lt;p&gt;在实现&lt;a href=&#34;http://xuanwo.org/2015/06/30/together-project/&#34;&gt;Together项目&lt;/a&gt;的过程中，有一个需求是需要下载一个500M左右系统镜像包，由于文件源在国内，国外的下载速度简直感人。在经历多次因为SSH超时导致下载意外终止后，我终于决定要解决掉这个问题。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+&lt;p&gt;&lt;/p&gt;</description></item><item><title>使用Screen管理会话</title><link>https://xuanwo.org/2015/07/01/screen-ssh/</link><pubDate>Wed, 01 Jul 2015 09:49:31 +0000</pubDate><guid>https://xuanwo.org/2015/07/01/screen-ssh/</guid><description>&lt;p&gt;在实现&lt;a href=&#34;http://xuanwo.org/2015/06/30/together-project/&#34;&gt;Together项目&lt;/a&gt;的过程中，有一个需求是需要下载一个500M左右系统镜像包，由于文件源在国内，国外的下载速度简直感人。在经历多次因为SSH超时导致下载意外终止后，我终于决定要解决掉这个问题。&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description></item></channel></rss>

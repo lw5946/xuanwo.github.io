@@ -1,26 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Cugb on Xuanwo&#39;s Blog</title>
-    <link>https://xuanwo.org/tags/cugb/</link>
-    <description>Recent content in Cugb on Xuanwo&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Wed, 17 Feb 2016 18:59:02 +0000</lastBuildDate>
-    
-	<atom:link href="https://xuanwo.org/tags/cugb/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>北地网费新政策下的生存攻略</title>
-      <link>https://xuanwo.org/2016/02/17/ipv6-in-cugb/</link>
-      <pubDate>Wed, 17 Feb 2016 18:59:02 +0000</pubDate>
-      
-      <guid>https://xuanwo.org/2016/02/17/ipv6-in-cugb/</guid>
-      <description>&lt;p&gt;主旨只有两条：开源，节流&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cugb on Xuanwo&#39;s Blog</title><link>https://xuanwo.org/tags/cugb/</link><description>Recent content in Cugb on Xuanwo&#39;s Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 17 Feb 2016 18:59:02 +0000</lastBuildDate><atom:link href="https://xuanwo.org/tags/cugb/index.xml" rel="self" type="application/rss+xml"/><item><title>北地网费新政策下的生存攻略</title><link>https://xuanwo.org/2016/02/17/ipv6-in-cugb/</link><pubDate>Wed, 17 Feb 2016 18:59:02 +0000</pubDate><guid>https://xuanwo.org/2016/02/17/ipv6-in-cugb/</guid><description>&lt;p&gt;主旨只有两条：开源，节流&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description></item></channel></rss>

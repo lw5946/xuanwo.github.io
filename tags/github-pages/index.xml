@@ -1,122 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Github Pages on Xuanwo&#39;s Blog</title>
-    <link>https://xuanwo.org/tags/github-pages/</link>
-    <description>Recent content in Github Pages on Xuanwo&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Thu, 26 Mar 2015 00:22:43 +0000</lastBuildDate>
-    
-	<atom:link href="https://xuanwo.org/tags/github-pages/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>史上最详细的Hexo博客搭建图文教程</title>
-      <link>https://xuanwo.org/2015/03/26/hexo-intor/</link>
-      <pubDate>Thu, 26 Mar 2015 00:22:43 +0000</pubDate>
-      
-      <guid>https://xuanwo.org/2015/03/26/hexo-intor/</guid>
-      <description>&lt;p&gt;从2014年的八月份开始接触Hexo，一直用到现在，已经有半年的时间了。这期间，Hexo从2.X一路升级到了3.0，很多地方都发生了改变。不仅如此，很多原来使用Hexo的博主们写下了的教程并没有及时更新，导致后来人一头雾水，挫折感十足。因此，本文致力于提供一份足够简单，长期维护的基于Github Pages的Hexo博客搭建图文教程，希望能有所帮助。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Github Pages on Xuanwo&#39;s Blog</title><link>https://xuanwo.org/tags/github-pages/</link><description>Recent content in Github Pages on Xuanwo&#39;s Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 26 Mar 2015 00:22:43 +0000</lastBuildDate><atom:link href="https://xuanwo.org/tags/github-pages/index.xml" rel="self" type="application/rss+xml"/><item><title>史上最详细的Hexo博客搭建图文教程</title><link>https://xuanwo.org/2015/03/26/hexo-intor/</link><pubDate>Thu, 26 Mar 2015 00:22:43 +0000</pubDate><guid>https://xuanwo.org/2015/03/26/hexo-intor/</guid><description>&lt;p&gt;从2014年的八月份开始接触Hexo，一直用到现在，已经有半年的时间了。这期间，Hexo从2.X一路升级到了3.0，很多地方都发生了改变。不仅如此，很多原来使用Hexo的博主们写下了的教程并没有及时更新，导致后来人一头雾水，挫折感十足。因此，本文致力于提供一份足够简单，长期维护的基于Github Pages的Hexo博客搭建图文教程，希望能有所帮助。
 当然，我个人的力量是有限的，因此也希望使用Hexo的大家也能一起行动起来，通过&lt;a href=&#34;https://github.com/Xuanwo/xuanwo.github.io/pulls&#34;&gt;提交PR&lt;/a&gt;，&lt;a href=&#34;https://github.com/Xuanwo/xuanwo.github.io/issues&#34;&gt;发布issues&lt;/a&gt;或者在下方评论区评论等形式参与到本文档的编辑中来。浏览时，使用&lt;code&gt;Ctrl+F&lt;/code&gt;搜索关键词。&lt;em&gt;（是不是会有似曾相识的感觉，= =）&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>使用Github SSH Key以免去Hexo部署时输入密码</title>
-      <link>https://xuanwo.org/2015/02/07/generate-a-ssh-key/</link>
-      <pubDate>Sat, 07 Feb 2015 14:40:16 +0000</pubDate>
-      
-      <guid>https://xuanwo.org/2015/02/07/generate-a-ssh-key/</guid>
-      <description>&lt;p&gt;原文本来放在&lt;a href=&#34;http://xuanwo.org/2014/08/14/hexo-usual-problem/&#34;&gt;Hexo常见问题解决方案&lt;/a&gt;之中，但是由于步骤较多，理解起来比较困难，因此将本文独立出来单独成篇，以便于进行操作。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>使用Travis CI自动部署Hexo</title>
-      <link>https://xuanwo.org/2015/02/07/travis-ci-hexo-autodeploy/</link>
-      <pubDate>Sat, 07 Feb 2015 14:00:51 +0000</pubDate>
-      
-      <guid>https://xuanwo.org/2015/02/07/travis-ci-hexo-autodeploy/</guid>
-      <description>&lt;p&gt;前两天了解到了一个有趣的概念叫持续集成：
+&lt;p&gt;&lt;/p&gt;</description></item><item><title>使用Github SSH Key以免去Hexo部署时输入密码</title><link>https://xuanwo.org/2015/02/07/generate-a-ssh-key/</link><pubDate>Sat, 07 Feb 2015 14:40:16 +0000</pubDate><guid>https://xuanwo.org/2015/02/07/generate-a-ssh-key/</guid><description>&lt;p&gt;原文本来放在&lt;a href=&#34;http://xuanwo.org/2014/08/14/hexo-usual-problem/&#34;&gt;Hexo常见问题解决方案&lt;/a&gt;之中，但是由于步骤较多，理解起来比较困难，因此将本文独立出来单独成篇，以便于进行操作。&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description></item><item><title>使用Travis CI自动部署Hexo</title><link>https://xuanwo.org/2015/02/07/travis-ci-hexo-autodeploy/</link><pubDate>Sat, 07 Feb 2015 14:00:51 +0000</pubDate><guid>https://xuanwo.org/2015/02/07/travis-ci-hexo-autodeploy/</guid><description>&lt;p&gt;前两天了解到了一个有趣的概念叫持续集成：
 &amp;gt; 持续集成是一种软件开发实践。在持续集成中，团队成员频繁集成他们的工作成果，一般每人每天至少集成一次，也可以多次。每次集成会经过自动构建（包括自动测试）的检验，以尽快发现集成错误。许多团队发现这种方法可以显著减少集成引起的问题，并可以加快团队合作软件开发的速度。这篇文章简要介绍了持续集成的技巧和它最新的应用。
 然后想到我的博客也恰好满足这样的需求，因为我的博客一旦有了修改，就必须要重新build并且部署，那么能不能用持续集成的思想来改造我部署博客的流程呢？&lt;/p&gt;
-
 &lt;p&gt;在这样的指导思想下，我完成了上一篇文章：&lt;a href=&#34;https://xuanwo.org/2015/02/05/VPS-Hexo-Autodeploy/&#34;&gt;VPS搭配Github Webhook实现Hexo自动发布&lt;/a&gt;，而今天我要介绍一下，在没有VPS的情况下，如何更方便的配置自己的持续集成的博客。&lt;/p&gt;
-
 &lt;h1 id=&#34;好处&#34;&gt;好处&lt;/h1&gt;
-
 &lt;ul&gt;
 &lt;li&gt;方便：只需要一次配置，便省去了每一次编辑文档后，都需要进行&lt;code&gt;hexo d -g&lt;/code&gt;的麻烦，更不必说文章增多之后渲染时间还会增长。&lt;/li&gt;
 &lt;li&gt;稳定：这个是最近才发现的，Github被搞了之后，很多人反映不能更新博客了，使用&lt;code&gt;Travis CI&lt;/code&gt;，你只要想办法提交一个小md文档，就能进行构建。如果自己手动构建，只要一个文件上传失败，前面的工作都白费了。&lt;/li&gt;
 &lt;li&gt;快捷：即使是出差在外，只要能编辑Markdown，就可以撰写博客，使得Hexo拥有类似于WP一致的体验~&lt;/li&gt;
 &lt;li&gt;协作：博客的构建完全交由&lt;code&gt;Travis CI&lt;/code&gt;进行，所以完全可以通过&lt;code&gt;Hexo&lt;/code&gt;+&lt;code&gt;git&lt;/code&gt;构建一个多人协作的博客平台。实际上，Hexo的&lt;a href=&#34;https://hexo.io/&#34;&gt;官网&lt;/a&gt;正是这样构建的。&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>VPS搭配Github Webhook实现Hexo自动发布</title>
-      <link>https://xuanwo.org/2015/02/05/vps-hexo-autodeploy/</link>
-      <pubDate>Thu, 05 Feb 2015 23:22:30 +0000</pubDate>
-      
-      <guid>https://xuanwo.org/2015/02/05/vps-hexo-autodeploy/</guid>
-      <description>&lt;p&gt;自从买了VPS之后，我的人生就多了一个需要思考的问题——我的VPS还能用来干嘛？然后想到Github有一个Webhook的功能，可以在每一次提交之后发送一个POST到指定的URL。那么，只要找一个办法获取这个POST，再执行指定的命令，可以实现Hexo的自动发布功能了。从此以后，不管在哪里，我只要修改我的md文件，push之后我的服务器就能自动进行编译并且部署了。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Hexo常见问题解决方案</title>
-      <link>https://xuanwo.org/2014/08/14/hexo-usual-problem/</link>
-      <pubDate>Thu, 14 Aug 2014 05:20:00 +0000</pubDate>
-      
-      <guid>https://xuanwo.org/2014/08/14/hexo-usual-problem/</guid>
-      <description>&lt;h1 id=&#34;介绍&#34;&gt;介绍&lt;/h1&gt;
-
+&lt;p&gt;&lt;/p&gt;</description></item><item><title>VPS搭配Github Webhook实现Hexo自动发布</title><link>https://xuanwo.org/2015/02/05/vps-hexo-autodeploy/</link><pubDate>Thu, 05 Feb 2015 23:22:30 +0000</pubDate><guid>https://xuanwo.org/2015/02/05/vps-hexo-autodeploy/</guid><description>&lt;p&gt;自从买了VPS之后，我的人生就多了一个需要思考的问题——我的VPS还能用来干嘛？然后想到Github有一个Webhook的功能，可以在每一次提交之后发送一个POST到指定的URL。那么，只要找一个办法获取这个POST，再执行指定的命令，可以实现Hexo的自动发布功能了。从此以后，不管在哪里，我只要修改我的md文件，push之后我的服务器就能自动进行编译并且部署了。&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description></item><item><title>Hexo常见问题解决方案</title><link>https://xuanwo.org/2014/08/14/hexo-usual-problem/</link><pubDate>Thu, 14 Aug 2014 05:20:00 +0000</pubDate><guid>https://xuanwo.org/2014/08/14/hexo-usual-problem/</guid><description>&lt;h1 id=&#34;介绍&#34;&gt;介绍&lt;/h1&gt;
 &lt;p&gt;Hexo是一个非常好用的静态博客生成器，但是由于很多方面的原因，导致在使用过程中经常出现错误。这些错误中，有些是因为自己的设置不当，导致程序报错；有些是因为版本更迭，导致原有的设置失效；而有些，则是Hexo程序本身的BUG。
 本文旨在尽可能的解决前两类问题，缓解Hexo项目大量重复issues的现象。当然，我个人的力量是有限的，因此也希望使用Hexo的大家也能一起行动起来，通过&lt;a href=&#34;https://github.com/Xuanwo/xuanwo.github.io/pulls&#34;&gt;提交PR&lt;/a&gt;，&lt;a href=&#34;https://github.com/Xuanwo/xuanwo.github.io/issues&#34;&gt;发布issues&lt;/a&gt;或者在下方评论等形式参与到本文档的编辑中来。
 同时，也希望有能力的人可以将本文档翻译成英文，以帮助到更多的人。
 浏览时，使用&lt;code&gt;Ctrl+F&lt;/code&gt;搜索关键词或使用目录来定位问题。&lt;/p&gt;
-
 &lt;p&gt;&lt;strong&gt;本文欢迎转载，但是恳请保留贡献者信息，谢谢。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>使用Hexo构建项目Wiki</title>
-      <link>https://xuanwo.org/2014/07/07/use-hexo-to-bulid-project-wiki/</link>
-      <pubDate>Mon, 07 Jul 2014 00:38:09 +0000</pubDate>
-      
-      <guid>https://xuanwo.org/2014/07/07/use-hexo-to-bulid-project-wiki/</guid>
-      <description>&lt;p&gt;七七事件前一天，我有幸加入了&lt;a href=&#34;https://github.com/cugbacm/oj&#34;&gt;本校OJ2.0&lt;/a&gt;项目组。非常高兴能够为我们学校自己的OJ开源项目做出一份贡献，虽然只是一份整理Wiki的小活儿，但是这是我第一次真正的参与一个源项目。经过谨慎考虑之后，我决定项目的Wiki使用Github Pages来构建。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>使用Github Pages做博客的新思路——Spring</title>
-      <link>https://xuanwo.org/2014/06/11/new-way-blog-spring/</link>
-      <pubDate>Wed, 11 Jun 2014 14:00:00 +0000</pubDate>
-      
-      <guid>https://xuanwo.org/2014/06/11/new-way-blog-spring/</guid>
-      <description>&lt;p&gt;很久之前就有了想要有一个自己的博客的想法，一直没有付诸于实施。整个初中到高中基本上就是在使用一个半死不活的CSDN博客，更新不多，质量不高，还有点嫌弃它丑陋，定制性不佳的界面。
+&lt;p&gt;&lt;/p&gt;</description></item><item><title>使用Hexo构建项目Wiki</title><link>https://xuanwo.org/2014/07/07/use-hexo-to-bulid-project-wiki/</link><pubDate>Mon, 07 Jul 2014 00:38:09 +0000</pubDate><guid>https://xuanwo.org/2014/07/07/use-hexo-to-bulid-project-wiki/</guid><description>&lt;p&gt;七七事件前一天，我有幸加入了&lt;a href=&#34;https://github.com/cugbacm/oj&#34;&gt;本校OJ2.0&lt;/a&gt;项目组。非常高兴能够为我们学校自己的OJ开源项目做出一份贡献，虽然只是一份整理Wiki的小活儿，但是这是我第一次真正的参与一个源项目。经过谨慎考虑之后，我决定项目的Wiki使用Github Pages来构建。&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description></item><item><title>使用Github Pages做博客的新思路——Spring</title><link>https://xuanwo.org/2014/06/11/new-way-blog-spring/</link><pubDate>Wed, 11 Jun 2014 14:00:00 +0000</pubDate><guid>https://xuanwo.org/2014/06/11/new-way-blog-spring/</guid><description>&lt;p&gt;很久之前就有了想要有一个自己的博客的想法，一直没有付诸于实施。整个初中到高中基本上就是在使用一个半死不活的CSDN博客，更新不多，质量不高，还有点嫌弃它丑陋，定制性不佳的界面。
 前两天队长要求我们每个人都必须开通一个博客，于是，我终于开始腾出精力和时间去寻找一个合适的地方来做我的博客。现有的一些博客提供商都被否决了，网易搜狐腾讯之类的并不是适合一个程序猿，文章写出来也得不到反馈与交流，失去了它的意义。随着搜索的进行，Github Pages开始频繁的出现在页面上。之前一直在用Github，但是对它的Pages业务并不了解。根据一些教程（感谢&lt;a href=&#34;http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html&#34;&gt;阮一峰先生的博客&lt;/a&gt;），我先后使用了&lt;code&gt;Hexo&lt;/code&gt;，&lt;code&gt;Jekyll&lt;/code&gt;，&lt;code&gt;Octopress&lt;/code&gt;等生成网站。网站的风格我很喜欢，只是不停地纠结于怎样的配置更好的问题，反而加重了我自己的负担。
 无意之间，我看到了@zhaoda的博客，使用自己开发的&lt;code&gt;Spring&lt;/code&gt;项目，通过抓取项目的&lt;code&gt;issues&lt;/code&gt;来撰写博客，效果出奇的好。使用Github自带的&lt;code&gt;lables&lt;/code&gt;进行标签管理，&lt;code&gt;issues&lt;/code&gt;的评论功能直接可以当做文章的评论区，操作简单，无需复杂配置，完全符合我的要求。&lt;/p&gt;
-
 &lt;h2 id=&#34;hugomore42&#34;&gt;&lt;/h2&gt;
-
 &lt;h1 id=&#34;作者本人的介绍&#34;&gt;作者本人的介绍&lt;/h1&gt;
-
 &lt;p&gt;Spring是一个通过GitHub Issues撰写内容的博客引擎，或者说是一个简单、静态化的建站系统。不需要服务器和数据库支持，你可以把它作为一个GitHub代码仓库，并托管在免费的GitHub Pages上运行，然后在这个仓库的Issues系统里撰写日志。
 你可以在这个仓库的Issues系统里添加labels标签，这些标签会成为博客的分类，然后新建Issues，并用Markdown语法写日志。
 Spring拥有响应式的页面设计，可以在手机、平板和桌面端完美展现；支持IE10+和所有现代浏览器，底端设备做了跳转的降级处理。
-你可以快速的安装并运行这个系统。&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+你可以快速的安装并运行这个系统。&lt;/p&gt;</description></item></channel></rss>
