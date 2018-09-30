@@ -20,7 +20,8 @@
     <link href="" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -155,26 +156,8 @@ int main(int argc, char const *argv[])
 
         
         
-        <div class="article-toc" style="display:none;">
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#题目">题目</a></li>
-</ul></li>
-<li><a href="#理解">理解</a></li>
-<li><a href="#代码">代码</a></li>
-<li><a href="#更新日志">更新日志</a></li>
-</ul>
-</nav>
-        </div>
+        <div class="article-toc"></div>
         
-        
-
-        
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://xuanwo.org/js/toc.min.js"></script>
         
 
         
@@ -234,6 +217,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

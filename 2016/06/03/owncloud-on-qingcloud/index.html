@@ -20,7 +20,8 @@
     <link href="" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -404,60 +405,8 @@ chmod <span style="color:#40a070">775</span> /data -R</code></pre></div>
 
         
         
-        <div class="article-toc" style="display:none;">
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
-<ul>
-<li><a href="#部署">部署</a>
-<ul>
-<li><a href="#资源编排">资源编排</a></li>
-<li><a href="#创建并修改配置">创建并修改配置</a>
-<ul>
-<li><a href="#添加端口转发规则">添加端口转发规则</a></li>
-<li><a href="#添加防火墙规则">添加防火墙规则</a></li>
-</ul></li>
-<li><a href="#安装owncloud">安装OwnCloud</a></li>
-<li><a href="#启用httpd-并测试是否安装正确">启用httpd，并测试是否安装正确</a></li>
-<li><a href="#使用lvm管理分区-实现空间动态扩容">使用LVM管理分区，实现空间动态扩容</a>
-<ul>
-<li><a href="#安装lvm工具">安装LVM工具</a></li>
-<li><a href="#创建物理卷-pv">创建物理卷（PV）</a></li>
-<li><a href="#创建卷组-vg">创建卷组（VG）</a></li>
-<li><a href="#创建逻辑卷-lv">创建逻辑卷（LV）</a></li>
-<li><a href="#创建文件系统并挂载">创建文件系统并挂载</a></li>
-</ul></li>
-<li><a href="#修改文件夹权限">修改文件夹权限</a></li>
-<li><a href="#网页安装owncloud">网页安装OwnCloud</a></li>
-</ul></li>
-<li><a href="#维护">维护</a>
-<ul>
-<li><a href="#自动备份">自动备份</a>
-<ul>
-<li><a href="#主机和硬盘">主机和硬盘</a></li>
-<li><a href="#数据库">数据库</a></li>
-</ul></li>
-<li><a href="#自动伸缩">自动伸缩</a></li>
-<li><a href="#硬盘扩容">硬盘扩容</a>
-<ul>
-<li><a href="#纵向扩容">纵向扩容</a></li>
-<li><a href="#横向扩容">横向扩容</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#应用">应用</a>
-<ul>
-<li><a href="#分享功能">分享功能</a></li>
-<li><a href="#团队协作">团队协作</a></li>
-</ul></li>
-<li><a href="#更新日志">更新日志</a></li>
-</ul>
-</nav>
-        </div>
+        <div class="article-toc"></div>
         
-        
-
-        
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://xuanwo.org/js/toc.min.js"></script>
         
 
         
@@ -538,6 +487,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

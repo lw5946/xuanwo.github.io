@@ -20,7 +20,8 @@
     <link href="" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -296,66 +297,8 @@
 
         
         
-        <div class="article-toc" style="display:none;">
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
-<ul>
-<li><a href="#团队介绍">团队介绍</a>
-<ul>
-<li><a href="#团队分工">团队分工</a></li>
-<li><a href="#协同工具">协同工具</a></li>
-</ul></li>
-<li><a href="#公司简介">公司简介</a>
-<ul>
-<li><a href="#简介">简介</a></li>
-<li><a href="#员工">员工</a></li>
-<li><a href="#产品">产品</a></li>
-<li><a href="#格言">格言</a></li>
-</ul></li>
-<li><a href="#市场分析">市场分析</a>
-<ul>
-<li><a href="#定义">定义</a></li>
-<li><a href="#特点">特点</a></li>
-<li><a href="#前景">前景</a></li>
-</ul></li>
-<li><a href="#产品简介">产品简介</a>
-<ul>
-<li><a href="#特点-1">特点</a></li>
-<li><a href="#对比">对比</a></li>
-</ul></li>
-<li><a href="#功能介绍">功能介绍</a>
-<ul>
-<li><a href="#视频直播">视频直播</a></li>
-<li><a href="#在线聊天室">在线聊天室</a></li>
-<li><a href="#电子白板">电子白板</a></li>
-<li><a href="#虚拟计算机">虚拟计算机</a></li>
-</ul></li>
-<li><a href="#创意总结">创意总结</a></li>
-<li><a href="#商业推广">商业推广</a>
-<ul>
-<li><a href="#微信推送">微信推送</a></li>
-<li><a href="#热点聚焦">热点聚焦</a></li>
-<li><a href="#学校合作">学校合作</a></li>
-</ul></li>
-<li><a href="#引用资料">引用资料</a>
-<ul>
-<li><a href="#产生文档">产生文档</a></li>
-<li><a href="#参考文档">参考文档</a></li>
-<li><a href="#开源信息">开源信息</a></li>
-</ul></li>
-<li><a href="#阶段总结">阶段总结</a></li>
-<li><a href="#版权申明">版权申明</a></li>
-<li><a href="#小小赞助">小小赞助</a></li>
-<li><a href="#更新日志">更新日志</a></li>
-</ul>
-</nav>
-        </div>
+        <div class="article-toc"></div>
         
-        
-
-        
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://xuanwo.org/js/toc.min.js"></script>
         
 
         
@@ -436,6 +379,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

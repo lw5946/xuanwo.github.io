@@ -20,7 +20,8 @@
     <link href="" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -122,28 +123,8 @@
 
         
         
-        <div class="article-toc" style="display:none;">
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
-<ul>
-<li><a href="#配置">配置</a>
-<ul>
-<li><a href="#下载到自己喜欢的皮肤">下载到自己喜欢的皮肤</a></li>
-<li><a href="#把主题包内的所有文件复制到foobar2000安装目录下">把主题包内的所有文件复制到Foobar2000安装目录下</a></li>
-<li><a href="#重新打开foobar2000-此时会跳出提示-选择">重新打开Foobar2000，此时会跳出提示，选择</a></li>
-<li><a href="#打开设置-选择自己喜欢的配色">打开设置，选择自己喜欢的配色</a></li>
-<li><a href="#享受自己的音乐生活吧">享受自己的音乐生活吧～</a></li>
-</ul></li>
-<li><a href="#更新日志">更新日志</a></li>
-</ul>
-</nav>
-        </div>
+        <div class="article-toc"></div>
         
-        
-
-        
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://xuanwo.org/js/toc.min.js"></script>
         
 
         
@@ -214,6 +195,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

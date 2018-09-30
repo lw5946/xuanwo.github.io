@@ -20,7 +20,8 @@
     <link href="https://xuanwo.org/index.xml" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -53,7 +54,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/10/21/cf-1c/">Codeforces Beta Round 1 C Ancient Berland Circus</a></h1>
@@ -106,7 +106,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/10/21/cf-1b/">Codeforces Beta Round 1 B Spreadsheets</a></h1>
@@ -163,7 +162,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/10/20/codevs-1842/">CodeVS 1842 递归第一次</a></h1>
                 </header>
@@ -214,7 +212,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/10/20/codevs-1475/">CodeVS 1475 m进制转十进制</a></h1>
                 </header>
@@ -264,7 +261,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/10/20/codevs-1474/">CodeVS 1474 十进制转m进制</a></h1>
@@ -318,7 +314,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/10/15/codevs-3038/">CodeVS 3038 3n&#43;1问题</a></h1>
                 </header>
@@ -369,7 +364,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/10/15/codevs-1212/">CodeVS 1212 最大公约数</a></h1>
@@ -422,7 +416,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/10/14/cf-1a/">Codeforces Beta Round 1 A Theatre Square</a></h1>
                 </header>
@@ -473,7 +466,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/10/07/poj-1050-to-the-max/">POJ 1050 To the Max</a></h1>
                 </header>
@@ -523,7 +515,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/10/07/poj-2479-maximum-sum/">POJ 2479 Maximum sum</a></h1>
@@ -1016,6 +1007,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

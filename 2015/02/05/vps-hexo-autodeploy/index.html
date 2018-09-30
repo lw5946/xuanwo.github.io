@@ -20,7 +20,8 @@
     <link href="" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -261,38 +262,8 @@ echo &quot;built successfully&quot;
 
         
         
-        <div class="article-toc" style="display:none;">
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
-<ul>
-<li><a href="#配置nginx">配置Nginx</a>
-<ul>
-<li><a href="#安装nginx">安装Nginx</a></li>
-<li><a href="#配置nginx-1">配置Nginx</a></li>
-<li><a href="#重启nginx">重启Nginx</a></li>
-</ul></li>
-<li><a href="#配置git">配置Git</a>
-<ul>
-<li><a href="#安装git">安装Git</a></li>
-<li><a href="#下载自己的代码库">下载自己的代码库</a></li>
-</ul></li>
-<li><a href="#配置python">配置Python</a>
-<ul>
-<li><a href="#安装python环境">安装Python环境</a></li>
-<li><a href="#编辑python文件">编辑Python文件</a></li>
-</ul></li>
-<li><a href="#编辑sh文件">编辑sh文件</a></li>
-<li><a href="#后台运行python脚本进行监视">后台运行Python脚本进行监视</a></li>
-<li><a href="#更新日志">更新日志</a></li>
-</ul>
-</nav>
-        </div>
+        <div class="article-toc"></div>
         
-        
-
-        
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://xuanwo.org/js/toc.min.js"></script>
         
 
         
@@ -378,6 +349,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

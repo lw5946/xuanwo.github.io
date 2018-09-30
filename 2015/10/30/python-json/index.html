@@ -20,7 +20,8 @@
     <link href="" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -234,49 +235,8 @@ json<span style="color:#666">.</span>loads(s, encoding<span style="color:#666">=
 
         
         
-        <div class="article-toc" style="display:none;">
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
-<ul>
-<li><a href="#json介绍">JSON介绍</a></li>
-<li><a href="#语法">语法</a>
-<ul>
-<li><a href="#结构">结构</a></li>
-<li><a href="#形式">形式</a>
-<ul>
-<li><a href="#对象">对象</a></li>
-<li><a href="#数组">数组</a></li>
-<li><a href="#值">值</a></li>
-<li><a href="#字符串">字符串</a></li>
-<li><a href="#数值">数值</a></li>
-<li><a href="#空白">空白</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#python中的json库">Python中的JSON库</a>
-<ul>
-<li><a href="#编码">编码</a>
-<ul>
-<li><a href="#对应类型">对应类型</a></li>
-<li><a href="#函数">函数</a></li>
-<li><a href="#示范">示范</a></li>
-</ul></li>
-<li><a href="#解码">解码</a>
-<ul>
-<li><a href="#对应类型-1">对应类型</a></li>
-<li><a href="#函数-1">函数</a></li>
-<li><a href="#示范-1">示范</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#更新日志">更新日志</a></li>
-</ul>
-</nav>
-        </div>
+        <div class="article-toc"></div>
         
-        
-
-        
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://xuanwo.org/js/toc.min.js"></script>
         
 
         
@@ -357,6 +317,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

@@ -20,7 +20,8 @@
     <link href="" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -344,58 +345,8 @@ bdist_msi  | msi</p>
 
         
         
-        <div class="article-toc" style="display:none;">
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
-<ul>
-<li><a href="#python包机制">Python包机制</a></li>
-<li><a href="#准备工作">准备工作</a>
-<ul>
-<li><a href="#注册pypi">注册Pypi</a></li>
-<li><a href="#目录结构">目录结构</a></li>
-<li><a href="#环境配置">环境配置</a></li>
-</ul></li>
-<li><a href="#编写安装脚本">编写安装脚本</a>
-<ul>
-<li><a href="#填写配置信息">填写配置信息</a>
-<ul>
-<li><a href="#基本框架">基本框架</a></li>
-<li><a href="#参数介绍">参数介绍</a>
-<ul>
-<li><a href="#指定整个包">指定整个包</a></li>
-<li><a href="#指定单独模块">指定单独模块</a></li>
-<li><a href="#依赖关系">依赖关系</a></li>
-<li><a href="#包内数据">包内数据</a></li>
-<li><a href="#其他数据">其他数据</a></li>
-<li><a href="#meta-data">Meta-Data</a></li>
-</ul></li>
-<li><a href="#典型配置">典型配置</a></li>
-</ul></li>
-<li><a href="#打包">打包</a>
-<ul>
-<li><a href="#指定需要分发的文件">指定需要分发的文件</a></li>
-<li><a href="#调用数据">调用数据</a></li>
-<li><a href="#创建源码分发包">创建源码分发包</a></li>
-<li><a href="#创建二进制分发包">创建二进制分发包</a></li>
-<li><a href="#创建wheel分发包">创建wheel分发包</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#上传到pypi">上传到Pypi</a>
-<ul>
-<li><a href="#注册包">注册包</a></li>
-<li><a href="#上传包">上传包</a></li>
-</ul></li>
-<li><a href="#参考资料">参考资料</a></li>
-<li><a href="#更新日志">更新日志</a></li>
-</ul>
-</nav>
-        </div>
+        <div class="article-toc"></div>
         
-        
-
-        
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://xuanwo.org/js/toc.min.js"></script>
         
 
         
@@ -466,6 +417,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

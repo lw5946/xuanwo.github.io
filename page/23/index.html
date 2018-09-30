@@ -20,7 +20,8 @@
     <link href="https://xuanwo.org/index.xml" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -53,7 +54,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/21/poj-2992-divisors/">POJ 2992 Divisors</a></h1>
@@ -106,7 +106,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/21/poj-2904-gau%C3%9F-in-elementary-school/">POJ 2904 Gauß in Elementary School</a></h1>
                 </header>
@@ -158,7 +157,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/21/poj-2909-goldbachs-conjecture/">POJ 2909 Goldbach&#39;s Conjecture</a></h1>
                 </header>
@@ -208,7 +206,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/21/opensource-book/">Gitbook——你自己的开源电子书</a></h1>
@@ -267,7 +264,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/19/poj-3083-children-of-the-candy-corn/">POJ 3083 Children of the Candy Corn</a></h1>
@@ -333,7 +329,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/18/poj-2876-cantoring-along/">POJ 2876 Cantoring Along</a></h1>
                 </header>
@@ -383,7 +378,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/18/poj-2864-pascal-library/">POJ 2864 Pascal Library</a></h1>
@@ -435,7 +429,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/18/poj-2853-sequence-sum-possibilities/">POJ 2853 Sequence Sum Possibilities</a></h1>
                 </header>
@@ -486,7 +479,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/18/poj-2871-a-simple-question-of-chemistry/">POJ 2871 A Simple Question of Chemistry</a></h1>
                 </header>
@@ -536,7 +528,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/18/poj-2591-set-definition/">POJ 2591 Set Definition</a></h1>
@@ -1029,6 +1020,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

@@ -20,7 +20,8 @@
     <link href="" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -210,38 +211,8 @@
 
         
         
-        <div class="article-toc" style="display:none;">
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#使用">使用</a></li>
-<li><a href="#实现">实现</a>
-<ul>
-<li><a href="#抓取网页">抓取网页</a></li>
-<li><a href="#中文分词">中文分词</a></li>
-<li><a href="#api-接口">API 接口</a></li>
-</ul></li>
-<li><a href="#对比">对比</a>
-<ul>
-<li><a href="#lunr-js">Lunr.js</a></li>
-<li><a href="#elasticsearch">Elasticsearch</a></li>
-<li><a href="#google-site-search">Google Site Search</a></li>
-<li><a href="#algolia-etc">Algolia etc.</a></li>
-</ul></li>
-<li><a href="#总结">总结</a></li>
-<li><a href="#动态">动态</a></li>
-</ul></li>
-</ul>
-</nav>
-        </div>
+        <div class="article-toc"></div>
         
-        
-
-        
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://xuanwo.org/js/toc.min.js"></script>
         
 
         
@@ -317,6 +288,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

@@ -20,7 +20,8 @@
     <link href="https://xuanwo.org/index.xml" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -53,7 +54,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/22/poj-2575-jolly-jumpers/">POJ 2575 Jolly Jumpers</a></h1>
@@ -104,7 +104,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/22/poj-2579-blurred-vision/">POJ 2579 Blurred Vision</a></h1>
@@ -157,7 +156,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/22/poj-2636-electrical-outlets/">POJ 2636 Electrical Outlets</a></h1>
                 </header>
@@ -207,7 +205,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/22/poj-2664-prerequisites/">POJ 2664 Prerequisites?</a></h1>
@@ -259,7 +256,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/22/poj-3006-dirichlets-theorem-on-arithmetic-progressions/">POJ 3006 Dirichlet&#39;s Theorem on Arithmetic Progressions</a></h1>
                 </header>
@@ -309,7 +305,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/22/poj-3077-rounders/">POJ 3077 Rounders</a></h1>
@@ -361,7 +356,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/22/poj-3183-stump-removal/">POJ 3183 Stump Removal</a></h1>
                 </header>
@@ -411,7 +405,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/22/poj-3300-tour-de-france/">POJ 3300 Tour de France</a></h1>
@@ -464,7 +457,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/22/poj-3302-subsequence/">POJ 3302 Subsequence</a></h1>
                 </header>
@@ -515,7 +507,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/22/poj-3325-icpc-score-totalizer-software/">POJ 3325 ICPC Score Totalizer Software</a></h1>
@@ -1009,6 +1000,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

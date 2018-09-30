@@ -20,7 +20,8 @@
     <link href="https://xuanwo.org/index.xml" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -53,7 +54,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/21/poj-3157-java-vs-c&#43;&#43;/">POJ 3157 Java vs C&#43;&#43;</a></h1>
@@ -105,7 +105,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/21/poj-3117-world-cup/">POJ 3117 World Cup</a></h1>
                 </header>
@@ -155,7 +154,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/21/poj-3173-parksides-triangle/">POJ 3173 Parkside&#39;s Triangle</a></h1>
@@ -207,7 +205,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/21/poj-3100-root-of-the-problem/">POJ 3100 Root of the Problem</a></h1>
                 </header>
@@ -257,7 +254,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/21/poj-3176-cow-bowling/">POJ 3176 Cow Bowling</a></h1>
@@ -309,7 +305,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/21/poj-3085-quick-change/">POJ 3085 Quick Change</a></h1>
                 </header>
@@ -359,7 +354,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/21/poj-3086-triangular-sums/">POJ 3086 Triangular Sums</a></h1>
@@ -411,7 +405,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/21/poj-3062-celebrity-jeopardy/">POJ 3062 Celebrity jeopardy</a></h1>
                 </header>
@@ -462,7 +455,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/21/poj-3030-nasty-hacks/">POJ 3030 Nasty Hacks</a></h1>
                 </header>
@@ -512,7 +504,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/21/poj-3094-quicksum/">POJ 3094 Quicksum</a></h1>
@@ -1005,6 +996,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

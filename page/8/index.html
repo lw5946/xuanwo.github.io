@@ -20,7 +20,8 @@
     <link href="https://xuanwo.org/index.xml" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -53,7 +54,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2015/02/18/event-qingcould-plan/">青云参观计划</a></h1>
@@ -110,7 +110,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2015/02/10/cf-71a/">Codeforces Beta Round 65 A Way Too Long Words (Div. 2)</a></h1>
                 </header>
@@ -161,7 +160,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2015/02/10/cf-158a/">VK Cup 2012 Qualification Round 1 A Next Round</a></h1>
                 </header>
@@ -211,7 +209,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2015/02/07/generate-a-ssh-key/">使用Github SSH Key以免去Hexo部署时输入密码</a></h1>
@@ -275,7 +272,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2015/02/07/travis-ci-hexo-autodeploy/">使用Travis CI自动部署Hexo</a></h1>
@@ -353,7 +349,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2015/02/05/vps-hexo-autodeploy/">VPS搭配Github Webhook实现Hexo自动发布</a></h1>
                 </header>
@@ -422,7 +417,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2015/01/07/chaoxing-download/">超星学术视频下载处理一条龙</a></h1>
                 </header>
@@ -489,7 +483,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/26/contest-cugb-cf7/">CF拉练第七场</a></h1>
                 </header>
@@ -536,7 +529,6 @@ E题（DP，构造） 这个题= =，还没有办法证明。 http://xuanwo.org/
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/26/cf-15c/">Codeforces Beta Round 15 C Industrial Nim</a></h1>
@@ -589,7 +581,6 @@ E题（DP，构造） 这个题= =，还没有办法证明。 http://xuanwo.org/
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/26/cf-16c/">Codeforces Beta Round 16 C Monitor (Div. 2 Only)</a></h1>
@@ -1082,6 +1073,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

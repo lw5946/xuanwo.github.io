@@ -20,7 +20,8 @@
     <link href="" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -294,42 +295,8 @@ script:
 
         
         
-        <div class="article-toc" style="display:none;">
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
-<ul>
-<li><a href="#好处">好处</a></li>
-<li><a href="#travis-ci介绍">Travis CI介绍</a></li>
-<li><a href="#travis-ci配置">Travis CI配置</a>
-<ul>
-<li><a href="#生成ssh-key">生成SSH Key</a></li>
-<li><a href="#加密私钥">加密私钥</a>
-<ul>
-<li><a href="#安装travis-ci的命令行工具">安装Travis CI的命令行工具</a></li>
-<li><a href="#登陆travis-ci">登陆Travis CI</a></li>
-<li><a href="#加密私钥并上传至travis">加密私钥并上传至Travis</a></li>
-<li><a href="#指定ssh设置">指定SSH设置</a></li>
-<li><a href="#修改目录权限">修改目录权限</a></li>
-<li><a href="#将密钥加入系统">将密钥加入系统</a></li>
-<li><a href="#修改git信息">修改git信息</a></li>
-</ul></li>
-<li><a href="#build配置">Build配置</a>
-<ul>
-<li><a href="#指定环境">指定环境</a></li>
-<li><a href="#指定分支">指定分支</a></li>
-<li><a href="#hexo配置">Hexo配置</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#更新日志">更新日志</a></li>
-</ul>
-</nav>
-        </div>
+        <div class="article-toc"></div>
         
-        
-
-        
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://xuanwo.org/js/toc.min.js"></script>
         
 
         
@@ -410,6 +377,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

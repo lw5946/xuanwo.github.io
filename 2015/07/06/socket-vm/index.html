@@ -20,7 +20,8 @@
     <link href="" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -229,52 +230,8 @@ dpkg -i libjpeg9-dev_9a-2_amd64.deb
 
         
         
-        <div class="article-toc" style="display:none;">
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
-<ul>
-<li><a href="#环境配置">环境配置</a>
-<ul>
-<li><a href="#安装nodejs">安装nodejs</a></li>
-<li><a href="#安装依赖">安装依赖</a></li>
-<li><a href="#安装libjpeg9和libjpeg9-dev">安装libjpeg9和libjpeg9-dev</a></li>
-</ul></li>
-<li><a href="#处理winxp镜像">处理WinXp镜像</a>
-<ul>
-<li><a href="#下载xp镜像">下载XP镜像</a>
-<ul>
-<li><a href="#下载后使用网盘中转">下载后使用网盘中转</a></li>
-<li><a href="#使用sftp上传">使用sftp上传</a></li>
-</ul></li>
-<li><a href="#格式转换">格式转换</a></li>
-</ul></li>
-<li><a href="#socket-io-computer配置">socket.io-computer配置</a>
-<ul>
-<li><a href="#安装依赖-1">安装依赖</a></li>
-<li><a href="#虚拟机配置">虚拟机配置</a></li>
-<li><a href="#运行">运行</a>
-<ul>
-<li><a href="#启动web服务器">启动Web服务器</a></li>
-<li><a href="#启动io服务器">启动IO服务器</a></li>
-<li><a href="#生成qemu实例">生成qemu实例</a></li>
-<li><a href="#启动虚拟机">启动虚拟机</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#运行-1">运行</a></li>
-<li><a href="#注意">注意</a>
-<ul>
-<li><a href="#若搭建在服务器上-使用ip访问">若搭建在服务器上，使用IP访问</a></li>
-</ul></li>
-<li><a href="#更新日志">更新日志</a></li>
-</ul>
-</nav>
-        </div>
+        <div class="article-toc"></div>
         
-        
-
-        
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://xuanwo.org/js/toc.min.js"></script>
         
 
         
@@ -360,6 +317,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

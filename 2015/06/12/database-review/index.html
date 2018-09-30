@@ -20,7 +20,8 @@
     <link href="" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -905,123 +906,8 @@ m:n
 
         
         
-        <div class="article-toc" style="display:none;">
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
-<ul>
-<li><a href="#绪论">绪论</a>
-<ul>
-<li><a href="#数据库系统概述">数据库系统概述</a></li>
-<li><a href="#数据模型">数据模型</a>
-<ul>
-<li><a href="#概念数据模型">概念数据模型</a></li>
-<li><a href="#逻辑数据模型">逻辑数据模型</a></li>
-</ul></li>
-<li><a href="#数据库系统结构">数据库系统结构</a></li>
-<li><a href="#数据库系统的组成">数据库系统的组成</a>
-<ul>
-<li><a href="#硬件平台及数据库">硬件平台及数据库</a></li>
-<li><a href="#软件">软件</a></li>
-<li><a href="#人员">人员</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#关系型数据库理论">关系型数据库理论</a>
-<ul>
-<li><a href="#关系模型概述">关系模型概述</a></li>
-<li><a href="#关系数据结构">关系数据结构</a>
-<ul>
-<li><a href="#关系">关系</a></li>
-<li><a href="#关系模式">关系模式</a></li>
-</ul></li>
-<li><a href="#关系的完整性">关系的完整性</a>
-<ul>
-<li><a href="#关系的三类完整性约束">关系的三类完整性约束</a></li>
-<li><a href="#实体完整性">实体完整性</a></li>
-<li><a href="#参照完整性">参照完整性</a></li>
-<li><a href="#用户定义的完整性">用户定义的完整性</a></li>
-</ul></li>
-<li><a href="#关系代数">关系代数</a>
-<ul>
-<li><a href="#传统的集合运算">传统的集合运算</a></li>
-<li><a href="#专门的关系演算">专门的关系演算</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#sql数据语言">SQL数据语言</a>
-<ul>
-<li><a href="#sql概述">SQL概述</a>
-<ul>
-<li><a href="#产生与发展">产生与发展</a></li>
-<li><a href="#sql的特点">SQL的特点</a></li>
-<li><a href="#sql基本概念">SQL基本概念</a></li>
-<li><a href="#sql对象">SQL对象</a></li>
-<li><a href="#sql语句">SQL语句</a></li>
-</ul></li>
-<li><a href="#数据定义">数据定义</a>
-<ul>
-<li><a href="#数据库的创建与删除">数据库的创建与删除</a></li>
-<li><a href="#表的创建与删除">表的创建与删除</a></li>
-<li><a href="#表结构的修改">表结构的修改</a></li>
-<li><a href="#建立和删除索引">建立和删除索引</a></li>
-</ul></li>
-<li><a href="#数据查询">数据查询</a>
-<ul>
-<li><a href="#目标列表达式">目标列表达式</a></li>
-<li><a href="#条件表达式">条件表达式</a></li>
-</ul></li>
-<li><a href="#数据操纵">数据操纵</a>
-<ul>
-<li><a href="#数据插入">数据插入</a></li>
-<li><a href="#数据修改">数据修改</a></li>
-<li><a href="#删除数据">删除数据</a></li>
-</ul></li>
-<li><a href="#数据控制">数据控制</a></li>
-</ul></li>
-<li><a href="#关系数据库设计">关系数据库设计</a>
-<ul>
-<li><a href="#关系数据库设计理论">关系数据库设计理论</a>
-<ul>
-<li><a href="#关系模式-1">关系模式</a></li>
-<li><a href="#函数依赖定义">函数依赖定义</a></li>
-<li><a href="#第一范式-1nf">第一范式（1NF）</a></li>
-<li><a href="#第二范式-2nf">第二范式（2NF）</a></li>
-<li><a href="#第三范式-3nf">第三范式（3NF）</a></li>
-<li><a href="#bcnf">BCNF</a></li>
-<li><a href="#多值依赖">多值依赖</a></li>
-<li><a href="#第四范式-4nf">第四范式（4NF）</a></li>
-<li><a href="#总结">总结</a></li>
-</ul></li>
-<li><a href="#关系数据库设计的步骤">关系数据库设计的步骤</a>
-<ul>
-<li><a href="#需求分析">需求分析</a></li>
-<li><a href="#概念结构设计">概念结构设计</a></li>
-<li><a href="#数据库的物理设计">数据库的物理设计</a></li>
-<li><a href="#实施与维护阶段">实施与维护阶段</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#数据库安全保护">数据库安全保护</a>
-<ul>
-<li><a href="#信息安全综述">信息安全综述</a></li>
-<li><a href="#数据库安全性控制">数据库安全性控制</a>
-<ul>
-<li><a href="#用户标识和鉴别">用户标识和鉴别</a></li>
-<li><a href="#存取控制">存取控制</a></li>
-<li><a href="#审计">审计</a></li>
-<li><a href="#数据加密">数据加密</a></li>
-</ul></li>
-<li><a href="#统计数据库安全性">统计数据库安全性</a></li>
-<li><a href="#sql-server系统安全性">SQL SERVER系统安全性</a></li>
-</ul></li>
-<li><a href="#版权信息">版权信息</a></li>
-<li><a href="#更新日志">更新日志</a></li>
-</ul>
-</nav>
-        </div>
+        <div class="article-toc"></div>
         
-        
-
-        
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://xuanwo.org/js/toc.min.js"></script>
         
 
         
@@ -1097,6 +983,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

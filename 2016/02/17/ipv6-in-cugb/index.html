@@ -20,7 +20,8 @@
     <link href="" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -211,41 +212,8 @@ PT可进行私密范围下载，因此提供PT的讨论区大多非公开的，�
 
         
         
-        <div class="article-toc" style="display:none;">
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
-<ul>
-<li><a href="#开源">开源</a>
-<ul>
-<li><a href="#如何开启ipv6">如何开启ipv6</a>
-<ul>
-<li><a href="#检查自己的电脑是否已经打开ipv6支持">检查自己的电脑是否已经打开ipv6支持</a></li>
-<li><a href="#打开ipv6">打开ipv6</a></li>
-</ul></li>
-<li><a href="#ipv6应用">IPv6应用</a>
-<ul>
-<li><a href="#pt下载">PT下载</a></li>
-<li><a href="#ipv6电视">IPv6电视</a></li>
-<li><a href="#ipv6转换">IPv6转换</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#节流">节流</a>
-<ul>
-<li><a href="#网络游戏流量消耗">网络游戏流量消耗</a></li>
-<li><a href="#内网文件传输">内网文件传输</a></li>
-</ul></li>
-<li><a href="#总结">总结</a></li>
-<li><a href="#参考资料">参考资料</a></li>
-<li><a href="#更新日志">更新日志</a></li>
-</ul>
-</nav>
-        </div>
+        <div class="article-toc"></div>
         
-        
-
-        
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://xuanwo.org/js/toc.min.js"></script>
         
 
         
@@ -321,6 +289,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

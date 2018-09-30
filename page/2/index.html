@@ -20,7 +20,8 @@
     <link href="https://xuanwo.org/index.xml" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -53,7 +54,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2018/01/14/automation-based-on-aws-lambda/">基于 AWS Lambda 实现自动化</a></h1>
@@ -117,7 +117,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2017/12/03/integromat-intro/">Integromat -- 最强大的自动化平台</a></h1>
@@ -186,7 +185,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2017/11/26/enpass-intro/">Enpass —— 超赞的密码管理工具</a></h1>
                 </header>
@@ -249,7 +247,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2017/06/15/upload-to-qingstor-from-browser/">从浏览器端向 QingStor 对象存储上传文件</a></h1>
@@ -324,7 +321,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2017/01/22/encoding-in-python/">聊一聊 Python 的字符串</a></h1>
                 </header>
@@ -377,7 +373,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2016/11/22/garbled-page/">有趣的网页乱码问题</a></h1>
@@ -432,7 +427,6 @@
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2016/11/12/httpbin-intro/">httpbin 介绍</a></h1>
                 </header>
@@ -485,7 +479,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2016/10/23/goodbye-hexo/">再见， Hexo</a></h1>
@@ -547,7 +540,6 @@ Hexo 我从大一的暑假就开始用，大二的时候加入了 Hexo 的团队
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2016/09/13/dynamic-page-data-spider/">动态网页数据抓取踩坑分享</a></h1>
@@ -611,7 +603,6 @@ Hexo 我从大一的暑假就开始用，大二的时候加入了 Hexo 的团队
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2016/08/22/nodebb-plugin-html5videoplayer/">nodebb-plugin-html5videoplayer 发布</a></h1>
@@ -1103,6 +1094,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

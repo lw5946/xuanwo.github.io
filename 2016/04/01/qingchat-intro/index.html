@@ -20,7 +20,8 @@
     <link href="" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -251,43 +252,8 @@ qingchat group send -f &lt;file&gt;</code></pre></div>
 
         
         
-        <div class="article-toc" style="display:none;">
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
-<ul>
-<li><a href="#原理">原理</a></li>
-<li><a href="#用法">用法</a>
-<ul>
-<li><a href="#配置">配置</a>
-<ul>
-<li><a href="#测试-安装perl环境">测试&amp;安装perl环境</a></li>
-<li><a href="#安装-mojo-weixin-模块">安装 Mojo::Weixin 模块</a></li>
-<li><a href="#运行">运行</a></li>
-<li><a href="#配置nginx">配置Nginx</a></li>
-</ul></li>
-<li><a href="#安装qingchat">安装Qingchat</a>
-<ul>
-<li><a href="#pip">pip</a></li>
-<li><a href="#源码">源码</a></li>
-</ul></li>
-<li><a href="#使用">使用</a>
-<ul>
-<li><a href="#配置-1">配置</a></li>
-<li><a href="#登陆">登陆</a></li>
-<li><a href="#群发消息">群发消息</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#展望">展望</a></li>
-<li><a href="#更新日志">更新日志</a></li>
-</ul>
-</nav>
-        </div>
+        <div class="article-toc"></div>
         
-        
-
-        
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://xuanwo.org/js/toc.min.js"></script>
         
 
         
@@ -347,6 +313,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

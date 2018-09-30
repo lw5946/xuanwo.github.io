@@ -20,7 +20,8 @@
     <link href="" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -224,43 +225,8 @@ Successfully created package <span style="color:#4070a0">&#39;datagrip.1.0.1.nup
 
         
         
-        <div class="article-toc" style="display:none;">
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
-<ul>
-<li><a href="#安装chocolatey">安装chocolatey</a>
-<ul>
-<li><a href="#cmd">CMD</a></li>
-<li><a href="#powershell">PowerShell</a></li>
-</ul></li>
-<li><a href="#使用chocolatey">使用chocolatey</a>
-<ul>
-<li><a href="#安装包">安装包</a></li>
-<li><a href="#卸载包">卸载包</a></li>
-<li><a href="#更新包">更新包</a></li>
-</ul></li>
-<li><a href="#为chocolatey做贡献">为chocolatey做贡献</a>
-<ul>
-<li><a href="#注册apikey">注册APIKey</a></li>
-<li><a href="#新建软件包">新建软件包</a></li>
-<li><a href="#完善信息">完善信息</a>
-<ul>
-<li><a href="#修改test-nuspec">修改test.nuspec</a></li>
-<li><a href="#补充chocolateyinstall-ps1">补充chocolateyinstall.ps1</a></li>
-<li><a href="#打包上传">打包上传</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#参考资料">参考资料</a></li>
-<li><a href="#更新日志">更新日志</a></li>
-</ul>
-</nav>
-        </div>
+        <div class="article-toc"></div>
         
-        
-
-        
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://xuanwo.org/js/toc.min.js"></script>
         
 
         
@@ -336,6 +302,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

@@ -20,7 +20,8 @@
     <link href="https://xuanwo.org/index.xml" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -53,7 +54,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/16/contest-cugb-cf5/">CF拉练第五场</a></h1>
@@ -101,7 +101,6 @@ E题（神DP） 有一个神奇的递推公式，猜一猜，看RP，赛后出�
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/16/cf-9d/">Codeforces Beta Round 9 D How many trees? (Div.2 Only)</a></h1>
@@ -158,7 +157,6 @@ E题（神DP） 有一个神奇的递推公式，猜一猜，看RP，赛后出�
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/16/cf-7d/">Codeforces Beta Round 7 D Palindrome Degree</a></h1>
                 </header>
@@ -214,7 +212,6 @@ E题（神DP） 有一个神奇的递推公式，猜一猜，看RP，赛后出�
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/16/cf-8b/">Codeforces Beta Round 8 B Obsession with Robots</a></h1>
                 </header>
@@ -268,7 +265,6 @@ E题（神DP） 有一个神奇的递推公式，猜一猜，看RP，赛后出�
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/16/cf-9c/">Codeforces Beta Round 9 C Hexadecimal&#39;s Numbers (Div.2 Only)</a></h1>
@@ -326,7 +322,6 @@ E题（神DP） 有一个神奇的递推公式，猜一猜，看RP，赛后出�
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/16/cf-11a/">Codeforces Beta Round 11 A Increasing Sequence</a></h1>
                 </header>
@@ -377,7 +372,6 @@ E题（神DP） 有一个神奇的递推公式，猜一猜，看RP，赛后出�
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/15/uva-11584-partitioning-by-palindromes/">UVa 11584 Partitioning by Palindromes</a></h1>
@@ -431,7 +425,6 @@ E题（神DP） 有一个神奇的递推公式，猜一猜，看RP，赛后出�
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/15/uva-1025-a-spy-in-the-metro/">UVa 1025 A Spy in the Metro</a></h1>
                 </header>
@@ -482,7 +475,6 @@ E题（神DP） 有一个神奇的递推公式，猜一猜，看RP，赛后出�
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/13/cf-7a/">Codeforces Beta Round 7 A Kalevitch and Chess</a></h1>
@@ -535,7 +527,6 @@ E题（神DP） 有一个神奇的递推公式，猜一猜，看RP，赛后出�
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/13/cf-9a/">Codeforces Beta Round 9 A Die Roll (Div.2 Only)</a></h1>
@@ -1029,6 +1020,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

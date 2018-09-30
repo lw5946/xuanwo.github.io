@@ -20,7 +20,8 @@
     <link href="" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -319,37 +320,8 @@ SUCCESS <span style="color:#666">=</span> [<span style="color:#4070a0"></span><s
 
         
         
-        <div class="article-toc" style="display:none;">
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#项目需求">项目需求</a>
-<ul>
-<li><a href="#why-not-integrmat">Why not Integrmat</a></li>
-<li><a href="#why-aws-lambda">Why AWS Lambda</a></li>
-</ul></li>
-<li><a href="#aws-lambda-faas-介绍">AWS Lambda / FaaS 介绍</a></li>
-<li><a href="#如何实现自动化">如何实现自动化</a>
-<ul>
-<li><a href="#创建函数">创建函数</a></li>
-<li><a href="#接入服务">接入服务</a></li>
-<li><a href="#编辑函数">编辑函数</a></li>
-<li><a href="#调试函数">调试函数</a></li>
-</ul></li>
-<li><a href="#总结">总结</a></li>
-<li><a href="#动态">动态</a></li>
-</ul></li>
-</ul>
-</nav>
-        </div>
+        <div class="article-toc"></div>
         
-        
-
-        
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://xuanwo.org/js/toc.min.js"></script>
         
 
         
@@ -430,6 +402,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

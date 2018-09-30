@@ -20,7 +20,8 @@
     <link href="https://xuanwo.org/index.xml" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -53,7 +54,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/07/contest-cugb-cf2/">CF拉练第二场</a></h1>
@@ -101,7 +101,6 @@ E题（几何） 论开脑洞的重要性，没有完善的证明。 http://xuan
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/07/cf-3b/">Codeforces Beta Round 3 B Lorry</a></h1>
@@ -155,7 +154,6 @@ E题（几何） 论开脑洞的重要性，没有完善的证明。 http://xuan
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/07/cf-4d/">Codeforces Beta Round 4 D Mysterious Present</a></h1>
                 </header>
@@ -206,7 +204,6 @@ E题（几何） 论开脑洞的重要性，没有完善的证明。 http://xuan
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/06/cf-2c/">Codeforces Beta Round 2 C Commentator problem</a></h1>
@@ -266,7 +263,6 @@ E题（几何） 论开脑洞的重要性，没有完善的证明。 http://xuan
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/06/uva-11093-just-finish-it-up/">UVa 11093 Just Finish it up</a></h1>
                 </header>
@@ -319,7 +315,6 @@ E题（几何） 论开脑洞的重要性，没有完善的证明。 http://xuan
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/05/uva-12627-erratic-expansion/">UVa 12627 Erratic Expansion</a></h1>
                 </header>
@@ -370,7 +365,6 @@ E题（几何） 论开脑洞的重要性，没有完善的证明。 http://xuan
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/05/uva-10954-add-all/">UVa 10954 Add All</a></h1>
@@ -423,7 +417,6 @@ E题（几何） 论开脑洞的重要性，没有完善的证明。 http://xuan
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/05/uva-1471-defense-lines/">UVa 1471 Defense Lines</a></h1>
                 </header>
@@ -475,7 +468,6 @@ E题（几何） 论开脑洞的重要性，没有完善的证明。 http://xuan
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/05/uva-11572-unique-snowflakes/">UVa 11572 Unique Snowflakes</a></h1>
                 </header>
@@ -526,7 +518,6 @@ E题（几何） 论开脑洞的重要性，没有完善的证明。 http://xuan
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/11/05/uva-11054-wine-trading-in-gergovia/">UVa 11054 Wine trading in Gergovia</a></h1>
@@ -1020,6 +1011,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

@@ -20,7 +20,8 @@
     <link href="" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -740,63 +741,8 @@ f1g1ns2.dnspod.net
 
         
         
-        <div class="article-toc" style="display:none;">
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
-<ul>
-<li><a href="#准备">准备</a>
-<ul>
-<li><a href="#windows">Windows</a>
-<ul>
-<li><a href="#配置node-js环境">配置Node.js环境</a></li>
-<li><a href="#配置git环境">配置Git环境</a></li>
-</ul></li>
-<li><a href="#linux">Linux</a></li>
-<li><a href="#mac-os">Mac OS</a></li>
-</ul></li>
-<li><a href="#配置github">配置Github</a>
-<ul>
-<li><a href="#注册账号">注册账号</a></li>
-<li><a href="#创建代码库">创建代码库</a></li>
-<li><a href="#开启gh-pages功能">开启gh-pages功能</a></li>
-</ul></li>
-<li><a href="#配置hexo">配置Hexo</a>
-<ul>
-<li><a href="#安装hexo">安装Hexo</a></li>
-<li><a href="#初始化hexo">初始化Hexo</a></li>
-<li><a href="#首次体验hexo">首次体验Hexo</a></li>
-</ul></li>
-<li><a href="#使用hexo">使用Hexo</a>
-<ul>
-<li><a href="#修改全局配置文件">修改全局配置文件</a>
-<ul>
-<li><a href="#网站">网站</a></li>
-<li><a href="#网址">网址</a></li>
-<li><a href="#目录">目录</a></li>
-<li><a href="#文章">文章</a></li>
-<li><a href="#分类-标签">分类 &amp; 标签</a></li>
-<li><a href="#日期-时间格式">日期 / 时间格式</a></li>
-<li><a href="#分页">分页</a></li>
-<li><a href="#扩展">扩展</a></li>
-</ul></li>
-<li><a href="#配置deployment">配置Deployment</a></li>
-<li><a href="#添加新文章">添加新文章</a></li>
-</ul></li>
-<li><a href="#进阶">进阶</a>
-<ul>
-<li><a href="#更换主题">更换主题</a></li>
-<li><a href="#更换域名">更换域名</a></li>
-</ul></li>
-<li><a href="#更新日志">更新日志</a></li>
-</ul>
-</nav>
-        </div>
+        <div class="article-toc"></div>
         
-        
-
-        
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://xuanwo.org/js/toc.min.js"></script>
         
 
         
@@ -882,6 +828,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

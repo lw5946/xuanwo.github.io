@@ -20,7 +20,8 @@
     <link href="" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -255,63 +256,8 @@
 
         
         
-        <div class="article-toc" style="display:none;">
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
-<ul>
-<li><a href="#需要准备的东西">需要准备的东西</a>
-<ul>
-<li><a href="#懒人包镜像">懒人包镜像</a></li>
-<li><a href="#基于vmware">基于Vmware</a></li>
-<li><a href="#基于virtualbox">基于VirtualBox</a></li>
-</ul></li>
-<li><a href="#虚拟机环境配置">虚拟机环境配置</a>
-<ul>
-<li><a href="#配置vmware">配置VMware</a>
-<ul>
-<li><a href="#安装并激活vmware">安装并激活VMware</a></li>
-<li><a href="#使用unlocker解锁vmware">使用Unlocker解锁VMware</a></li>
-</ul></li>
-<li><a href="#基于vmware配置mac-os-x虚拟机">基于Vmware配置Mac OS X虚拟机</a>
-<ul>
-<li><a href="#启动新建虚拟机向导">启动新建虚拟机向导</a></li>
-<li><a href="#安装客户机操作系统">安装客户机操作系统</a></li>
-<li><a href="#选择客户机操作系统">选择客户机操作系统</a></li>
-<li><a href="#命名虚拟机">命名虚拟机</a></li>
-<li><a href="#指定磁盘容量">指定磁盘容量</a></li>
-<li><a href="#开始创建虚拟机">开始创建虚拟机</a></li>
-<li><a href="#虚拟机故障排除">虚拟机故障排除</a></li>
-</ul></li>
-<li><a href="#配置virtualbox">配置VirtualBox</a>
-<ul>
-<li><a href="#安装virtualbox">安装VirtualBox</a></li>
-<li><a href="#hack一下virtualbox">Hack一下VirtualBox</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#开始安装mac-os-x">开始安装Mac OS X</a>
-<ul>
-<li><a href="#加载界面">加载界面</a></li>
-<li><a href="#语言选择">语言选择</a></li>
-<li><a href="#硬盘分区">硬盘分区</a></li>
-<li><a href="#许可协议">许可协议</a></li>
-<li><a href="#选择安装磁盘">选择安装磁盘</a></li>
-<li><a href="#默默等待">默默等待</a></li>
-</ul></li>
-<li><a href="#坑点总结">坑点总结</a>
-<ul>
-<li><a href="#使用dmg镜像提取">使用DMG镜像提取</a></li>
-<li><a href="#vmx文件修改">VMX文件修改</a></li>
-</ul></li>
-<li><a href="#更新日志">更新日志</a></li>
-</ul>
-</nav>
-        </div>
+        <div class="article-toc"></div>
         
-        
-
-        
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://xuanwo.org/js/toc.min.js"></script>
         
 
         
@@ -387,6 +333,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

@@ -20,7 +20,8 @@
     <link href="" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -385,42 +386,8 @@ $ qscamel version</code></pre></div>
 
         
         
-        <div class="article-toc" style="display:none;">
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#设计">设计</a>
-<ul>
-<li><a href="#用户交互">用户交互</a></li>
-<li><a href="#整体流程">整体流程</a></li>
-<li><a href="#分段上传">分段上传</a></li>
-</ul></li>
-<li><a href="#实现">实现</a>
-<ul>
-<li><a href="#生产者-消费者">生产者-消费者</a></li>
-<li><a href="#endpoint-中的-interface">Endpoint 中的 interface</a></li>
-<li><a href="#leveldb">LevelDB</a></li>
-</ul></li>
-<li><a href="#故事">故事</a>
-<ul>
-<li><a href="#遇事不决-黄金切割">遇事不决，黄金切割</a></li>
-<li><a href="#buffer-的-bytes">Buffer 的 Bytes</a></li>
-<li><a href="#小人物的重构-从早到晚">小人物的重构，从早到晚</a></li>
-</ul></li>
-<li><a href="#动态">动态</a></li>
-<li><a href="#广告">广告</a></li>
-</ul></li>
-</ul>
-</nav>
-        </div>
+        <div class="article-toc"></div>
         
-        
-
-        
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://xuanwo.org/js/toc.min.js"></script>
         
 
         
@@ -495,6 +462,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

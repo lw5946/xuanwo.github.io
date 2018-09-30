@@ -20,7 +20,8 @@
     <link href="https://xuanwo.org/index.xml" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -53,7 +54,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/12/poj-1426-find-the-multiple/">POJ 1426 Find The Multiple</a></h1>
@@ -104,7 +104,6 @@
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/12/poj-1458-common-subsequence/">POJ 1458 Common Subsequence</a></h1>
@@ -166,7 +165,6 @@ else
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/12/poj-1323-game-prediction/">POJ 1323 Game Prediction</a></h1>
                 </header>
@@ -216,7 +214,6 @@ else
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/12/poj-1338-ugly-numbers/">POJ 1338 Ugly Numbers</a></h1>
@@ -268,7 +265,6 @@ else
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/12/poj-1363-rails/">POJ 1363 Rails</a></h1>
                 </header>
@@ -319,7 +315,6 @@ else
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/12/poj-1269-intersecting-lines/">POJ 1269 Intersecting Lines</a></h1>
                 </header>
@@ -369,7 +364,6 @@ else
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/12/poj-1183-arctan/">POJ 1183 反正切函数的应用</a></h1>
@@ -422,7 +416,6 @@ int不够，long long超时，使用unsigned int过了= =，感谢大神，坑�
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
                 
-                
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/12/poj-1157-little-shop-of-flowers/">POJ 1157 LITTLE SHOP OF FLOWERS</a></h1>
                 </header>
@@ -472,7 +465,6 @@ int不够，long long超时，使用unsigned int过了= =，感谢大神，坑�
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/12/poj-1160-post-office/">POJ 1160 Post Office</a></h1>
@@ -524,7 +516,6 @@ int不够，long long超时，使用unsigned int过了= =，感谢大神，坑�
         
         <article class="article article-type-post" itemscope itemprop="blogPost">
             <div class="article-inner">
-                
                 
                 <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/2014/08/12/poj-1159-palindrome/">POJ 1159 Palindrome</a></h1>
@@ -1026,6 +1017,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

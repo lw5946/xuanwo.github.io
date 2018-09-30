@@ -20,7 +20,8 @@
     <link href="" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -591,68 +592,8 @@ deploy:
 
         
         
-        <div class="article-toc" style="display:none;">
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
-<ul>
-<li><a href="#介绍">介绍</a></li>
-<li><a href="#常见错误">常见错误</a>
-<ul>
-<li><a href="#本地浏览没问题-deploy报错">本地浏览没问题，Deploy报错</a>
-<ul>
-<li><a href="#git环境配置错误">Git环境配置错误</a></li>
-<li><a href="#deploy设置错误">Deploy设置错误</a></li>
-</ul></li>
-<li><a href="#deploy之后-页面长时间404">Deploy之后，页面长时间404</a>
-<ul>
-<li><a href="#检查github-pages类型">检查Github Pages类型</a></li>
-<li><a href="#检查github验证邮件">检查Github验证邮件</a></li>
-<li><a href="#注意库的名字">注意库的名字</a></li>
-</ul></li>
-<li><a href="#自有域名二级目录无法访问">自有域名二级目录无法访问</a></li>
-<li><a href="#hexo命令失效">Hexo命令失效</a></li>
-<li><a href="#hexo所有命令报错">Hexo所有命令报错</a></li>
-<li><a href="#更新至2-8-x版本后-构建失败">更新至2.8.X版本后，构建失败</a></li>
-<li><a href="#修改主题文件之后-网页不更新">修改主题文件之后，网页不更新</a></li>
-<li><a href="#页面没有渲染-partial转义失败">页面没有渲染（partial转义失败）</a></li>
-<li><a href="#更新至3-0-0版本后-文件渲染时卡死">更新至3.0.0版本后，文件渲染时卡死</a></li>
-<li><a href="#升级至hexo-3-0版本后-deploy报错">升级至Hexo 3.0版本后，deploy报错</a></li>
-<li><a href="#mac-os安装hexo出错">Mac OS安装Hexo出错</a></li>
-</ul></li>
-<li><a href="#常见问题">常见问题</a>
-<ul>
-<li><a href="#如何在不同电脑-系统-上使用hexo">如何在不同电脑（系统）上使用Hexo</a></li>
-<li><a href="#使用git-submodule来管理主题">使用git submodule来管理主题</a></li>
-<li><a href="#在主目录下添加-readme-md-文件或者html文件">在主目录下添加<code>README.md</code>文件或者html文件</a>
-<ul>
-<li><a href="#hexo3-0以下使用">Hexo3.0以下使用</a></li>
-<li><a href="#hexo3-0以上支持">Hexo3.0以上支持</a></li>
-</ul></li>
-<li><a href="#hexo版本回退">Hexo版本回退</a></li>
-<li><a href="#如何为站点添加社会化评论">如何为站点添加社会化评论</a>
-<ul>
-<li><a href="#使用disque">使用Disque</a></li>
-<li><a href="#使用duoshuo">使用Duoshuo</a></li>
-</ul></li>
-<li><a href="#如何避免在deploy时输入密码">如何避免在Deploy时输入密码</a>
-<ul>
-<li><a href="#使用github客户端">使用Github客户端</a></li>
-<li><a href="#自行生成ssh-key">自行生成SSH key</a></li>
-</ul></li>
-<li><a href="#多git部署">多git部署</a></li>
-<li><a href="#开启全站https">开启全站https</a></li>
-</ul></li>
-<li><a href="#贡献者">贡献者</a></li>
-<li><a href="#更新日志">更新日志</a></li>
-</ul>
-</nav>
-        </div>
+        <div class="article-toc"></div>
         
-        
-
-        
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://xuanwo.org/js/toc.min.js"></script>
         
 
         
@@ -738,6 +679,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');

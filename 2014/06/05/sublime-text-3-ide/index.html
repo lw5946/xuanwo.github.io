@@ -20,7 +20,8 @@
     <link href="" rel="alternate" type="application/rss+xml" title="Xuanwo&#39;s Blog" />
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="https://xuanwo.org/css/style.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/style.min.css">
+    <link rel="stylesheet" href="https://xuanwo.org/css/tocbot.min.css">
 
     <link href="http://gmpg.org/xfn/11" rel="profile">
 
@@ -323,65 +324,8 @@
 
         
         
-        <div class="article-toc" style="display:none;">
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#安装">安装</a>
-<ul>
-<li><a href="#os-x">OS X</a></li>
-<li><a href="#windows-32-bit">Windows 32 bit</a></li>
-<li><a href="#windows-64-bit">Windows 64 bit</a></li>
-<li><a href="#ubuntu-32-bit">Ubuntu 32 bit</a></li>
-<li><a href="#ubuntu-64-bit">Ubuntu 64 bit</a></li>
-</ul></li>
-<li><a href="#运行环境">运行环境</a>
-<ul>
-<li><a href="#windows下">Windows下</a></li>
-<li><a href="#下载安装mingw">下载安装MinGW</a></li>
-<li><a href="#添加系统环境变量">添加系统环境变量</a>
-<ul>
-<li><a href="#建立新的编译系统">建立新的编译系统</a></li>
-</ul></li>
-<li><a href="#linux下">Linux下</a></li>
-<li><a href="#收工">收工</a></li>
-</ul></li>
-<li><a href="#配置">配置</a>
-<ul>
-<li><a href="#界面">界面</a>
-<ul>
-<li><a href="#字体-主题风格等设置">字体、主题风格等设置</a></li>
-<li><a href="#打开-关闭-侧边栏-右边缩略图等常用面板">打开（关闭）侧边栏、右边缩略图等常用面板</a></li>
-<li><a href="#快捷键寻找文件和已定义的函数">快捷键寻找文件和已定义的函数</a></li>
-</ul></li>
-<li><a href="#插件">插件</a>
-<ul>
-<li><a href="#package-control">Package Control</a></li>
-<li><a href="#converttoutf8">ConvertToUTF8</a></li>
-<li><a href="#astyleformatter">AStyleFormatter</a></li>
-<li><a href="#insertdate">InsertDate</a></li>
-</ul></li>
-<li><a href="#代码片段-snippet-功能">代码片段(<code>snippet</code>)功能</a></li>
-<li><a href="#备份">备份</a>
-<ul>
-<li><a href="#windows下-1">Windows下</a></li>
-<li><a href="#linux下-1">Linux下</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#尾言">尾言</a></li>
-</ul></li>
-<li><a href="#更新日志">更新日志</a></li>
-</ul>
-</nav>
-        </div>
+        <div class="article-toc"></div>
         
-        
-
-        
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://xuanwo.org/js/toc.min.js"></script>
         
 
         
@@ -457,6 +401,18 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+    <script>
+      tocbot.init({
+        
+        tocSelector: '.article-toc',
+        
+        contentSelector: '.article-entry',
+        
+        headingSelector: 'h1, h2, h3, h4, h5',
+      });
+
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');
