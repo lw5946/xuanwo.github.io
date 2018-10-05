@@ -1,4 +1,126 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Xuanwo&#39;s Blog</title><link>https://xuanwo.org/</link><description>Recent content on Xuanwo&#39;s Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 05 Sep 2018 09:00:00 +0000</lastBuildDate><atom:link href="https://xuanwo.org/index.xml" rel="self" type="application/rss+xml"/><item><title>qscamel —— 数据迁移工具</title><link>https://xuanwo.org/2018/09/05/qscamel-intro/</link><pubDate>Wed, 05 Sep 2018 09:00:00 +0000</pubDate><guid>https://xuanwo.org/2018/09/05/qscamel-intro/</guid><description>&lt;p&gt;qscamel 是一个用于在不同的端点 (Endpoint) 中高效迁移数据的工具。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Xuanwo&#39;s Blog</title><link>https://xuanwo.org/</link><description>Recent content on Xuanwo&#39;s Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 03 Oct 2018 15:35:00 +0000</lastBuildDate><atom:link href="https://xuanwo.org/index.xml" rel="self" type="application/rss+xml"/><item><title>Ingress 北京中轴线噩梦难度一日速刷攻略</title><link>https://xuanwo.org/2018/10/03/ingress-beijing-central-axis/</link><pubDate>Wed, 03 Oct 2018 15:35:00 +0000</pubDate><guid>https://xuanwo.org/2018/10/03/ingress-beijing-central-axis/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/Ingress&#34;&gt;Ingress&lt;/a&gt; 是一款基于地理位置的大型多人侵入式虚拟现实游戏，由 &lt;a href=&#34;https://zh.wikipedia.org/wiki/Niantic&#34;&gt;Niantic Labs&lt;/a&gt; 开发。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;作为一位入坑多年，最近几个月才刚刚喜获人权的咸鱼玩家，这个十一长假不想平庸的度过，于是决定在 10 月 3 号的时候一日速刷北京中轴线。因为在适逢十一假期，再加上各种大家都懂的原因，这次任务的难度可以说是噩梦级别。这篇文章就是要跟大家分享一下我成功通关喜悦并且为更多想要一日速刷北京中轴线的同学提供一些小小的帮助。&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2 id=&#34;不打无准备之仗&#34;&gt;不打无准备之仗&lt;/h2&gt;
+&lt;p&gt;既然目标是一日速刷，那当然首先要做好准备工作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;确认自己的身体和状态可以支持步行 20 公里
+&lt;ul&gt;
+&lt;li&gt;不要拿自己的身体开玩笑，如果实在勉强的话，可以断点续刷，比如每天刷三排~&lt;/li&gt;
+&lt;li&gt;根据天气预报可以适当准备一些工具和药物，比如遮阳伞和藿香正气水之类的（当然我这样的糙爷们是没有准备的）&lt;/li&gt;
+&lt;li&gt;爱美的小姐姐和小哥哥根据情况做好防晒等措施（你猜我做没做。。。）&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;手机需要提前安装好需要的应用，确认手机运行没有问题
+&lt;ul&gt;
+&lt;li&gt;小飞机要确认可用，不要像我的朋友 X 一样到了现场发现上不了 Ingress，然后发现是服务器欠费了。。&lt;/li&gt;
+&lt;li&gt;我用的是 iPhone 8，小飞机用的是 Shadowrocket，服务器是自建的~&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;带上 &lt;strong&gt;充满电&lt;/strong&gt; 的充电宝和充电线
+&lt;ul&gt;
+&lt;li&gt;我带了两块 10400 毫安时的充电宝，全天只用到了一块，电量还剩 50 % 不到的样子&lt;/li&gt;
+&lt;li&gt;建议带一根长一点的充电线，这样就可以直接从包里面拉一根线出来充电，这样会比较方便，不会影响到走路&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;带上两瓶水
+&lt;ul&gt;
+&lt;li&gt;北京中轴线全程基本都在景区边上，为了避免被宰，最好还是自己带上水，你一定不想喝 15 块一瓶的农夫山泉&lt;/li&gt;
+&lt;li&gt;我出发的时候带了一瓶水，然后在景区间移动的时候在一家小店买了一瓶尖叫，最后快结束的时候买了一瓶奶茶~&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;自备中午的干粮
+&lt;ul&gt;
+&lt;li&gt;虽然作者非常贴心的在上篇的最后一个任务中提示可以在此处休息，但是根据我的实际体验，基本上所有的店里面全都是人，最好还是不要凑这个热闹&lt;/li&gt;
+&lt;li&gt;在走了一个上午之后，基本上也不会有什么食欲，因此不要带过于油腻的东西&lt;/li&gt;
+&lt;li&gt;我出发的时候没有来得及买，最后是在一个马路的拐角处花了 9 块钱买了两个 &lt;strong&gt;鱼香肉丝&lt;/strong&gt; 馅儿的包子（&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;务必要在早上九点之前到 &lt;strong&gt;地铁八号线森林公园南门 B 口&lt;/strong&gt; ，过晚开始的话可能导致无法进入天安门广场，切记切记&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;let-s-rock&#34;&gt;Let&amp;rsquo;s rock&lt;/h2&gt;
+&lt;h3 id=&#34;上篇-盛世&#34;&gt;上篇 盛世&lt;/h3&gt;
+&lt;p&gt;大概八点半到了森林公园南门，朋友 X 稍微晚了一点，大概九点左右到，在地铁站门口接到他之后便直接开始了行程。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;小插曲：第一个任务的最后一个 Po &lt;code&gt;三度空间的演变&lt;/code&gt; 的时候遇到了一些状况，在那个位置中国移动的网络似乎有些问题，导致朋友 X 始终无法登录，最后是中国联通的我开热点并且帮他换掉了欠费的服务器之后搞定的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;上篇基本上没啥坑，就是一路摸过去，摸的时候最好看看下一个 Po 的位置，这样可以少走一些冤枉路。&lt;/li&gt;
+&lt;li&gt;进奥林匹克公园的时候需要安检，不过并不是非常严格，边上放了一个扫身份证的机器，但是并没有要求我扫就放我进去了&lt;/li&gt;
+&lt;li&gt;放眼望去基本上都是人，不过任务路线会有一段比较荫凉，人少的地方，可以坐着休息一会儿~&lt;/li&gt;
+&lt;li&gt;出奥林匹克公园的时候会有些懵逼，因为下一个任务点在马路对面，但是地图上并没有标出来可以过马路的地方，不用担心，只需要贴着右边走就能看到一个去对面地铁站的人行道&lt;/li&gt;
+&lt;li&gt;And 从这个地铁口开始后面的路程都可以骑单车过去&lt;/li&gt;
+&lt;li&gt;中华民族园不需要进去，在外面就能摸到所有的 Po，然后这边会有个小小的往返，所以不要手滑 Hack 错了 Po&lt;/li&gt;
+&lt;li&gt;任务上会推荐在此处休息，但是节假日的时候人会特别多，所以建议自备干粮对付一下（&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;中篇-故都&#34;&gt;中篇 故都&lt;/h3&gt;
+&lt;p&gt;上篇基本上轻松搞定，中午休息了几次，喝了点水，顺便感慨一下人真多。上篇的很多路程都是阳光直射的，所以我们也没啥胃口吃东西，喝了两口水之后便直接出发了。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;任务二的最后一个 Po 需要进到地铁背后的那个小道外面蹭一蹭，不过问题不算很大，并不是特别远&lt;/li&gt;
+&lt;li&gt;之后就需要地铁坐到鼓楼大街站的 A 口继续，任务中也通过问答的形式来通知玩家了&lt;/li&gt;
+&lt;li&gt;出地铁之后会去奇石馆，不需要门票，人也很少，只有附近的老大爷，挺安静，可以好好休息一会儿&lt;/li&gt;
+&lt;li&gt;之后会沿着街一直走，进到一个胡同里面，最后来到什刹海，我们在这里遇到了 20 块钱一个的蟹黄汤包，囊中羞涩，吃不起吃不起&lt;/li&gt;
+&lt;li&gt;接下来就是在小巷里面转圈，在南锣鼓巷附近，但是不会去南锣鼓巷&lt;/li&gt;
+&lt;li&gt;从任务十三出来之后可以走 &lt;strong&gt;白米斜街&lt;/strong&gt; ，这样会近一点
+&lt;ul&gt;
+&lt;li&gt;但是如果直走的话，可以在拐角的峨嵋酒家处买到 &lt;strong&gt;鱼香肉丝&lt;/strong&gt; 馅儿的包子，而且还是冰凉冰凉的，我吃的心也冰凉冰凉的。。&lt;/li&gt;
+&lt;li&gt;在这个附近会有一些售价正常的小卖部，可以补充一下水和干粮&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;任务十六的最后一个任务在景山公园，后续的任务都会在公园里面，所以不用想着在外面蹭蹭了，直接买票进去就好
+&lt;ul&gt;
+&lt;li&gt;票价两元，有学生证之类的可以优惠&lt;/li&gt;
+&lt;li&gt;推荐使用微信买票，需要绑定手机号，不用排队，不要换票，可以直接扫码入园&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;按照任务指示前进即可，不需要爬山，任务十七中间会有个 Po 因为正在寿黄门整修所以需要在外面蹭蹭，同样问题不大&lt;/li&gt;
+&lt;li&gt;出了景山公园之后需要走 &lt;code&gt;景山前街-&amp;gt;北长安街-&amp;gt;南长安街&lt;/code&gt; 到中山公园以开始下篇的任务
+&lt;ul&gt;
+&lt;li&gt;因为人很多的关系，所以单车不一定搞的到，需要往前面走一点&lt;/li&gt;
+&lt;li&gt;搞到单车了也没用，因为北长安街这边不允许单车进入，只能步行（&lt;/li&gt;
+&lt;li&gt;中途没有其他的任务 Po，只需要一直向前走，直到看到了中山公园的入口&lt;/li&gt;
+&lt;li&gt;这段路会比较无聊，除了人什么都没有，中途也没有休息的地方，所以推荐在外面休息一下再进去&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;下篇-永定&#34;&gt;下篇 永定&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;下篇的第一个任务从中山公园的西口开始
+&lt;ul&gt;
+&lt;li&gt;同样推荐使用微信买票，跟景山公园是同一个公众号，票价三元（是的，涨了一块钱~）&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;做任务一的第三个 Po 会让你觉得需要在外面蹭蹭，但是实际上是蹭不到的，你需要从蕙芳园边上的那个路直接走进去，不需要买票，走到底左转靠近中山堂地方就能摸到&lt;/li&gt;
+&lt;li&gt;之后就是一阵刷刷刷，一直到任务三会让你从南门出中山公园
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;但是&lt;/strong&gt; ，中山公园南门是不让出的（准进不准出&lt;/li&gt;
+&lt;li&gt;我们当时看到两个人从南门出去了，于是跟着他们两一起走过去，然后被保安拦住，我们把手机给他看了一下，然后说我们有人在里面，不出去&lt;/li&gt;
+&lt;li&gt;结果进去之后才发现那两个人是工作人员，但是反悔已经晚了，边上还有工作人员在问你们怎么回事，这边不让出&lt;/li&gt;
+&lt;li&gt;眼看着出口就在边上，我们假装啥都没听见，直接过去了，好在无事发生&lt;/li&gt;
+&lt;li&gt;（朋友们，千万不要学我，运气不好的话，可能剩下的十一假期都在派出所过了哎）&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;之后会从天安门门口过一圈，人超级多，直接摸一下就过去，不多做逗留了&lt;/li&gt;
+&lt;li&gt;从地下通道去广场，没有过安检&lt;/li&gt;
+&lt;li&gt;广场上一路刷刷刷，没啥好说的&lt;/li&gt;
+&lt;li&gt;然后就是在前门大街逛吃逛吃&lt;/li&gt;
+&lt;li&gt;天坑的最后两个 Po
+&lt;ul&gt;
+&lt;li&gt;这个比较蛋疼，任务上是推荐做公交过去，但是节假日做公交其实是一件很麻烦的事情&lt;/li&gt;
+&lt;li&gt;我推荐骑单车过去，精确的定位是 &lt;strong&gt;永定门城楼&lt;/strong&gt;，可以直接骑过去，然后走上去&lt;/li&gt;
+&lt;li&gt;一路骑车过来体验很赞&lt;/li&gt;
+&lt;li&gt;在天桥艺术中心的门口还会有人唱歌，我是听完了一曲《一路向北》之后才走的&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;show-me-your-hand&#34;&gt;Show me your hand&lt;/h2&gt;
+&lt;p&gt;摸完了最后两个 Po 之后，所有任务结束了，一日速刷搞定，做地铁回家的路上在大望路停了一下吃了顿晚饭，Over~&lt;/p&gt;
+&lt;h3 id=&#34;微信运动步数&#34;&gt;微信运动步数&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;wechat.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;当天的-ingress-时长&#34;&gt;当天的 Ingress 时长&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;time.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;profile-任务页&#34;&gt;Profile 任务页&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;profile.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;彩蛋一枚&#34;&gt;彩蛋一枚&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;egg.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;动态&#34;&gt;动态&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;跟朋友约好了一起联机玩 For the King，但是他的网卡坏了，只能用手机玩 *决战平安京*，蛋疼&lt;/li&gt;
+&lt;li&gt;最近新发现了不少好玩的联机游戏，有空的时候整理一下我多年联机经验&lt;/li&gt;
+&lt;li&gt;开始从头看龙族，之前每次都没有看完（&lt;/li&gt;
+&lt;li&gt;国庆的第一天去朋友家打麻将，连着自摸三把，哎，后悔没买彩票&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>qscamel —— 数据迁移工具</title><link>https://xuanwo.org/2018/09/05/qscamel-intro/</link><pubDate>Wed, 05 Sep 2018 09:00:00 +0000</pubDate><guid>https://xuanwo.org/2018/09/05/qscamel-intro/</guid><description>&lt;p&gt;qscamel 是一个用于在不同的端点 (Endpoint) 中高效迁移数据的工具。&lt;/p&gt;
 &lt;p&gt;&lt;/p&gt;
 &lt;p&gt;作为一个面向用户的数据迁移工具，它必须要满足如下要求：&lt;/p&gt;
 &lt;ul&gt;
@@ -948,95 +1070,4 @@ test()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;li&gt;清明节去了趟苏州，看到了大裤衩，还看了金鸡湖的音乐喷泉，然后拙政园基本啥都没看着，全是人头= =，出来之后就不想再去任何园林了&lt;/li&gt;
 &lt;li&gt;终于下定决心买了 ThinkPad X1 Carbon 2018 (故意写全就是为了装)，等四月底到手了发一波开箱照&lt;/li&gt;
 &lt;li&gt;又要开工了，体会到了久违的小学生暑假开学前一天的心情，大概是因为以前一直没有好好的休假过。。。&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>Python os walk 的坑</title><link>https://xuanwo.org/2018/04/01/python-os-walk/</link><pubDate>Sun, 01 Apr 2018 10:07:00 +0000</pubDate><guid>https://xuanwo.org/2018/04/01/python-os-walk/</guid><description>&lt;p&gt;用户反馈使用在 windows 下使用 &lt;a href=&#34;https://github.com/yunify/qsctl&#34;&gt;qsctl&lt;/a&gt; 上传文件的时候会中断并抛出 &lt;code&gt;UnicodeDecodeError&lt;/code&gt; 异常，经过一番调查之后发现居然是 &lt;code&gt;os.walk&lt;/code&gt; 的坑。&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;h2 id=&#34;定位&#34;&gt;定位&lt;/h2&gt;
-&lt;p&gt;接到用户的反馈之后，首先尝试进行了复现，最后成功的找到了一个能复现该问题的 case:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# create a file with bad name and sync with qsctl 1.7.0 on python 2.7.13:
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; touch &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;$(&lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;echo&lt;/span&gt; -e &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;\x8b\x8bThis&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;)&lt;/span&gt;
-&amp;gt;&amp;gt;&amp;gt; qsctl sync ./ qs://xxxxxx&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;抛出来的异常如下：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;Traceback (most recent call last):
-File &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;/home/xuanwo/.pyenv/versions/2.7.13/bin/qsctl&amp;#34;&lt;/span&gt;, line &lt;span style=&#34;color:#40a070&#34;&gt;27&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;&amp;lt;&lt;/span&gt;module&lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&lt;/span&gt;
-sys&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#007020&#34;&gt;exit&lt;/span&gt;(main())
-File &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;/home/xuanwo/.pyenv/versions/2.7.13/bin/qsctl&amp;#34;&lt;/span&gt;, line &lt;span style=&#34;color:#40a070&#34;&gt;24&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; main
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; qingstor&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;qsctl&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;driver&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;main()
-File &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/site-packages/qingstor/qsctl/driver.py&amp;#34;&lt;/span&gt;, line &lt;span style=&#34;color:#40a070&#34;&gt;100&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; main
-command&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;main(args[&lt;span style=&#34;color:#40a070&#34;&gt;2&lt;/span&gt;:])
-File &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/site-packages/qingstor/qsctl/commands/base.py&amp;#34;&lt;/span&gt;, line &lt;span style=&#34;color:#40a070&#34;&gt;276&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; main
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; cls&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;send_request()
-File &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/site-packages/qingstor/qsctl/commands/transfer.py&amp;#34;&lt;/span&gt;, line &lt;span style=&#34;color:#40a070&#34;&gt;546&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; send_request
-cls&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;upload_files()
-File &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/site-packages/qingstor/qsctl/commands/transfer.py&amp;#34;&lt;/span&gt;, line &lt;span style=&#34;color:#40a070&#34;&gt;165&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; upload_files
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; rt, dirs, files &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; os&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;walk(source_path):
-File &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/os.py&amp;#34;&lt;/span&gt;, line &lt;span style=&#34;color:#40a070&#34;&gt;286&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; walk
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; isdir(join(top, name)):
-File &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;/home/xuanwo/.pyenv/versions/2.7.13/lib/python2.7/posixpath.py&amp;#34;&lt;/span&gt;, line &lt;span style=&#34;color:#40a070&#34;&gt;71&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; join
-path &lt;span style=&#34;color:#666&#34;&gt;+=&lt;/span&gt; b
-&lt;span style=&#34;color:#007020&#34;&gt;UnicodeDecodeError&lt;/span&gt;: &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;ascii&amp;#39;&lt;/span&gt; codec can&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;t decode byte 0x8b in position 0: ordinal not in range(128)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;之前写过的一篇关于 Python 字符串的&lt;a href=&#34;https://xuanwo.org/2017/01/22/encoding-in-python/&#34;&gt;文章&lt;/a&gt; 曾经分析过类似的问题，Python 2 在进行字符串比较、拼接、替换时，会进行隐式的类型转换。通过查看 &lt;code&gt;posixpath.py&lt;/code&gt; 的源码，可以定位到报错的地方：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;join&lt;/span&gt;(a, &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;p):
-&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;&amp;#34;&amp;#34;Join two or more pathname components, inserting &amp;#39;/&amp;#39; as needed.
-&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt; If any component is an absolute path, all previous path components
-&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt; will be discarded. An empty last part will result in a path that
-&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt; ends with a separator.&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
-path &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; a
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; b &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; p:
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; b&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;startswith(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;):
-path &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; b
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;elif&lt;/span&gt; path &lt;span style=&#34;color:#666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;or&lt;/span&gt; path&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;endswith(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;):
-path &lt;span style=&#34;color:#666&#34;&gt;+=&lt;/span&gt; b &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# This is line 71.&lt;/span&gt;
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;else&lt;/span&gt;:
-path &lt;span style=&#34;color:#666&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;/&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; b
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; path&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;在 Python 2 下，str 与 unicode 相加，str 会做一次 decode() 转换为 unicode 再相加。也就是说此处报错是因为 path 和 b 的类型不一致导致出现了本不该出现的一次 decode()。顺着代码继续分析，path 和 b 是上层传入的 top 和 name，而这一层的调用是在 os 包的内部进行的。也就是说，os.walk 在处理过程中并没有严格遵循保持类型一致的不成文约定，而是在传入 unicode 的情况下，出现了 str 类型。知道了问题出在 &lt;code&gt;os.walk&lt;/code&gt;，接下来再看看 &lt;code&gt;os.walk&lt;/code&gt; 的实现就能明白问题的所在了：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;walk&lt;/span&gt;(top, func, arg):
-islink, join, isdir &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; path&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;islink, path&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;join, path&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;isdir
-&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# We may not have read permission for top, in which case we can&amp;#39;t&lt;/span&gt;
-&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# get a list of the files the directory contains. os.path.walk&lt;/span&gt;
-&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# always suppressed the exception then, rather than blow up for a&lt;/span&gt;
-&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# minor reason when (say) a thousand readable directories are still&lt;/span&gt;
-&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# left to visit. That logic is copied here.&lt;/span&gt;
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;try&lt;/span&gt;:
-&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# Note that listdir and error are globals in this module due&lt;/span&gt;
-&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# to earlier import-*.&lt;/span&gt;
-names &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; listdir(top)
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;except&lt;/span&gt; error, err:
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; onerror &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;is&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;not&lt;/span&gt; None:
-onerror(err)
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt;
-dirs, nondirs &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; [], []
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; name &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; names:
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; isdir(join(top, name)):
-dirs&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;append(name)
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;else&lt;/span&gt;:
-nondirs&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;append(name)
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; topdown:
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;yield&lt;/span&gt; top, dirs, nondirs
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; name &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; dirs:
-new_path &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; join(top, name)
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; followlinks &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;or&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;not&lt;/span&gt; islink(new_path):
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; x &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; walk(new_path, topdown, onerror, followlinks):
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;yield&lt;/span&gt; x
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;not&lt;/span&gt; topdown:
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;yield&lt;/span&gt; top, dirs, nondirs&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;等到读完 &lt;code&gt;os.walk&lt;/code&gt; 的实现我们就能明白，&lt;code&gt;os.walk&lt;/code&gt; 也是被迫背锅的，那个奇怪的 str 是由 &lt;code&gt;os.listdir&lt;/code&gt; 返回的。但是 &lt;code&gt;os.listdir&lt;/code&gt; 的实现是系统相关的，&lt;code&gt;os.walk&lt;/code&gt; 理应屏蔽掉编码的细节，为用户提供一个行为一致的接口。&lt;/p&gt;
-&lt;h2 id=&#34;修复&#34;&gt;修复&lt;/h2&gt;
-&lt;p&gt;定位到问题之后，修复起来就变得简单了。检查一下 listdir 的返回值，如果类型是 str，我们就试着去做一次 decode。如果报错了的话，我们需要通过 onerror 来处理这个情况然后把这个文件从结果中去掉以保证同步可以继续进行。
-最后通过这两个 commit 对这个问题进行了修复：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/yunify/qsctl/commit/f071667b12f8172451a9e7d63dcdd44f9348bf22&#34;&gt;Handle UnicodeDecodeError while use os.walk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/yunify/qsctl/commit/840a97ef8954fbe35659cfc6d457f461dcf2b77d&#34;&gt;Handle illegal characters in a better way&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;接口是开发者与用户的神圣契约，我们要尽量避免不一致的行为。&lt;/li&gt;
-&lt;li&gt;上层接口要尽可能屏蔽下层的细节，不要把本该自己处理的问题扔给用户处理。&lt;/li&gt;
-&lt;li&gt;Python 2 快点死掉吧 = =&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;动态&#34;&gt;动态&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;正如开头所说的，这篇文章是 “Learn From BUG” 系列的第一篇，之后我会不定期的整理和分享一些自己平时遇到的 BUG 解决思路。一方面是为了自己能够从 BUG 中学到更多，另一方面是希望能够帮助到被类似 BUG 困扰的人们。&lt;/li&gt;
-&lt;li&gt;随着再一次的心血来潮，我在 Linode 买了台机器部署并且把 Blog 迁移了过去，去掉了减速 CDN，实测速度比之前快上了不少。&lt;/li&gt;
-&lt;li&gt;《比宇宙更遥远的地方》完结撒花了，我现在唯一的感触就是这次的圣地巡礼可能有点贵 = =&lt;/li&gt;
 &lt;/ul&gt;</description></item></channel></rss>
