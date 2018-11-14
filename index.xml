@@ -19,7 +19,7 @@
 &lt;li&gt;让指定的 VPN 开机启动还需要单独写一个脚本&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;当然可以写一个 VPN 管理工具啦，但是何必呢，systemd 已经都帮我们做好啦~&lt;/p&gt;
-&lt;p&gt;只要写一个 &lt;code&gt;service&lt;/code&gt; 文件，并放在 &lt;code&gt;/usr/lib/systemd/system&lt;/code&gt; 下：&lt;/p&gt;
+&lt;p&gt;只要写一个 &lt;code&gt;service&lt;/code&gt; 文件，并放在 &lt;code&gt;/etc/systemd/system&lt;/code&gt; 下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;[Unit]&lt;/span&gt;
 &lt;span style=&#34;color:#4070a0&#34;&gt;Description&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;OpenVPN tunnel for %I&lt;/span&gt;
 &lt;span style=&#34;color:#4070a0&#34;&gt;After&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;syslog.target network-online.target&lt;/span&gt;
