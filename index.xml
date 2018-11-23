@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Xuanwo&#39;s Blog</title><link>https://xuanwo.org/</link><description>Recent content on Xuanwo&#39;s Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 15 Nov 2018 13:05:00 +0000</lastBuildDate><atom:link href="https://xuanwo.org/index.xml" rel="self" type="application/rss+xml"/><item><title>记一次 btrfs 的在线转换</title><link>https://xuanwo.org/2018/11/15/record-for-btrfs-conversion/</link><pubDate>Thu, 15 Nov 2018 13:05:00 +0000</pubDate><guid>https://xuanwo.org/2018/11/15/record-for-btrfs-conversion/</guid><description>&lt;p&gt;在 archcn 群里听 &lt;a href=&#34;https://farseerfc.me/&#34;&gt;fc 教授&lt;/a&gt; 安利了有一段时间了，终于在一个心情不是非常美好的晚上决定上一波 btrfs ，这篇文章主要分享这次转换中遇到的一些有趣的故事~&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Xuanwo&#39;s Blog</title><link>https://xuanwo.io/</link><description>Recent content on Xuanwo&#39;s Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 15 Nov 2018 13:05:00 +0000</lastBuildDate><atom:link href="https://xuanwo.io/index.xml" rel="self" type="application/rss+xml"/><item><title>记一次 btrfs 的在线转换</title><link>https://xuanwo.io/2018/11/15/record-for-btrfs-conversion/</link><pubDate>Thu, 15 Nov 2018 13:05:00 +0000</pubDate><guid>https://xuanwo.io/2018/11/15/record-for-btrfs-conversion/</guid><description>&lt;p&gt;在 archcn 群里听 &lt;a href=&#34;https://farseerfc.me/&#34;&gt;fc 教授&lt;/a&gt; 安利了有一段时间了，终于在一个心情不是非常美好的晚上决定上一波 btrfs ，这篇文章主要分享这次转换中遇到的一些有趣的故事~&lt;/p&gt;
 &lt;p&gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2 id=&#34;btrfs-是什么以及为什么&#34;&gt;btrfs 是什么以及为什么？&lt;/h2&gt;
@@ -129,7 +129,7 @@ total bytes scrubbed: &lt;span style=&#34;color:#40a070&#34;&gt;72&lt;/span&gt;.
 &lt;li&gt;哎，我觉得我的心理年龄才 16 岁，总觉得结婚买房什么的好遥远啊&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;最近比较迷茫，干什么都有点提不起兴趣，是时候去寻找更好玩的东西了？&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>Systemd 的一些小技巧</title><link>https://xuanwo.org/2018/10/30/tips-of-systemd/</link><pubDate>Tue, 30 Oct 2018 12:20:00 +0000</pubDate><guid>https://xuanwo.org/2018/10/30/tips-of-systemd/</guid><description>&lt;blockquote&gt;
+&lt;/ul&gt;</description></item><item><title>Systemd 的一些小技巧</title><link>https://xuanwo.io/2018/10/30/tips-of-systemd/</link><pubDate>Tue, 30 Oct 2018 12:20:00 +0000</pubDate><guid>https://xuanwo.io/2018/10/30/tips-of-systemd/</guid><description>&lt;blockquote&gt;
 &lt;p&gt;我就是累死，写脚本写到吐，我也绝对不换 &lt;code&gt;底裤D&lt;/code&gt;！&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;底裤D&lt;/code&gt; 真香！&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -323,13 +323,13 @@ Oct 29 23:13:26 thinkpad-x1-carbon systemd[547]: Stopping Skype...
 &lt;li&gt;重读&lt;a href=&#34;https://book.douban.com/subject/20499536/&#34;&gt;时代的稻草人&lt;/a&gt;，大学毕业一年多，我的精英意识已经完全被现实消磨光了，高中的时候满脑子社会变革，自我批判，要做时代的守望者，现在想起来居然觉得有些羞耻&lt;/li&gt;
 &lt;li&gt;我们 Team 买了一本&lt;a href=&#34;https://www.amazon.cn/dp/B07GJ6H3X3&#34;&gt;万物皆数&lt;/a&gt;，挺有意思的，社会精英当不了，搞搞纯粹理性的东西是不是会更快乐一些&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>恢复博客遗失的评论</title><link>https://xuanwo.org/2018/10/15/revocer-lost-blog-comments/</link><pubDate>Mon, 15 Oct 2018 13:35:00 +0000</pubDate><guid>https://xuanwo.org/2018/10/15/revocer-lost-blog-comments/</guid><description>&lt;p&gt;最近发现自己博客的评论少了不少，于是找了一下原因并使用工具做了修复，这篇文章主要就是讲 Hugo 如何正确的配置 Disqus 以及如何使用 Disqus 提供的迁移工具来修复已经出问题的数据。&lt;/p&gt;
+&lt;/ul&gt;</description></item><item><title>恢复博客遗失的评论</title><link>https://xuanwo.io/2018/10/15/revocer-lost-blog-comments/</link><pubDate>Mon, 15 Oct 2018 13:35:00 +0000</pubDate><guid>https://xuanwo.io/2018/10/15/revocer-lost-blog-comments/</guid><description>&lt;p&gt;最近发现自己博客的评论少了不少，于是找了一下原因并使用工具做了修复，这篇文章主要就是讲 Hugo 如何正确的配置 Disqus 以及如何使用 Disqus 提供的迁移工具来修复已经出问题的数据。&lt;/p&gt;
 &lt;p&gt;&lt;/p&gt;
 &lt;h2 id=&#34;hugo-sucks&#34;&gt;Hugo sucks&lt;/h2&gt;
 &lt;p&gt;查看自己博客的 Discussions 的时候会看到很多奇奇怪怪的链接：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;https://translate.googleusercontent.com/translate_c?act=url&amp;amp;depth=1&amp;amp;ie=UTF8&amp;amp;prev=_t&amp;amp;sl=auto&amp;amp;sp=nmt4&amp;amp;tl=en&amp;amp;u=https://xuanwo.org/2014/07/16/poj-1011-sticks/
-https://translate.googleusercontent.com/translate_c?depth=1&amp;amp;sl=zh-CN&amp;amp;sp=nmt4&amp;amp;tl=en&amp;amp;u=https://xuanwo.org/2015/02/07/generate-a-ssh-key/&amp;amp;xid=17259,15700022,15700124,15700149,15700168,15700186,15700190,15700201,15700208
-https://webcache.googleusercontent.com/search?q=cache:RMRC2X9nD0EJ:https://xuanwo.org/2017/11/26/enpass-intro/+&amp;amp;cd=1&amp;amp;ct=clnk&amp;amp;gl=jp&amp;amp;lr=lang_zh-CN%7Clang_zh-TW
+&lt;pre&gt;&lt;code&gt;https://translate.googleusercontent.com/translate_c?act=url&amp;amp;depth=1&amp;amp;ie=UTF8&amp;amp;prev=_t&amp;amp;sl=auto&amp;amp;sp=nmt4&amp;amp;tl=en&amp;amp;u=https://xuanwo.io/2014/07/16/poj-1011-sticks/
+https://translate.googleusercontent.com/translate_c?depth=1&amp;amp;sl=zh-CN&amp;amp;sp=nmt4&amp;amp;tl=en&amp;amp;u=https://xuanwo.io/2015/02/07/generate-a-ssh-key/&amp;amp;xid=17259,15700022,15700124,15700149,15700168,15700186,15700190,15700201,15700208
+https://webcache.googleusercontent.com/search?q=cache:RMRC2X9nD0EJ:https://xuanwo.io/2017/11/26/enpass-intro/+&amp;amp;cd=1&amp;amp;ct=clnk&amp;amp;gl=jp&amp;amp;lr=lang_zh-CN%7Clang_zh-TW
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;当然啦，自己的博客有外国友人开着 Google 翻译看自然会觉得开心，但是为啥这些奇怪的地址会被作为这篇文章评论的 URL 存入 Disqus 呢？&lt;/p&gt;
 &lt;p&gt;首先看了下网页的源代码中与 disqus 有关的部分：&lt;/p&gt;
@@ -373,7 +373,7 @@ this.page.url = &amp;#39;{{ .Permalink }}&amp;#39;;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;var&lt;/span&gt; disqus_config &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;function&lt;/span&gt;() {
 &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;this&lt;/span&gt;.page.identifier &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;\/2018\/10\/03\/ingress-beijing-central-axis\/&amp;#39;&lt;/span&gt;;
 &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;this&lt;/span&gt;.page.title &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;Ingress 北京中轴线噩梦难度一日速刷攻略&amp;#39;&lt;/span&gt;;
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;this&lt;/span&gt;.page.url &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;https:\/\/xuanwo.org\/2018\/10\/03\/ingress-beijing-central-axis\/&amp;#39;&lt;/span&gt;;
+&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;this&lt;/span&gt;.page.url &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;https:\/\/xuanwo.io\/2018\/10\/03\/ingress-beijing-central-axis\/&amp;#39;&lt;/span&gt;;
 };
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
@@ -394,7 +394,7 @@ this.page.url = &amp;#39;{{ .Permalink }}&amp;#39;;
 &lt;p&gt;我是直接将 CSV 上传到了 Google Sheet，然后用它的函数一阵操作搞定了，简单分享一哈：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;LOWER(REPLACE(AXXX,1,4,&amp;quot;https&amp;quot;))&lt;/code&gt; 可以将 protocol 修改为 https 并全部转换为小写&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;REGEXEXTRACT(AXXX, &amp;quot;https://xuanwo.org[\/\w-]*/&amp;quot;)&lt;/code&gt; 可以从 URL 的 Query 中提取出链接&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;REGEXEXTRACT(AXXX, &amp;quot;https://xuanwo.io[\/\w-]*/&amp;quot;)&lt;/code&gt; 可以从 URL 的 Query 中提取出链接&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;下面将修改好的 CSV 导出并上传，等到 disqus 异步处理即可。&lt;/p&gt;
 &lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
@@ -407,7 +407,7 @@ this.page.url = &amp;#39;{{ .Permalink }}&amp;#39;;
 &lt;li&gt;RNG 差点在小组赛翻车，最后连续干掉三星和状态火热的 C9，成功以小组第一出线（真的不容易，最后一波团真的是太刺激了），希望 EDG 和 iG 也能顺利出线~&lt;/li&gt;
 &lt;li&gt;不知道为啥突然开始了规律作息，每天 7:30 起床，9 点到公司，感觉很爽，仿佛自己的人生突然多出来一个上午（&lt;/li&gt;
 &lt;li&gt;最近成功加入了 Archlinuxcn 的打包组，并且把我常用的一些包加进了 cn 源，比如 &lt;a href=&#34;https://github.com/archlinuxcn/repo/tree/master/coredns&#34;&gt;coredns&lt;/a&gt;，我这个包可比 AUR 上的那个用心多了，欢迎大家使用并反馈意见~&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>Ingress 北京中轴线噩梦难度一日速刷攻略</title><link>https://xuanwo.org/2018/10/03/ingress-beijing-central-axis/</link><pubDate>Wed, 03 Oct 2018 15:35:00 +0000</pubDate><guid>https://xuanwo.org/2018/10/03/ingress-beijing-central-axis/</guid><description>&lt;blockquote&gt;
+&lt;/ul&gt;</description></item><item><title>Ingress 北京中轴线噩梦难度一日速刷攻略</title><link>https://xuanwo.io/2018/10/03/ingress-beijing-central-axis/</link><pubDate>Wed, 03 Oct 2018 15:35:00 +0000</pubDate><guid>https://xuanwo.io/2018/10/03/ingress-beijing-central-axis/</guid><description>&lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/Ingress&#34;&gt;Ingress&lt;/a&gt; 是一款基于地理位置的大型多人侵入式虚拟现实游戏，由 &lt;a href=&#34;https://zh.wikipedia.org/wiki/Niantic&#34;&gt;Niantic Labs&lt;/a&gt; 开发。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;作为一位入坑多年，最近几个月才刚刚喜获人权的咸鱼玩家，这个十一长假不想平庸的度过，于是决定在 10 月 3 号的时候一日速刷北京中轴线。因为在适逢十一假期，再加上各种大家都懂的原因，这次任务的难度可以说是噩梦级别。这篇文章就是要跟大家分享一下我成功通关喜悦并且为更多想要一日速刷北京中轴线的同学提供一些小小的帮助。&lt;/p&gt;
@@ -529,7 +529,7 @@ this.page.url = &amp;#39;{{ .Permalink }}&amp;#39;;
 &lt;li&gt;最近新发现了不少好玩的联机游戏，有空的时候整理一下我多年联机经验&lt;/li&gt;
 &lt;li&gt;开始从头看龙族，之前每次都没有看完（&lt;/li&gt;
 &lt;li&gt;国庆的第一天去朋友家打麻将，连着自摸三把，哎，后悔没买彩票&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>qscamel —— 数据迁移工具</title><link>https://xuanwo.org/2018/09/05/qscamel-intro/</link><pubDate>Wed, 05 Sep 2018 09:00:00 +0000</pubDate><guid>https://xuanwo.org/2018/09/05/qscamel-intro/</guid><description>&lt;p&gt;qscamel 是一个用于在不同的端点 (Endpoint) 中高效迁移数据的工具。&lt;/p&gt;
+&lt;/ul&gt;</description></item><item><title>qscamel —— 数据迁移工具</title><link>https://xuanwo.io/2018/09/05/qscamel-intro/</link><pubDate>Wed, 05 Sep 2018 09:00:00 +0000</pubDate><guid>https://xuanwo.io/2018/09/05/qscamel-intro/</guid><description>&lt;p&gt;qscamel 是一个用于在不同的端点 (Endpoint) 中高效迁移数据的工具。&lt;/p&gt;
 &lt;p&gt;&lt;/p&gt;
 &lt;p&gt;作为一个面向用户的数据迁移工具，它必须要满足如下要求：&lt;/p&gt;
 &lt;ul&gt;
@@ -746,7 +746,7 @@ Base
 &lt;blockquote&gt;
 &lt;p&gt;广告位招租，8 点 17 分发&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;想要加入我们一起来做靠谱的产品吗，快访问 &lt;a href=&#34;https://www.qingcloud.com/jobs&#34;&gt;https://www.qingcloud.com/jobs&lt;/a&gt; 寻找自己中意的岗位并且给我发简历吧~&lt;/p&gt;</description></item><item><title>Tiresias v0.3</title><link>https://xuanwo.org/2018/07/22/tiresias-v0.3/</link><pubDate>Sun, 22 Jul 2018 16:00:00 +0000</pubDate><guid>https://xuanwo.org/2018/07/22/tiresias-v0.3/</guid><description>&lt;p&gt;经过一段时间的摸鱼，Tiresias 发布了 v0.3 。新版本重新实现了 sync 的逻辑并且修复了部分 BUG，完整的 changelog 可以参考: &lt;a href=&#34;https://github.com/Xuanwo/tiresias/blob/master/CHANGELOG.md&#34;&gt;https://github.com/Xuanwo/tiresias/blob/master/CHANGELOG.md&lt;/a&gt; 。这篇文章主要介绍一下新的 sync 逻辑是如何实现的并介绍一下新增的功能。&lt;/p&gt;
+&lt;p&gt;想要加入我们一起来做靠谱的产品吗，快访问 &lt;a href=&#34;https://www.qingcloud.com/jobs&#34;&gt;https://www.qingcloud.com/jobs&lt;/a&gt; 寻找自己中意的岗位并且给我发简历吧~&lt;/p&gt;</description></item><item><title>Tiresias v0.3</title><link>https://xuanwo.io/2018/07/22/tiresias-v0.3/</link><pubDate>Sun, 22 Jul 2018 16:00:00 +0000</pubDate><guid>https://xuanwo.io/2018/07/22/tiresias-v0.3/</guid><description>&lt;p&gt;经过一段时间的摸鱼，Tiresias 发布了 v0.3 。新版本重新实现了 sync 的逻辑并且修复了部分 BUG，完整的 changelog 可以参考: &lt;a href=&#34;https://github.com/Xuanwo/tiresias/blob/master/CHANGELOG.md&#34;&gt;https://github.com/Xuanwo/tiresias/blob/master/CHANGELOG.md&lt;/a&gt; 。这篇文章主要介绍一下新的 sync 逻辑是如何实现的并介绍一下新增的功能。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Tiresias 是一个服务器信息管理工具，其目标是自动化服务器信息管理，取代手工维护的 Hosts 和 SSH Config&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -802,7 +802,7 @@ Base
 &lt;li&gt;周末把尼尔的六周目给通了（上一个三周目的时候特别感动把存档删了 = =）&lt;/li&gt;
 &lt;li&gt;跟朋友去试了下&lt;a href=&#34;http://www.dianping.com/shop/5864352&#34;&gt;包肉&lt;/a&gt;，第二天肚子疼+拉稀一天，差评&lt;/li&gt;
 &lt;li&gt;终于找到由头又水了一篇，开心&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>文档误读导致的 BUG</title><link>https://xuanwo.org/2018/06/15/bug-caused-by-misreading/</link><pubDate>Fri, 15 Jun 2018 18:00:00 +0000</pubDate><guid>https://xuanwo.org/2018/06/15/bug-caused-by-misreading/</guid><description>&lt;p&gt;之前听说过开发人员&lt;a href=&#34;https://www.theregister.co.uk/2018/05/09/intel_amd_kernel_privilege_escalation_flaws/&#34;&gt;读错 Intel 的文档&lt;/a&gt;导致出现了严重 &lt;a href=&#34;https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8897&#34;&gt;BUG&lt;/a&gt;，但是只是当成玩笑看待，但是等到这种事情发生在自己身上，还影响到了项目在用户生产环境的上线进度的时候，就不是那么好笑了。&lt;/p&gt;
+&lt;/ul&gt;</description></item><item><title>文档误读导致的 BUG</title><link>https://xuanwo.io/2018/06/15/bug-caused-by-misreading/</link><pubDate>Fri, 15 Jun 2018 18:00:00 +0000</pubDate><guid>https://xuanwo.io/2018/06/15/bug-caused-by-misreading/</guid><description>&lt;p&gt;之前听说过开发人员&lt;a href=&#34;https://www.theregister.co.uk/2018/05/09/intel_amd_kernel_privilege_escalation_flaws/&#34;&gt;读错 Intel 的文档&lt;/a&gt;导致出现了严重 &lt;a href=&#34;https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8897&#34;&gt;BUG&lt;/a&gt;，但是只是当成玩笑看待，但是等到这种事情发生在自己身上，还影响到了项目在用户生产环境的上线进度的时候，就不是那么好笑了。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;本文取材自真实事件的复盘，项目相关信息已经去敏。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -894,7 +894,7 @@ doClose = &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;true&lt;/sp
 &lt;li&gt;好久没有发文章了，找个由头水一篇&lt;/li&gt;
 &lt;li&gt;博客在 Linode 上跑了两个月之后，还是乖乖的回到了 gh-pages 的怀抱，真香&lt;/li&gt;
 &lt;li&gt;话说动态这个章节有人看么，如果不讨喜的我考虑一下去掉 = =&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>Tiresias —— 服务器信息管理工具</title><link>https://xuanwo.org/2018/05/22/tiresias-intro/</link><pubDate>Tue, 22 May 2018 04:00:00 +0000</pubDate><guid>https://xuanwo.org/2018/05/22/tiresias-intro/</guid><description>&lt;p&gt;大概从大二的时候开始就有这种困惑：不同的服务器所在的云服务商，数据中心，网段，用户名和私钥各不相同，他们的信息要如何管理？最开始是把所有的服务器信息都存放在了密码管理工具当中，后来知道了使用 &lt;a href=&#34;https://github.com/moul/advanced-ssh-config&#34;&gt;assh&lt;/a&gt; 来生成 &lt;code&gt;ssh_config&lt;/code&gt;，最后是 &lt;a href=&#34;https://pjw.io/&#34;&gt;@Aspire&lt;/a&gt; 提供的一个思路：使用脚本生成 &lt;code&gt;hosts&lt;/code&gt; 文件。于是我顺着 Aspire 的思路开发了一个工具：&lt;a href=&#34;https://github.com/Xuanwo/tiresias&#34;&gt;Tiresias&lt;/a&gt;，它可以读取事先写好的 YAML 配置文件并生成 &lt;code&gt;ssh_config&lt;/code&gt; 和 &lt;code&gt;hosts&lt;/code&gt; 文件。今天这篇文章就主要介绍一下我造的又一个轮子。&lt;/p&gt;
+&lt;/ul&gt;</description></item><item><title>Tiresias —— 服务器信息管理工具</title><link>https://xuanwo.io/2018/05/22/tiresias-intro/</link><pubDate>Tue, 22 May 2018 04:00:00 +0000</pubDate><guid>https://xuanwo.io/2018/05/22/tiresias-intro/</guid><description>&lt;p&gt;大概从大二的时候开始就有这种困惑：不同的服务器所在的云服务商，数据中心，网段，用户名和私钥各不相同，他们的信息要如何管理？最开始是把所有的服务器信息都存放在了密码管理工具当中，后来知道了使用 &lt;a href=&#34;https://github.com/moul/advanced-ssh-config&#34;&gt;assh&lt;/a&gt; 来生成 &lt;code&gt;ssh_config&lt;/code&gt;，最后是 &lt;a href=&#34;https://pjw.io/&#34;&gt;@Aspire&lt;/a&gt; 提供的一个思路：使用脚本生成 &lt;code&gt;hosts&lt;/code&gt; 文件。于是我顺着 Aspire 的思路开发了一个工具：&lt;a href=&#34;https://github.com/Xuanwo/tiresias&#34;&gt;Tiresias&lt;/a&gt;，它可以读取事先写好的 YAML 配置文件并生成 &lt;code&gt;ssh_config&lt;/code&gt; 和 &lt;code&gt;hosts&lt;/code&gt; 文件。今天这篇文章就主要介绍一下我造的又一个轮子。&lt;/p&gt;
 &lt;p&gt;&lt;/p&gt;
 &lt;h2 id=&#34;介绍&#34;&gt;介绍&lt;/h2&gt;
 &lt;p&gt;Tiresias，一般翻译为&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E7%89%B9%E4%BC%8A%E8%A5%BF%E4%BA%9A%E6%96%AF&#34;&gt;特伊西亚斯&lt;/a&gt;，古希腊神话人物，是一位盲人先知，凭借多种获得信息的能力并对世界进行解释而闻名于世。这个工具取这个名字主要就是采用了盲人先知的意象，希望它可以更好帮助管理众多服务器的信息。&lt;/p&gt;
@@ -955,7 +955,7 @@ $ mysql -h staging-server -u root -p&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;li&gt;MSI 决赛的第三局 Letme 的一手剑来，让我又想再把 《雪中悍刀行》再看一遍了&lt;/li&gt;
 &lt;li&gt;据说隔壁 Dota 2 项目也得了冠军，西恩军团牛逼！&lt;/li&gt;
 &lt;li&gt;为了庆祝 RNG MSI 夺冠，昨天请好朋友一起吃了日本料理，Excited ！&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>ThinkPad X1 Carbon 2018 开箱手记</title><link>https://xuanwo.org/2018/05/16/thinkpad-x1-carbon-6th/</link><pubDate>Wed, 16 May 2018 11:30:00 +0000</pubDate><guid>https://xuanwo.org/2018/05/16/thinkpad-x1-carbon-6th/</guid><description>&lt;p&gt;经过了漫长的等待之后，我的新玩具终于到手了。这篇文章主要晒一些照片，并分享一下我这第一次海淘的经历。&lt;/p&gt;
+&lt;/ul&gt;</description></item><item><title>ThinkPad X1 Carbon 2018 开箱手记</title><link>https://xuanwo.io/2018/05/16/thinkpad-x1-carbon-6th/</link><pubDate>Wed, 16 May 2018 11:30:00 +0000</pubDate><guid>https://xuanwo.io/2018/05/16/thinkpad-x1-carbon-6th/</guid><description>&lt;p&gt;经过了漫长的等待之后，我的新玩具终于到手了。这篇文章主要晒一些照片，并分享一下我这第一次海淘的经历。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;多图预警&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1084,7 +1084,7 @@ $ mysql -h staging-server -u root -p&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;li&gt;《间客》又看完了，现在在看《北平无战事》，当年追过一阵儿电视剧，但是没有看完，这次看看后续的剧情到底是怎么发展的。&lt;/li&gt;
 &lt;li&gt;上个周末去北大的黑客马拉松当评委，我最看好一个做猫脸识别的团队居然前十都没有进，很是生气。&lt;/li&gt;
 &lt;li&gt;照片都是在公司拍的，背景是我们公司的茶水间和我的工位，对我们公司感兴趣的话欢迎直接甩简历~&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>Xuanzang —— 一款开箱即用的全文搜索引擎</title><link>https://xuanwo.org/2018/05/01/xuanzang-intro/</link><pubDate>Tue, 01 May 2018 13:30:00 +0000</pubDate><guid>https://xuanwo.org/2018/05/01/xuanzang-intro/</guid><description>&lt;p&gt;&lt;a href=&#34;https://github.com/Xuanwo/xuanzang&#34;&gt;Xuanzang&lt;/a&gt;, 中文名：玄奘，是一个支持中文分词的开源全文搜索引擎。其目标是做一个开箱即用，不需要复杂的部署和配置，可以方便的嵌入静态网站的全文搜索引擎。&lt;/p&gt;
+&lt;/ul&gt;</description></item><item><title>Xuanzang —— 一款开箱即用的全文搜索引擎</title><link>https://xuanwo.io/2018/05/01/xuanzang-intro/</link><pubDate>Tue, 01 May 2018 13:30:00 +0000</pubDate><guid>https://xuanwo.io/2018/05/01/xuanzang-intro/</guid><description>&lt;p&gt;&lt;a href=&#34;https://github.com/Xuanwo/xuanzang&#34;&gt;Xuanzang&lt;/a&gt;, 中文名：玄奘，是一个支持中文分词的开源全文搜索引擎。其目标是做一个开箱即用，不需要复杂的部署和配置，可以方便的嵌入静态网站的全文搜索引擎。&lt;/p&gt;
 &lt;p&gt;&lt;/p&gt;
 &lt;h2 id=&#34;使用&#34;&gt;使用&lt;/h2&gt;
 &lt;p&gt;Xuanzang 的使用非常简单，只需要在 &lt;a href=&#34;https://github.com/Xuanwo/xuanzang/releases&#34;&gt;releases&lt;/a&gt; 处下载实现编译好的二进制文件。按照要求填写一些配置文件，比如：&lt;/p&gt;
@@ -1095,7 +1095,7 @@ $ mysql -h staging-server -u root -p&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;source:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;type:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;sitemap&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;url:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;https://xuanwo.org/sitemap.xml&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;url:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;https://xuanwo.io/sitemap.xml&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;duration:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;3600&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;dictionary:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;/project/xuanzang/dictionary.txt&lt;span style=&#34;color:#bbb&#34;&gt;
@@ -1109,7 +1109,7 @@ $ mysql -h staging-server -u root -p&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;:&lt;span style=&#34;color:#666&#34;&gt;)&lt;/span&gt; xuanzang -c /path/to/config.yaml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;以搜索我的朋友 &lt;a href=&#34;https://pjw.io/&#34;&gt;Aspire&lt;/a&gt; 为例：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;:&lt;span style=&#34;color:#666&#34;&gt;)&lt;/span&gt; curl &lt;span style=&#34;color:#40a070&#34;&gt;127&lt;/span&gt;.0.0.1:8080?text&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;aspire
-&lt;span style=&#34;color:#666&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;tokens&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;aspire&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;]&lt;/span&gt;,&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;docs&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#666&#34;&gt;[{&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;title&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;友情链接 // Xuanwo&amp;#39;s Blog&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;url&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;https://xuanwo.org/blogroll/&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;content_text&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;}]&lt;/span&gt;,&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;total&amp;#34;&lt;/span&gt;:1&lt;span style=&#34;color:#666&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span style=&#34;color:#666&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;tokens&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;aspire&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;]&lt;/span&gt;,&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;docs&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#666&#34;&gt;[{&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;title&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;友情链接 // Xuanwo&amp;#39;s Blog&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;url&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;https://xuanwo.io/blogroll/&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;content_text&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;}]&lt;/span&gt;,&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;total&amp;#34;&lt;/span&gt;:1&lt;span style=&#34;color:#666&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;接入博客十分容易，只需要通过 Ajax 向 Xuanzang 发出请求，并解析返回的 JSON 插入正确的 DOM，比如：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;function&lt;/span&gt; search() {
 &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;var&lt;/span&gt; text &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#007020&#34;&gt;decodeURI&lt;/span&gt;(&lt;span style=&#34;color:#007020&#34;&gt;window&lt;/span&gt;.location.search.substring(&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;).split(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;&amp;amp;&amp;#34;&lt;/span&gt;)[&lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;].split(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;=&amp;#34;&lt;/span&gt;)[&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;]);
@@ -1159,7 +1159,7 @@ ContentText &lt;span style=&#34;color:#902000&#34;&gt;string&lt;/span&gt; &lt;sp
 &lt;p&gt;（首先， Elasticsearch 是 Java 的，我这个 512M 内存的机器咋跑。。。）&lt;/p&gt;
 &lt;p&gt;Elasticsearch 很棒，但是用来做博客的全文搜索，总有一种拿着大炮打蚊子的感觉。我个人只是使用过 API ，没有实际的进行过 ES 的部署和维护，这里就不多说了。&lt;/p&gt;
 &lt;h3 id=&#34;google-site-search&#34;&gt;Google Site Search&lt;/h3&gt;
-&lt;p&gt;这大概是接入最方便的方案了，只需要直接跳转到 google 的 &lt;code&gt;site:xuanwo.org %s&lt;/code&gt; 即可。缺点是无法控制 Google 的索引行为，也没有办法做到实时的抓取和更新。&lt;/p&gt;
+&lt;p&gt;这大概是接入最方便的方案了，只需要直接跳转到 google 的 &lt;code&gt;site:xuanwo.io %s&lt;/code&gt; 即可。缺点是无法控制 Google 的索引行为，也没有办法做到实时的抓取和更新。&lt;/p&gt;
 &lt;h3 id=&#34;algolia-etc&#34;&gt;Algolia etc.&lt;/h3&gt;
 &lt;p&gt;还有很多商业化的全文搜索服务，其中最出名的莫过于 &lt;code&gt;Algolia&lt;/code&gt; 和 &lt;code&gt;Swiftype&lt;/code&gt;。之前试用过他们的服务，搜索效果很赞，但是免费用户限制颇多： algolia 的免费服务最多只能有一万条记录，swiftype 则是只提供了一段时间的免费试用，同时还限制了抓取的频率。&lt;/p&gt;
 &lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;

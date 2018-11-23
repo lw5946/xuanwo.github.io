@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Summary on Xuanwo&#39;s Blog</title><link>https://xuanwo.org/categories/summary/</link><description>Recent content in Summary on Xuanwo&#39;s Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 31 Jul 2015 15:58:35 +0000</lastBuildDate><atom:link href="https://xuanwo.org/categories/summary/index.xml" rel="self" type="application/rss+xml"/><item><title>动态规划——最长上升子序列问题</title><link>https://xuanwo.org/2015/07/31/dp-lis/</link><pubDate>Fri, 31 Jul 2015 15:58:35 +0000</pubDate><guid>https://xuanwo.org/2015/07/31/dp-lis/</guid><description>&lt;h1 id=&#34;介绍&#34;&gt;介绍&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Summary on Xuanwo&#39;s Blog</title><link>https://xuanwo.io/categories/summary/</link><description>Recent content in Summary on Xuanwo&#39;s Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 31 Jul 2015 15:58:35 +0000</lastBuildDate><atom:link href="https://xuanwo.io/categories/summary/index.xml" rel="self" type="application/rss+xml"/><item><title>动态规划——最长上升子序列问题</title><link>https://xuanwo.io/2015/07/31/dp-lis/</link><pubDate>Fri, 31 Jul 2015 15:58:35 +0000</pubDate><guid>https://xuanwo.io/2015/07/31/dp-lis/</guid><description>&lt;h1 id=&#34;介绍&#34;&gt;介绍&lt;/h1&gt;
 &lt;p&gt;最长上升子序列问题，也就是&lt;code&gt;Longest increasing subsequence&lt;/code&gt;，缩写为&lt;code&gt;LIS&lt;/code&gt;。是指在一个序列中求长度最长的一个上升子序列的问题，是动态规划中一个相当经典问题。在这里我们可以看到，这个上升实质上就是一个对&lt;code&gt;&amp;lt;&lt;/code&gt;进行定义的过程，所以我们求解的其实是一类问题，也就是在给定序列中求解长度最长的符合某一性质的子序列的问题。在下面总结的过程中，我还是以递增为例进行阐述。&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;</description></item><item><title>数论——快速幂</title><link>https://xuanwo.org/2015/03/18/number-theory-quick-pow/</link><pubDate>Wed, 18 Mar 2015 17:43:59 +0000</pubDate><guid>https://xuanwo.org/2015/03/18/number-theory-quick-pow/</guid><description>&lt;h1 id=&#34;原始代码&#34;&gt;原始代码&lt;/h1&gt;
+&lt;p&gt;&lt;/p&gt;</description></item><item><title>数论——快速幂</title><link>https://xuanwo.io/2015/03/18/number-theory-quick-pow/</link><pubDate>Wed, 18 Mar 2015 17:43:59 +0000</pubDate><guid>https://xuanwo.io/2015/03/18/number-theory-quick-pow/</guid><description>&lt;h1 id=&#34;原始代码&#34;&gt;原始代码&lt;/h1&gt;
 &lt;pre&gt;&lt;code&gt;int Pow(int A, int n)
 {
 if (n == 0) return 1;
@@ -11,7 +11,7 @@ rslt *= A;
 }
 return rslt;
 }
-&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>数论——筛法求素数</title><link>https://xuanwo.org/2015/03/18/number-theory-sieve-method-to-find-primes/</link><pubDate>Wed, 18 Mar 2015 17:16:01 +0000</pubDate><guid>https://xuanwo.org/2015/03/18/number-theory-sieve-method-to-find-primes/</guid><description>&lt;h1 id=&#34;暴力瞎搞求素数&#34;&gt;暴力瞎搞求素数&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>数论——筛法求素数</title><link>https://xuanwo.io/2015/03/18/number-theory-sieve-method-to-find-primes/</link><pubDate>Wed, 18 Mar 2015 17:16:01 +0000</pubDate><guid>https://xuanwo.io/2015/03/18/number-theory-sieve-method-to-find-primes/</guid><description>&lt;h1 id=&#34;暴力瞎搞求素数&#34;&gt;暴力瞎搞求素数&lt;/h1&gt;
 &lt;p&gt;首先，我们需要个判断是否为素数的算法：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;bool IsPrime(unsigned n) //此处n是一个大于2的整数
 {
@@ -24,9 +24,9 @@ return false;
 }
 return true;
 }
-&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>数论——欧几里得算法</title><link>https://xuanwo.org/2015/03/11/number-theory-gcd/</link><pubDate>Wed, 11 Mar 2015 10:32:31 +0000</pubDate><guid>https://xuanwo.org/2015/03/11/number-theory-gcd/</guid><description>&lt;h1 id=&#34;欧几里得算法&#34;&gt;欧几里得算法&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>数论——欧几里得算法</title><link>https://xuanwo.io/2015/03/11/number-theory-gcd/</link><pubDate>Wed, 11 Mar 2015 10:32:31 +0000</pubDate><guid>https://xuanwo.io/2015/03/11/number-theory-gcd/</guid><description>&lt;h1 id=&#34;欧几里得算法&#34;&gt;欧几里得算法&lt;/h1&gt;
 &lt;h2 id=&#34;介绍&#34;&gt;介绍&lt;/h2&gt;
 &lt;p&gt;欧几里得算法，又名辗转相除法，是求最大公约数的算法。两个整数的最大公约数是能够同时整除它们的最大的正整数。辗转相除法基于如下原理：两个整数的最大公约数等于其中较小的数和两数的差的最大公约数。例如，252和105的最大公约数是21（252 = 21 × 12；105 = 21 × 5）；因为252 − 105 = 147，所以147和105的最大公约数也是21。在这个过程中，较大的数缩小了，所以继续进行同样的计算可以不断缩小这两个数直至其中一个变成零。这时，所剩下的还没有变成零的数就是两数的最大公约数。
-&lt;img src=&#34;https://xuanwo.org/imgs/summary/Euclidean_algorithm_252_105_animation_flipped.gif&#34; alt=&#34;辗转相除法的演示动画&#34; /&gt;
+&lt;img src=&#34;https://xuanwo.io/imgs/summary/Euclidean_algorithm_252_105_animation_flipped.gif&#34; alt=&#34;辗转相除法的演示动画&#34; /&gt;
 参考辗转相除法的演示动画：两条线段分别表示252和105，其中每一段表示21。动画演示了循环从大数中减去小数，直到其中一段的长度为0，此时剩下的一条线段的长度就是252和105的最大公约数。&lt;/p&gt;
 &lt;p&gt;&lt;/p&gt;</description></item></channel></rss>
