@@ -1,4 +1,32 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Xuanwo&#39;s Blog</title><link>https://xuanwo.io/</link><description>Recent content on Xuanwo&#39;s Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 15 Nov 2018 13:05:00 +0000</lastBuildDate><atom:link href="https://xuanwo.io/index.xml" rel="self" type="application/rss+xml"/><item><title>记一次 btrfs 的在线转换</title><link>https://xuanwo.io/2018/11/15/record-for-btrfs-conversion/</link><pubDate>Thu, 15 Nov 2018 13:05:00 +0000</pubDate><guid>https://xuanwo.io/2018/11/15/record-for-btrfs-conversion/</guid><description>&lt;p&gt;在 archcn 群里听 &lt;a href=&#34;https://farseerfc.me/&#34;&gt;fc 教授&lt;/a&gt; 安利了有一段时间了，终于在一个心情不是非常美好的晚上决定上一波 btrfs ，这篇文章主要分享这次转换中遇到的一些有趣的故事~&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Xuanwo&#39;s Blog</title><link>https://xuanwo.io/</link><description>Recent content on Xuanwo&#39;s Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 02 Dec 2018 08:05:00 +0000</lastBuildDate><atom:link href="https://xuanwo.io/index.xml" rel="self" type="application/rss+xml"/><item><title>再见，xuanwo.org</title><link>https://xuanwo.io/2018/12/02/goodbye-xuanwo-org/</link><pubDate>Sun, 02 Dec 2018 08:05:00 +0000</pubDate><guid>https://xuanwo.io/2018/12/02/goodbye-xuanwo-org/</guid><description>&lt;p&gt;一句话新闻：启用新域名 &lt;code&gt;xuanwo.io&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id=&#34;影响&#34;&gt;影响&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;个人域名切换到了 &lt;code&gt;xuanwo.io&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;所有指向 &lt;code&gt;xuanwo.org&lt;/code&gt; 请求都会被 301 到 &lt;code&gt;xuanwo.io&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;所有发往 &lt;code&gt;xuanwo.org&lt;/code&gt; 域的邮件暂时不受影响&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;xuanwo.org&lt;/code&gt; 域名有效期到 2019 年末，目前还没有决定是否要续费&lt;/li&gt;
+&lt;li&gt;RSS 订阅用户可能需要修改订阅地址（RSS 订阅会 follow 301 么？）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;动态&#34;&gt;动态&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;其实本来写了长长的告别文，回顾了过去 4 年间 xuanwo.org 的变迁，都快把自己感动哭了，但是在发布之前还是都删了，换个域名而已&lt;/li&gt;
+&lt;li&gt;上周的时候朋友 A 来北京玩
+&lt;ul&gt;
+&lt;li&gt;跟着朋友 D 三人一起吃了顿捞王&lt;/li&gt;
+&lt;li&gt;下午参观了 798，看了不少自己看不懂但是感觉很有意思的展&lt;/li&gt;
+&lt;li&gt;晚上一起去了 tunight，看朋友 H 折腾了一晚上 Sony DPT 的 Android Xposed Hook，很是有意思&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;这周六跟朋友 K 见面，下次尝试了一下电影大串烧
+&lt;ul&gt;
+&lt;li&gt;先是看了《无名之辈》，电影很好看，虽说最后 20 分钟有点崩的厉害，但是并不是非常影响整理观感，最后的同名主题曲也非常好听&lt;/li&gt;
+&lt;li&gt;然后二刷了《无敌破坏王 2》，因为之前看过了，加上晚上没有休息好，所以看到中途的时候还睡着了一会儿（并不是说它不好看啊喂）&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;周日的时候参加了北航办的 !fs ，看到了可爱的 Rynco 酱，还有女装的小姐姐（还上去问了是不是女装大佬，结果发现是真小姐姐，丢人）&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>记一次 btrfs 的在线转换</title><link>https://xuanwo.io/2018/11/15/record-for-btrfs-conversion/</link><pubDate>Thu, 15 Nov 2018 13:05:00 +0000</pubDate><guid>https://xuanwo.io/2018/11/15/record-for-btrfs-conversion/</guid><description>&lt;p&gt;在 archcn 群里听 &lt;a href=&#34;https://farseerfc.me/&#34;&gt;fc 教授&lt;/a&gt; 安利了有一段时间了，终于在一个心情不是非常美好的晚上决定上一波 btrfs ，这篇文章主要分享这次转换中遇到的一些有趣的故事~&lt;/p&gt;
 &lt;p&gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2 id=&#34;btrfs-是什么以及为什么&#34;&gt;btrfs 是什么以及为什么？&lt;/h2&gt;
@@ -1084,89 +1112,4 @@ $ mysql -h staging-server -u root -p&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;li&gt;《间客》又看完了，现在在看《北平无战事》，当年追过一阵儿电视剧，但是没有看完，这次看看后续的剧情到底是怎么发展的。&lt;/li&gt;
 &lt;li&gt;上个周末去北大的黑客马拉松当评委，我最看好一个做猫脸识别的团队居然前十都没有进，很是生气。&lt;/li&gt;
 &lt;li&gt;照片都是在公司拍的，背景是我们公司的茶水间和我的工位，对我们公司感兴趣的话欢迎直接甩简历~&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>Xuanzang —— 一款开箱即用的全文搜索引擎</title><link>https://xuanwo.io/2018/05/01/xuanzang-intro/</link><pubDate>Tue, 01 May 2018 13:30:00 +0000</pubDate><guid>https://xuanwo.io/2018/05/01/xuanzang-intro/</guid><description>&lt;p&gt;&lt;a href=&#34;https://github.com/Xuanwo/xuanzang&#34;&gt;Xuanzang&lt;/a&gt;, 中文名：玄奘，是一个支持中文分词的开源全文搜索引擎。其目标是做一个开箱即用，不需要复杂的部署和配置，可以方便的嵌入静态网站的全文搜索引擎。&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;h2 id=&#34;使用&#34;&gt;使用&lt;/h2&gt;
-&lt;p&gt;Xuanzang 的使用非常简单，只需要在 &lt;a href=&#34;https://github.com/Xuanwo/xuanzang/releases&#34;&gt;releases&lt;/a&gt; 处下载实现编译好的二进制文件。按照要求填写一些配置文件，比如：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;host:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;localhost&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;port:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;8080&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;db_path:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;/project/xuanzang/database&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;index_path:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;/project/xuanzang/index&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;source:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;type:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;sitemap&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;url:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;https://xuanwo.io/sitemap.xml&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;duration:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;3600&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;dictionary:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;/project/xuanzang/dictionary.txt&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;stop_tokens:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;/project/xuanzang/stop_tokens.txt&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;logger:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;level:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;debug&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;output:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;/project/xuanzang/log&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;上述的配置文件将会监听本地的 &lt;code&gt;8080&lt;/code&gt; 端口，并使用 &lt;code&gt;/project/xuanzang/database&lt;/code&gt; 存放数据库，使用 &lt;code&gt;/project/xuanzang/index&lt;/code&gt; 目录存放索引。接下来的 &lt;code&gt;source&lt;/code&gt; 指定了源站的类型和两次抓取的间隔时间。对于个人博客而言，一个小时的抓取间隔已经足够了。下面的 &lt;code&gt;dictionary&lt;/code&gt; 和 &lt;code&gt;stop_tokens&lt;/code&gt; 是 Xuanzang 使用的字典和停止词，如果没有特殊的需求，可以使用项目自带的，在&lt;a href=&#34;https://github.com/Xuanwo/xuanzang/tree/master/data&#34;&gt;此处&lt;/a&gt;下载。&lt;code&gt;logger&lt;/code&gt; 则指定了 log 文件的位置和级别。&lt;/p&gt;
-&lt;p&gt;接下来就只需要启动 Xuanzang：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;:&lt;span style=&#34;color:#666&#34;&gt;)&lt;/span&gt; xuanzang -c /path/to/config.yaml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;以搜索我的朋友 &lt;a href=&#34;https://pjw.io/&#34;&gt;Aspire&lt;/a&gt; 为例：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;:&lt;span style=&#34;color:#666&#34;&gt;)&lt;/span&gt; curl &lt;span style=&#34;color:#40a070&#34;&gt;127&lt;/span&gt;.0.0.1:8080?text&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;aspire
-&lt;span style=&#34;color:#666&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;tokens&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;aspire&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;]&lt;/span&gt;,&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;docs&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#666&#34;&gt;[{&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;title&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;友情链接 // Xuanwo&amp;#39;s Blog&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;url&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;https://xuanwo.io/blogroll/&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;content_text&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;}]&lt;/span&gt;,&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;total&amp;#34;&lt;/span&gt;:1&lt;span style=&#34;color:#666&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;接入博客十分容易，只需要通过 Ajax 向 Xuanzang 发出请求，并解析返回的 JSON 插入正确的 DOM，比如：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;function&lt;/span&gt; search() {
-&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;var&lt;/span&gt; text &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#007020&#34;&gt;decodeURI&lt;/span&gt;(&lt;span style=&#34;color:#007020&#34;&gt;window&lt;/span&gt;.location.search.substring(&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;).split(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;&amp;amp;&amp;#34;&lt;/span&gt;)[&lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;].split(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;=&amp;#34;&lt;/span&gt;)[&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;]);
-$(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;.archive-category&amp;#34;&lt;/span&gt;).text(&lt;span style=&#34;color:#4070a0&#34;&gt;`&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;${&lt;/span&gt;text&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34; 的搜索结果`&lt;/span&gt;);
-$.getJSON(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;/search?text=&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; text, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;function&lt;/span&gt;(result) {
-$.each(result.docs, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;function&lt;/span&gt;(i, field) {
-$(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;.archives&amp;#34;&lt;/span&gt;).append(&lt;span style=&#34;color:#4070a0&#34;&gt;`&amp;lt;a href=&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;${&lt;/span&gt;field.url&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;${&lt;/span&gt;field.title&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;lt;/a&amp;gt;`&lt;/span&gt;);
-});
-});
-};
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;在 Search 页面的 Body 中设置 &lt;code&gt;onload=&amp;quot;search()&amp;quot;&lt;/code&gt; 并在 form 表单中设置 &lt;code&gt;action=&amp;quot;/search_result&amp;quot; method=&amp;quot;get&amp;quot;&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;具体的实现可以参考&lt;a href=&#34;https://github.com/Xuanwo/xuanwo.github.io/commit/3a7049df0a8fb9d685704283cfc0f6fdc264035d&#34;&gt;这个 Commit&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;目前本博客的全文搜索就是通过 Xuanzang 实现的，感兴趣的朋友可以试用一下~&lt;/p&gt;
-&lt;h2 id=&#34;实现&#34;&gt;实现&lt;/h2&gt;
-&lt;p&gt;Xuanzang 解决中文全文搜索的思路非常简单：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;通过事先指定的 sitemap 文件来遍历 &amp;amp; 抓取网页&lt;/li&gt;
-&lt;li&gt;使用一个支持中文分词的全文搜索引擎来做索引&lt;/li&gt;
-&lt;li&gt;对外暴露一个简化的 API 接口&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;接下来我们分别介绍一下这三个部分。&lt;/p&gt;
-&lt;h3 id=&#34;抓取网页&#34;&gt;抓取网页&lt;/h3&gt;
-&lt;p&gt;现在静态网站的生成工具多如牛毛，每个工具采用的模板都不大一样，因此不可能走为每种静态网站生成工具适配模板的道路。那有没有一种方法可以实时的获取到网站内容的变更呢？那就是 &lt;a href=&#34;https://www.sitemaps.org/protocol.html&#34;&gt;Sitemap&lt;/a&gt;，又叫做站点地图。几乎所有的静态网站生成工具都支持生成 Sitemap，这解决了获取网站内容的问题。同时 Sitemap 除了网址以外，还有 &lt;code&gt;lastmod&lt;/code&gt; 属性，可以获取到对应页面的最后修改时间。因此只需要抓取 Sitemap 文件，我们就可以知道整个网站都有哪些页面以及他们上次更新是什么时候了，这样就解决了获取网站内容变更的问题。同时我们可以在本地记录一下索引更新的时间，如果索引更新的时间比网页更新的时间要晚，那就可以直接跳过这个页面，从而避免每次都需要抓取。&lt;/p&gt;
-&lt;h3 id=&#34;中文分词&#34;&gt;中文分词&lt;/h3&gt;
-&lt;p&gt;Xuanzang 底层使用了 &lt;a href=&#34;https://github.com/huichen&#34;&gt;@huichen&lt;/a&gt; 开发的 &lt;a href=&#34;https://github.com/huichen/wukong&#34;&gt;wukong&lt;/a&gt;。中文分词这一块没有做什么大的改进，基本上就是直接拿过来用了。虽说搜索的精度还不是很高，但是马马虎虎还能用，对于个人博客而言已经足够了。&lt;/p&gt;
-&lt;h3 id=&#34;api-接口&#34;&gt;API 接口&lt;/h3&gt;
-&lt;p&gt;目前对外只提供了一个 &lt;code&gt;GET&lt;/code&gt; 接口，返回的数据结构如下：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Response is the response for search.
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;type&lt;/span&gt; Response &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;struct&lt;/span&gt; {
-Tokens []&lt;span style=&#34;color:#902000&#34;&gt;string&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;`json:&amp;#34;tokens&amp;#34;`&lt;/span&gt;
-Docs []Document &lt;span style=&#34;color:#4070a0&#34;&gt;`json:&amp;#34;docs&amp;#34;`&lt;/span&gt;
-Total &lt;span style=&#34;color:#902000&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;`json:&amp;#34;total&amp;#34;`&lt;/span&gt;
-}
-&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Document is the document that scored.
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;type&lt;/span&gt; Document &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;struct&lt;/span&gt; {
-Title &lt;span style=&#34;color:#902000&#34;&gt;string&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;`json:&amp;#34;title&amp;#34;`&lt;/span&gt;
-URL &lt;span style=&#34;color:#902000&#34;&gt;string&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;`json:&amp;#34;url&amp;#34;`&lt;/span&gt;
-ContentText &lt;span style=&#34;color:#902000&#34;&gt;string&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;`json:&amp;#34;content_text&amp;#34;`&lt;/span&gt;
-}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;预留了 &lt;code&gt;ContentText&lt;/code&gt; 属性，以后会用做提供搜索到的关键字附近的内容。&lt;/p&gt;
-&lt;h2 id=&#34;对比&#34;&gt;对比&lt;/h2&gt;
-&lt;p&gt;接下来简单的讲一讲 Xuanzang 和市面上其它全文搜索工具的区别。&lt;/p&gt;
-&lt;h3 id=&#34;lunr-js&#34;&gt;Lunr.js&lt;/h3&gt;
-&lt;p&gt;Lunr.js 是一个非常 Cool 的项目，但是 Lunr.js 不支持中文分词。不少人通过引入一个分词库并修改 Lunr.js 的 tokenizer 方法解决这个问题，其代价就是不能在浏览器端直接使用，还是需要在服务器端去提供一个服务。从我的角度来看是是已经偏离了它的目标：&lt;code&gt;A bit like Solr, but much smaller and not as bright.&lt;/code&gt; ，因此我的博客没有采用这个方案。其他的基于 js 的方案也都或多或少有这样的问题，比如在本地生成一个索引，然后搜索的时候使用 js 去 load 等等，在使用体验上都不是很好，在网站不是部署在国内时，这个问题尤为严重。&lt;/p&gt;
-&lt;h3 id=&#34;elasticsearch&#34;&gt;Elasticsearch&lt;/h3&gt;
-&lt;p&gt;（首先， Elasticsearch 是 Java 的，我这个 512M 内存的机器咋跑。。。）&lt;/p&gt;
-&lt;p&gt;Elasticsearch 很棒，但是用来做博客的全文搜索，总有一种拿着大炮打蚊子的感觉。我个人只是使用过 API ，没有实际的进行过 ES 的部署和维护，这里就不多说了。&lt;/p&gt;
-&lt;h3 id=&#34;google-site-search&#34;&gt;Google Site Search&lt;/h3&gt;
-&lt;p&gt;这大概是接入最方便的方案了，只需要直接跳转到 google 的 &lt;code&gt;site:xuanwo.io %s&lt;/code&gt; 即可。缺点是无法控制 Google 的索引行为，也没有办法做到实时的抓取和更新。&lt;/p&gt;
-&lt;h3 id=&#34;algolia-etc&#34;&gt;Algolia etc.&lt;/h3&gt;
-&lt;p&gt;还有很多商业化的全文搜索服务，其中最出名的莫过于 &lt;code&gt;Algolia&lt;/code&gt; 和 &lt;code&gt;Swiftype&lt;/code&gt;。之前试用过他们的服务，搜索效果很赞，但是免费用户限制颇多： algolia 的免费服务最多只能有一万条记录，swiftype 则是只提供了一段时间的免费试用，同时还限制了抓取的频率。&lt;/p&gt;
-&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
-&lt;p&gt;Xuanzang 在前人已有工作的基础上提供了一套简单易用的中文网站全文搜索解决方案，不需要复杂的参数调节和运维工作，按照文档部署即可使用，兼容市面上绝大多数静态网站生成工具，各位朋友了解一下？&lt;/p&gt;
-&lt;h2 id=&#34;动态&#34;&gt;动态&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;本周给大家推荐的小说： &lt;a href=&#34;http://book.zongheng.com/showchapter/189169.html&#34;&gt;《雪中悍刀行》&lt;/a&gt;，烽火戏诸侯的作品，布局精细，结构宏大，人物刻画生动，文字功底深厚，适合所有喜欢武侠小说的同学~&lt;/li&gt;
-&lt;li&gt;背后故事：4 月 29 号睡前有了为自己博客增加全文搜索支持的 Idea，30 号写了一天，并于当天的晚上九点发出了第一个 Release。&lt;/li&gt;
-&lt;li&gt;今天去簋街胡大饭馆吃了麻辣小龙虾，麻辣扇贝，馋嘴蛙仔，现在肚子在疯狂的翻腾。。。&lt;/li&gt;
 &lt;/ul&gt;</description></item></channel></rss>
