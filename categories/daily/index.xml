@@ -1,20 +1,464 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Daily on Xuanwo&#39;s Blog</title><link>https://xuanwo.io/categories/daily/</link><description>Recent content in Daily on Xuanwo&#39;s Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 02 Dec 2018 08:05:00 +0000</lastBuildDate><atom:link href="https://xuanwo.io/categories/daily/index.xml" rel="self" type="application/rss+xml"/><item><title>再见，xuanwo.org</title><link>https://xuanwo.io/2018/12/02/goodbye-xuanwo-org/</link><pubDate>Sun, 02 Dec 2018 08:05:00 +0000</pubDate><guid>https://xuanwo.io/2018/12/02/goodbye-xuanwo-org/</guid><description>&lt;p&gt;一句话新闻：启用新域名 &lt;code&gt;xuanwo.io&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;</description></item><item><title>Ingress 北京中轴线噩梦难度一日速刷攻略</title><link>https://xuanwo.io/2018/10/03/ingress-beijing-central-axis/</link><pubDate>Wed, 03 Oct 2018 15:35:00 +0000</pubDate><guid>https://xuanwo.io/2018/10/03/ingress-beijing-central-axis/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/Ingress&#34;&gt;Ingress&lt;/a&gt; 是一款基于地理位置的大型多人侵入式虚拟现实游戏，由 &lt;a href=&#34;https://zh.wikipedia.org/wiki/Niantic&#34;&gt;Niantic Labs&lt;/a&gt; 开发。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Daily on Xuanwo&#39;s Blog</title><link>https://xuanwo.io/categories/daily/</link><description>Recent content in Daily on Xuanwo&#39;s Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 03 Dec 2018 09:05:00 +0000</lastBuildDate><atom:link href="https://xuanwo.io/categories/daily/index.xml" rel="self" type="application/rss+xml"/><item><title>博客升级至 v2.0</title><link>https://xuanwo.io/2018/12/03/bump-to-version-2.0/</link><pubDate>Mon, 03 Dec 2018 09:05:00 +0000</pubDate><guid>https://xuanwo.io/2018/12/03/bump-to-version-2.0/</guid><description>&lt;p&gt;Xuanwo&amp;rsquo;s Blog 升级至 2.0 啦&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;停一下，先别动手，我不是标题党，听我解释！&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;作为一位入坑多年，最近几个月才刚刚喜获人权的咸鱼玩家，这个十一长假不想平庸的度过，于是决定在 10 月 3 号的时候一日速刷北京中轴线。因为在适逢十一假期，再加上各种大家都懂的原因，这次任务的难度可以说是噩梦级别。这篇文章就是要跟大家分享一下我成功通关喜悦并且为更多想要一日速刷北京中轴线的同学提供一些小小的帮助。&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;</description></item><item><title>ThinkPad X1 Carbon 2018 开箱手记</title><link>https://xuanwo.io/2018/05/16/thinkpad-x1-carbon-6th/</link><pubDate>Wed, 16 May 2018 11:30:00 +0000</pubDate><guid>https://xuanwo.io/2018/05/16/thinkpad-x1-carbon-6th/</guid><description>&lt;p&gt;经过了漫长的等待之后，我的新玩具终于到手了。这篇文章主要晒一些照片，并分享一下我这第一次海淘的经历。&lt;/p&gt;
+&lt;p&gt;在域名切换成 &lt;code&gt;xuanwo.io&lt;/code&gt; 的时候，我重写了 &lt;a href=&#34;https://xuanwo.io/about/&#34;&gt;About Me&lt;/a&gt;。在写的时候我就在想每个人都会有不同的侧面，与此同时每个人也会有每个人想要看到的侧面。因此我按照归属的次元不同重新组织了一下我的博客：&lt;/p&gt;
+&lt;h2 id=&#34;anime&#34;&gt;Anime&lt;/h2&gt;
+&lt;p&gt;动漫相关的内容，动漫相关的周边相关的内容也会发在这个分类下。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;文章列表：&lt;a href=&#34;https://xuanwo.io/categories/anime/&#34;&gt;https://xuanwo.io/categories/anime/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;RSS 订阅：&lt;a href=&#34;https://xuanwo.io/categories/anime/index.xml&#34;&gt;https://xuanwo.io/categories/anime/index.xml&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;p&gt;编程/技术相关的内容都会在这个分类下。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;文章列表：&lt;a href=&#34;https://xuanwo.io/categories/code/&#34;&gt;https://xuanwo.io/categories/code/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;RSS 订阅：&lt;a href=&#34;https://xuanwo.io/categories/code/index.xml&#34;&gt;https://xuanwo.io/categories/code/index.xml&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;daily&#34;&gt;Daily&lt;/h2&gt;
+&lt;p&gt;日常（灌水）内容，一些心情相关的无病呻吟也会发在这个分类下，同时这个分类会取代之前每篇文章末尾的动态章节。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;文章列表：&lt;a href=&#34;https://xuanwo.io/categories/daily/&#34;&gt;https://xuanwo.io/categories/daily/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;RSS 订阅：&lt;a href=&#34;https://xuanwo.io/categories/daily/index.xml&#34;&gt;https://xuanwo.io/categories/daily/index.xml&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;game&#34;&gt;Game&lt;/h2&gt;
+&lt;p&gt;游戏相关的内容会进这个分类啦，可能的内容大概会包括自己最近正在玩的游戏和一些感想。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;文章列表：&lt;a href=&#34;https://xuanwo.io/categories/game/&#34;&gt;https://xuanwo.io/categories/game/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;RSS 订阅：&lt;a href=&#34;https://xuanwo.io/categories/game/index.xml&#34;&gt;https://xuanwo.io/categories/game/index.xml&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;后续大概还会启用 Novel， Music 这些分类，不过暂时没有什么想写的，就先不提了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不管你觉得熟悉还是陌生，他们都是我，区别只是在于你是否知道~&lt;/p&gt;
+&lt;/blockquote&gt;</description></item><item><title>再见，xuanwo.org</title><link>https://xuanwo.io/2018/12/02/goodbye-xuanwo-org/</link><pubDate>Sun, 02 Dec 2018 08:05:00 +0000</pubDate><guid>https://xuanwo.io/2018/12/02/goodbye-xuanwo-org/</guid><description>&lt;p&gt;一句话新闻：启用新域名 &lt;code&gt;xuanwo.io&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id=&#34;影响&#34;&gt;影响&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;个人域名切换到了 &lt;code&gt;xuanwo.io&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;所有指向 &lt;code&gt;xuanwo.org&lt;/code&gt; 请求都会被 301 到 &lt;code&gt;xuanwo.io&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;所有发往 &lt;code&gt;xuanwo.org&lt;/code&gt; 域的邮件暂时不受影响&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;xuanwo.org&lt;/code&gt; 域名有效期到 2019 年末，目前还没有决定是否要续费&lt;/li&gt;
+&lt;li&gt;RSS 订阅用户可能需要修改订阅地址（RSS 订阅会 follow 301 么？）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;动态&#34;&gt;动态&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;其实本来写了长长的告别文，回顾了过去 4 年间 xuanwo.org 的变迁，都快把自己感动哭了，但是在发布之前还是都删了，换个域名而已&lt;/li&gt;
+&lt;li&gt;上周的时候朋友 A 来北京玩
+&lt;ul&gt;
+&lt;li&gt;跟着朋友 D 三人一起吃了顿捞王&lt;/li&gt;
+&lt;li&gt;下午参观了 798，看了不少自己看不懂但是感觉很有意思的展&lt;/li&gt;
+&lt;li&gt;晚上一起去了 tunight，看朋友 H 折腾了一晚上 Sony DPT 的 Android Xposed Hook，很是有意思&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;这周六跟朋友 K 见面，下次尝试了一下电影大串烧
+&lt;ul&gt;
+&lt;li&gt;先是看了《无名之辈》，电影很好看，虽说最后 20 分钟有点崩的厉害，但是并不是非常影响整理观感，最后的同名主题曲也非常好听&lt;/li&gt;
+&lt;li&gt;然后二刷了《无敌破坏王 2》，因为之前看过了，加上晚上没有休息好，所以看到中途的时候还睡着了一会儿（并不是说它不好看啊喂）&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;周日的时候参加了北航办的 !fs ，看到了可爱的 Rynco 酱，还有女装的小姐姐（还上去问了是不是女装大佬，结果发现是真小姐姐，丢人）&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>ThinkPad X1 Carbon 2018 开箱手记</title><link>https://xuanwo.io/2018/05/16/thinkpad-x1-carbon-6th/</link><pubDate>Wed, 16 May 2018 11:30:00 +0000</pubDate><guid>https://xuanwo.io/2018/05/16/thinkpad-x1-carbon-6th/</guid><description>&lt;p&gt;经过了漫长的等待之后，我的新玩具终于到手了。这篇文章主要晒一些照片，并分享一下我这第一次海淘的经历。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;多图预警&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;/p&gt;</description></item><item><title>如何识别真假链接？</title><link>https://xuanwo.io/2016/01/13/how-to-differ-invalid-link/</link><pubDate>Wed, 13 Jan 2016 01:18:51 +0000</pubDate><guid>https://xuanwo.io/2016/01/13/how-to-differ-invalid-link/</guid><description>&lt;p&gt;前两天我的朋友圈被微信公开课活动的链接+截图刷屏，随后一大帮“业内人士”站出来说这个是盗号连接，只要点开，微信钱包和支付宝就会被盗。作为半个业内人士，我不能忍了，决定跟大家谈一谈如何识别真假链接。&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;</description></item><item><title>断电也能上网！——路由器改造记</title><link>https://xuanwo.io/2015/11/27/surf-with-poweroff/</link><pubDate>Fri, 27 Nov 2015 01:34:33 +0000</pubDate><guid>https://xuanwo.io/2015/11/27/surf-with-poweroff/</guid><description>&lt;h1 id=&#34;介绍&#34;&gt;介绍&lt;/h1&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2 id=&#34;配置介绍&#34;&gt;配置介绍&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;CPU： Intel i7-8650U vPro&lt;/li&gt;
+&lt;li&gt;内存：16 GB&lt;/li&gt;
+&lt;li&gt;屏幕：14.0 WQHD IPS&lt;/li&gt;
+&lt;li&gt;硬盘：256G SSD&lt;/li&gt;
+&lt;li&gt;电池：3 cell 57Wh&lt;/li&gt;
+&lt;li&gt;预装：Windows 10 Home Plus&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;开箱照&#34;&gt;开箱照&lt;/h2&gt;
+&lt;h3 id=&#34;外包装箱&#34;&gt;外包装箱&lt;/h3&gt;
+&lt;p&gt;外包装箱挺结实的，晒一下配置的截图。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;outer-box.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;内包装箱&#34;&gt;内包装箱&lt;/h3&gt;
+&lt;p&gt;里面的包装箱非常有质感，不过着急着看电脑，没有多拍。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;inter-box.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;顶盖&#34;&gt;顶盖&lt;/h3&gt;
+&lt;p&gt;电脑本体是用一个黑色的袋子套起来放在盒子里面的，就是图片上压在电脑下面的那个袋子。正面非常简单，左上角是 ThinkPad 的标志，右下角的 X1 标志着这台电脑的纯正血统。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;top-cover.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;第一眼&#34;&gt;第一眼&lt;/h3&gt;
+&lt;p&gt;14 寸的屏幕，边框比较窄，看起来会比同尺寸的 Macbook Pro 还要大一些。上方的摄像头有一个机械式的开关，可以防止摄像头被意外的开启。标志性的触控板和小红点还在，指纹识别器改成了按压式的（不过 Arch Linux 还不支持 - -）。键盘的手感一如既往的赞，并不会有不适应的感觉。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;first-look.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;接口&#34;&gt;接口&lt;/h3&gt;
+&lt;p&gt;左侧是两个 USB Type C 接口，一个 HDMI 接口和一个 USB Type A 接口，右侧是一个 USB Type A 接口和耳机口。接口的数量不算特别丰富，但是已经可以满足我的需求了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;left-side.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;right-side.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;与-macbook-pro-的对比&#34;&gt;与 Macbook Pro 的对比&lt;/h3&gt;
+&lt;p&gt;整体的厚度其实跟 Macbook Pro 相差无几，但是因为 X1C 曲线的关系，看起来要比 MBP 更薄一些。实际重量也要比 MBP 轻。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;compare-with-macbook-pro.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;与-thinkpad-t460-的对比&#34;&gt;与 ThinkPad T460 的对比&lt;/h3&gt;
+&lt;p&gt;我上一台电脑是公司发的 T460，可以看到 X1C 要薄上不少。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;compare-with-t460.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;hello-arch&#34;&gt;Hello，Arch！&lt;/h3&gt;
+&lt;p&gt;在下单的时候就跟朋友们都说好了，等买了新电脑就要换 Arch。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;hello-arch.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;海淘之旅&#34;&gt;海淘之旅&lt;/h2&gt;
+&lt;p&gt;这是我的 X1C 的环球之旅：&lt;/p&gt;
+&lt;iframe src=&#34;https://www.google.com/maps/d/embed?mid=1Vb4i9bNCBdAD_bk5IkwQ-zyDJwn92k_w&#34; width=&#34;640&#34; height=&#34;480&#34;&gt;&lt;/iframe&gt;
+&lt;blockquote&gt;
+&lt;p&gt;中国合肥生产，寄到美国，然后再寄回来。相同的配置大概便宜了 6000 多块，真不愧是美帝良心想。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;下面分享一些海淘过程中的一些经验吧：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;海淘的周期真的非常长，前前后后大概等了一个月才拿到手，期间还因为贸易战以为自己的电脑被扣了= =。如果着急要用的话，还是不要海淘了。&lt;/li&gt;
+&lt;li&gt;海淘的时候一定要认真的挑选卖家，每个卖家都要跟他聊一聊，看看是否靠谱。上万块的电脑都买了，不要在乎那么几百块钱的差价，找最靠谱的。绝对不要加卖家的微信或者 QQ 聊，直接用网页版的阿里旺旺，这样你们的交流都是有记录的，以后如果有了纠纷可以靠这个去申诉。&lt;/li&gt;
+&lt;li&gt;整体的流程是这样的：
+&lt;ul&gt;
+&lt;li&gt;把自己想要的配置告诉店家，具体的配置可以在 &lt;a href=&#34;https://www3.lenovo.com/us/en/laptops/thinkpad/thinkpad-x/ThinkPad-X1-Carbon-6th-Gen/p/22TP2TXX16G&#34;&gt;美国联想官网定制&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;之后店家会告诉你完整的价格和完整的配置清单，如果确定没有问题的话先付定金，一般是 2000 块。&lt;/li&gt;
+&lt;li&gt;店家收到定金之后就会去官网上下单，然后把订单号告诉你，这样就可以直接在官网查进度。&lt;em&gt;如果店家没有订单号或者不肯告诉你，我觉得可能有问题。&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;等到电脑寄到了店家在美国的仓库，他会要求你支付尾款。收到尾款之后，他就会把电脑直接快递给你。&lt;/li&gt;
+&lt;li&gt;电脑到了海关，邮政局会给你发短信。你可以选择直接微信公众号支付，这样就会通过 EMS 寄给你；也可以选择自己直接去领，这样就可以当场拿走。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;我的电脑这次交了 300 的关税。据朋友说，所有电脑都是按照 2000 元然后征收 15% 的关税来计算的，这个没有证实。如果关税超过 300 块的话，可以让店家帮忙协调一下。&lt;/li&gt;
+&lt;li&gt;海淘的电脑也可以注册联想的全球联保服务，不需要担心电脑坏了没有地方修，不过联想比较傻逼的政策是只有电脑坏了才能注册。。。&lt;/li&gt;
+&lt;li&gt;很多店家不支持信用卡或者花呗，如果要用的话就要自己补手续费，因此尽可能的提前准备好足够的资金。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;使用体验&#34;&gt;使用体验&lt;/h2&gt;
+&lt;p&gt;电脑已经差不多一周，跟我之前的 T460 大概有以下差异：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;续航特别强劲，开着 Goland，PyCharm 和十多个标签的 Chrome 的情况下，可以连续使用八个小时。彻底戒掉了我晚上带电源回家的习惯，可以安心的带着电脑去参加讨论或者会议而不用担心电不够。&lt;/li&gt;
+&lt;li&gt;软件启动特别快。在 SSD 的加持下，我从打开 Goland 到可以开始实际的开发所需要的时间从 2 分钟降低到了 10 秒。&lt;/li&gt;
+&lt;li&gt;高分屏很舒服。习惯了高分屏之后，再回去看原来的屏幕已经完全接受不了了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;坑&#34;&gt;坑 &amp;gt;.&amp;lt;&lt;/h2&gt;
+&lt;p&gt;X1C 使用 Arch Linux 整体上没啥问题，但是在很多细节的地方有比较坑的地方：&lt;/p&gt;
+&lt;h3 id=&#34;支持-s3-待机&#34;&gt;支持 S3 待机&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;X1C 支持 S0i3 待机，但是不支持 S3 待机。两者的区别是在 S0i3 下 CPU 的功耗被降到最低，但仍保持着上电状态，而 S3 则不会。
+&lt;ul&gt;
+&lt;li&gt;X1C 支持 S3 需要 BIOS 的支持，社区中有人通过为 ACPI DSDT Table 打 Patch 来支持，但是这个 Hack 在最新版的 BIOS 中已经失效了，而且这个操作比较危险。因此我选择等待联想官方修复。就像论坛中有人说的那样：“Come on Lonove, show more love for linux users.”&lt;/li&gt;
+&lt;li&gt;而 S0i3 待机需要修改内核参数来提供支持，并且增加该参数后会导致无法打开屏盖来唤醒机器。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;评论区有童鞋说最新版本的固件中已经修复了该问题，我升级了固件发现确实如此。此外，联想已经加入了 LVFS (Linux Vendor Firmware Service)，因此我们可以通过 LVFS 来更新固件。&lt;/p&gt;
+&lt;p&gt;下面简单说一下如何更新固件并开启 S3 支持：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 Arch 的同学可以通过 pacman 来安装 &lt;a href=&#34;https://www.archlinux.org/packages/community/x86_64/fwupd&#34;&gt;&lt;code&gt;fwupd&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;fwupdmgr get-devices&lt;/code&gt; 获取设备中所有支持固件升级的硬件列表&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;fwupdmgr refresh&lt;/code&gt; 更新 metadata&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;fwupdmgr get-updates&lt;/code&gt; 来检查是不是有更新可用&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;fwupdmgr update&lt;/code&gt; 来进行固件升级
+&lt;ul&gt;
+&lt;li&gt;某些固件可能需要 root 权限&lt;/li&gt;
+&lt;li&gt;某些固件可能需要重启&lt;/li&gt;
+&lt;li&gt;固件升级的时候务必接好电源，同时电池的电量要保持在 60% 以上，最好能充满&lt;/li&gt;
+&lt;li&gt;固件升级的时候可能会把引导项删除，因此最好事先准备一个 live CD，在固件升级完毕之后重新 &lt;code&gt;grub-install&lt;/code&gt; 一下即可&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;固件升级完毕后在 BIOS 的 &lt;code&gt;Config -&amp;gt; Power -&amp;gt; Sleep State&lt;/code&gt; 中将原来的 &lt;code&gt;Windows 10&lt;/code&gt; 修改为 &lt;code&gt;Linux&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;做完上述的操作之后可以通过 &lt;code&gt;dmesg&lt;/code&gt; 来检查是不是已经开启了 S3 的支持：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;:&lt;span style=&#34;color:#666&#34;&gt;)&lt;/span&gt; dmesg | grep -i &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;acpi: (supports&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#666&#34;&gt;[&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;.500484&lt;span style=&#34;color:#666&#34;&gt;]&lt;/span&gt; ACPI: &lt;span style=&#34;color:#666&#34;&gt;(&lt;/span&gt;supports S0 S3 S4 S5&lt;span style=&#34;color:#666&#34;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;看到 S3 的话，说明已经搞定啦~&lt;/p&gt;
+&lt;h3 id=&#34;已经解决的坑&#34;&gt;已经解决的坑&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;在 KDE + SDDM 的组合下，进入休眠状态后再恢复，会有一定概率出现屏幕一直闪动的情况。重启 SDDM 之后会恢复正常，从 Xorg 的报错日志能看到类似这样的错误：&lt;code&gt;Failed to set drm version: Permission denied&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;最新版本的 KDE + SDDM 中已经修复了&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;尚未解决的坑&#34;&gt;尚未解决的坑&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Xorg + KDE 对不同 DPI 的屏幕支持不太好，导致外接屏幕的时候用起来比较难受。&lt;/li&gt;
+&lt;li&gt;指纹识别器驱动正在&lt;a href=&#34;https://github.com/nmikhailov/Validity90&#34;&gt;开发当中&lt;/a&gt;，暂时还用不了。&lt;/li&gt;
+&lt;li&gt;默认配置下 &lt;code&gt;Thunderbolt BIOS Assist Mode&lt;/code&gt; 是 Disable 的，这会导致 Linux 在 s2idle 下的能耗特别高，需要进 BIOS 将其设置为 Enable。&lt;/li&gt;
+&lt;li&gt;默认配置下，Linux 的 CPU 温度上限是 80 度，而 Windows 下是 97 度。这会导致 Linux 的 CPU 性能比 Windows 下要低，目前有一些 dirty hack，官方还没有修复。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;引用链接&#34;&gt;引用链接&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X1_Carbon_(Gen_6)&#34;&gt;Lenovo ThinkPad X1 Carbon (Gen 6) - Arch Wiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.reddit.com/r/thinkpad/comments/870u0a/t480s_linux_throttling_bug/&#34;&gt;T480s Linux throttling bug&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://forums.lenovo.com/t5/Linux-Discussion/X1C6-T480s-low-cTDP-and-trip-temperature-in-Linux/td-p/4028489&#34;&gt;low cTDP and trip temperature in Linux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bbs.archlinux.org/viewtopic.php?id=234913&#34;&gt;Lenovo X1C6 / X1Y3 (2018): No deep sleep (S3)?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://forums.lenovo.com/t5/Linux-Discussion/X1-Carbon-Gen-6-cannot-enter-deep-sleep-S3-state-aka-Suspend-to/td-p/3998182/highlight/true&#34;&gt;X1 Carbon Gen 6 cannot enter deep sleep (S3 state aka Suspend-to-RAM) on Linux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.archlinux.org/index.php/Fwupd&#34;&gt;fwupd&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;动态&#34;&gt;动态&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;《间客》又看完了，现在在看《北平无战事》，当年追过一阵儿电视剧，但是没有看完，这次看看后续的剧情到底是怎么发展的。&lt;/li&gt;
+&lt;li&gt;上个周末去北大的黑客马拉松当评委，我最看好一个做猫脸识别的团队居然前十都没有进，很是生气。&lt;/li&gt;
+&lt;li&gt;照片都是在公司拍的，背景是我们公司的茶水间和我的工位，对我们公司感兴趣的话欢迎直接甩简历~&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>如何识别真假链接？</title><link>https://xuanwo.io/2016/01/13/how-to-differ-invalid-link/</link><pubDate>Wed, 13 Jan 2016 01:18:51 +0000</pubDate><guid>https://xuanwo.io/2016/01/13/how-to-differ-invalid-link/</guid><description>&lt;p&gt;前两天我的朋友圈被微信公开课活动的链接+截图刷屏，随后一大帮“业内人士”站出来说这个是盗号连接，只要点开，微信钱包和支付宝就会被盗。作为半个业内人士，我不能忍了，决定跟大家谈一谈如何识别真假链接。&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h1 id=&#34;域名是什么&#34;&gt;域名是什么？&lt;/h1&gt;
+&lt;p&gt;首先我们来介绍一下域名：域名就是计算机在网络上的名字，免去人们需要记忆IP地址的困扰。
+域名由若干个英文字母和数字组成，由&lt;code&gt;.&lt;/code&gt;分割成几份，形成一个网络上唯一的访问地址。&lt;/p&gt;
+&lt;p&gt;以&lt;code&gt;https://support.weixin.qq.com&lt;/code&gt;为例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;support.weixin.qq.com&lt;/code&gt;为三级域名&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;weixin.qq.com&lt;/code&gt;为二级域名&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;qq.com&lt;/code&gt;为一级域名&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.com&lt;/code&gt;是顶级域名后缀&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;链接是什么&#34;&gt;链接是什么？&lt;/h1&gt;
+&lt;p&gt;然后我们来介绍一下&lt;code&gt;链接&lt;/code&gt;，也就是URL，全称为&lt;code&gt;统一资源定位符&lt;/code&gt;，我们也称它们为&lt;code&gt;网址&lt;/code&gt;。链接的标准格式一般如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;协议类型://服务器地址（必要时需加上端口号）/路径/文件名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;协议类型：常用的有http，https，ftp等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;https意味着什么？
+https又叫做&lt;code&gt;超文本传输安全协议&lt;/code&gt;，使用这个协议意味着你与这个网页的所有交互都是加密的，任何第三方都无法窥探你传输的信息（相对而言的，世上没有绝对的安全），经常被用于万维网上的交易支付和企业信息系统中敏感信息的传输。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;服务器地址：一般都是域名，有时为IP地址&lt;/li&gt;
+&lt;li&gt;端口号：http预设的80端口以及https的443端口可以省略&lt;/li&gt;
+&lt;li&gt;路径：以“/”字元区别路径中的每一个目录名称&lt;/li&gt;
+&lt;li&gt;查询：GET模式的表单参数，以“?”字元为起点，每个参数以“&amp;amp;”隔开，再以“=”分开参数名称与资料，通常以UTF8的URL编码，避开字元冲突的问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;如何分析一个链接&#34;&gt;如何分析一个链接？&lt;/h1&gt;
+&lt;p&gt;比如说我们这次微信公开课活动的链接：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;https://support.weixin.qq.com/cgi-bin/xxxxxxxx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对于用户而言，有用的信息如下：协议采用https协议，域名为&lt;code&gt;support.weixin.qq.com&lt;/code&gt;。
+采用https协议意味着你的信息是受到保护的，即使你使用了公共的wifi，同一wifi下的可能存在着的黑客也无法窥探你的私人信息。域名&lt;code&gt;support.weixin.qq.com&lt;/code&gt;传递了如下信息，这个网页是归属于&lt;code&gt;qq.com&lt;/code&gt;的，这从源头上保证了这一网页的安全性（如果腾讯没有内鬼的话）。&lt;/p&gt;
+&lt;p&gt;下面我们来看看一个假的链接是怎么样的：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;亲爱的淘宝用户您好，恭喜您在本次活动中获得特等奖iPhone6s一部，请登陆 &lt;a href=&#34;http://www.taoba0.com&#34;&gt;http://www.taoba0.com&lt;/a&gt; 领取您的奖品。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这是一条诈骗短信，我们可以看到骗子给出了这样一个链接&lt;code&gt;http://www.taoba0.com&lt;/code&gt;，一定要看清楚是&lt;code&gt;taoba0&lt;/code&gt;而不是&lt;code&gt;taobao&lt;/code&gt;，然后你就应该明白，这是一条诈骗短信了。值得提醒的是，现在前端技术高度发达，克隆复制一个网页非常容易，所以在网站之间挑战时，一定要确认自己点击的链接是正确的链接，否则极有可能被相似的页面欺骗。&lt;/p&gt;
+&lt;h1 id=&#34;如何保证安全&#34;&gt;如何保证安全？&lt;/h1&gt;
+&lt;p&gt;从上一个链接的分析中，我们可以得出以下几个小技巧：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;尽可能地使用https协议进行访问&lt;/li&gt;
+&lt;li&gt;认清域名，不轻信非官方域名的页面&lt;/li&gt;
+&lt;li&gt;网站之间跳转时，确认自己点击的链接是否正确&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;最后的寄语&#34;&gt;最后的寄语&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;请开启两部验证。国外的账户大多支持Google的两部验证，请启用这一功能。国内的账户的话，QQ请打开设备锁，QQ邮箱请打开独立密码。&lt;/li&gt;
+&lt;li&gt;不要贪小便宜！不要贪小便宜！！不要贪小便宜！！！重要的事情说三遍。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;参考资料&#34;&gt;参考资料&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%9F%9F%E5%90%8D&#34;&gt;域名-维基百科&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E7%BB%9F%E4%B8%80%E8%B5%84%E6%BA%90%E5%AE%9A%E4%BD%8D%E7%AC%A6&#34;&gt;统一资源定位符-维基百科&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;更新日志&#34;&gt;更新日志&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;2016年1月13日 首次发布&lt;/li&gt;
+&lt;li&gt;2016年1月14日 更新了域名相关知识&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>断电也能上网！——路由器改造记</title><link>https://xuanwo.io/2015/11/27/surf-with-poweroff/</link><pubDate>Fri, 27 Nov 2015 01:34:33 +0000</pubDate><guid>https://xuanwo.io/2015/11/27/surf-with-poweroff/</guid><description>&lt;h1 id=&#34;介绍&#34;&gt;介绍&lt;/h1&gt;
 &lt;p&gt;前两天我对我们宿舍的路由器进行了小小的改造，使得我们在断电之后也能照常上网。原理非常简单：就是使用充电宝来给路由器供电——因为我们墙上的网口是不会断电的，所以只要解决了路由器没有电的问题，就可以解决断网问题。路由器要求的输入电压为5V，电流为0.3A，恰好跟我们常用的充电宝是一致的，淘宝买一根USB转DV线成功解决问题。&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;</description></item><item><title>我的五样</title><link>https://xuanwo.io/2015/10/08/my-staff/</link><pubDate>Thu, 08 Oct 2015 11:08:16 +0000</pubDate><guid>https://xuanwo.io/2015/10/08/my-staff/</guid><description>&lt;p&gt;此文用以记录自己用过&amp;amp;在用的各类工具及软件，欢迎推荐&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;</description></item><item><title>青云参观计划</title><link>https://xuanwo.io/2015/02/18/event-qingcould-plan/</link><pubDate>Wed, 18 Feb 2015 22:50:33 +0000</pubDate><guid>https://xuanwo.io/2015/02/18/event-qingcould-plan/</guid><description> 青云是啥？ 想做中国的AWS：IaaS提供商QingCloud按“秒”计费实现弹性特征，瞄准中国的DevOps开发市场 国内创业公司QingCloud的魄力：做一个世界级的IaaS服务 青云B轮获2000万美元VC的背后逻辑：用技术超越巨头 个人认为对其的了解有助与我们信息管理专业的发展，所以尝试着联系了一下青云的有关人士。后来发现青云那边的人非常nice，非常热心，非常爽快的同意了我们的请求，所以开学后不久我们就可以出发啦。
-青云在哪？ 地址：北京市朝阳区北苑路甲13号北辰新纪元大厦2号楼1503 公交路线：地铁13号线 → 地铁2号线 → 地铁5号线全程约1小时
-五道口 3站 乘坐 地铁13号线(西直门方向), 在 西直门站 下车 420米 站内换乘 地铁2号线(内环) 4站 乘坐 地铁2号线(内环), 在 雍和宫站 下车 160米 站内换乘 地铁5号线(天通苑北方向) 6站 乘坐 地铁5号线(天通苑北方向), 在 北苑路北站 下车(A2西北口出) 350米 步行至 北辰新纪元2 去看什么？ 公司参观 员工分享个人经历 CEO分享关于云计算的理解 啥时候去？ 2015年3月19日14点
-有啥收获？ 这个根据看到了什么而定，不过涨姿势肯定是有的~ 我想看看真正的服务器长啥样= =
-更新日志 2015年02月18日 发起活动，修正行文格式。 2015年03月18日 补充活动更新信息。</description></item><item><title>暑期刷题计划</title><link>https://xuanwo.io/2014/07/03/summer-training-plan/</link><pubDate>Thu, 03 Jul 2014 20:04:23 +0000</pubDate><guid>https://xuanwo.io/2014/07/03/summer-training-plan/</guid><description>&lt;p&gt;我很喜欢Coding，也很喜欢AC那一刻的快感。为了追求这样的快感，我参加校赛，并且幸运的拿到了金牌，加入了CUGBACM的团体。
+&lt;p&gt;&lt;/p&gt;
+&lt;h1 id=&#34;供电方案&#34;&gt;供电方案&lt;/h1&gt;
+&lt;p&gt;我们宿舍现在的路由器供电方案是这样的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;充电器（A型USB接口）
+||
+充电宝（Micro B型USB接口）
+|内部电路|
+充电宝（A型USB接口）
+||
+路由器（DV接口）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;达成效果&#34;&gt;达成效果&lt;/h1&gt;
+&lt;p&gt;现在达成的效果是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;白天：充电器给充电宝充电，充电宝起到了稳流的作用&lt;/li&gt;
+&lt;li&gt;晚上：充电宝为路由器供电&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;优点&#34;&gt;优点&lt;/h2&gt;
+&lt;p&gt;自动循环，自动切换（切换的速度很快，撸啊撸都不会掉线哦~）&lt;/p&gt;
+&lt;h2 id=&#34;缺点&#34;&gt;缺点&lt;/h2&gt;
+&lt;p&gt;充电宝损耗大，不知道我这个已经用了一年的充电宝能坚持多久= =&lt;/p&gt;
+&lt;h1 id=&#34;硬件要求&#34;&gt;硬件要求&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;主流充电宝的电压均为5V1A，有部分充电宝为iPad提供了2A的输出接口，加上充电宝自动限流的功能，所有充电宝这一部分问题不大。
+路由器很显然必须为5V，如果是12V的路由器还需要另外购买升压模块，电流问题不大，充电宝基本都带得动。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;辟谣&#34;&gt;辟谣&lt;/h1&gt;
+&lt;h2 id=&#34;用充电宝网速是不是会变慢&#34;&gt;用充电宝网速是不是会变慢？&lt;/h2&gt;
+&lt;p&gt;实测： &lt;strong&gt;不会&lt;/strong&gt;
+相反的，由于断电之后同时上网的设备数量减少，在延时，最高速率等参数上还有着更加优秀的表现。&lt;/p&gt;
+&lt;h2 id=&#34;用充电宝会导致无法链接wifi&#34;&gt;用充电宝会导致无法链接Wifi？&lt;/h2&gt;
+&lt;p&gt;舍友反馈的，我只说一句： 不要相信玄学。
+路由器换一种供电方式会影响到你电脑上的无线网卡的信号发送？这种说法，我肯定是不相信的- -。&lt;/p&gt;
+&lt;h1 id=&#34;更新日志&#34;&gt;更新日志&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;2015年11月27日 完成初稿&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>我的五样</title><link>https://xuanwo.io/2015/10/08/my-staff/</link><pubDate>Thu, 08 Oct 2015 11:08:16 +0000</pubDate><guid>https://xuanwo.io/2015/10/08/my-staff/</guid><description>&lt;p&gt;此文用以记录自己用过&amp;amp;在用的各类工具及软件，欢迎推荐&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h1 id=&#34;pc&#34;&gt;PC&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ThinkPad E531 with Win10 x64&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;聊天&#34;&gt;聊天&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;QQ&lt;/li&gt;
+&lt;li&gt;微信电脑版&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;输入法&#34;&gt;输入法&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;搜狗拼音输入法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;浏览器&#34;&gt;浏览器&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Chrome 64bit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;下载&#34;&gt;下载&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;迅雷极速版&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;视频&#34;&gt;视频&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Potplayer-64 Bits&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;系统&#34;&gt;系统&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Xshell&lt;/li&gt;
+&lt;li&gt;Xftp&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://xuanwo.io/2015/07/28/listary/&#34;&gt;Listary&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;办公&#34;&gt;办公&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;SumatraPDF&lt;/li&gt;
+&lt;li&gt;XMind 7&lt;/li&gt;
+&lt;li&gt;Microsoft Office 2016&lt;/li&gt;
+&lt;li&gt;Evernote&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;游戏&#34;&gt;游戏&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;英雄联盟&lt;/li&gt;
+&lt;li&gt;龙翼编年史&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;网络&#34;&gt;网络&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;百度云管家&lt;/li&gt;
+&lt;li&gt;Shadowsocks&lt;/li&gt;
+&lt;li&gt;Cow&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;音乐&#34;&gt;音乐&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;QQ音乐&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;编程&#34;&gt;编程&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://xuanwo.io/2014/06/05/sublime-text-3-IDE/&#34;&gt;Sublime Text 3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Microsoft Visual Studio&lt;/li&gt;
+&lt;li&gt;JetBrains CLion&lt;/li&gt;
+&lt;li&gt;JetBrains PyCharm&lt;/li&gt;
+&lt;li&gt;JetBrains WebStorm&lt;/li&gt;
+&lt;li&gt;JetBrains IDEA&lt;/li&gt;
+&lt;li&gt;Android Studio&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;解压刻录&#34;&gt;解压刻录&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;WinRAR&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;迷之工具&#34;&gt;迷之工具&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;HashCalc&lt;/li&gt;
+&lt;li&gt;Git&lt;/li&gt;
+&lt;li&gt;QTranslate&lt;/li&gt;
+&lt;li&gt;Vagrant&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;更新日志&#34;&gt;更新日志&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;2015年10月08日 首次发布&lt;/li&gt;
+&lt;li&gt;2015年11月27日 11月软件更新&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>青云参观计划</title><link>https://xuanwo.io/2015/02/18/event-qingcould-plan/</link><pubDate>Wed, 18 Feb 2015 22:50:33 +0000</pubDate><guid>https://xuanwo.io/2015/02/18/event-qingcould-plan/</guid><description>
+&lt;h1 id=&#34;青云是啥&#34;&gt;青云是啥？&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.36kr.com/p/204836.html&#34;&gt;想做中国的AWS：IaaS提供商QingCloud按“秒”计费实现弹性特征，瞄准中国的DevOps开发市场&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.csdn.net/article/2013-08-20/2816631-IaaS-QingCloud&#34;&gt;国内创业公司QingCloud的魄力：做一个世界级的IaaS服务&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://capital.chinaventure.com.cn/11/7/1389263145.shtml&#34;&gt;青云B轮获2000万美元VC的背后逻辑：用技术超越巨头&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;个人认为对其的了解有助与我们信息管理专业的发展，所以尝试着联系了一下青云的有关人士。后来发现青云那边的人非常nice，非常热心，非常爽快的同意了我们的请求，所以开学后不久我们就可以出发啦。&lt;/p&gt;
+&lt;h1 id=&#34;青云在哪&#34;&gt;青云在哪？&lt;/h1&gt;
+&lt;p&gt;地址：北京市朝阳区北苑路甲13号北辰新纪元大厦2号楼1503
+公交路线：地铁13号线 → 地铁2号线 → 地铁5号线全程约1小时&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;五道口
+3站
+乘坐 地铁13号线(西直门方向), 在 西直门站 下车
+420米
+站内换乘 地铁2号线(内环)
+4站
+乘坐 地铁2号线(内环), 在 雍和宫站 下车
+160米
+站内换乘 地铁5号线(天通苑北方向)
+6站
+乘坐 地铁5号线(天通苑北方向), 在 北苑路北站 下车(A2西北口出)
+350米
+步行至 北辰新纪元2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;去看什么&#34;&gt;去看什么？&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;公司参观&lt;/li&gt;
+&lt;li&gt;员工分享个人经历&lt;/li&gt;
+&lt;li&gt;CEO分享关于云计算的理解&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;啥时候去&#34;&gt;啥时候去？&lt;/h1&gt;
+&lt;p&gt;2015年3月19日14点&lt;/p&gt;
+&lt;h1 id=&#34;有啥收获&#34;&gt;有啥收获？&lt;/h1&gt;
+&lt;p&gt;这个根据看到了什么而定，不过涨姿势肯定是有的~
+&lt;em&gt;我想看看真正的服务器长啥样= =&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&#34;更新日志&#34;&gt;更新日志&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;2015年02月18日 发起活动，修正行文格式。&lt;/li&gt;
+&lt;li&gt;2015年03月18日 补充活动更新信息。&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>暑期刷题计划</title><link>https://xuanwo.io/2014/07/03/summer-training-plan/</link><pubDate>Thu, 03 Jul 2014 20:04:23 +0000</pubDate><guid>https://xuanwo.io/2014/07/03/summer-training-plan/</guid><description>&lt;p&gt;我很喜欢Coding，也很喜欢AC那一刻的快感。为了追求这样的快感，我参加校赛，并且幸运的拿到了金牌，加入了CUGBACM的团体。
 但加入之后，我迷茫了。从学长学姐的口中，我知道我们学校的ACM并不是很强，甚至算得上弱校。参加了这么多年的比赛，我们从来没有出线过。每一年，我们都只能围观World Final的赛场，我们不停地刷新着List，不停地点评着清华为什么卡题卡这么久，不停地吐槽着CLJ拿到奖牌时的郁闷表情。心中其实一直有一个问题：为什么WF上，不能出现CUGB的队伍呢？这个问题真的很简单，我们太水。
-&lt;/p&gt;</description></item><item><title>ACM队友们的博客</title><link>https://xuanwo.io/2014/06/12/acm-teammates-blog/</link><pubDate>Thu, 12 Jun 2014 15:00:00 +0000</pubDate><guid>https://xuanwo.io/2014/06/12/acm-teammates-blog/</guid><description> 2009级 JoinHands http://blog.csdn.net/wsniyufang 2010级 Alan http://blog.csdn.net/cugb1004101218 maddoctor http://blog.csdn.net/sdj222555 walk_upon http://blog.csdn.net/walk_upon 2011级 kdqzzxxcc http://blog.csdn.net/just_water 止于至善 http://blog.csdn.net/qq415200973 2012级 聂小白 http://blog.csdn.net/q295657451 FreeMeepo http://www.freemeepo.com/acm/ 昊天 http://blog.csdn.net/ooooooooe 潇洒走一回 http://blog.csdn.net/u011466175 SIO__Five http://SIOFive.github.io/ 2013级 康逗 http://blog.csdn.net/zxk422/ Isco http://blog.csdn.net/chenyuwen666 浮沉独步 http://blog.csdn.net/u013588639 Peter http://blog.csdn.net/userluoxuan Fly in the s http://blog.csdn.net/mjoinir Every Day http://blog.csdn.net/u013044116</description></item></channel></rss>
+&lt;/p&gt;
+&lt;p&gt;尽管如此，我们依然没有什么改变。我们依旧懒懒散散地刷着水题，我们依旧不能AK每一次讲解之后的习题，甚至在各种学校的校赛被虐场之后，我们依旧没有痛头彻骨的感悟。不知道是哪个学长对我说的，弱校无外交，弱队无人权。今年暑假，我们校队甚至都没有一个自己训练的场地！还要水到什么时候？
+今天晚上队长问我们计划暑假刷POJ多少题，我半开玩笑地说刷个520道，然后找妹纸表白。他又问了一遍，我想了想，终于下定了决心。一直说自己水，一直羞愧自己配不上金牌选手的称号，为什么不从现在起开始改变呢？我很清楚，我不是那种天赋超人的妖孽，我更清楚，可能努力之后，WF的赛场上，依旧不会出现CUGB的队徽。
+但是，我想试试看。&lt;/p&gt;
+&lt;h1 id=&#34;规则&#34;&gt;规则&lt;/h1&gt;
+&lt;p&gt;POJ账号 xuanwo
+计划9月22号之前完成题目520道，并且完成题解。
+同时，跟上校队的暑期集训，完成相应的训练。
+每周一更新已完成题目数。&lt;/p&gt;
+&lt;h1 id=&#34;更新&#34;&gt;更新&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;2014年07月03日 完成本文，目前已完成数6道。&lt;/li&gt;
+&lt;li&gt;2014年07月07日 Solved: 13&lt;/li&gt;
+&lt;li&gt;2014年07月14日 Solved: 26&lt;/li&gt;
+&lt;li&gt;2014年07月23日 Solved: 62&lt;/li&gt;
+&lt;li&gt;2014年08月06日 Solved: 106&lt;/li&gt;
+&lt;li&gt;2014年08月12日 Solved: 112&lt;/li&gt;
+&lt;li&gt;2014年08月20日 Solved: 185&lt;/li&gt;
+&lt;li&gt;2014年09月02日 Solved: 227&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>ACM队友们的博客</title><link>https://xuanwo.io/2014/06/12/acm-teammates-blog/</link><pubDate>Thu, 12 Jun 2014 15:00:00 +0000</pubDate><guid>https://xuanwo.io/2014/06/12/acm-teammates-blog/</guid><description>
+&lt;h2 id=&#34;2009级&#34;&gt;2009级&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;JoinHands &lt;a href=&#34;http://blog.csdn.net/wsniyufang&#34;&gt;http://blog.csdn.net/wsniyufang&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2010级&#34;&gt;2010级&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Alan &lt;a href=&#34;http://blog.csdn.net/cugb1004101218&#34;&gt;http://blog.csdn.net/cugb1004101218&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;maddoctor &lt;a href=&#34;http://blog.csdn.net/sdj222555&#34;&gt;http://blog.csdn.net/sdj222555&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;walk_upon &lt;a href=&#34;http://blog.csdn.net/walk_upon&#34;&gt;http://blog.csdn.net/walk_upon&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2011级&#34;&gt;2011级&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;kdqzzxxcc &lt;a href=&#34;http://blog.csdn.net/just_water&#34;&gt;http://blog.csdn.net/just_water&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;止于至善 &lt;a href=&#34;http://blog.csdn.net/qq415200973&#34;&gt;http://blog.csdn.net/qq415200973&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2012级&#34;&gt;2012级&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;聂小白 &lt;a href=&#34;http://blog.csdn.net/q295657451&#34;&gt;http://blog.csdn.net/q295657451&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;FreeMeepo &lt;a href=&#34;http://www.freemeepo.com/acm/&#34;&gt;http://www.freemeepo.com/acm/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;昊天 &lt;a href=&#34;http://blog.csdn.net/ooooooooe&#34;&gt;http://blog.csdn.net/ooooooooe&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;潇洒走一回 &lt;a href=&#34;http://blog.csdn.net/u011466175&#34;&gt;http://blog.csdn.net/u011466175&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SIO__Five &lt;a href=&#34;http://SIOFive.github.io/&#34;&gt;http://SIOFive.github.io/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2013级&#34;&gt;2013级&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;康逗 &lt;a href=&#34;http://blog.csdn.net/zxk422/&#34;&gt;http://blog.csdn.net/zxk422/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Isco &lt;a href=&#34;http://blog.csdn.net/chenyuwen666&#34;&gt;http://blog.csdn.net/chenyuwen666&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;浮沉独步 &lt;a href=&#34;http://blog.csdn.net/u013588639&#34;&gt;http://blog.csdn.net/u013588639&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Peter &lt;a href=&#34;http://blog.csdn.net/userluoxuan&#34;&gt;http://blog.csdn.net/userluoxuan&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Fly in the s &lt;a href=&#34;http://blog.csdn.net/mjoinir&#34;&gt;http://blog.csdn.net/mjoinir&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Every Day &lt;a href=&#34;http://blog.csdn.net/u013044116&#34;&gt;http://blog.csdn.net/u013044116&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>
